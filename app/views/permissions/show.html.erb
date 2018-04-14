@@ -1,0 +1,55 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.permission') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.permission'), permissions_path %></li>         
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, Permission %>
+              <%= link_to edit_permission_path(@permission), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %> 
+            <% end %>
+
+            <%= link_to "#{permissions_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <%=t('views.return')%>
+            <% end %>  
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.permission.action')%>:
+            </span></dt>
+            <dd class="well"><%= @permission.action %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.permission.subject')%>:
+            </span></dt>
+            <dd class="well"><%= @permission.subject %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.permission.description')%>:
+            </span></dt>
+            <dd class="well"><%= @permission.description %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

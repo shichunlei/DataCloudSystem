@@ -1,0 +1,47 @@
+<%% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%%=t('views.show')%> <small><%%=t('activerecord.models.<%=singular_table_name%>') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%%=t('views.home')%></a></li>
+      <li><%%= link_to t('activerecord.models.<%=singular_table_name%>'), <%= plural_table_name %>_path %></li>         
+      <li class="active"><%%=t('views.show')%></li>
+    </ol>
+  </section>
+<%% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <%% if can? :edit, <%=singular_table_name.capitalize %> %>
+              <%%= link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%%=t('views.edit')%>
+              <%% end %> 
+            <%% end %>
+
+            <%%= link_to "#{<%= plural_table_name %>_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <%%=t('views.return')%>
+            <%% end %>  
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <%- attributes.each do |attribute| -%>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%%=t('activerecord.attributes.<%=singular_table_name%>.<%=attribute.name%>')%>:
+            </span></dt>
+            <dd class="well"><%%= @<%= singular_table_name %>.<%= attribute.name %> %></dd>
+            <%- end -%>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

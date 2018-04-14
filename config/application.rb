@@ -13,5 +13,8 @@ module AuthDemo
     # -- all .rb files in that directory are automatically loaded.
     config.i18n.default_locale = :'zh-CN'
     config.middleware.use Rack::Pjax
+
+    config.active_record.default_timezone = :local  # 注释1
+    config.time_zone = 'Beijing'                    # 注释2
   end
 end

@@ -16,7 +16,7 @@ module V1
           return {"code" => 20005, "message" => "账号不存在"}
         else
           if user.valid_password?(password)
-            return {"code" => 20001, "message" => "请求成功", :data => user.as_json()}
+            return {"code" => 20001, "message" => "请求成功", :result => user.as_json()}
           else
             return {"code" => 20004, "message" => "密码错误"}
           end

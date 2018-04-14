@@ -1,0 +1,113 @@
+<section class="content invoice">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_for(@car_type, :html => { :role => "form" }) do |f| %>
+        <% if @car_type.errors.any? %>
+          <div class="alert alert-danger alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            <h4><%= pluralize(@car_type.errors.count, "error") %> prohibited this car_type from being saved:</h4>
+
+            <ul>
+            <% @car_type.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+      <div class="form-group">
+        <%= f.label :car_brand %>
+        <select name="car_type[car_brand_id]" id = "car_type_car_brand_id" class="form-control"></select>
+      </div>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :fullname %>
+        <%= f.text_field :fullname, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :parentname %>
+        <%= f.text_field :parentname, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :logo %>
+        <%= f.text_field :logo, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :salestate %>
+        <%=
+          f.select :salestate, [['在销', '在销'], ['停销', '停销'], ['待销', '待销']],
+          {:include_blank => false},
+          {:class => 'form-control'}
+        %>
+      </div>
+      <div class="form-group">
+        <%= f.submit :class => "btn btn-primary" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+
+  $('#car_type_car_brand_id').chosen({
+    allow_single_deselect: true,
+    no_results_text: '没有搜索到结果',
+    search_contains: true
+  });
+
+  $('#car_type_car_brand_id').append("<option value=''>选择汽车品牌</option>");
+  $.get("/find_brands",function(data){
+    for (var i in data) {
+      var obj = data[i];
+      $('#car_type_car_brand_id').append("<option title=" + obj.name + " value=" + obj.id + ">" + obj.name + "</option>");
+    }
+    $('#car_type_car_brand_id').val("<%= @car_type.car_brand.nil? ? "" : @car_type.car_brand.id %>")
+    $('#car_type_car_brand_id').trigger("chosen:updated");
+
+    //如果编辑页面，set原值；
+    if(<%= @car_type.car_brand.nil? %>){
+    }else{
+      var search_val = "<%=  @car_type.car_brand.nil? ? "" : @car_type.car_brand.name %>";
+      requesturl = "/search_brands?keyword=" + search_val;
+      $.get(requesturl,function(data){
+        if(data.length > 0){
+          var result = "";
+          for (var i in data) {
+            var obj = data[i];
+            if(obj.id == "<%=  @car_type.car_brand.nil? ? "" : @car_type.car_brand.id %>"){
+              result += "<option title=" + obj.name + " value=" + obj.id + ">" + obj.name + "</option>";
+              break;
+            }
+          }
+          $('#car_type_car_brand_id').html(result);
+          $('#car_type_car_brand_id').prepend("<option value=''>选择员工</option>");
+          $('#car_type_car_brand_id').trigger("chosen:updated");
+          $('#car_type_car_brand_id_chosen input').val(search_val);
+        }
+      });
+    }
+  });
+
+  $('#car_type_car_brand_id_chosen input').on('input',function(){
+    var search_val = $(this).val();
+    requesturl = "/search_brands?keyword=" + search_val;
+    $.get(requesturl,function(data){
+      if(data.length > 0){
+        var result = "";
+        for (var i in data) {
+        var obj = data[i];
+        result += "<option title=" + obj.name + " value=" + obj.id + ">" + obj.name + "</option>";
+        }
+        $('#car_type_car_brand_id').html(result);
+        $('#car_type_car_brand_id').prepend("<option value=''>选择汽车品牌</option>");
+        $('#car_type_car_brand_id').trigger("chosen:updated");
+        $('#car_type_car_brand_id_chosen input').val(search_val);
+      }
+    });
+  });
+
+</script>

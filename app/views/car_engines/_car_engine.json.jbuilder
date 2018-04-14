@@ -1,0 +1,2 @@
+json.extract! car_engine, :id, :car_model_id, :position, :model, :displacement, :displacementml, :intakeform, :cylinderarrangetype, :cylindernum, :valvetrain, :valvestructure, :compressionratio, :bore, :stroke, :maxhorsepower, :maxpower, :maxpowerspeed, :maxtorque, :maxtorquespeed, :fueltype, :fuelgrade, :fuelmethod, :fueltankcapacity, :cylinderheadmaterial, :cylinderbodymaterial, :environmentalstandards, :startstopsystem, :created_at, :updated_at
+json.url car_engine_url(car_engine, format: :json)

@@ -1,0 +1,1 @@
+json.partial! "car_basics/car_basic", car_basic: @car_basic

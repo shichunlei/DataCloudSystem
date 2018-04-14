@@ -24,11 +24,47 @@
     <%= nav_link root_path do %>
       <i class="fa fa-dashboard"></i> <span>首页</span>
     <% end %>
-    <%= treeview_link '销售管理' do %>
-      <% if can? :read, Book %>
-        <%= nav_link books_path do %>
+    <%= treeview_link '汽车大全管理' do %>
+      <% if can? :read, CarBrand %>
+        <%= nav_link car_brands_path do %>
         <i class="fa fa-angle-double-right"></i>
-          书籍管理
+          汽车品牌管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarType %>
+        <%= nav_link car_types_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          车系管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarModel %>
+        <%= nav_link car_models_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          汽车型号管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarBasic %>
+        <%= nav_link car_basics_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          汽车基本信息管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarBody %>
+        <%= nav_link car_bodies_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          车体信息管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarEngine %>
+        <%= nav_link car_engines_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          发动机信息管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarGearbox %>
+        <%= nav_link car_gearboxes_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          变速箱信息管理
         <% end %>
       <% end%>
     <% end %>

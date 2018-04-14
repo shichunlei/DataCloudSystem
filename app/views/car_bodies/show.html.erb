@@ -1,0 +1,149 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.car_body') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.car_body'), car_bodies_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, CarBody %>
+              <%= link_to edit_car_body_path(@car_body), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{car_bodies_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.car_model')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.car_model %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.color')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.color %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.len')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.len %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.width')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.width %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.height')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.height %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.wheelbase')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.wheelbase %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.fronttrack')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.fronttrack %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.reartrack')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.reartrack %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.weight')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.weight %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.fullweight')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.fullweight %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.mingroundclearance')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.mingroundclearance %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.approachangle')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.approachangle %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.departureangle')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.departureangle %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.luggagevolume')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.luggagevolume %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.luggagemode')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.luggagemode %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.luggageopenmode')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.luggageopenmode %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.inductionluggage')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.inductionluggage %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.doornum')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.doornum %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.tooftype')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.tooftype %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.hoodtype')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.hoodtype %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.roofluggagerack')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.roofluggagerack %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_body.sportpackage')%>:
+            </span></dt>
+            <dd class="well"><%= @car_body.sportpackage %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

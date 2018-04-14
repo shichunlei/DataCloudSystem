@@ -1,0 +1,126 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.list')%> <small><%= t('activerecord.models.car_engine') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li class="active"><%= t('activerecord.models.car_engine') %></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :create, CarEngine %>
+              <%= link_to new_car_engine_path(@car_engine), :class => 'btn btn-success' do %>
+                <span class="glyphicon glyphicon-plus"></span>
+                <%=t('views.create')%><%=t('activerecord.models.car_engine')%>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                            <th><%=t('activerecord.attributes.car_engine.id') -%></th>
+
+                              <th><%=t('activerecord.attributes.car_engine.car_model') -%></th>
+
+                              <th><%=t('activerecord.attributes.car_engine.position') -%></th>
+
+                              <th><%=t('activerecord.attributes.car_engine.model') -%></th>
+
+                              <th><%=t('activerecord.attributes.car_engine.displacement') -%></th>
+
+                              <th><%=t('activerecord.attributes.car_engine.displacementml') -%></th>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                              <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% current_page = @page.nil? ? 1 : @page -%>
+              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
+              <%= content_tag_for(:tr, @car_engines) do |car_engine| %>
+                                <td><%= @page = @page + 1   -%></td>
+
+
+                  <td><%= car_engine.car_model -%></td>
+
+
+                  <td><%= car_engine.position -%></td>
+
+
+                  <td><%= car_engine.model -%></td>
+
+
+                  <td><%= car_engine.displacement -%></td>
+
+
+                  <td><%= car_engine.displacementml -%></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                      <% if can? :read, car_engine %>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_engine_path(car_engine)}?page=#{current_page}" %></td>
+                <% end %>
+                <% if can? :edit, car_engine %>
+                  <td class="list-opertion"><%= link_to t('views.edit'), edit_car_engine_path(car_engine) %></td>
+                <% end %>
+                <% if can? :destroy, car_engine %>
+                  <td class="list-opertion"><%= link_to t('views.destroy'), car_engine, method: :delete, data: { confirm: t('views.confirm') } %></td>
+                <% end %>
+
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+    <%= paginate @car_engines %>
+</section>

@@ -1,0 +1,1 @@
+json.array! @car_gearboxes, partial: 'car_gearboxes/car_gearbox', as: :car_gearbox

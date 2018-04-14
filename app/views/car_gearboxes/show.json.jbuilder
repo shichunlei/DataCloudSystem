@@ -1,0 +1,1 @@
+json.partial! "car_gearboxes/car_gearbox", car_gearbox: @car_gearbox

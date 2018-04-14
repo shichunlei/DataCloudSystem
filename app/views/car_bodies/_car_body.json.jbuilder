@@ -1,0 +1,2 @@
+json.extract! car_body, :id, :car_model_id, :color, :len, :width, :height, :wheelbase, :fronttrack, :reartrack, :weight, :fullweight, :mingroundclearance, :approachangle, :departureangle, :luggagevolume, :luggagemode, :luggageopenmode, :inductionluggage, :doornum, :tooftype, :hoodtype, :roofluggagerack, :sportpackage, :created_at, :updated_at
+json.url car_body_url(car_body, format: :json)

@@ -1,0 +1,128 @@
+<section class="content invoice">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_for(@car_engine, :html => { :role => "form" }) do |f| %>
+        <% if @car_engine.errors.any? %>
+          <div class="alert alert-danger alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            <h4><%= pluralize(@car_engine.errors.count, "error") %> prohibited this car_engine from being saved:</h4>
+
+            <ul>
+            <% @car_engine.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+      <div class="form-group">
+        <%= f.label :car_model %>
+        <%= f.text_field :car_model, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :position %>
+        <%= f.text_field :position, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :model %>
+        <%= f.text_field :model, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :displacement %>
+        <%= f.text_field :displacement, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :displacementml %>
+        <%= f.text_field :displacementml, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :intakeform %>
+        <%= f.text_field :intakeform, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :cylinderarrangetype %>
+        <%= f.text_field :cylinderarrangetype, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :cylindernum %>
+        <%= f.text_field :cylindernum, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :valvetrain %>
+        <%= f.text_field :valvetrain, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :valvestructure %>
+        <%= f.text_field :valvestructure, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :compressionratio %>
+        <%= f.text_field :compressionratio, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :bore %>
+        <%= f.text_field :bore, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :stroke %>
+        <%= f.text_field :stroke, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :maxhorsepower %>
+        <%= f.text_field :maxhorsepower, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :maxpower %>
+        <%= f.text_field :maxpower, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :maxpowerspeed %>
+        <%= f.text_field :maxpowerspeed, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :maxtorque %>
+        <%= f.text_field :maxtorque, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :maxtorquespeed %>
+        <%= f.text_field :maxtorquespeed, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :fueltype %>
+        <%= f.text_field :fueltype, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :fuelgrade %>
+        <%= f.text_field :fuelgrade, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :fuelmethod %>
+        <%= f.text_field :fuelmethod, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :fueltankcapacity %>
+        <%= f.text_field :fueltankcapacity, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :cylinderheadmaterial %>
+        <%= f.text_field :cylinderheadmaterial, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :cylinderbodymaterial %>
+        <%= f.text_field :cylinderbodymaterial, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :environmentalstandards %>
+        <%= f.text_field :environmentalstandards, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :startstopsystem %>
+        <%= f.text_field :startstopsystem, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit :class => "btn btn-primary" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</section> 

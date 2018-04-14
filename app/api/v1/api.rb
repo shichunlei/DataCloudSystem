@@ -12,6 +12,7 @@ module V1
 		error_formatter :json, ErrorFormatter
 
 		mount V1::Users
+		mount V1::Cars
 	end
 
 	# 返回码

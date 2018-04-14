@@ -11,8 +11,17 @@
 // about supported directives.
 //
 //= require jquery
+//= require spin.min
+//= require ladda.min
+//= require nouislider.min
+//= require chosen.jquery.min
+//= require jquery.PrintArea
+//= require bootstrap-datetimepicker.min.js
+//= require jquery.noty.packaged.min.js
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require ystep
 //= require adminlte
-//= require_tree .
+//= require bootstrap-treeview.min
+//= require cable

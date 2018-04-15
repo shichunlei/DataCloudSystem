@@ -13,6 +13,7 @@ module V1
 
 		mount V1::Users
 		mount V1::Cars
+		mount V1::Recipes
 	end
 
 	# 返回码

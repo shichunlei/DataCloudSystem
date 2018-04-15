@@ -43,8 +43,18 @@ Rails.application.routes.draw do
   # 查询品系
   get '/find_types' => "car_types#find_types"
 
-  # 搜索品系
+  # 搜索型号
   get '/search_models' => "car_models#search_models"
-  # 查询品系
+  # 查询型号
   get '/find_models' => "car_models#find_models"
+
+  # 搜索菜谱分类
+  get '/search_classify' => "recipe_classifies#search_classify"
+  # 查询菜谱分类
+  get '/find_classify' => "recipe_classifies#find_classify"
+
+  # 搜索菜谱
+  get '/search_recipe' => "recipes#search_recipe"
+  # 查询菜谱
+  get '/find_recipe' => "recipes#find_recipe"
 end

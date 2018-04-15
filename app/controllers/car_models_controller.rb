@@ -48,12 +48,12 @@ class CarModelsController < ApplicationController
   end
 
   def find_models
-    brands = CarModel.limit(20)
+    brands = CarModel.order(:id).limit(20)
     render json:brands.to_json(:only => [:id, :name])
   end
 
   def search_models
-    brands = CarModel.where("name LIKE '%#{params[:keyword]}%'").limit(20)
+    brands = CarModel.where("name LIKE '%#{params[:keyword]}%'").order(:id).limit(20)
     render json:brands.to_json(:only => [:id, :name])
   end
 

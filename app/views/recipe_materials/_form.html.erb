@@ -17,7 +17,7 @@
 
       <div class="form-group">
         <%= f.label :recipe %>
-        <%= f.text_field :recipe, :class => "form-control" %>
+        <select name="material[recipe_id]" id = "material_recipe_id" class="form-control"></select>
       </div>
       <div class="form-group">
         <%= f.label :mname %>
@@ -37,4 +37,65 @@
     <% end %>
     </div>
   </div>
-</section> 
+</section>
+
+<script type="text/javascript">
+
+  $('#material_recipe_id').chosen({
+    allow_single_deselect: true,
+    no_results_text: '没有搜索到结果',
+    search_contains: true
+  });
+
+  $('#material_recipe_id').append("<option value=''>选择菜谱</option>");
+  $.get("/find_recipe",function(data){
+    for (var i in data) {
+      var obj = data[i];
+      $('#material_recipe_id').append("<option title=" + obj.name + " value=" + obj.id + ">" + obj.name + "</option>");
+    }
+    $('#material_recipe_id').val("<%= @recipe_material.recipe.nil? ? "" : @recipe_material.recipe.id %>")
+    $('#material_recipe_id').trigger("chosen:updated");
+
+    //如果编辑页面，set原值；
+    if(<%= @recipe_material.recipe.nil? %>){
+    }else{
+      var search_val = "<%=  @recipe_material.recipe.nil? ? "" : @recipe_material.recipe.name %>";
+      requesturl = "/search_recipe?keyword=" + search_val;
+      $.get(requesturl,function(data){
+        if(data.length > 0){
+          var result = "";
+          for (var i in data) {
+            var obj = data[i];
+            if(obj.id == "<%=  @recipe_material.recipe.nil? ? "" : @recipe_material.recipe.id %>"){
+              result += "<option title=" + obj.name + " value=" + obj.id + ">" + obj.name + "</option>";
+              break;
+            }
+          }
+          $('#material_recipe_id').html(result);
+          $('#material_recipe_id').prepend("<option value=''>选择菜谱</option>");
+          $('#material_recipe_id').trigger("chosen:updated");
+          $('#material_recipe_id_chosen input').val(search_val);
+        }
+      });
+    }
+  });
+
+  $('#material_recipe_id_chosen input').on('input',function(){
+    var search_val = $(this).val();
+    requesturl = "/search_recipe?keyword=" + search_val;
+    $.get(requesturl,function(data){
+      if(data.length > 0){
+        var result = "";
+        for (var i in data) {
+        var obj = data[i];
+        result += "<option title=" + obj.name + " value=" + obj.id + ">" + obj.name + "</option>";
+        }
+        $('#material_recipe_id').html(result);
+        $('#material_recipe_id').prepend("<option value=''>选择菜谱</option>");
+        $('#material_recipe_id').trigger("chosen:updated");
+        $('#material_recipe_id_chosen input').val(search_val);
+      }
+    });
+  });
+
+</script>

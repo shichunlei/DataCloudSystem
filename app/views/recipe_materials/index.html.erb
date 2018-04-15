@@ -27,16 +27,12 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                            <th><%=t('activerecord.attributes.recipe_material.id') -%></th>
-
-                              <th><%=t('activerecord.attributes.recipe_material.recipe') -%></th>
-
-                              <th><%=t('activerecord.attributes.recipe_material.mname') -%></th>
-
-                              <th><%=t('activerecord.attributes.recipe_material.mtype') -%></th>
-
-                              <th><%=t('activerecord.attributes.recipe_material.amount') -%></th>
-                                             <th></th>
+                <th><%=t('activerecord.attributes.recipe_material.id') -%></th>
+                <th><%=t('activerecord.attributes.recipe_material.recipe') -%></th>
+                <th><%=t('activerecord.attributes.recipe_material.mname') -%></th>
+                <th><%=t('activerecord.attributes.recipe_material.mtype') -%></th>
+                <th><%=t('activerecord.attributes.recipe_material.amount') -%></th>
+                <th></th>
                 <th></th>
                 <th></th>
               </tr>
@@ -45,20 +41,12 @@
               <% current_page = @page.nil? ? 1 : @page -%>
               <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
               <%= content_tag_for(:tr, @recipe_materials) do |recipe_material| %>
-                                <td><%= @page = @page + 1   -%></td>
-
-
-                  <td><%= recipe_material.recipe.name -%></td>
-
-
-                  <td><%= recipe_material.mname -%></td>
-
-
-                  <td><%= recipe_material.mtype -%></td>
-
-
-                  <td><%= recipe_material.amount -%></td>
-                                                  <% if can? :read, recipe_material %>
+                <td><%= @page = @page + 1   -%></td>
+                <td><%= recipe_material.recipe.name -%></td>
+                <td><%= recipe_material.mname -%></td>
+                <td><%= recipe_material.mtype == 0 ? "辅料" : "主料" -%></td>
+                <td><%= recipe_material.amount -%></td>
+                <% if can? :read, recipe_material %>
                   <td class="list-opertion"><%= link_to t('views.show'), "#{recipe_material_path(recipe_material)}?page=#{current_page}" %></td>
                 <% end %>
                 <% if can? :edit, recipe_material %>

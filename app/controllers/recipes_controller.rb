@@ -1,10 +1,12 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+
   # GET /recipes
   def index
     @page = params[:page]
     @recipes = Recipe.order(:id).page(@page)
   end
+
   # GET /recipes/1
   def show
     @page = params[:page].nil? ? 1 : params[:page]
@@ -29,6 +31,7 @@ class RecipesController < ApplicationController
       render :new
     end
   end
+
   # PATCH/PUT /recipes/1
   def update
     if @recipe.update(recipe_params)
@@ -37,11 +40,23 @@ class RecipesController < ApplicationController
       render :edit
     end
   end
+
   # DELETE /recipes/1
   def destroy
     @recipe.destroy
     redirect_to recipes_url, notice: "删除成功."
   end
+
+  def find_recipe
+    list = Recipe.order(:id).limit(20)
+    render json:list.to_json(:only => [:id, :name])
+  end
+
+  def search_recipe
+    list = Recipe.where("name LIKE '%#{params[:keyword]}%'").order(:id).limit(20)
+    render json:list.to_json(:only => [:id, :name])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe

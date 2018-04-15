@@ -45,7 +45,7 @@
             <span class="label-content label-info">
             <%=t('activerecord.attributes.recipe_material.mtype')%>:
             </span></dt>
-            <dd class="well"><%= @recipe_material.mtype %></dd>
+            <dd class="well"><%= @recipe_material.mtype == 0 ? "辅料" : "主料" %></dd>
             <dt class="label-change">
             <span class="label-content label-info">
             <%=t('activerecord.attributes.recipe_material.amount')%>:

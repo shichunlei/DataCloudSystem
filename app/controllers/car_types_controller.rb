@@ -5,7 +5,7 @@ class CarTypesController < ApplicationController
     @page = params[:page]
     @car_types = CarType.order(:id).page(@page)
   end
-  
+
   # GET /car_types/1
   def show
     @page = params[:page].nil? ? 1 : params[:page]
@@ -47,12 +47,12 @@ class CarTypesController < ApplicationController
   end
 
   def find_types
-    brands = CarType.limit(20)
+    brands = CarType.order(:id).limit(20)
     render json:brands.to_json(:only => [:id, :name])
   end
 
   def search_types
-    brands = CarType.where("name LIKE '%#{params[:keyword]}%'").limit(20)
+    brands = CarType.where("name LIKE '%#{params[:keyword]}%'").order(:id).limit(20)
     render json:brands.to_json(:only => [:id, :name])
   end
 

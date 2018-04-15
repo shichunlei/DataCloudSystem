@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180414131224) do
+ActiveRecord::Schema.define(version: 20180414232955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "car_actualtests", force: :cascade do |t|
+    t.integer  "car_model_id"
+    t.string   "accelerationtime100", default: ""
+    t.string   "brakingdistance",     default: ""
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["car_model_id"], name: "index_car_actualtests_on_car_model_id", using: :btree
+  end
+
+  create_table "car_aircondrefrigerators", force: :cascade do |t|
+    t.integer  "car_model_id"
+    t.string   "airconditioningcontrolmode", default: ""
+    t.string   "tempzonecontrol",            default: ""
+    t.string   "rearairconditioning",        default: ""
+    t.string   "reardischargeoutlet",        default: ""
+    t.string   "airconditioning",            default: ""
+    t.string   "airpurifyingdevice",         default: ""
+    t.string   "carrefrigerator",            default: ""
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.index ["car_model_id"], name: "index_car_aircondrefrigerators_on_car_model_id", using: :btree
+  end
 
   create_table "car_basics", force: :cascade do |t|
     t.string   "price",                       default: ""
@@ -69,6 +92,79 @@ ActiveRecord::Schema.define(version: 20180414131224) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "car_chassisbrakes", force: :cascade do |t|
+    t.integer  "car_model_id"
+    t.string   "bodystructure",          default: ""
+    t.string   "powersteering",          default: ""
+    t.string   "frontbraketype",         default: ""
+    t.string   "rearbraketype",          default: ""
+    t.string   "parkingbraketype",       default: ""
+    t.string   "drivemode",              default: ""
+    t.string   "airsuspension",          default: ""
+    t.string   "adjustablesuspension",   default: ""
+    t.string   "frontsuspensiontype",    default: ""
+    t.string   "rearsuspensiontype",     default: ""
+    t.string   "centerdifferentiallock", default: ""
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["car_model_id"], name: "index_car_chassisbrakes_on_car_model_id", using: :btree
+  end
+
+  create_table "car_doormirrors", force: :cascade do |t|
+    t.integer  "car_model_id"
+    t.string   "openstyle",                default: ""
+    t.string   "electricwindow",           default: ""
+    t.string   "uvinterceptingglass",      default: ""
+    t.string   "privacyglass",             default: ""
+    t.string   "antipinchwindow",          default: ""
+    t.string   "skylightopeningmode",      default: ""
+    t.string   "skylightstype",            default: ""
+    t.string   "rearwindowsunshade",       default: ""
+    t.string   "rearsidesunshade",         default: ""
+    t.string   "rearwiper",                default: ""
+    t.string   "sensingwiper",             default: ""
+    t.string   "electricpulldoor",         default: ""
+    t.string   "rearmirrorwithturnlamp",   default: ""
+    t.string   "externalmirrormemory",     default: ""
+    t.string   "externalmirrorheating",    default: ""
+    t.string   "externalmirrorfolding",    default: ""
+    t.string   "externalmirroradjustment", default: ""
+    t.string   "rearviewmirrorantiglare",  default: ""
+    t.string   "sunvisormirror",           default: ""
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.index ["car_model_id"], name: "index_car_doormirrors_on_car_model_id", using: :btree
+  end
+
+  create_table "car_drivingauxiliaries", force: :cascade do |t|
+    t.integer  "car_model_id"
+    t.string   "abs",                       default: ""
+    t.string   "ebd",                       default: ""
+    t.string   "brakeassist",               default: ""
+    t.string   "tractioncontrol",           default: ""
+    t.string   "esp",                       default: ""
+    t.string   "eps",                       default: ""
+    t.string   "automaticparking",          default: ""
+    t.string   "hillstartassist",           default: ""
+    t.string   "hilldescent",               default: ""
+    t.string   "frontparkingradar",         default: ""
+    t.string   "reversingradar",            default: ""
+    t.string   "reverseimage",              default: ""
+    t.string   "panoramiccamera",           default: ""
+    t.string   "cruisecontrol",             default: ""
+    t.string   "adaptivecruise",            default: ""
+    t.string   "gps",                       default: ""
+    t.string   "automaticparkingintoplace", default: ""
+    t.string   "ldws",                      default: ""
+    t.string   "activebraking",             default: ""
+    t.string   "integralactivesteering",    default: ""
+    t.string   "nightvisionsystem",         default: ""
+    t.string   "blindspotdetection",        default: ""
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.index ["car_model_id"], name: "index_car_drivingauxiliaries_on_car_model_id", using: :btree
+  end
+
   create_table "car_engines", force: :cascade do |t|
     t.integer  "car_model_id"
     t.string   "position",               default: ""
@@ -101,6 +197,24 @@ ActiveRecord::Schema.define(version: 20180414131224) do
     t.index ["car_model_id"], name: "index_car_engines_on_car_model_id", using: :btree
   end
 
+  create_table "car_entcoms", force: :cascade do |t|
+    t.integer  "car_model_id"
+    t.string   "locationservice",        default: ""
+    t.string   "bluetooth",              default: ""
+    t.string   "externalaudiointerface", default: ""
+    t.string   "builtinharddisk",        default: ""
+    t.string   "cartv",                  default: ""
+    t.string   "speakernum",             default: ""
+    t.string   "audiobrand",             default: ""
+    t.string   "dvd",                    default: ""
+    t.string   "cd",                     default: ""
+    t.string   "consolelcdscreen",       default: ""
+    t.string   "rearlcdscreen",          default: ""
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["car_model_id"], name: "index_car_entcoms_on_car_model_id", using: :btree
+  end
+
   create_table "car_gearboxes", force: :cascade do |t|
     t.integer  "car_model_id"
     t.string   "gearbox",      default: ""
@@ -108,6 +222,46 @@ ActiveRecord::Schema.define(version: 20180414131224) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.index ["car_model_id"], name: "index_car_gearboxes_on_car_model_id", using: :btree
+  end
+
+  create_table "car_internalconfigs", force: :cascade do |t|
+    t.integer  "car_model_id"
+    t.string   "steeringwheelbeforeadjustment", default: ""
+    t.string   "steeringwheelupadjustment",     default: ""
+    t.string   "steeringwheeladjustmentmode",   default: ""
+    t.string   "steeringwheelmemory",           default: ""
+    t.string   "steeringwheelmaterial",         default: ""
+    t.string   "steeringwheelmultifunction",    default: ""
+    t.string   "steeringwheelheating",          default: ""
+    t.string   "computerscreen",                default: ""
+    t.string   "huddisplay",                    default: ""
+    t.string   "interiorcolor",                 default: ""
+    t.string   "rearcupholder",                 default: ""
+    t.string   "supplyvoltage",                 default: ""
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.index ["car_model_id"], name: "index_car_internalconfigs_on_car_model_id", using: :btree
+  end
+
+  create_table "car_lights", force: :cascade do |t|
+    t.integer  "car_model_id"
+    t.string   "headlighttype",                   default: ""
+    t.string   "optionalheadlighttype",           default: ""
+    t.string   "headlightautomaticopen",          default: ""
+    t.string   "headlightautomaticclean",         default: ""
+    t.string   "headlightdelayoff",               default: ""
+    t.string   "headlightdynamicsteering",        default: ""
+    t.string   "headlightilluminationadjustment", default: ""
+    t.string   "headlightdimming",                default: ""
+    t.string   "frontfoglight",                   default: ""
+    t.string   "readinglight",                    default: ""
+    t.string   "interiorairlight",                default: ""
+    t.string   "daytimerunninglight",             default: ""
+    t.string   "ledtaillight",                    default: ""
+    t.string   "lightsteeringassist",             default: ""
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.index ["car_model_id"], name: "index_car_lights_on_car_model_id", using: :btree
   end
 
   create_table "car_models", force: :cascade do |t|
@@ -124,6 +278,59 @@ ActiveRecord::Schema.define(version: 20180414131224) do
     t.index ["car_type_id"], name: "index_car_models_on_car_type_id", using: :btree
   end
 
+  create_table "car_saves", force: :cascade do |t|
+    t.integer  "car_model_id"
+    t.string   "airbagdrivingposition",     default: ""
+    t.string   "airbagfrontpassenger",      default: ""
+    t.string   "airbagfrontside",           default: ""
+    t.string   "airbagfronthead",           default: ""
+    t.string   "airbagknee",                default: ""
+    t.string   "airbagrearside",            default: ""
+    t.string   "airbagrearhead",            default: ""
+    t.string   "safetybeltprompt",          default: ""
+    t.string   "safetybeltlimiting",        default: ""
+    t.string   "safetybeltpretightening",   default: ""
+    t.string   "frontsafetybeltadjustment", default: ""
+    t.string   "rearsafetybelt",            default: ""
+    t.string   "tirepressuremonitoring",    default: ""
+    t.string   "zeropressurecontinued",     default: ""
+    t.string   "centrallocking",            default: ""
+    t.string   "childlock",                 default: ""
+    t.string   "remotekey",                 default: ""
+    t.string   "keylessentry",              default: ""
+    t.string   "keylessstart",              default: ""
+    t.string   "engineantitheft",           default: ""
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.index ["car_model_id"], name: "index_car_saves_on_car_model_id", using: :btree
+  end
+
+  create_table "car_seats", force: :cascade do |t|
+    t.integer  "car_model_id"
+    t.string   "sportseat",                           default: ""
+    t.string   "seatmaterial",                        default: ""
+    t.string   "seatheightadjustment",                default: ""
+    t.string   "driverseatadjustmentmode",            default: ""
+    t.string   "auxiliaryseatadjustmentmode",         default: ""
+    t.string   "driverseatlumbarsupportadjustment",   default: ""
+    t.string   "driverseatshouldersupportadjustment", default: ""
+    t.string   "frontseatheadrestadjustment",         default: ""
+    t.string   "rearseatadjustmentmode",              default: ""
+    t.string   "rearseatreclineproportion",           default: ""
+    t.string   "rearseatangleadjustment",             default: ""
+    t.string   "frontseatcenterarmrest",              default: ""
+    t.string   "rearseatcenterarmrest",               default: ""
+    t.string   "seatventilation",                     default: ""
+    t.string   "seatheating",                         default: ""
+    t.string   "seatmassage",                         default: ""
+    t.string   "electricseatmemory",                  default: ""
+    t.string   "childseatfixdevice",                  default: ""
+    t.string   "thirdrowseat",                        default: ""
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.index ["car_model_id"], name: "index_car_seats_on_car_model_id", using: :btree
+  end
+
   create_table "car_types", force: :cascade do |t|
     t.string   "name",         default: ""
     t.string   "fullname",     default: ""
@@ -134,6 +341,17 @@ ActiveRecord::Schema.define(version: 20180414131224) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.index ["car_brand_id"], name: "index_car_types_on_car_brand_id", using: :btree
+  end
+
+  create_table "car_wheels", force: :cascade do |t|
+    t.integer  "car_model_id"
+    t.string   "fronttiresize", default: ""
+    t.string   "reartiresize",  default: ""
+    t.string   "sparetiretype", default: ""
+    t.string   "hubmaterial",   default: ""
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["car_model_id"], name: "index_car_wheels_on_car_model_id", using: :btree
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -204,12 +422,23 @@ ActiveRecord::Schema.define(version: 20180414131224) do
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
   end
 
+  add_foreign_key "car_actualtests", "car_models"
+  add_foreign_key "car_aircondrefrigerators", "car_models"
   add_foreign_key "car_basics", "car_models"
   add_foreign_key "car_bodies", "car_models"
+  add_foreign_key "car_chassisbrakes", "car_models"
+  add_foreign_key "car_doormirrors", "car_models"
+  add_foreign_key "car_drivingauxiliaries", "car_models"
   add_foreign_key "car_engines", "car_models"
+  add_foreign_key "car_entcoms", "car_models"
   add_foreign_key "car_gearboxes", "car_models"
+  add_foreign_key "car_internalconfigs", "car_models"
+  add_foreign_key "car_lights", "car_models"
   add_foreign_key "car_models", "car_types"
+  add_foreign_key "car_saves", "car_models"
+  add_foreign_key "car_seats", "car_models"
   add_foreign_key "car_types", "car_brands"
+  add_foreign_key "car_wheels", "car_models"
   add_foreign_key "organizations", "organizations"
   add_foreign_key "permissions_roles", "permissions"
   add_foreign_key "permissions_roles", "roles"

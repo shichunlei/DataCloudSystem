@@ -27,35 +27,18 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                            <th><%=t('activerecord.attributes.car_body.id') -%></th>
+                <th><%=t('activerecord.attributes.car_body.id') -%></th>
 
-                              <th><%=t('activerecord.attributes.car_body.car_model') -%></th>
+                <th><%=t('activerecord.attributes.car_body.car_model') -%></th>
 
-                              <th><%=t('activerecord.attributes.car_body.color') -%></th>
+                <th><%=t('activerecord.attributes.car_body.color') -%></th>
 
-                              <th><%=t('activerecord.attributes.car_body.len') -%></th>
+                <th><%=t('activerecord.attributes.car_body.len') -%></th>
 
-                              <th><%=t('activerecord.attributes.car_body.width') -%></th>
+                <th><%=t('activerecord.attributes.car_body.width') -%></th>
 
-                              <th><%=t('activerecord.attributes.car_body.height') -%></th>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                              <th></th>
+                <th><%=t('activerecord.attributes.car_body.height') -%></th>
+                <th></th>
                 <th></th>
                 <th></th>
               </tr>
@@ -64,40 +47,13 @@
               <% current_page = @page.nil? ? 1 : @page -%>
               <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
               <%= content_tag_for(:tr, @car_bodies) do |car_body| %>
-                                <td><%= @page = @page + 1   -%></td>
-
-
-                  <td><%= car_body.car_model -%></td>
-
-
-                  <td><%= car_body.color -%></td>
-
-
-                  <td><%= car_body.len -%></td>
-
-
-                  <td><%= car_body.width -%></td>
-
-
-                  <td><%= car_body.height -%></td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                      <% if can? :read, car_body %>
+                <td><%= @page = @page + 1   -%></td>
+                <td><%= car_body.car_model.name -%></td>
+                <td><%= car_body.color -%></td>
+                <td><%= car_body.len -%></td>
+                <td><%= car_body.width -%></td>
+                <td><%= car_body.height -%></td>
+                <% if can? :read, car_body %>
                   <td class="list-opertion"><%= link_to t('views.show'), "#{car_body_path(car_body)}?page=#{current_page}" %></td>
                 <% end %>
                 <% if can? :edit, car_body %>

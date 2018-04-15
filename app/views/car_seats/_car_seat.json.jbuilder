@@ -1,0 +1,2 @@
+json.extract! car_seat, :id, :car_model_id, :sportseat, :seatmaterial, :seatheightadjustment, :driverseatadjustmentmode, :auxiliaryseatadjustmentmode, :driverseatlumbarsupportadjustment, :driverseatshouldersupportadjustment, :frontseatheadrestadjustment, :rearseatadjustmentmode, :rearseatreclineproportion, :rearseatangleadjustment, :frontseatcenterarmrest, :rearseatcenterarmrest, :seatventilation, :seatheating, :seatmassage, :electricseatmemory, :childseatfixdevice, :thirdrowseat, :created_at, :updated_at
+json.url car_seat_url(car_seat, format: :json)

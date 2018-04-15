@@ -1,0 +1,2 @@
+json.extract! car_entcom, :id, :car_model_id, :locationservice, :bluetooth, :externalaudiointerface, :builtinharddisk, :cartv, :speakernum, :audiobrand, :dvd, :cd, :consolelcdscreen, :rearlcdscreen, :created_at, :updated_at
+json.url car_entcom_url(car_entcom, format: :json)

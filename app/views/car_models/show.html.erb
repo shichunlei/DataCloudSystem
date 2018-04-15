@@ -40,6 +40,11 @@
             </dd>
             <dt class="label-change">
             <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_model.car_type')%>:
+            </span></dt>
+            <dd class="well"><%= @car_model.car_type.fullname %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
             <%=t('activerecord.attributes.car_model.name')%>:
             </span></dt>
             <dd class="well"><%= @car_model.name %></dd>
@@ -68,11 +73,6 @@
             <%=t('activerecord.attributes.car_model.sizetype')%>:
             </span></dt>
             <dd class="well"><%= @car_model.sizetype %></dd>
-            <dt class="label-change">
-            <span class="label-content label-info">
-            <%=t('activerecord.attributes.car_model.car_type')%>:
-            </span></dt>
-            <dd class="well"><%= @car_model.car_type %></dd>
           </dl>
         </div>
       </div>

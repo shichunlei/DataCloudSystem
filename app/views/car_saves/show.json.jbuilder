@@ -1,0 +1,1 @@
+json.partial! "car_saves/car_safe", car_safe: @car_safe

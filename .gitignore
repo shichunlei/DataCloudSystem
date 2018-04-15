@@ -33,3 +33,4 @@
 
 nohup.out
 puma.pid
+*.coffee

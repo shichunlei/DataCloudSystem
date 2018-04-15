@@ -1,0 +1,144 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.car_safe') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.car_safe'), car_saves_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, CarSafe %>
+              <%= link_to edit_car_safe_path(@car_safe), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{car_saves_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.car_model')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.car_model %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.airbagdrivingposition')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.airbagdrivingposition %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.airbagfrontpassenger')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.airbagfrontpassenger %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.airbagfrontside')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.airbagfrontside %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.airbagfronthead')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.airbagfronthead %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.airbagknee')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.airbagknee %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.airbagrearside')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.airbagrearside %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.airbagrearhead')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.airbagrearhead %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.safetybeltprompt')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.safetybeltprompt %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.safetybeltlimiting')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.safetybeltlimiting %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.safetybeltpretightening')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.safetybeltpretightening %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.frontsafetybeltadjustment')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.frontsafetybeltadjustment %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.rearsafetybelt')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.rearsafetybelt %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.tirepressuremonitoring')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.tirepressuremonitoring %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.zeropressurecontinued')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.zeropressurecontinued %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.centrallocking')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.centrallocking %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.childlock')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.childlock %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.remotekey')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.remotekey %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.keylessentry')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.keylessentry %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.keylessstart')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.keylessstart %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_safe.engineantitheft')%>:
+            </span></dt>
+            <dd class="well"><%= @car_safe.engineantitheft %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

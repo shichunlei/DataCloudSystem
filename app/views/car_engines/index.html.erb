@@ -27,39 +27,18 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                            <th><%=t('activerecord.attributes.car_engine.id') -%></th>
+                <th><%=t('activerecord.attributes.car_engine.id') -%></th>
 
-                              <th><%=t('activerecord.attributes.car_engine.car_model') -%></th>
+                <th><%=t('activerecord.attributes.car_engine.car_model') -%></th>
 
-                              <th><%=t('activerecord.attributes.car_engine.position') -%></th>
+                <th><%=t('activerecord.attributes.car_engine.position') -%></th>
 
-                              <th><%=t('activerecord.attributes.car_engine.model') -%></th>
+                <th><%=t('activerecord.attributes.car_engine.model') -%></th>
 
-                              <th><%=t('activerecord.attributes.car_engine.displacement') -%></th>
+                <th><%=t('activerecord.attributes.car_engine.displacement') -%></th>
 
-                              <th><%=t('activerecord.attributes.car_engine.displacementml') -%></th>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                              <th></th>
+                <th><%=t('activerecord.attributes.car_engine.displacementml') -%></th>
+                <th></th>
                 <th></th>
                 <th></th>
               </tr>
@@ -68,44 +47,13 @@
               <% current_page = @page.nil? ? 1 : @page -%>
               <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
               <%= content_tag_for(:tr, @car_engines) do |car_engine| %>
-                                <td><%= @page = @page + 1   -%></td>
-
-
-                  <td><%= car_engine.car_model -%></td>
-
-
-                  <td><%= car_engine.position -%></td>
-
-
-                  <td><%= car_engine.model -%></td>
-
-
-                  <td><%= car_engine.displacement -%></td>
-
-
-                  <td><%= car_engine.displacementml -%></td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                      <% if can? :read, car_engine %>
+                <td><%= @page = @page + 1   -%></td>
+                <td><%= car_engine.car_model.name -%></td>
+                <td><%= car_engine.position -%></td>
+                <td><%= car_engine.model -%></td>
+                <td><%= car_engine.displacement -%></td>
+                <td><%= car_engine.displacementml -%></td>
+                <% if can? :read, car_engine %>
                   <td class="list-opertion"><%= link_to t('views.show'), "#{car_engine_path(car_engine)}?page=#{current_page}" %></td>
                 <% end %>
                 <% if can? :edit, car_engine %>

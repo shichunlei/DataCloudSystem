@@ -27,14 +27,14 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                            <th><%=t('activerecord.attributes.car_gearbox.id') -%></th>
+                <th><%=t('activerecord.attributes.car_gearbox.id') -%></th>
 
-                              <th><%=t('activerecord.attributes.car_gearbox.car_model') -%></th>
+                <th><%=t('activerecord.attributes.car_gearbox.car_model') -%></th>
 
-                              <th><%=t('activerecord.attributes.car_gearbox.gearbox') -%></th>
+                <th><%=t('activerecord.attributes.car_gearbox.gearbox') -%></th>
 
-                              <th><%=t('activerecord.attributes.car_gearbox.shiftpaddles') -%></th>
-                                             <th></th>
+                <th><%=t('activerecord.attributes.car_gearbox.shiftpaddles') -%></th>
+                <th></th>
                 <th></th>
                 <th></th>
               </tr>
@@ -43,17 +43,11 @@
               <% current_page = @page.nil? ? 1 : @page -%>
               <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
               <%= content_tag_for(:tr, @car_gearboxes) do |car_gearbox| %>
-                                <td><%= @page = @page + 1   -%></td>
-
-
-                  <td><%= car_gearbox.car_model -%></td>
-
-
-                  <td><%= car_gearbox.gearbox -%></td>
-
-
-                  <td><%= car_gearbox.shiftpaddles -%></td>
-                                                  <% if can? :read, car_gearbox %>
+                <td><%= @page = @page + 1   -%></td>
+                <td><%= car_gearbox.car_model.name -%></td>
+                <td><%= car_gearbox.gearbox -%></td>
+                <td><%= car_gearbox.shiftpaddles -%></td>
+                <% if can? :read, car_gearbox %>
                   <td class="list-opertion"><%= link_to t('views.show'), "#{car_gearbox_path(car_gearbox)}?page=#{current_page}" %></td>
                 <% end %>
                 <% if can? :edit, car_gearbox %>

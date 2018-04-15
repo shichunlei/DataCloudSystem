@@ -1,0 +1,1 @@
+json.array! @car_drivingauxiliaries, partial: 'car_drivingauxiliaries/car_drivingauxiliary', as: :car_drivingauxiliary

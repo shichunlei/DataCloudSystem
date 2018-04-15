@@ -1,0 +1,1 @@
+json.array! @car_chassisbrakes, partial: 'car_chassisbrakes/car_chassisbrake', as: :car_chassisbrake

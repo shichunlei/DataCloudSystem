@@ -1,0 +1,104 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.car_internalconfig') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.car_internalconfig'), car_internalconfigs_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, CarInternalconfig %>
+              <%= link_to edit_car_internalconfig_path(@car_internalconfig), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{car_internalconfigs_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_internalconfig.car_model')%>:
+            </span></dt>
+            <dd class="well"><%= @car_internalconfig.car_model %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_internalconfig.steeringwheelbeforeadjustment')%>:
+            </span></dt>
+            <dd class="well"><%= @car_internalconfig.steeringwheelbeforeadjustment %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_internalconfig.steeringwheelupadjustment')%>:
+            </span></dt>
+            <dd class="well"><%= @car_internalconfig.steeringwheelupadjustment %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_internalconfig.steeringwheeladjustmentmode')%>:
+            </span></dt>
+            <dd class="well"><%= @car_internalconfig.steeringwheeladjustmentmode %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_internalconfig.steeringwheelmemory')%>:
+            </span></dt>
+            <dd class="well"><%= @car_internalconfig.steeringwheelmemory %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_internalconfig.steeringwheelmaterial')%>:
+            </span></dt>
+            <dd class="well"><%= @car_internalconfig.steeringwheelmaterial %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_internalconfig.steeringwheelmultifunction')%>:
+            </span></dt>
+            <dd class="well"><%= @car_internalconfig.steeringwheelmultifunction %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_internalconfig.steeringwheelheating')%>:
+            </span></dt>
+            <dd class="well"><%= @car_internalconfig.steeringwheelheating %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_internalconfig.computerscreen')%>:
+            </span></dt>
+            <dd class="well"><%= @car_internalconfig.computerscreen %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_internalconfig.huddisplay')%>:
+            </span></dt>
+            <dd class="well"><%= @car_internalconfig.huddisplay %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_internalconfig.interiorcolor')%>:
+            </span></dt>
+            <dd class="well"><%= @car_internalconfig.interiorcolor %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_internalconfig.rearcupholder')%>:
+            </span></dt>
+            <dd class="well"><%= @car_internalconfig.rearcupholder %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_internalconfig.supplyvoltage')%>:
+            </span></dt>
+            <dd class="well"><%= @car_internalconfig.supplyvoltage %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

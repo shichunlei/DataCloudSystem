@@ -1,0 +1,1 @@
+json.array! @car_doormirrors, partial: 'car_doormirrors/car_doormirror', as: :car_doormirror

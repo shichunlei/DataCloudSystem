@@ -1,0 +1,74 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.list')%> <small><%= t('activerecord.models.car_drivingauxiliary') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li class="active"><%= t('activerecord.models.car_drivingauxiliary') %></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :create, CarDrivingauxiliary %>
+              <%= link_to new_car_drivingauxiliary_path(@car_drivingauxiliary), :class => 'btn btn-success' do %>
+                <span class="glyphicon glyphicon-plus"></span>
+                <%=t('views.create')%><%=t('activerecord.models.car_drivingauxiliary')%>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th><%=t('activerecord.attributes.car_drivingauxiliary.id') -%></th>
+
+                <th><%=t('activerecord.attributes.car_drivingauxiliary.car_model') -%></th>
+
+                <th><%=t('activerecord.attributes.car_drivingauxiliary.abs') -%></th>
+
+                <th><%=t('activerecord.attributes.car_drivingauxiliary.ebd') -%></th>
+
+                <th><%=t('activerecord.attributes.car_drivingauxiliary.brakeassist') -%></th>
+
+                <th><%=t('activerecord.attributes.car_drivingauxiliary.tractioncontrol') -%></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% current_page = @page.nil? ? 1 : @page -%>
+              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
+              <%= content_tag_for(:tr, @car_drivingauxiliaries) do |car_drivingauxiliary| %>
+                <td><%= @page = @page + 1   -%></td>
+                <td><%= car_drivingauxiliary.car_model.name -%></td>
+                <td><%= car_drivingauxiliary.abs -%></td>
+                <td><%= car_drivingauxiliary.ebd -%></td>
+                <td><%= car_drivingauxiliary.brakeassist -%></td>
+                <td><%= car_drivingauxiliary.tractioncontrol -%></td>
+                <% if can? :read, car_drivingauxiliary %>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_drivingauxiliary_path(car_drivingauxiliary)}?page=#{current_page}" %></td>
+                <% end %>
+                <% if can? :edit, car_drivingauxiliary %>
+                  <td class="list-opertion"><%= link_to t('views.edit'), edit_car_drivingauxiliary_path(car_drivingauxiliary) %></td>
+                <% end %>
+                <% if can? :destroy, car_drivingauxiliary %>
+                  <td class="list-opertion"><%= link_to t('views.destroy'), car_drivingauxiliary, method: :delete, data: { confirm: t('views.confirm') } %></td>
+                <% end %>
+
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+    <%= paginate @car_drivingauxiliaries %>
+</section>

@@ -1,0 +1,1 @@
+json.partial! "car_actualtests/car_actualtest", car_actualtest: @car_actualtest

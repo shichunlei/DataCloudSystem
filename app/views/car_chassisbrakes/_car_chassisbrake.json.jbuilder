@@ -1,0 +1,2 @@
+json.extract! car_chassisbrake, :id, :car_model_id, :bodystructure, :powersteering, :frontbraketype, :rearbraketype, :parkingbraketype, :drivemode, :airsuspension, :adjustablesuspension, :frontsuspensiontype, :rearsuspensiontype, :centerdifferentiallock, :created_at, :updated_at
+json.url car_chassisbrake_url(car_chassisbrake, format: :json)

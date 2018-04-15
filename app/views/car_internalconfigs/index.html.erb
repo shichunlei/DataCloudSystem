@@ -1,0 +1,74 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.list')%> <small><%= t('activerecord.models.car_internalconfig') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li class="active"><%= t('activerecord.models.car_internalconfig') %></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :create, CarInternalconfig %>
+              <%= link_to new_car_internalconfig_path(@car_internalconfig), :class => 'btn btn-success' do %>
+                <span class="glyphicon glyphicon-plus"></span>
+                <%=t('views.create')%><%=t('activerecord.models.car_internalconfig')%>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th><%=t('activerecord.attributes.car_internalconfig.id') -%></th>
+
+                <th><%=t('activerecord.attributes.car_internalconfig.car_model') -%></th>
+
+                <th><%=t('activerecord.attributes.car_internalconfig.steeringwheelbeforeadjustment') -%></th>
+
+                <th><%=t('activerecord.attributes.car_internalconfig.steeringwheelupadjustment') -%></th>
+
+                <th><%=t('activerecord.attributes.car_internalconfig.steeringwheeladjustmentmode') -%></th>
+
+                <th><%=t('activerecord.attributes.car_internalconfig.steeringwheelmemory') -%></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% current_page = @page.nil? ? 1 : @page -%>
+              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
+              <%= content_tag_for(:tr, @car_internalconfigs) do |car_internalconfig| %>
+                <td><%= @page = @page + 1   -%></td>
+                <td><%= car_internalconfig.car_model.name -%></td>
+                <td><%= car_internalconfig.steeringwheelbeforeadjustment -%></td>
+                <td><%= car_internalconfig.steeringwheelupadjustment -%></td>
+                <td><%= car_internalconfig.steeringwheeladjustmentmode -%></td>
+                <td><%= car_internalconfig.steeringwheelmemory -%></td>
+                <% if can? :read, car_internalconfig %>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_internalconfig_path(car_internalconfig)}?page=#{current_page}" %></td>
+                <% end %>
+                <% if can? :edit, car_internalconfig %>
+                  <td class="list-opertion"><%= link_to t('views.edit'), edit_car_internalconfig_path(car_internalconfig) %></td>
+                <% end %>
+                <% if can? :destroy, car_internalconfig %>
+                  <td class="list-opertion"><%= link_to t('views.destroy'), car_internalconfig, method: :delete, data: { confirm: t('views.confirm') } %></td>
+                <% end %>
+
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+    <%= paginate @car_internalconfigs %>
+</section>

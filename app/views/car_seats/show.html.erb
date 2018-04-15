@@ -1,0 +1,139 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.car_seat') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.car_seat'), car_seats_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, CarSeat %>
+              <%= link_to edit_car_seat_path(@car_seat), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{car_seats_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.car_model')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.car_model %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.sportseat')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.sportseat %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.seatmaterial')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.seatmaterial %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.seatheightadjustment')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.seatheightadjustment %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.driverseatadjustmentmode')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.driverseatadjustmentmode %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.auxiliaryseatadjustmentmode')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.auxiliaryseatadjustmentmode %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.driverseatlumbarsupportadjustment')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.driverseatlumbarsupportadjustment %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.driverseatshouldersupportadjustment')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.driverseatshouldersupportadjustment %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.frontseatheadrestadjustment')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.frontseatheadrestadjustment %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.rearseatadjustmentmode')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.rearseatadjustmentmode %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.rearseatreclineproportion')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.rearseatreclineproportion %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.rearseatangleadjustment')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.rearseatangleadjustment %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.frontseatcenterarmrest')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.frontseatcenterarmrest %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.rearseatcenterarmrest')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.rearseatcenterarmrest %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.seatventilation')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.seatventilation %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.seatheating')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.seatheating %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.seatmassage')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.seatmassage %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.electricseatmemory')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.electricseatmemory %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.childseatfixdevice')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.childseatfixdevice %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_seat.thirdrowseat')%>:
+            </span></dt>
+            <dd class="well"><%= @car_seat.thirdrowseat %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

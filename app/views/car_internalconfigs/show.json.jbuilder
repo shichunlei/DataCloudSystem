@@ -1,0 +1,1 @@
+json.partial! "car_internalconfigs/car_internalconfig", car_internalconfig: @car_internalconfig

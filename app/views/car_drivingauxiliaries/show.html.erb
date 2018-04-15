@@ -1,0 +1,154 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.car_drivingauxiliary') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.car_drivingauxiliary'), car_drivingauxiliaries_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, CarDrivingauxiliary %>
+              <%= link_to edit_car_drivingauxiliary_path(@car_drivingauxiliary), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{car_drivingauxiliaries_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.car_model')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.car_model %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.abs')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.abs %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.ebd')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.ebd %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.brakeassist')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.brakeassist %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.tractioncontrol')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.tractioncontrol %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.esp')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.esp %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.eps')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.eps %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.automaticparking')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.automaticparking %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.hillstartassist')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.hillstartassist %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.hilldescent')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.hilldescent %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.frontparkingradar')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.frontparkingradar %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.reversingradar')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.reversingradar %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.reverseimage')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.reverseimage %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.panoramiccamera')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.panoramiccamera %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.cruisecontrol')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.cruisecontrol %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.adaptivecruise')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.adaptivecruise %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.gps')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.gps %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.automaticparkingintoplace')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.automaticparkingintoplace %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.ldws')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.ldws %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.activebraking')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.activebraking %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.integralactivesteering')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.integralactivesteering %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.nightvisionsystem')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.nightvisionsystem %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_drivingauxiliary.blindspotdetection')%>:
+            </span></dt>
+            <dd class="well"><%= @car_drivingauxiliary.blindspotdetection %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

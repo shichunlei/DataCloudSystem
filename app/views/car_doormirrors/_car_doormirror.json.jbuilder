@@ -1,0 +1,2 @@
+json.extract! car_doormirror, :id, :car_model_id, :openstyle, :electricwindow, :uvinterceptingglass, :privacyglass, :antipinchwindow, :skylightopeningmode, :skylightstype, :rearwindowsunshade, :rearsidesunshade, :rearwiper, :sensingwiper, :electricpulldoor, :rearmirrorwithturnlamp, :externalmirrormemory, :externalmirrorheating, :externalmirrorfolding, :externalmirroradjustment, :rearviewmirrorantiglare, :sunvisormirror, :created_at, :updated_at
+json.url car_doormirror_url(car_doormirror, format: :json)

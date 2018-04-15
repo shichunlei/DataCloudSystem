@@ -1,0 +1,1 @@
+json.partial! "car_chassisbrakes/car_chassisbrake", car_chassisbrake: @car_chassisbrake

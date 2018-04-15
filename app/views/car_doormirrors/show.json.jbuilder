@@ -1,0 +1,1 @@
+json.partial! "car_doormirrors/car_doormirror", car_doormirror: @car_doormirror

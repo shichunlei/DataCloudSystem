@@ -1,0 +1,1 @@
+json.partial! "car_entcoms/car_entcom", car_entcom: @car_entcom

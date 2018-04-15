@@ -1,0 +1,1 @@
+json.partial! "car_aircondrefrigerators/car_aircondrefrigerator", car_aircondrefrigerator: @car_aircondrefrigerator

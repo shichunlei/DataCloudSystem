@@ -1,0 +1,1 @@
+json.partial! "car_lights/car_light", car_light: @car_light

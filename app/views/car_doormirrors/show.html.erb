@@ -1,0 +1,139 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.car_doormirror') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.car_doormirror'), car_doormirrors_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, CarDoormirror %>
+              <%= link_to edit_car_doormirror_path(@car_doormirror), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{car_doormirrors_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.car_model')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.car_model %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.openstyle')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.openstyle %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.electricwindow')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.electricwindow %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.uvinterceptingglass')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.uvinterceptingglass %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.privacyglass')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.privacyglass %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.antipinchwindow')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.antipinchwindow %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.skylightopeningmode')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.skylightopeningmode %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.skylightstype')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.skylightstype %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.rearwindowsunshade')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.rearwindowsunshade %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.rearsidesunshade')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.rearsidesunshade %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.rearwiper')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.rearwiper %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.sensingwiper')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.sensingwiper %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.electricpulldoor')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.electricpulldoor %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.rearmirrorwithturnlamp')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.rearmirrorwithturnlamp %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.externalmirrormemory')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.externalmirrormemory %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.externalmirrorheating')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.externalmirrorheating %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.externalmirrorfolding')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.externalmirrorfolding %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.externalmirroradjustment')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.externalmirroradjustment %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.rearviewmirrorantiglare')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.rearviewmirrorantiglare %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_doormirror.sunvisormirror')%>:
+            </span></dt>
+            <dd class="well"><%= @car_doormirror.sunvisormirror %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

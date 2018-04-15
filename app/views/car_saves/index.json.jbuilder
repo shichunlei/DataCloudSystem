@@ -1,0 +1,1 @@
+json.array! @car_saves, partial: 'car_saves/car_safe', as: :car_safe

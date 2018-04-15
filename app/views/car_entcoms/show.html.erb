@@ -1,0 +1,99 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.car_entcom') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.car_entcom'), car_entcoms_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, CarEntcom %>
+              <%= link_to edit_car_entcom_path(@car_entcom), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{car_entcoms_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_entcom.car_model')%>:
+            </span></dt>
+            <dd class="well"><%= @car_entcom.car_model %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_entcom.locationservice')%>:
+            </span></dt>
+            <dd class="well"><%= @car_entcom.locationservice %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_entcom.bluetooth')%>:
+            </span></dt>
+            <dd class="well"><%= @car_entcom.bluetooth %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_entcom.externalaudiointerface')%>:
+            </span></dt>
+            <dd class="well"><%= @car_entcom.externalaudiointerface %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_entcom.builtinharddisk')%>:
+            </span></dt>
+            <dd class="well"><%= @car_entcom.builtinharddisk %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_entcom.cartv')%>:
+            </span></dt>
+            <dd class="well"><%= @car_entcom.cartv %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_entcom.speakernum')%>:
+            </span></dt>
+            <dd class="well"><%= @car_entcom.speakernum %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_entcom.audiobrand')%>:
+            </span></dt>
+            <dd class="well"><%= @car_entcom.audiobrand %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_entcom.dvd')%>:
+            </span></dt>
+            <dd class="well"><%= @car_entcom.dvd %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_entcom.cd')%>:
+            </span></dt>
+            <dd class="well"><%= @car_entcom.cd %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_entcom.consolelcdscreen')%>:
+            </span></dt>
+            <dd class="well"><%= @car_entcom.consolelcdscreen %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_entcom.rearlcdscreen')%>:
+            </span></dt>
+            <dd class="well"><%= @car_entcom.rearlcdscreen %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

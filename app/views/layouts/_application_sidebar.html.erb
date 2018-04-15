@@ -52,19 +52,85 @@
       <% if can? :read, CarBody %>
         <%= nav_link car_bodies_path do %>
         <i class="fa fa-angle-double-right"></i>
-          车体信息管理
+          车体配置信息管理
         <% end %>
       <% end%>
       <% if can? :read, CarEngine %>
         <%= nav_link car_engines_path do %>
         <i class="fa fa-angle-double-right"></i>
-          发动机信息管理
+          发动机配置信息管理
         <% end %>
       <% end%>
       <% if can? :read, CarGearbox %>
         <%= nav_link car_gearboxes_path do %>
         <i class="fa fa-angle-double-right"></i>
-          变速箱信息管理
+          变速箱配置信息管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarSafe %>
+        <%= nav_link car_saves_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          安全配置信息管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarSeat %>
+        <%= nav_link car_seats_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          座椅配置信息管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarLight %>
+        <%= nav_link car_lights_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          灯光配置信息管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarWheel %>
+        <%= nav_link car_wheels_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          车轮配置信息管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarEntcom %>
+        <%= nav_link car_entcoms_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          娱乐配置管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarInternalconfig %>
+        <%= nav_link car_internalconfigs_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          内部配置管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarDrivingauxiliary %>
+        <%= nav_link car_drivingauxiliaries_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          行车辅助配置管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarDoormirror %>
+        <%= nav_link car_doormirrors_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          门窗/后视镜配置管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarChassisbrake %>
+        <%= nav_link car_chassisbrakes_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          底盘制动配置管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarAircondrefrigerator %>
+        <%= nav_link car_aircondrefrigerators_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          空调冰箱配置管理
+        <% end %>
+      <% end%>
+      <% if can? :read, CarActualtest %>
+        <%= nav_link car_actualtests_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          实际测试信息管理
         <% end %>
       <% end%>
     <% end %>

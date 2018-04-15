@@ -1,0 +1,2 @@
+json.extract! car_internalconfig, :id, :car_model_id, :steeringwheelbeforeadjustment, :steeringwheelupadjustment, :steeringwheeladjustmentmode, :steeringwheelmemory, :steeringwheelmaterial, :steeringwheelmultifunction, :steeringwheelheating, :computerscreen, :huddisplay, :interiorcolor, :rearcupholder, :supplyvoltage, :created_at, :updated_at
+json.url car_internalconfig_url(car_internalconfig, format: :json)

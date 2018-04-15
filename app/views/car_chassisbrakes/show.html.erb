@@ -1,0 +1,99 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.car_chassisbrake') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.car_chassisbrake'), car_chassisbrakes_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, CarChassisbrake %>
+              <%= link_to edit_car_chassisbrake_path(@car_chassisbrake), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{car_chassisbrakes_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_chassisbrake.car_model')%>:
+            </span></dt>
+            <dd class="well"><%= @car_chassisbrake.car_model %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_chassisbrake.bodystructure')%>:
+            </span></dt>
+            <dd class="well"><%= @car_chassisbrake.bodystructure %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_chassisbrake.powersteering')%>:
+            </span></dt>
+            <dd class="well"><%= @car_chassisbrake.powersteering %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_chassisbrake.frontbraketype')%>:
+            </span></dt>
+            <dd class="well"><%= @car_chassisbrake.frontbraketype %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_chassisbrake.rearbraketype')%>:
+            </span></dt>
+            <dd class="well"><%= @car_chassisbrake.rearbraketype %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_chassisbrake.parkingbraketype')%>:
+            </span></dt>
+            <dd class="well"><%= @car_chassisbrake.parkingbraketype %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_chassisbrake.drivemode')%>:
+            </span></dt>
+            <dd class="well"><%= @car_chassisbrake.drivemode %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_chassisbrake.airsuspension')%>:
+            </span></dt>
+            <dd class="well"><%= @car_chassisbrake.airsuspension %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_chassisbrake.adjustablesuspension')%>:
+            </span></dt>
+            <dd class="well"><%= @car_chassisbrake.adjustablesuspension %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_chassisbrake.frontsuspensiontype')%>:
+            </span></dt>
+            <dd class="well"><%= @car_chassisbrake.frontsuspensiontype %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_chassisbrake.rearsuspensiontype')%>:
+            </span></dt>
+            <dd class="well"><%= @car_chassisbrake.rearsuspensiontype %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.car_chassisbrake.centerdifferentiallock')%>:
+            </span></dt>
+            <dd class="well"><%= @car_chassisbrake.centerdifferentiallock %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,1 @@
+json.array! @car_internalconfigs, partial: 'car_internalconfigs/car_internalconfig', as: :car_internalconfig

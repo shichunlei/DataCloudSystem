@@ -1,0 +1,2 @@
+json.extract! car_safe, :id, :car_model_id, :airbagdrivingposition, :airbagfrontpassenger, :airbagfrontside, :airbagfronthead, :airbagknee, :airbagrearside, :airbagrearhead, :safetybeltprompt, :safetybeltlimiting, :safetybeltpretightening, :frontsafetybeltadjustment, :rearsafetybelt, :tirepressuremonitoring, :zeropressurecontinued, :centrallocking, :childlock, :remotekey, :keylessentry, :keylessstart, :engineantitheft, :created_at, :updated_at
+json.url car_safe_url(car_safe, format: :json)

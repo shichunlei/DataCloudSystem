@@ -1,0 +1,2 @@
+json.extract! car_drivingauxiliary, :id, :car_model_id, :abs, :ebd, :brakeassist, :tractioncontrol, :esp, :eps, :automaticparking, :hillstartassist, :hilldescent, :frontparkingradar, :reversingradar, :reverseimage, :panoramiccamera, :cruisecontrol, :adaptivecruise, :gps, :automaticparkingintoplace, :ldws, :activebraking, :integralactivesteering, :nightvisionsystem, :blindspotdetection, :created_at, :updated_at
+json.url car_drivingauxiliary_url(car_drivingauxiliary, format: :json)

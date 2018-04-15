@@ -1,0 +1,1 @@
+json.partial! "car_seats/car_seat", car_seat: @car_seat

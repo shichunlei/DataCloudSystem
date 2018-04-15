@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
 
+  resources :car_actualtests
+  resources :car_aircondrefrigerators
+  resources :car_entcoms
+  resources :car_seats
+  resources :car_internalconfigs
+  resources :car_lights
+  resources :car_doormirrors
+  resources :car_drivingauxiliaries
+  resources :car_wheels
+  resources :car_saves
+  resources :car_chassisbrakes
   resources :car_gearboxes
   resources :car_engines
   resources :car_bodies
@@ -23,8 +34,13 @@ Rails.application.routes.draw do
   # 查询品牌
   get '/find_brands' => "car_brands#find_brands"
 
-  # 搜索品牌
+  # 搜索品系
   get '/search_types' => "car_types#search_types"
-  # 查询品牌
+  # 查询品系
   get '/find_types' => "car_types#find_types"
+
+  # 搜索品系
+  get '/search_models' => "car_models#search_models"
+  # 查询品系
+  get '/find_models' => "car_models#find_models"
 end

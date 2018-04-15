@@ -1,0 +1,1 @@
+json.array! @recipe_classifies, partial: 'recipe_classifies/recipe_classify', as: :recipe_classify

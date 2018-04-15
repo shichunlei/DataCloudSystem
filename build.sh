@@ -48,14 +48,14 @@ rails g scaffold car_aircondrefrigerator car_model:references airconditioningcon
 rails g scaffold car_actualtest car_model:references accelerationtime100:string brakingdistance:string
 
 
+#-----------------------------------菜谱管理---------------------------
+rails g scaffold recipe_classify name:string recipe_classify:references
 
+rails g scaffold recipe name:string recipe_classify:references peoplenum:string preparetime:string cookingtime:string content:text pic:string tag:string
 
+rails g scaffold recipe_material recipe:references mname:string mtype:integer amount:string
 
-
-
-
-
-
+rails g scaffold recipe_process recipe:references pcontent:text pic:string
 
 
 

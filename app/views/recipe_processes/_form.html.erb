@@ -1,0 +1,36 @@
+<section class="content invoice">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_for(@recipe_process, :html => { :role => "form" }) do |f| %>
+        <% if @recipe_process.errors.any? %>
+          <div class="alert alert-danger alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            <h4><%= pluralize(@recipe_process.errors.count, "error") %> prohibited this recipe_process from being saved:</h4>
+
+            <ul>
+            <% @recipe_process.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+      <div class="form-group">
+        <%= f.label :recipe %>
+        <%= f.text_field :recipe, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :pcontent %>
+        <%= f.text_area :pcontent, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :pic %>
+        <%= f.text_field :pic, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit :class => "btn btn-primary" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</section> 

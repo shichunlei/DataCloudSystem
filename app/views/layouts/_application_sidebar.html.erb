@@ -134,6 +134,32 @@
         <% end %>
       <% end%>
     <% end %>
+    <%= treeview_link '菜谱管理' do %>
+      <% if can? :read, RecipeClassify %>
+        <%= nav_link recipe_classifies_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          菜谱分类管理
+        <% end %>
+      <% end%>
+      <% if can? :read, Recipe %>
+        <%= nav_link recipes_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          菜谱信息管理
+        <% end %>
+      <% end%>
+      <% if can? :read, RecipeMaterial %>
+        <%= nav_link recipe_materials_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          材料管理
+        <% end %>
+      <% end%>
+      <% if can? :read, RecipeProcess %>
+        <%= nav_link recipe_processes_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          步骤管理
+        <% end %>
+      <% end%>
+    <% end %>
     <%= treeview_link '系统管理' do %>
       <%= nav_link organizations_path do %>
         <i class="fa fa-angle-double-right"></i>

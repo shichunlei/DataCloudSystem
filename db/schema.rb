@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180414232955) do
+ActiveRecord::Schema.define(version: 20180415092253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -380,6 +380,47 @@ ActiveRecord::Schema.define(version: 20180414232955) do
     t.index ["role_id"], name: "index_permissions_roles_on_role_id", using: :btree
   end
 
+  create_table "recipe_classifies", force: :cascade do |t|
+    t.string   "name",               default: ""
+    t.integer  "recipe_classify_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["recipe_classify_id"], name: "index_recipe_classifies_on_recipe_classify_id", using: :btree
+  end
+
+  create_table "recipe_materials", force: :cascade do |t|
+    t.integer  "recipe_id"
+    t.string   "mname",      default: ""
+    t.integer  "mtype",      default: 0
+    t.string   "amount",     default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["recipe_id"], name: "index_recipe_materials_on_recipe_id", using: :btree
+  end
+
+  create_table "recipe_processes", force: :cascade do |t|
+    t.integer  "recipe_id"
+    t.text     "pcontent"
+    t.string   "pic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_recipe_processes_on_recipe_id", using: :btree
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string   "name",               default: ""
+    t.integer  "recipe_classify_id"
+    t.string   "peoplenum",          default: ""
+    t.string   "preparetime",        default: ""
+    t.string   "cookingtime",        default: ""
+    t.text     "content",            default: ""
+    t.string   "pic",                default: ""
+    t.text     "tag",                default: ""
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["recipe_classify_id"], name: "index_recipes_on_recipe_classify_id", using: :btree
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.string   "display_name"
@@ -442,5 +483,9 @@ ActiveRecord::Schema.define(version: 20180414232955) do
   add_foreign_key "organizations", "organizations"
   add_foreign_key "permissions_roles", "permissions"
   add_foreign_key "permissions_roles", "roles"
+  add_foreign_key "recipe_classifies", "recipe_classifies"
+  add_foreign_key "recipe_materials", "recipes"
+  add_foreign_key "recipe_processes", "recipes"
+  add_foreign_key "recipes", "recipe_classifies"
   add_foreign_key "users", "organizations"
 end

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :recipe_processes
+  resources :recipe_materials
+  resources :recipes
+  resources :recipe_classifies
   resources :car_actualtests
   resources :car_aircondrefrigerators
   resources :car_entcoms

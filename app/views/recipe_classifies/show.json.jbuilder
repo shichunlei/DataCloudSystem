@@ -1,0 +1,1 @@
+json.partial! "recipe_classifies/recipe_classify", recipe_classify: @recipe_classify

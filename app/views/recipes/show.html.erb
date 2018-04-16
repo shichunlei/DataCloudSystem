@@ -33,6 +33,11 @@
           <dl class="dl-horizontal">
             <dt class="label-change">
             <span class="label-content label-info">
+            <%=t('activerecord.attributes.recipe.pic')%>:
+            </span></dt>
+            <dd class="well"><img src='<%= @recipe.pic -%>' style="width:150px;height:150px;"/></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
             <%=t('activerecord.attributes.recipe.name')%>:
             </span></dt>
             <dd class="well"><%= @recipe.name %></dd>
@@ -61,11 +66,6 @@
             <%=t('activerecord.attributes.recipe.content')%>:
             </span></dt>
             <dd class="well"><%= @recipe.content %></dd>
-            <dt class="label-change">
-            <span class="label-content label-info">
-            <%=t('activerecord.attributes.recipe.pic')%>:
-            </span></dt>
-            <dd class="well"><img src='<%= @recipe.pic -%>' style="width:150px;height:150px;"/></dd>
             <dt class="label-change">
             <span class="label-content label-info">
             <%=t('activerecord.attributes.recipe.tag')%>:

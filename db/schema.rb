@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20180415092253) do
     t.integer  "car_model_id"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.string   "testaccelerationtime100",     default: ""
     t.index ["car_model_id"], name: "index_car_basics_on_car_model_id", using: :btree
   end
 

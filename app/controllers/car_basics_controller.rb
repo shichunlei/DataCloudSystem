@@ -50,6 +50,6 @@ class CarBasicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def car_basic_params
-      params.require(:car_basic).permit(:price, :saleprice, :warrantypolicy, :vechiletax, :displacement, :gearbox, :comfuelconsumption, :userfuelconsumption, :officialaccelerationtime100, :maxspeed, :seatnum, :car_model_id)
+      params.require(:car_basic).permit(:price, :saleprice, :warrantypolicy, :vechiletax, :displacement, :gearbox, :comfuelconsumption, :userfuelconsumption, :officialaccelerationtime100, :testaccelerationtime100, :maxspeed, :seatnum, :car_model_id)
     end
 end

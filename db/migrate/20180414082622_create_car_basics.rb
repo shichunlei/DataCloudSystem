@@ -10,6 +10,7 @@ class CreateCarBasics < ActiveRecord::Migration[5.0]
       t.string :comfuelconsumption, default:""
       t.string :userfuelconsumption, default:""
       t.string :officialaccelerationtime100, default:""
+      t.string :testaccelerationtime100, default:""
       t.string :maxspeed, default:""
       t.string :seatnum, default:""
       t.references :car_model, foreign_key: true

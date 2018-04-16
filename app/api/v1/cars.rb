@@ -43,6 +43,18 @@ module V1
 				object = CarModel.find_by(id:model_id)
 				return {"code" => 20001, "message" => "请求成功", :result => object.as_json(:methods => [:safe, :gearbox, :wheel, :engine, :body, :basic, :light, :seat, :entcom, :actualtest, :aircondrefrigerator, :chassisbrake, :doormirror, :drivingauxiliary, :internalconfig], :only => [:id, :name, :yeartype, :salestate, :logo, :price, :productionstate, :sizetype])}
 			end
+
+			desc "查询汽车型号"
+			params do
+				requires :appkey, type: String, desc: 'AppKey'
+				requires :keyword, type: Integer, desc: '关键字'
+			end
+			get :search do
+				keyword = params[:keyword]
+				list = CarModel.where("name LIKE '%#{keyword}%'").order(:id)
+				return {"code" => 20001, "message" => "请求成功", :result => list.as_json(:only => [:id, :name, :yeartype, :salestate, :logo, :price, :productionstate, :sizetype])}
+			end
+
     end
   end
 end

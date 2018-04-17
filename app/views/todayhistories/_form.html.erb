@@ -1,0 +1,48 @@
+<section class="content invoice">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_for(@todayhistory, :html => { :role => "form" }) do |f| %>
+        <% if @todayhistory.errors.any? %>
+          <div class="alert alert-danger alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            <h4><%= pluralize(@todayhistory.errors.count, "error") %> prohibited this todayhistory from being saved:</h4>
+
+            <ul>
+            <% @todayhistory.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :year %>
+        <%= f.number_field :year, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :month %>
+        <%= f.number_field :month, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :day %>
+        <%= f.number_field :day, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :image %>
+        <%= f.text_field :image, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :content %>
+        <%= f.text_area :content, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit :class => "btn btn-primary" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</section> 

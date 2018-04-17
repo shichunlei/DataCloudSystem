@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :todayhistories
+  resources :zhuangzis
+  resources :daodejings
+  resources :mengzis
+  resources :lunyus
+  resources :yuanqus
+  resources :songcis
+  resources :tangshis
   resources :recipe_processes
   resources :recipe_materials
   resources :recipes

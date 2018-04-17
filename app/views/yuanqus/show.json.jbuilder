@@ -1,0 +1,1 @@
+json.partial! "yuanqus/yuanqu", yuanqu: @yuanqu

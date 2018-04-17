@@ -1,0 +1,2 @@
+class Daodejing < ApplicationRecord
+end

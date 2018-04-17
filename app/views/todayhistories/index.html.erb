@@ -1,0 +1,70 @@
+<style media="screen">
+  td{
+    vertical-align:middle!important;
+  }
+</style>
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.list')%> <small><%= t('activerecord.models.todayhistory') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li class="active"><%= t('activerecord.models.todayhistory') %></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :create, Todayhistory %>
+              <%= link_to new_todayhistory_path(@todayhistory), :class => 'btn btn-success' do %>
+                <span class="glyphicon glyphicon-plus"></span>
+                <%=t('views.create')%><%=t('activerecord.models.todayhistory')%>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th><%=t('activerecord.attributes.todayhistory.id') -%></th>
+                <th><%=t('activerecord.attributes.todayhistory.name') -%></th>
+                <th><%=t('activerecord.attributes.todayhistory.history_date') -%></th>
+                <th><%=t('activerecord.attributes.todayhistory.image') -%></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% current_page = @page.nil? ? 1 : @page -%>
+              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
+              <%= content_tag_for(:tr, @todayhistories) do |todayhistory| %>
+                <td><%= @page = @page + 1   -%></td>
+                <td><%= todayhistory.name -%></td>
+                <td><%= todayhistory.history_date -%></td>
+                <td><img src='<%= todayhistory.image -%>' style="width:80px;height:50px;"/></td>
+                <% if can? :read, todayhistory %>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{todayhistory_path(todayhistory)}?page=#{current_page}" %></td>
+                <% end %>
+                <% if can? :edit, todayhistory %>
+                  <td class="list-opertion"><%= link_to t('views.edit'), edit_todayhistory_path(todayhistory) %></td>
+                <% end %>
+                <% if can? :destroy, todayhistory %>
+                  <td class="list-opertion"><%= link_to t('views.destroy'), todayhistory, method: :delete, data: { confirm: t('views.confirm') } %></td>
+                <% end %>
+
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+    <%= paginate @todayhistories %>
+</section>

@@ -1,0 +1,2 @@
+class Mengzi < ApplicationRecord
+end

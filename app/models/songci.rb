@@ -1,0 +1,2 @@
+class Songci < ApplicationRecord
+end

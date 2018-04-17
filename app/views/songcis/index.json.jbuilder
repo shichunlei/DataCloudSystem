@@ -1,0 +1,1 @@
+json.array! @songcis, partial: 'songcis/songci', as: :songci

@@ -1,0 +1,1 @@
+json.array! @daodejings, partial: 'daodejings/daodejing', as: :daodejing

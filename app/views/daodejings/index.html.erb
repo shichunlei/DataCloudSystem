@@ -1,0 +1,64 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.list')%> <small><%= t('activerecord.models.daodejing') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li class="active"><%= t('activerecord.models.daodejing') %></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :create, Daodejing %>
+              <%= link_to new_daodejing_path(@daodejing), :class => 'btn btn-success' do %>
+                <span class="glyphicon glyphicon-plus"></span>
+                <%=t('views.create')%><%=t('activerecord.models.daodejing')%>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                            <th><%=t('activerecord.attributes.daodejing.id') -%></th>
+
+                              <th><%=t('activerecord.attributes.daodejing.name') -%></th>
+                                              <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% current_page = @page.nil? ? 1 : @page -%>
+              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
+              <%= content_tag_for(:tr, @daodejings) do |daodejing| %>
+                                <td><%= @page = @page + 1   -%></td>
+
+
+                  <td><%= daodejing.name -%></td>
+                                                      <% if can? :read, daodejing %>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{daodejing_path(daodejing)}?page=#{current_page}" %></td>
+                <% end %>
+                <% if can? :edit, daodejing %>
+                  <td class="list-opertion"><%= link_to t('views.edit'), edit_daodejing_path(daodejing) %></td>
+                <% end %>
+                <% if can? :destroy, daodejing %>
+                  <td class="list-opertion"><%= link_to t('views.destroy'), daodejing, method: :delete, data: { confirm: t('views.confirm') } %></td>
+                <% end %>
+
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+    <%= paginate @daodejings %>
+</section>

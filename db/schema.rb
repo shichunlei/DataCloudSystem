@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180415092253) do
+ActiveRecord::Schema.define(version: 20180417093547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -355,6 +355,41 @@ ActiveRecord::Schema.define(version: 20180415092253) do
     t.index ["car_model_id"], name: "index_car_wheels_on_car_model_id", using: :btree
   end
 
+  create_table "daodejings", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "lunyus", force: :cascade do |t|
+    t.string   "chapter",        default: ""
+    t.string   "name",           default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "mengzis", force: :cascade do |t|
+    t.string   "chapter",        default: ""
+    t.string   "name",           default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -433,6 +468,39 @@ ActiveRecord::Schema.define(version: 20180415092253) do
     t.index ["name"], name: "index_roles_on_name", using: :btree
   end
 
+  create_table "songcis", force: :cascade do |t|
+    t.string   "name",         default: ""
+    t.string   "author",       default: ""
+    t.string   "mtype",        default: ""
+    t.text     "content",      default: ""
+    t.text     "explanation",  default: ""
+    t.text     "appreciation", default: ""
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "tangshis", force: :cascade do |t|
+    t.string   "name",         default: ""
+    t.string   "author",       default: ""
+    t.string   "mtype",        default: ""
+    t.text     "content",      default: ""
+    t.text     "explanation",  default: ""
+    t.text     "appreciation", default: ""
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "todayhistories", force: :cascade do |t|
+    t.string   "name",       default: ""
+    t.integer  "year",       default: 1
+    t.integer  "month",      default: 1
+    t.integer  "day",        default: 1
+    t.string   "image",      default: ""
+    t.text     "content",    default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "name",                   default: "", null: false
@@ -462,6 +530,28 @@ ActiveRecord::Schema.define(version: 20180415092253) do
     t.integer "user_id"
     t.integer "role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+  end
+
+  create_table "yuanqus", force: :cascade do |t|
+    t.string   "name",         default: ""
+    t.string   "author",       default: ""
+    t.text     "content",      default: ""
+    t.text     "explanation",  default: ""
+    t.text     "appreciation", default: ""
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "zhuangzis", force: :cascade do |t|
+    t.string   "chapter",        default: ""
+    t.string   "name",           default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_foreign_key "car_actualtests", "car_models"

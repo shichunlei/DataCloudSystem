@@ -1,0 +1,2 @@
+class Tangshi < ApplicationRecord
+end

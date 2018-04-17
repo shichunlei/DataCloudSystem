@@ -1,0 +1,2 @@
+class Yuanqu < ApplicationRecord
+end

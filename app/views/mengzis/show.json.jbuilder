@@ -1,0 +1,1 @@
+json.partial! "mengzis/mengzi", mengzi: @mengzi

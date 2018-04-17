@@ -160,6 +160,58 @@
         <% end %>
       <% end%>
     <% end %>
+    <%= treeview_link '亲子教育' do %>
+      <% if can? :read, Tangshi %>
+        <%= nav_link tangshis_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          唐诗
+        <% end %>
+      <% end%>
+      <% if can? :read, Songci %>
+        <%= nav_link songcis_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          宋词
+        <% end %>
+      <% end%>
+      <% if can? :read, Yuanqu %>
+        <%= nav_link yuanqus_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          元曲
+        <% end %>
+      <% end%>
+      <% if can? :read, Lunyu %>
+        <%= nav_link lunyus_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          论语
+        <% end %>
+      <% end%>
+      <% if can? :read, Mengzi %>
+        <%= nav_link mengzis_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          孟子
+        <% end %>
+      <% end%>
+      <% if can? :read, Daodejing %>
+        <%= nav_link daodejings_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          老子 - 道德经
+        <% end %>
+      <% end%>
+      <% if can? :read, Zhuangzi %>
+        <%= nav_link zhuangzis_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          庄子
+        <% end %>
+      <% end%>
+    <% end %>
+    <%= treeview_link '娱乐游戏' do %>
+      <% if can? :read, Todayhistory %>
+        <%= nav_link todayhistories_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          历史上的今天
+        <% end %>
+      <% end%>
+    <% end %>
     <%= treeview_link '系统管理' do %>
       <%= nav_link organizations_path do %>
         <i class="fa fa-angle-double-right"></i>

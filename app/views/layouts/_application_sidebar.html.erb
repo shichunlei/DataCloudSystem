@@ -251,6 +251,30 @@
           三国志
         <% end %>
       <% end%>
+      <% if can? :read, Shanhaijing %>
+        <%= nav_link shanhaijings_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          山海经
+        <% end %>
+      <% end%>
+      <% if can? :read, Xuxiake %>
+        <%= nav_link xuxiakes_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          徐霞客游记
+        <% end %>
+      <% end%>
+      <% if can? :read, Shishuoxinyu %>
+        <%= nav_link shishuoxinyus_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          世说新语
+        <% end %>
+      <% end%>
+      <% if can? :read, Soushenji %>
+        <%= nav_link soushenjis_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          搜神记
+        <% end %>
+      <% end%>
     <% end %>
     <%= treeview_link '娱乐游戏' do %>
       <% if can? :read, Todayhistory %>

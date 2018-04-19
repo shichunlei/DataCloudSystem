@@ -1,0 +1,1 @@
+json.array! @xuxiakes, partial: 'xuxiakes/xuxiake', as: :xuxiake

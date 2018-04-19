@@ -1,0 +1,2 @@
+class Xuxiake < ApplicationRecord
+end

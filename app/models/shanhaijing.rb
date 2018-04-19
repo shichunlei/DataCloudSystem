@@ -1,0 +1,2 @@
+class Shanhaijing < ApplicationRecord
+end

@@ -1,0 +1,1 @@
+json.array! @soushenjis, partial: 'soushenjis/soushenji', as: :soushenji

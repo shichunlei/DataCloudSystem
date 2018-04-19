@@ -1,0 +1,2 @@
+class Shishuoxinyu < ApplicationRecord
+end

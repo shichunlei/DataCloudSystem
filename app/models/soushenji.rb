@@ -1,0 +1,2 @@
+class Soushenji < ApplicationRecord
+end

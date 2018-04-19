@@ -1,0 +1,64 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.list')%> <small><%= t('activerecord.models.miyu_classify') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li class="active"><%= t('activerecord.models.miyu_classify') %></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :create, MiyuClassify %>
+              <%= link_to new_miyu_classify_path(@miyu_classify), :class => 'btn btn-success' do %>
+                <span class="glyphicon glyphicon-plus"></span>
+                <%=t('views.create')%><%=t('activerecord.models.miyu_classify')%>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                            <th><%=t('activerecord.attributes.miyu_classify.id') -%></th>
+
+                              <th><%=t('activerecord.attributes.miyu_classify.name') -%></th>
+                                             <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% current_page = @page.nil? ? 1 : @page -%>
+              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
+              <%= content_tag_for(:tr, @miyu_classifies) do |miyu_classify| %>
+                                <td><%= @page = @page + 1   -%></td>
+
+
+                  <td><%= miyu_classify.name -%></td>
+                                                  <% if can? :read, miyu_classify %>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{miyu_classify_path(miyu_classify)}?page=#{current_page}" %></td>
+                <% end %>
+                <% if can? :edit, miyu_classify %>
+                  <td class="list-opertion"><%= link_to t('views.edit'), edit_miyu_classify_path(miyu_classify) %></td>
+                <% end %>
+                <% if can? :destroy, miyu_classify %>
+                  <td class="list-opertion"><%= link_to t('views.destroy'), miyu_classify, method: :delete, data: { confirm: t('views.confirm') } %></td>
+                <% end %>
+
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+    <%= paginate @miyu_classifies %>
+</section>

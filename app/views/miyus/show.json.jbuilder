@@ -1,0 +1,1 @@
+json.partial! "miyus/miyu", miyu: @miyu

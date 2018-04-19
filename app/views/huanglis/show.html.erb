@@ -1,0 +1,149 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.huangli') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.huangli'), huanglis_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, Huangli %>
+              <%= link_to edit_huangli_path(@huangli), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{huanglis_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.huangli_date')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.huangli_date %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.yangli')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.yangli %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.nongli')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.nongli %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.star')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.star %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.taishen')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.taishen %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.wuxing')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.wuxing %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.chong')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.chong %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.sha')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.sha %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.shengxiao')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.shengxiao %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.jiri')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.jiri %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.zhiri')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.zhiri %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.xiongshen')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.xiongshen %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.jishenyiqu')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.jishenyiqu %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.caishen')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.caishen %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.xishen')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.xishen %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.fushen')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.fushen %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.suici')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.suici %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.yi')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.yi %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.ji')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.ji %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.eweek')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.eweek %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.emonth')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.emonth %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.huangli.week')%>:
+            </span></dt>
+            <dd class="well"><%= @huangli.week %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

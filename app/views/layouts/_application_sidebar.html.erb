@@ -295,10 +295,30 @@
       <% end%>
     <% end %>
     <%= treeview_link '娱乐游戏' do %>
+      <% if can? :read, MiyuClassify %>
+        <%= nav_link miyu_classifies_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          谜语类别
+        <% end %>
+      <% end%>
+      <% if can? :read, Miyu %>
+        <%= nav_link miyus_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          谜语
+        <% end %>
+      <% end%>
+    <% end %>
+    <%= treeview_link '星座算命' do %>
       <% if can? :read, Todayhistory %>
         <%= nav_link todayhistories_path do %>
         <i class="fa fa-angle-double-right"></i>
           历史上的今天
+        <% end %>
+      <% end%>
+      <% if can? :read, Huangli %>
+        <%= nav_link huanglis_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          黄历
         <% end %>
       <% end%>
     <% end %>

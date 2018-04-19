@@ -1,0 +1,1 @@
+json.array! @huanglis, partial: 'huanglis/huangli', as: :huangli

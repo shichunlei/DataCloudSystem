@@ -1,0 +1,1 @@
+json.array! @miyus, partial: 'miyus/miyu', as: :miyu

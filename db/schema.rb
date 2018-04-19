@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419034431) do
+ActiveRecord::Schema.define(version: 20180419061043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -390,6 +390,35 @@ ActiveRecord::Schema.define(version: 20180419034431) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "huanglis", force: :cascade do |t|
+    t.integer  "year"
+    t.integer  "month"
+    t.integer  "day"
+    t.string   "yangli",     default: ""
+    t.string   "nongli",     default: ""
+    t.string   "star",       default: ""
+    t.string   "taishen",    default: ""
+    t.string   "wuxing",     default: ""
+    t.string   "chong",      default: ""
+    t.string   "sha",        default: ""
+    t.string   "shengxiao",  default: ""
+    t.string   "jiri",       default: ""
+    t.string   "zhiri",      default: ""
+    t.string   "xiongshen",  default: ""
+    t.string   "jishenyiqu", default: ""
+    t.string   "caishen",    default: ""
+    t.string   "xishen",     default: ""
+    t.string   "fushen",     default: ""
+    t.string   "suici",      default: ""
+    t.string   "yi",         default: ""
+    t.string   "ji",         default: ""
+    t.string   "eweek",      default: ""
+    t.string   "emonth",     default: ""
+    t.string   "week",       default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "lunyus", force: :cascade do |t|
     t.string   "chapter",        default: ""
     t.string   "name",           default: ""
@@ -435,6 +464,21 @@ ActiveRecord::Schema.define(version: 20180419034431) do
     t.text     "interpretation", default: ""
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "miyu_classifies", force: :cascade do |t|
+    t.string   "name",       default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "miyus", force: :cascade do |t|
+    t.string   "content",          default: ""
+    t.string   "answer",           default: ""
+    t.integer  "miyu_classify_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["miyu_classify_id"], name: "index_miyus_on_miyu_classify_id", using: :btree
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -745,6 +789,7 @@ ActiveRecord::Schema.define(version: 20180419034431) do
   add_foreign_key "car_seats", "car_models"
   add_foreign_key "car_types", "car_brands"
   add_foreign_key "car_wheels", "car_models"
+  add_foreign_key "miyus", "miyu_classifies"
   add_foreign_key "organizations", "organizations"
   add_foreign_key "permissions_roles", "permissions"
   add_foreign_key "permissions_roles", "roles"

@@ -1,0 +1,2 @@
+json.extract! huangli, :id, :year, :month, :day, :yangli, :nongli, :star, :taishen, :wuxing, :chong, :sha, :shengxiao, :jiri, :zhiri, :xiongshen, :jishenyiqu, :caishen, :xishen, :fushen, :suici, :yi, :ji, :eweek, :emonth, :week, :created_at, :updated_at
+json.url huangli_url(huangli, format: :json)

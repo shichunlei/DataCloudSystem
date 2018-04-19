@@ -1,0 +1,1 @@
+json.partial! "miyu_classifies/miyu_classify", miyu_classify: @miyu_classify

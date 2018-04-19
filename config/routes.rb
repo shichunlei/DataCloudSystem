@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :huanglis
+  resources :miyus
+  resources :miyu_classifies
   resources :zhouyis
   resources :wenxindiaolongs
   resources :tiangongs

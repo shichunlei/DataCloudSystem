@@ -1,0 +1,2 @@
+class MiyuClassify < ApplicationRecord
+end

@@ -1,0 +1,1 @@
+json.partial! "huanglis/huangli", huangli: @huangli

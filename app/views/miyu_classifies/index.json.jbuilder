@@ -1,0 +1,1 @@
+json.array! @miyu_classifies, partial: 'miyu_classifies/miyu_classify', as: :miyu_classify

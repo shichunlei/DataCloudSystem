@@ -1,0 +1,2 @@
+class Lvshichunqiu < ApplicationRecord
+end

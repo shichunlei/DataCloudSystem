@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180417093547) do
+ActiveRecord::Schema.define(version: 20180418081432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -366,6 +366,30 @@ ActiveRecord::Schema.define(version: 20180417093547) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "guwens", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "translation",    default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "huangdineijings", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "translation",    default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "lunyus", force: :cascade do |t|
     t.string   "chapter",        default: ""
     t.string   "name",           default: ""
@@ -373,6 +397,29 @@ ActiveRecord::Schema.define(version: 20180417093547) do
     t.text     "commentary",     default: ""
     t.text     "translation",    default: ""
     t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "lvshichunqius", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "translation",    default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "mengxibitans", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "translation",    default: ""
     t.text     "interpretation", default: ""
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
@@ -468,6 +515,42 @@ ActiveRecord::Schema.define(version: 20180417093547) do
     t.index ["name"], name: "index_roles_on_name", using: :btree
   end
 
+  create_table "sanguozhis", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "translation",    default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "shijings", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "translation",    default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "shijis", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "translation",    default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "songcis", force: :cascade do |t|
     t.string   "name",         default: ""
     t.string   "author",       default: ""
@@ -477,6 +560,17 @@ ActiveRecord::Schema.define(version: 20180417093547) do
     t.text     "appreciation", default: ""
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "sunzibingfas", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "translation",    default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "tangshis", force: :cascade do |t|
@@ -552,6 +646,7 @@ ActiveRecord::Schema.define(version: 20180417093547) do
     t.text     "interpretation", default: ""
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.string   "parent_chapter", default: ""
   end
 
   add_foreign_key "car_actualtests", "car_models"

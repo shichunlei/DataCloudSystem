@@ -1,0 +1,1 @@
+json.array! @shijis, partial: 'shijis/shiji', as: :shiji

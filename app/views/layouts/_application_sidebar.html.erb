@@ -203,6 +203,54 @@
           庄子
         <% end %>
       <% end%>
+      <% if can? :read, Shiji %>
+        <%= nav_link shijis_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          史记
+        <% end %>
+      <% end%>
+      <% if can? :read, Shijing %>
+        <%= nav_link shijings_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          诗经
+        <% end %>
+      <% end%>
+      <% if can? :read, Lvshichunqiu %>
+        <%= nav_link lvshichunqius_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          吕氏春秋
+        <% end %>
+      <% end%>
+      <% if can? :read, Guwen %>
+        <%= nav_link guwens_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          古文观止
+        <% end %>
+      <% end%>
+      <% if can? :read, Mengxibitan %>
+        <%= nav_link mengxibitans_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          梦溪笔谈
+        <% end %>
+      <% end%>
+      <% if can? :read, Sunzibingfa %>
+        <%= nav_link sunzibingfas_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          孙子兵法
+        <% end %>
+      <% end%>
+      <% if can? :read, Huangdineijing %>
+        <%= nav_link huangdineijings_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          黄帝内经
+        <% end %>
+      <% end%>
+      <% if can? :read, Sanguozhi %>
+        <%= nav_link sanguozhis_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          三国志
+        <% end %>
+      <% end%>
     <% end %>
     <%= treeview_link '娱乐游戏' do %>
       <% if can? :read, Todayhistory %>

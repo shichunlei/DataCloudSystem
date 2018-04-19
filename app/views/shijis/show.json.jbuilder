@@ -1,0 +1,1 @@
+json.partial! "shijis/shiji", shiji: @shiji

@@ -1,0 +1,1 @@
+json.array! @mengxibitans, partial: 'mengxibitans/mengxibitan', as: :mengxibitan

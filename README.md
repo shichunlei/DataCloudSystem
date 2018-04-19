@@ -1,5 +1,7 @@
 # README
 
+## 该项目为APP提供数据以及后台管理数据
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
@@ -61,3 +63,5 @@ rails 数据库对应的字段类型
 :time TIME
 
 :timestamp DATETIME
+
+### 部分数据来源于极速数据

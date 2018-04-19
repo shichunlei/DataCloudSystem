@@ -1,0 +1,2 @@
+class Mengxibitan < ApplicationRecord
+end

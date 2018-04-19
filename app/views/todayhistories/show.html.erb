@@ -38,24 +38,14 @@
             <dd class="well"><%= @todayhistory.name %></dd>
             <dt class="label-change">
             <span class="label-content label-info">
-            <%=t('activerecord.attributes.todayhistory.year')%>:
-            </span></dt>
-            <dd class="well"><%= @todayhistory.year %></dd>
-            <dt class="label-change">
-            <span class="label-content label-info">
-            <%=t('activerecord.attributes.todayhistory.month')%>:
-            </span></dt>
-            <dd class="well"><%= @todayhistory.month %></dd>
-            <dt class="label-change">
-            <span class="label-content label-info">
-            <%=t('activerecord.attributes.todayhistory.day')%>:
-            </span></dt>
-            <dd class="well"><%= @todayhistory.day %></dd>
-            <dt class="label-change">
-            <span class="label-content label-info">
             <%=t('activerecord.attributes.todayhistory.image')%>:
             </span></dt>
             <dd class="well"><img src='<%= @todayhistory.image -%>' style="width:200px;height:150px;"/></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.todayhistory.history_date')%>:
+            </span></dt>
+            <dd class="well"><%= @todayhistory.history_date %></dd>
             <dt class="label-change">
             <span class="label-content label-info">
             <%=t('activerecord.attributes.todayhistory.content')%>:

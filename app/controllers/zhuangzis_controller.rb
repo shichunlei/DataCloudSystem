@@ -50,6 +50,6 @@ class ZhuangzisController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def zhuangzi_params
-      params.require(:zhuangzi).permit(:chapter, :name, :content, :commentary, :translation, :appreciation, :interpretation)
+      params.require(:zhuangzi).permit(:chapter, :parent_chapter, :name, :content, :commentary, :translation, :appreciation, :interpretation)
     end
 end

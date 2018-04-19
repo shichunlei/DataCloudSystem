@@ -1,0 +1,74 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.sanguozhi') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.sanguozhi'), sanguozhis_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, Sanguozhi %>
+              <%= link_to edit_sanguozhi_path(@sanguozhi), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{sanguozhis_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanguozhi.name')%>:
+            </span></dt>
+            <dd class="well"><%= @sanguozhi.name %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanguozhi.chapter')%>:
+            </span></dt>
+            <dd class="well"><%= @sanguozhi.chapter %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanguozhi.content')%>:
+            </span></dt>
+            <dd class="well"><%= raw  @sanguozhi.content %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanguozhi.commentary')%>:
+            </span></dt>
+            <dd class="well"><%=  raw @sanguozhi.commentary %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanguozhi.appreciation')%>:
+            </span></dt>
+            <dd class="well"><%=  raw @sanguozhi.appreciation %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanguozhi.translation')%>:
+            </span></dt>
+            <dd class="well"><%=  raw @sanguozhi.translation %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanguozhi.interpretation')%>:
+            </span></dt>
+            <dd class="well"><%=  raw @sanguozhi.interpretation %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

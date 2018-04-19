@@ -1,0 +1,2 @@
+class Sanguozhi < ApplicationRecord
+end

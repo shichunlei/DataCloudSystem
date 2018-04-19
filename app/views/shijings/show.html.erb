@@ -1,0 +1,74 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.shijing') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.shijing'), shijings_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, Shijing %>
+              <%= link_to edit_shijing_path(@shijing), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{shijings_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.shijing.name')%>:
+            </span></dt>
+            <dd class="well"><%= @shijing.name %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.shijing.chapter')%>:
+            </span></dt>
+            <dd class="well"><%= @shijing.chapter %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.shijing.content')%>:
+            </span></dt>
+            <dd class="well"><%=  raw @shijing.content %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.shijing.commentary')%>:
+            </span></dt>
+            <dd class="well"><%= raw  @shijing.commentary %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.shijing.appreciation')%>:
+            </span></dt>
+            <dd class="well"><%= raw  @shijing.appreciation %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.shijing.translation')%>:
+            </span></dt>
+            <dd class="well"><%= raw  @shijing.translation %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.shijing.interpretation')%>:
+            </span></dt>
+            <dd class="well"><%=  raw @shijing.interpretation %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :guwens
+  resources :mengxibitans
+  resources :lvshichunqius
+  resources :huangdineijings
+  resources :sanguozhis
+  resources :sunzibingfas
+  resources :shijis
+  resources :shijings
   resources :todayhistories
   resources :zhuangzis
   resources :daodejings

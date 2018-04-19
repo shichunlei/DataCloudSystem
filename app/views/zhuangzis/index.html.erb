@@ -27,12 +27,11 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                            <th><%=t('activerecord.attributes.zhuangzi.id') -%></th>
-
-                              <th><%=t('activerecord.attributes.zhuangzi.chapter') -%></th>
-
-                              <th><%=t('activerecord.attributes.zhuangzi.name') -%></th>
-                                              <th></th>
+                <th><%=t('activerecord.attributes.zhuangzi.id') -%></th>
+                <th><%=t('activerecord.attributes.zhuangzi.parent_chapter') -%></th>
+                <th><%=t('activerecord.attributes.zhuangzi.chapter') -%></th>
+                <th><%=t('activerecord.attributes.zhuangzi.name') -%></th>
+                <th></th>
                 <th></th>
                 <th></th>
               </tr>
@@ -41,14 +40,11 @@
               <% current_page = @page.nil? ? 1 : @page -%>
               <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
               <%= content_tag_for(:tr, @zhuangzis) do |zhuangzi| %>
-                                <td><%= @page = @page + 1   -%></td>
-
-
-                  <td><%= zhuangzi.chapter -%></td>
-
-
-                  <td><%= zhuangzi.name -%></td>
-                                                      <% if can? :read, zhuangzi %>
+                <td><%= @page = @page + 1   -%></td>
+                <td><%= zhuangzi.parent_chapter -%></td>
+                <td><%= zhuangzi.chapter -%></td>
+                <td><%= zhuangzi.name -%></td>
+                <% if can? :read, zhuangzi %>
                   <td class="list-opertion"><%= link_to t('views.show'), "#{zhuangzi_path(zhuangzi)}?page=#{current_page}" %></td>
                 <% end %>
                 <% if can? :edit, zhuangzi %>

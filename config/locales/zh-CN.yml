@@ -286,7 +286,7 @@ zh-CN:
       huangdineijing: "黄帝内经"
       sanguozhi: "三国志"
       mengxibitan: "梦溪笔谈"
-      guwenguanzhi: "古文观止"
+      guwen: "古文观止"
       shanhaijing: "山海经"
       shiji: "史记"
       shishuoxinyu: "世说新语"
@@ -579,7 +579,7 @@ zh-CN:
         interpretation: "解读"
         created_at: "创建于"
         updated_at: "更新于"
-      guwenguanzhi:
+      guwen:
         id: "编号"
         chapter: "章节"
         name: "名称"
@@ -625,7 +625,8 @@ zh-CN:
         updated_at: "更新于"
       zhuangzi:
         id: "编号"
-        chapter: "章节"
+        parent_chapter: "父章节"
+        chapter: "子章节"
         name: "名称"
         content: "内容"
         commentary: "注释"

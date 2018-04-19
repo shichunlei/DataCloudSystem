@@ -1,0 +1,2 @@
+class Guwen < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class Zhouyi < ApplicationRecord
+end

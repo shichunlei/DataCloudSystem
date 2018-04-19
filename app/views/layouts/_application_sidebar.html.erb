@@ -281,6 +281,12 @@
           文心雕龙
         <% end %>
       <% end%>
+      <% if can? :read, Zhouyi %>
+        <%= nav_link zhouyis_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          周易
+        <% end %>
+      <% end%>
       <% if can? :read, Tiangong %>
         <%= nav_link tiangongs_path do %>
         <i class="fa fa-angle-double-right"></i>

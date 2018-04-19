@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :zhouyis
   resources :wenxindiaolongs
   resources :tiangongs
   resources :xuxiakes

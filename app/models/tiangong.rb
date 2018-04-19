@@ -1,0 +1,2 @@
+class Tiangong < ApplicationRecord
+end

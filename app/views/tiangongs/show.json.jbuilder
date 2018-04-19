@@ -1,0 +1,1 @@
+json.partial! "tiangongs/tiangong", tiangong: @tiangong

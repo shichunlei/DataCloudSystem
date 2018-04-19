@@ -1,0 +1,1 @@
+json.array! @tiangongs, partial: 'tiangongs/tiangong', as: :tiangong

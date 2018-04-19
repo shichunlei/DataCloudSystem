@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419030747) do
+ActiveRecord::Schema.define(version: 20180419033226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -618,6 +618,18 @@ ActiveRecord::Schema.define(version: 20180419030747) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "tiangongs", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "translation",    default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "todayhistories", force: :cascade do |t|
     t.string   "name",       default: ""
     t.integer  "year",       default: 1
@@ -658,6 +670,17 @@ ActiveRecord::Schema.define(version: 20180419030747) do
     t.integer "user_id"
     t.integer "role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+  end
+
+  create_table "wenxindiaolongs", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "translation",    default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "xuxiakes", force: :cascade do |t|

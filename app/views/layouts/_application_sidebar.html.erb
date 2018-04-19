@@ -275,6 +275,18 @@
           搜神记
         <% end %>
       <% end%>
+      <% if can? :read, Wenxindiaolong %>
+        <%= nav_link wenxindiaolongs_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          文心雕龙
+        <% end %>
+      <% end%>
+      <% if can? :read, Tiangong %>
+        <%= nav_link tiangongs_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          天工开物
+        <% end %>
+      <% end%>
     <% end %>
     <%= treeview_link '娱乐游戏' do %>
       <% if can? :read, Todayhistory %>

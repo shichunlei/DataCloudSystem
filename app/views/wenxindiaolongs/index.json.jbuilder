@@ -1,0 +1,1 @@
+json.array! @wenxindiaolongs, partial: 'wenxindiaolongs/wenxindiaolong', as: :wenxindiaolong

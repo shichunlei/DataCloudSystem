@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   rolify
 
+  belongs_to :organization
+
   has_attached_file :avatar, {
     :styles => { :medium => "600x600>", :thumb => "300x300>" },
     :default_url => "http://101.200.174.126:9898/assets/images/head.png",

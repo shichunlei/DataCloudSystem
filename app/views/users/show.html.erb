@@ -53,21 +53,6 @@
             <%=t('activerecord.attributes.user.mobile')%>:
             </span></dt>
             <dd class="well"><%= @user.mobile %></dd>
-            <!-- <dt class="label-change">
-            <span class="label-content label-info">
-            <%=t('activerecord.attributes.user.reset_password_token')%>:
-            </span></dt>
-            <dd class="well"><%= @user.reset_password_token %></dd>
-            <dt class="label-change">
-            <span class="label-content label-info">
-            <%=t('activerecord.attributes.user.reset_password_sent_at')%>:
-            </span></dt>
-            <dd class="well"><%= @user.reset_password_sent_at %></dd>
-            <dt class="label-change">
-            <span class="label-content label-info">
-            <%=t('activerecord.attributes.user.remember_created_at')%>:
-            </span></dt>
-            <dd class="well"><%= @user.remember_created_at %></dd>
             <dt class="label-change">
             <span class="label-content label-info">
             <%=t('activerecord.attributes.user.sign_in_count')%>:
@@ -92,7 +77,12 @@
             <span class="label-content label-info">
             <%=t('activerecord.attributes.user.last_sign_in_ip')%>:
             </span></dt>
-            <dd class="well"><%= @user.last_sign_in_ip %></dd> -->
+            <dd class="well"><%= @user.last_sign_in_ip %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.user.organization')%>:
+            </span></dt>
+            <dd class="well"><%= @user.organization.name %></dd>
           </dl>
         </div>
       </div>

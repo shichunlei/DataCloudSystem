@@ -89,4 +89,9 @@ Rails.application.routes.draw do
   get '/search_recipe' => "recipes#search_recipe"
   # 查询菜谱
   get '/find_recipe' => "recipes#find_recipe"
+
+  # 搜索菜谱
+  get '/organization_all' => "organizations#organization_all"
+  # 查询菜谱
+  get '/find_organization' => "organizations#find_organization"
 end

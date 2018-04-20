@@ -20,12 +20,32 @@
         <%= f.text_field :name, :class => "form-control" %>
       </div>
       <div class="form-group">
+        <%= f.label :contact %>
+        <%= f.text_field :contact, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :mobile %>
+        <%= f.text_field :mobile, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :duty_paragraph %>
+        <%= f.text_field :duty_paragraph, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :web_site %>
+        <%= f.text_field :web_site, :class => "form-control" %>
+      </div>
+      <div class="form-group">
         <%= f.label :description %>
         <%= f.text_field :description, :class => "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :organization %>
-        <%= f.text_field :organization, :class => "form-control" %>
+        <select name="organization[organization_id]" id = "organization_organization_id" class="form-control"></select>
       </div>
       <div class="form-group">
         <%= f.submit :class => "btn btn-primary" %>
@@ -33,4 +53,66 @@
     <% end %>
     </div>
   </div>
-</section> 
+</section>
+
+
+<script type="text/javascript">
+
+  $('#organization_organization_id').chosen({
+    allow_single_deselect: true,
+    no_results_text: '没有搜索到结果',
+    search_contains: true
+  });
+
+  $('#organization_organization_id').append("<option value=''>选择父级企业</option>");
+  $.get("/find_organization",function(data){
+    for (var i in data) {
+      var obj = data[i];
+      $('#organization_organization_id').append("<option title=" + obj.name + " value=" + obj.id + ">" + obj.name + "</option>");
+    }
+    $('#organization_organization_id').val("<%= @organization.organization.nil? ? "" : @organization.organization.id %>")
+    $('#organization_organization_id').trigger("chosen:updated");
+
+    //如果编辑页面，set原值；
+    if(<%= @organization.organization.nil? %>){
+    }else{
+      var search_val = "<%=  @organization.organization.nil? ? "" : @organization.organization.name %>";
+      requesturl = "/organization_all?keyword=" + search_val;
+      $.get(requesturl,function(data){
+        if(data.length > 0){
+          var result = "";
+          for (var i in data) {
+            var obj = data[i];
+            if(obj.id == "<%=  @organization.organization.nil? ? "" : @organization.organization.id %>"){
+              result += "<option title=" + obj.name + " value=" + obj.id + ">" + obj.name + "</option>";
+              break;
+            }
+          }
+          $('#organization_organization_id').html(result);
+          $('#organization_organization_id').prepend("<option value=''>选择父级企业</option>");
+          $('#organization_organization_id').trigger("chosen:updated");
+          $('#organization_organization_id_chosen input').val(search_val);
+        }
+      });
+    }
+  });
+
+  $('#organization_organization_id_chosen input').on('input',function(){
+    var search_val = $(this).val();
+    requesturl = "/organization_all?keyword=" + search_val;
+    $.get(requesturl,function(data){
+      if(data.length > 0){
+        var result = "";
+        for (var i in data) {
+        var obj = data[i];
+        result += "<option title=" + obj.name + " value=" + obj.id + ">" + obj.name + "</option>";
+        }
+        $('#organization_organization_id').html(result);
+        $('#organization_organization_id').prepend("<option value=''>选择父级企业</option>");
+        $('#organization_organization_id').trigger("chosen:updated");
+        $('#organization_organization_id_chosen input').val(search_val);
+      }
+    });
+  });
+
+</script>

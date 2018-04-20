@@ -507,8 +507,13 @@ ActiveRecord::Schema.define(version: 20180419101458) do
     t.string   "name"
     t.text     "description"
     t.integer  "organization_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "contact",         default: ""
+    t.string   "mobile",          default: ""
+    t.string   "email",           default: ""
+    t.string   "duty_paragraph",  default: ""
+    t.string   "web_site",        default: ""
     t.index ["organization_id"], name: "index_organizations_on_organization_id", using: :btree
   end
 

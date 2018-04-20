@@ -240,7 +240,7 @@ zh-CN:
   permissions:
     user: "用户"
     role: "角色"
-    orgnization: "工作组"
+    organization: "工作组"
     permission: "权限"
     post: "新闻"
   activerecord:
@@ -1202,10 +1202,15 @@ zh-CN:
         forgot_your_password: "忘记密码"
       organization:
         id: "编号"
-        name: "工作组名称"
-        organization: "所属上级部门"
-        description: "工作组描述信息"
-        users: "工作组成员"
+        name: "企业（机构）名称"
+        email: "联系人邮箱"
+        mobile: "联系人电话"
+        web_site: "公司官网"
+        duty_paragraph: "税号"
+        contact: "联系人"
+        organization: "所属上级企业（机构）"
+        description: "企业（机构）信息"
+        users: "企业（机构）成员"
         created_at: "创建于"
         updated_at: "更新于"
       role:

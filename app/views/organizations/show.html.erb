@@ -4,7 +4,7 @@
 
     <ol class="breadcrumb">
       <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
-      <li><%= link_to t('activerecord.models.organization'), organizations_path %></li>         
+      <li><%= link_to t('activerecord.models.organization'), organizations_path %></li>
       <li class="active"><%=t('views.show')%></li>
     </ol>
   </section>
@@ -20,13 +20,13 @@
               <%= link_to edit_organization_path(@organization), :class => 'btn btn-primary' do %>
                 <span class="glyphicon glyphicon-pencil"></span>
                 <%=t('views.edit')%>
-              <% end %> 
+              <% end %>
             <% end %>
 
             <%= link_to "#{organizations_path}?page=#{@page}", :class => 'btn btn-success' do %>
             <span class="glyphicon glyphicon-chevron-left"></span>
             <%=t('views.return')%>
-            <% end %>  
+            <% end %>
           </div>
         </div>
         <div class="box-body">
@@ -38,6 +38,31 @@
             <dd class="well"><%= @organization.name %></dd>
             <dt class="label-change">
             <span class="label-content label-info">
+            <%=t('activerecord.attributes.organization.contact')%>:
+            </span></dt>
+            <dd class="well"><%= @organization.contact %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.organization.mobile')%>:
+            </span></dt>
+            <dd class="well"><%= @organization.mobile %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.organization.email')%>:
+            </span></dt>
+            <dd class="well"><%= @organization.email %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.organization.duty_paragraph')%>:
+            </span></dt>
+            <dd class="well"><%= @organization.duty_paragraph %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.organization.web_site')%>:
+            </span></dt>
+            <dd class="well"><%= @organization.web_site %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
             <%=t('activerecord.attributes.organization.description')%>:
             </span></dt>
             <dd class="well"><%= @organization.description %></dd>
@@ -45,11 +70,10 @@
             <span class="label-content label-info">
             <%=t('activerecord.attributes.organization.organization')%>:
             </span></dt>
-            <dd class="well"><%= @organization.organization %></dd>
+            <dd class="well"><%= @organization.organization.nil? ? "" : @organization.organization.name %></dd>
           </dl>
         </div>
       </div>
     </div>
   </div>
 </section>
-

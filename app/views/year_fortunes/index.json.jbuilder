@@ -1,0 +1,1 @@
+json.array! @year_fortunes, partial: 'year_fortunes/year_fortune', as: :year_fortune

@@ -1,0 +1,56 @@
+<section class="content invoice">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_for(@week_fortune, :html => { :role => "form" }) do |f| %>
+        <% if @week_fortune.errors.any? %>
+          <div class="alert alert-danger alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            <h4><%= pluralize(@week_fortune.errors.count, "error") %> prohibited this week_fortune from being saved:</h4>
+
+            <ul>
+            <% @week_fortune.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+      <div class="form-group">
+        <%= f.label :start_date %>
+        <%= f.date_select :start_date, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :end_date %>
+        <%= f.date_select :end_date, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :money %>
+        <%= f.text_area :money, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :career %>
+        <%= f.text_area :career, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :love %>
+        <%= f.text_area :love, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :health %>
+        <%= f.text_area :health, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :job %>
+        <%= f.text_area :job, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :astro %>
+        <%= f.text_field :astro, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit :class => "btn btn-primary" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</section> 

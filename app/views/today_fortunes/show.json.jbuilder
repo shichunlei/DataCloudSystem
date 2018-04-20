@@ -1,0 +1,1 @@
+json.partial! "today_fortunes/today_fortune", today_fortune: @today_fortune

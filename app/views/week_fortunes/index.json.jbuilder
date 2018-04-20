@@ -1,0 +1,1 @@
+json.array! @week_fortunes, partial: 'week_fortunes/week_fortune', as: :week_fortune

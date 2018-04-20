@@ -1,0 +1,66 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.list')%> <small><%= t('activerecord.models.year_fortune') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li class="active"><%= t('activerecord.models.year_fortune') %></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :create, YearFortune %>
+              <%= link_to new_year_fortune_path(@year_fortune), :class => 'btn btn-success' do %>
+                <span class="glyphicon glyphicon-plus"></span>
+                <%=t('views.create')%><%=t('activerecord.models.year_fortune')%>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                            <th><%=t('activerecord.attributes.year_fortune.id') -%></th>
+
+                              <th><%=t('activerecord.attributes.year_fortune.year') -%></th>
+<th><%=t('activerecord.attributes.year_fortune.astro') -%></th>
+                                              <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% current_page = @page.nil? ? 1 : @page -%>
+              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
+              <%= content_tag_for(:tr, @year_fortunes) do |year_fortune| %>
+                                <td><%= @page = @page + 1   -%></td>
+
+
+                  <td><%= year_fortune.year -%></td>
+<td><%= year_fortune.astro.name -%></td>
+                                                      <% if can? :read, year_fortune %>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{year_fortune_path(year_fortune)}?page=#{current_page}" %></td>
+                <% end %>
+                <% if can? :edit, year_fortune %>
+                  <td class="list-opertion"><%= link_to t('views.edit'), edit_year_fortune_path(year_fortune) %></td>
+                <% end %>
+                <% if can? :destroy, year_fortune %>
+                  <td class="list-opertion"><%= link_to t('views.destroy'), year_fortune, method: :delete, data: { confirm: t('views.confirm') } %></td>
+                <% end %>
+
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+    <%= paginate @year_fortunes %>
+</section>

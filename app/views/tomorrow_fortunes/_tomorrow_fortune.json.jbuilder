@@ -1,0 +1,2 @@
+json.extract! tomorrow_fortune, :id, :tdate, :love, :health, :career, :color, :star, :number, :summary, :presummary, :money, :astro_id, :created_at, :updated_at
+json.url tomorrow_fortune_url(tomorrow_fortune, format: :json)

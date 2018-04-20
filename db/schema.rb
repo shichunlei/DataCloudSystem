@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419061043) do
+ActiveRecord::Schema.define(version: 20180419101458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "astros", force: :cascade do |t|
+    t.string   "name",       default: ""
+    t.string   "pic",        default: ""
+    t.string   "start_date", default: ""
+    t.string   "end_date",   default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "car_actualtests", force: :cascade do |t|
     t.integer  "car_model_id"
@@ -481,6 +490,19 @@ ActiveRecord::Schema.define(version: 20180419061043) do
     t.index ["miyu_classify_id"], name: "index_miyus_on_miyu_classify_id", using: :btree
   end
 
+  create_table "month_fortunes", force: :cascade do |t|
+    t.string   "mdate",      default: ""
+    t.text     "summary",    default: ""
+    t.text     "money",      default: ""
+    t.text     "career",     default: ""
+    t.text     "love",       default: ""
+    t.text     "health",     default: ""
+    t.integer  "astro_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["astro_id"], name: "index_month_fortunes_on_astro_id", using: :btree
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -674,6 +696,23 @@ ActiveRecord::Schema.define(version: 20180419061043) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "today_fortunes", force: :cascade do |t|
+    t.date     "tdate"
+    t.integer  "love"
+    t.integer  "health"
+    t.integer  "career"
+    t.string   "color",      default: ""
+    t.string   "star",       default: ""
+    t.integer  "number"
+    t.integer  "summary"
+    t.text     "presummary", default: ""
+    t.integer  "money"
+    t.integer  "astro_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["astro_id"], name: "index_today_fortunes_on_astro_id", using: :btree
+  end
+
   create_table "todayhistories", force: :cascade do |t|
     t.string   "name",       default: ""
     t.integer  "year",       default: 1
@@ -683,6 +722,23 @@ ActiveRecord::Schema.define(version: 20180419061043) do
     t.text     "content",    default: ""
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "tomorrow_fortunes", force: :cascade do |t|
+    t.date     "tdate"
+    t.integer  "love"
+    t.integer  "health"
+    t.integer  "career"
+    t.string   "color",      default: ""
+    t.string   "star",       default: ""
+    t.integer  "number"
+    t.integer  "summary"
+    t.text     "presummary", default: ""
+    t.integer  "money"
+    t.integer  "astro_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["astro_id"], name: "index_tomorrow_fortunes_on_astro_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -716,6 +772,20 @@ ActiveRecord::Schema.define(version: 20180419061043) do
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
   end
 
+  create_table "week_fortunes", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.text     "money",      default: ""
+    t.text     "career",     default: ""
+    t.text     "love",       default: ""
+    t.text     "health",     default: ""
+    t.text     "job",        default: ""
+    t.integer  "astro_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["astro_id"], name: "index_week_fortunes_on_astro_id", using: :btree
+  end
+
   create_table "wenxindiaolongs", force: :cascade do |t|
     t.string   "name",           default: ""
     t.text     "content",        default: ""
@@ -736,6 +806,18 @@ ActiveRecord::Schema.define(version: 20180419061043) do
     t.text     "interpretation", default: ""
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "year_fortunes", force: :cascade do |t|
+    t.integer  "year"
+    t.text     "summary",    default: ""
+    t.text     "money",      default: ""
+    t.text     "career",     default: ""
+    t.text     "love",       default: ""
+    t.integer  "astro_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["astro_id"], name: "index_year_fortunes_on_astro_id", using: :btree
   end
 
   create_table "yuanqus", force: :cascade do |t|
@@ -790,6 +872,7 @@ ActiveRecord::Schema.define(version: 20180419061043) do
   add_foreign_key "car_types", "car_brands"
   add_foreign_key "car_wheels", "car_models"
   add_foreign_key "miyus", "miyu_classifies"
+  add_foreign_key "month_fortunes", "astros"
   add_foreign_key "organizations", "organizations"
   add_foreign_key "permissions_roles", "permissions"
   add_foreign_key "permissions_roles", "roles"
@@ -797,5 +880,9 @@ ActiveRecord::Schema.define(version: 20180419061043) do
   add_foreign_key "recipe_materials", "recipes"
   add_foreign_key "recipe_processes", "recipes"
   add_foreign_key "recipes", "recipe_classifies"
+  add_foreign_key "today_fortunes", "astros"
+  add_foreign_key "tomorrow_fortunes", "astros"
   add_foreign_key "users", "organizations"
+  add_foreign_key "week_fortunes", "astros"
+  add_foreign_key "year_fortunes", "astros"
 end

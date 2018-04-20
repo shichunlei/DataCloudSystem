@@ -58,6 +58,141 @@ rails g scaffold recipe_material recipe:references mname:string mtype:integer am
 rails g scaffold recipe_process recipe:references pcontent:text pic:string
 
 
+#-----------------------------------唐诗---------------------------
+rails g scaffold tangshi name:string author:string mtype:string content:text explanation:text appreciation:text
+
+#-----------------------------------宋词---------------------------
+rails g scaffold songci name:string author:string mtype:string content:text explanation:text appreciation:text
+
+#-----------------------------------元曲---------------------------
+rails g scaffold yuanqu name:string author:string content:text explanation:text appreciation:text
+
+#-----------------------------------论语---------------------------
+rails g scaffold lunyu chapter:string name:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------孟子---------------------------
+rails g scaffold mengzi chapter:string name:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------老子 - 道德经---------------------------
+rails g scaffold daodejing name:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------庄子---------------------------
+rails g scaffold zhuangzi chapter:string name:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------黄帝内经---------------------------
+rails g scaffold huangdineijing name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------三国志---------------------------
+rails g scaffold sanguozhi name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------古文观止---------------------------
+rails g scaffold guwen name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------梦溪笔谈---------------------------
+rails g scaffold mengxibitan name:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------吕氏春秋---------------------------
+rails g scaffold lvshichunqiu name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------诗经---------------------------
+rails g scaffold shijing name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------山海经---------------------------
+rails g scaffold shanhaijing name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------史记---------------------------
+rails g scaffold shiji name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------世说新语---------------------------
+rails g scaffold shishuoxinyu name:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------孙子兵法---------------------------
+rails g scaffold sunzibingfa name:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------文心雕龙---------------------------
+rails g scaffold wenxindiaolong name:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------天工开物---------------------------
+rails g scaffold tiangong name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------搜神记---------------------------
+rails g scaffold soushenji name:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------周易---------------------------
+rails g scaffold zhouyi name:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------鬼谷子---------------------------
+rails g scaffold guiguzi name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------徐霞客游记---------------------------
+rails g scaffold xuxiake name:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------左传--------------------------
+rails g scaffold zuozhuan name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------汉书--------------------------
+rails g scaffold hanshu name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------后汉书--------------------------
+rails g scaffold houhanshu name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------资治通鉴---------------------------
+rails g scaffold zizhitongjian name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------笑林广记---------------------------
+rails g scaffold xiaolin name:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------三十六计---------------------------
+rails g scaffold sanshiliuji name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------乐府诗集---------------------------
+rails g scaffold yuefu name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------本草纲目---------------------------
+rails g scaffold bencao name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------金刚经---------------------------
+rails g scaffold jingangjing name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------菜根谭---------------------------
+rails g scaffold caigentan name:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------地藏经---------------------------
+rails g scaffold dizangjing name:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+
+
+#-----------------------------------历史上的今天---------------------------
+rails g scaffold todayhistory name:string year:integer month:integer day:integer content:text image:string
+
+#-----------------------------------成语大全---------------------------
+rails g scaffold chengyu name:string pronounce:string content:text comefrom:text antonym:string thesaurus:string example:text
+
+#-----------------------------------谜语大全---------------------------
+rails g scaffold miyu_classify name:string
+
+rails g scaffold miyu content:string answer:string miyu_classify:references
+
+#-----------------------------------黄历---------------------------
+rails g scaffold huangli year:integer month:integer day:integer yangli:string nongli:string star:stirng taishen:string wuxing:stirng chong:string sha:string shengxiao:string jiri:string zhiri:string xiongshen:string jishenyiqu:string caishen:string xishen:string fushen:string suici:string yi:string ji:string eweek:stirng emonth:string week:string
+
+#-----------------------------------星座---------------------------
+rails g scaffold astro name:string pic:string start_date:string end_date:string
+#-----------------------------------星座当天运势---------------------------
+rails g scaffold today_fortune tdate:date love:integer health:integer career:integer color:string star:string number:integer summary:integer presummary:text money:integer astro:references
+#-----------------------------------星座明日运势---------------------------
+rails g scaffold tomorrow_fortune tdate:date love:integer health:integer career:integer color:string star:string number:integer summary:integer presummary:text money:integer astro:references
+#-----------------------------------星座本周运势---------------------------
+rails g scaffold week_fortune start_date:date end_date:date money:text career:text love:text health:text job:text astro:references
+#-----------------------------------星座本月运势---------------------------
+rails g scaffold month_fortune mdate:string summary:text money:text career:text love:text health:text astro:references
+#-----------------------------------星座本年运势---------------------------
+rails g scaffold year_fortune year:integer summary:text money:text career:text love:text astro:references
+
+
+
+
+
 
 
 

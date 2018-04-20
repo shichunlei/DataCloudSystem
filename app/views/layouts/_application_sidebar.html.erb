@@ -309,6 +309,42 @@
       <% end%>
     <% end %>
     <%= treeview_link '星座算命' do %>
+      <% if can? :read, Astro %>
+        <%= nav_link astros_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          星座
+        <% end %>
+      <% end%>
+      <% if can? :read, YearFortune %>
+        <%= nav_link year_fortunes_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          星座年运势
+        <% end %>
+      <% end%>
+      <% if can? :read, MonthFortune %>
+        <%= nav_link month_fortunes_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          星座月运势
+        <% end %>
+      <% end%>
+      <% if can? :read, WeekFortune %>
+        <%= nav_link week_fortunes_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          星座周运势
+        <% end %>
+      <% end%>
+      <% if can? :read, TomorrowFortune %>
+        <%= nav_link tomorrow_fortunes_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          星座明日运势
+        <% end %>
+      <% end%>
+      <% if can? :read, TodayFortune %>
+        <%= nav_link today_fortunes_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          星座当日运势
+        <% end %>
+      <% end%>
       <% if can? :read, Todayhistory %>
         <%= nav_link todayhistories_path do %>
         <i class="fa fa-angle-double-right"></i>

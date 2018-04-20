@@ -1,0 +1,1 @@
+json.array! @today_fortunes, partial: 'today_fortunes/today_fortune', as: :today_fortune

@@ -1,0 +1,79 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.week_fortune') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.week_fortune'), week_fortunes_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, WeekFortune %>
+              <%= link_to edit_week_fortune_path(@week_fortune), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{week_fortunes_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.week_fortune.start_date')%>:
+            </span></dt>
+            <dd class="well"><%= @week_fortune.start_date %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.week_fortune.end_date')%>:
+            </span></dt>
+            <dd class="well"><%= @week_fortune.end_date %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.week_fortune.money')%>:
+            </span></dt>
+            <dd class="well"><%= @week_fortune.money %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.week_fortune.career')%>:
+            </span></dt>
+            <dd class="well"><%= @week_fortune.career %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.week_fortune.love')%>:
+            </span></dt>
+            <dd class="well"><%= @week_fortune.love %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.week_fortune.health')%>:
+            </span></dt>
+            <dd class="well"><%= @week_fortune.health %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.week_fortune.job')%>:
+            </span></dt>
+            <dd class="well"><%= @week_fortune.job %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.week_fortune.astro')%>:
+            </span></dt>
+            <dd class="well"><%= @week_fortune.astro.name %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

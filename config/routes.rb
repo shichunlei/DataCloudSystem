@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :year_fortunes
+  resources :month_fortunes
+  resources :week_fortunes
+  resources :tomorrow_fortunes
+  resources :today_fortunes
+  resources :astros
   resources :huanglis
   resources :miyus
   resources :miyu_classifies

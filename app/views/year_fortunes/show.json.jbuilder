@@ -1,0 +1,1 @@
+json.partial! "year_fortunes/year_fortune", year_fortune: @year_fortune

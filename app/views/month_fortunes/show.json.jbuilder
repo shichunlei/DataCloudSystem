@@ -1,0 +1,1 @@
+json.partial! "month_fortunes/month_fortune", month_fortune: @month_fortune

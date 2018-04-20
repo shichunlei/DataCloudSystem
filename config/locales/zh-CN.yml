@@ -465,6 +465,7 @@ zh-CN:
       miyu:
         id: "编号"
         content: "谜面"
+        miyu_classify: "类型"
         answer: "谜底"
         created_at: "创建于"
         updated_at: "更新于"

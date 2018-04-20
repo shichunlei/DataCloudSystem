@@ -90,8 +90,13 @@ Rails.application.routes.draw do
   # 查询菜谱
   get '/find_recipe' => "recipes#find_recipe"
 
-  # 搜索菜谱
+  # 搜索企业
   get '/organization_all' => "organizations#organization_all"
-  # 查询菜谱
+  # 查询企业
   get '/find_organization' => "organizations#find_organization"
+
+  # 搜索谜语类别
+  get '/search_miyu_classify' => "miyu_classifies#search_classify"
+  # 查询谜语类别
+  get '/find_miyu_classify' => "miyu_classifies#find_classify"
 end

@@ -16,6 +16,10 @@
         <% end %>
 
       <div class="form-group">
+        <%= f.label :miyu_classify %>
+        <select name="miyu[miyu_classify_id]" id = "miyu_classify_id" class="form-control"></select>
+      </div>
+      <div class="form-group">
         <%= f.label :content %>
         <%= f.text_field :content, :class => "form-control" %>
       </div>
@@ -24,13 +28,70 @@
         <%= f.text_field :answer, :class => "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :miyu_classify %>
-        <%= f.text_field :miyu_classify, :class => "form-control" %>
-      </div>
-      <div class="form-group">
         <%= f.submit :class => "btn btn-primary" %>
       </div>
     <% end %>
     </div>
   </div>
-</section> 
+</section>
+
+<script type="text/javascript">
+
+  $('#miyu_classify_id').chosen({
+    allow_single_deselect: true,
+    no_results_text: '没有搜索到结果',
+    search_contains: true
+  });
+
+  $('#miyu_classify_id').append("<option value=''>选择类型</option>");
+  $.get("/find_miyu_classify",function(data){
+    for (var i in data) {
+      var obj = data[i];
+      $('#miyu_classify_id').append("<option title=" + obj.name + " value=" + obj.id + ">" + obj.name + "</option>");
+    }
+    $('#miyu_classify_id').val("<%= @miyu.miyu_classify.nil? ? "" : @miyu.miyu_classify.id %>")
+    $('#miyu_classify_id').trigger("chosen:updated");
+
+    //如果编辑页面，set原值；
+    if(<%= @miyu.miyu_classify.nil? %>){
+    }else{
+      var search_val = "<%=  @miyu.miyu_classify.nil? ? "" : @miyu.miyu_classify.name %>";
+      requesturl = "/search_miyu_classify?keyword=" + search_val;
+      $.get(requesturl,function(data){
+        if(data.length > 0){
+          var result = "";
+          for (var i in data) {
+            var obj = data[i];
+            if(obj.id == "<%=  @miyu.miyu_classify.nil? ? "" : @miyu.miyu_classify.id %>"){
+              result += "<option title=" + obj.name + " value=" + obj.id + ">" + obj.name + "</option>";
+              break;
+            }
+          }
+          $('#miyu_classify_id').html(result);
+          $('#miyu_classify_id').prepend("<option value=''>选择类型</option>");
+          $('#miyu_classify_id').trigger("chosen:updated");
+          $('#miyu_classify_id_chosen input').val(search_val);
+        }
+      });
+    }
+  });
+
+  $('#miyu_classify_id_chosen input').on('input',function(){
+    var search_val = $(this).val();
+    requesturl = "/search_miyu_classify?keyword=" + search_val;
+    $.get(requesturl,function(data){
+      if(data.length > 0){
+        var result = "";
+        for (var i in data) {
+        var obj = data[i];
+        result += "<option title=" + obj.name + " value=" + obj.id + ">" + obj.name + "</option>";
+        }
+        $('#miyu_classify_id').html(result);
+        $('#miyu_classify_id').prepend("<option value=''>选择类型</option>");
+        $('#miyu_classify_id').trigger("chosen:updated");
+        $('#miyu_classify_id_chosen input').val(search_val);
+      }
+    });
+  });
+
+</script>

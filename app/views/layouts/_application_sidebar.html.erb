@@ -310,6 +310,20 @@
         <% end %>
       <% end%>
     <% end %>
+    <%= treeview_link '生活常用' do %>
+      <% if can? :read, Todayhistory %>
+        <%= nav_link todayhistories_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          历史上的今天
+        <% end %>
+      <% end%>
+      <% if can? :read, Huangli %>
+        <%= nav_link huanglis_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          黄历
+        <% end %>
+      <% end%>
+    <% end %>
     <%= treeview_link '星座算命' do %>
       <% if can? :read, Astro %>
         <%= nav_link astros_path do %>
@@ -345,18 +359,6 @@
         <%= nav_link today_fortunes_path do %>
         <i class="fa fa-angle-double-right"></i>
           星座当日运势
-        <% end %>
-      <% end%>
-      <% if can? :read, Todayhistory %>
-        <%= nav_link todayhistories_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          历史上的今天
-        <% end %>
-      <% end%>
-      <% if can? :read, Huangli %>
-        <%= nav_link huanglis_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          黄历
         <% end %>
       <% end%>
     <% end %>

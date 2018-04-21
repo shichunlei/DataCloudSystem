@@ -15,16 +15,16 @@
           </div>
         <%% end %>
 
-    <% attributes.each do |attribute| -%>
-  <div class="form-group">
-        <%%= f.label :<%= attribute.name %> %>
-        <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => "form-control" %>
-      </div>
-    <% end -%>
-  <div class="form-group">
-        <%%= f.submit :class => "btn btn-primary" %>
-      </div>
-    <%% end %>
+        <% attributes.each do |attribute| -%>
+          <div class="form-group">
+            <%%= f.label :<%= attribute.name %> %>
+            <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => "form-control" %>
+          </div>
+        <% end -%>
+        <div class="form-group">
+          <%%= f.submit :class => "btn btn-primary" %>
+        </div>
+      <%% end %>
     </div>
   </div>
-</section> 
+</section>

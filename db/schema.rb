@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180421003654) do
+ActiveRecord::Schema.define(version: 20180421083730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -362,6 +362,19 @@ ActiveRecord::Schema.define(version: 20180421003654) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["car_model_id"], name: "index_car_wheels_on_car_model_id", using: :btree
+  end
+
+  create_table "chucis", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "daodejings", force: :cascade do |t|

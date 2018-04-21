@@ -160,6 +160,9 @@ rails g scaffold caigentan name:string content:text commentary:text translation:
 #-----------------------------------地藏经---------------------------
 rails g scaffold dizangjing name:string content:text commentary:text translation:text appreciation:text interpretation:text
 
+#-----------------------------------楚辞---------------------------
+rails g scaffold chuci name:string author:string chapter:string content:text commentary:text translation:text appreciation:text interpretation:text
+
 
 
 #-----------------------------------历史上的今天---------------------------

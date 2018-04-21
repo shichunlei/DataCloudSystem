@@ -5,7 +5,7 @@
     <ol class="breadcrumb">
       <li><a href="/"><i class="fa fa-dashboard"></i> <%%=t('views.home')%></a></li>
       <li class="active"><%%= t('activerecord.models.<%=singular_table_name%>') %></li>
-    </ol>    
+    </ol>
   </section>
 <%% end %>
 
@@ -20,23 +20,22 @@
                 <span class="glyphicon glyphicon-plus"></span>
                 <%%=t('views.create')%><%%=t('activerecord.models.<%=singular_table_name%>')%>
               <%% end %>
-            <%% end %>          
+            <%% end %>
           </div>
         </div>
         <div class="box-body table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>
-            <% @i = 0 -%>
+                <% @i = 0 -%>
                 <th><%%=t('activerecord.attributes.<%=singular_table_name%>.id') -%></th>
-            <% attributes.each do |attribute| -%>
-
-              <% if @i>=5 -%>
-                <% next -%>  
-              <% end -%>
-                <th><%%=t('activerecord.attributes.<%=singular_table_name%>.<%=attribute.name%>') -%></th>
-                 <% @i = @i + 1 -%>
-            <% end -%>
+                <% attributes.each do |attribute| -%>
+                  <% if @i>=5 -%>
+                    <% next -%>
+                  <% end -%>
+                  <th><%%=t('activerecord.attributes.<%=singular_table_name%>.<%=attribute.name%>') -%></th>
+                  <% @i = @i + 1 -%>
+                <% end -%>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -49,11 +48,9 @@
                 <% @j = 0 -%>
                 <td><%%= @page = @page + 1   -%></td>
                 <% attributes.each do |attribute| -%>
-
                   <% if @j >=5 -%>
-                    <% next -%>  
+                    <% next -%>
                   <% end -%>
-                  
                   <td><%%= <%= singular_table_name %>.<%= attribute.name %> -%></td>
                   <% @j = @j + 1 -%>
                 <% end -%>
@@ -66,7 +63,6 @@
                 <%% if can? :destroy, <%=singular_table_name %> %>
                   <td class="list-opertion"><%%= link_to t('views.destroy'), <%= singular_table_name %>, method: :delete, data: { confirm: t('views.confirm') } %></td>
                 <%% end %>
-
               <%% end %>
             </tbody>
           </table>
@@ -74,6 +70,5 @@
       </div>
     </div>
   </div>
-    <%%= paginate @<%=plural_table_name%> %>
+  <%%= paginate @<%=plural_table_name%> %>
 </section>
-

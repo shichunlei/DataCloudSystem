@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :chucis
   resources :sanshiliujis
   resources :yuefus
   resources :year_fortunes

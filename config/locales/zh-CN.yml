@@ -316,7 +316,20 @@ zh-CN:
       today_fortune: "当日运势"
       tomorrow_fortune: "明日运势"
       week_fortune: "本周运势"
+      chuci: "楚辞"
     attributes:
+      chuci:
+        id: "编号"
+        chapter: "章节"
+        name: "名称"
+        author: "作者"
+        content: "内容"
+        commentary: "注释"
+        translation: "翻译"
+        appreciation: "赏析"
+        interpretation: "解读"
+        created_at: "创建于"
+        updated_at: "更新于"
       year_fortune:
         id: "编号"
         year: "年份"

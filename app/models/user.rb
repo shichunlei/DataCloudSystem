@@ -5,16 +5,16 @@ class User < ApplicationRecord
 
   has_attached_file :avatar, {
     :styles => { :medium => "600x600>", :thumb => "300x300>" },
-    :default_url => "http://101.200.174.126:9898/assets/images/head.png",
+    :default_url => "",
     :storage => :ftp,
-    :path => "/data_cloud_system/user/:attachment/:id/:style/:filename",
-    :url => "http://101.200.174.126:10000/data_cloud_system/user/:attachment/:id/:style/:filename",
+    :path => "/data_cloud_system/users/:attachment/:id/:style/:filename",
+    :url => "#{ENV['FTP_URL']}/data_cloud_system/users/:attachment/:id/:style/:filename",
     :ftp_connect_timeout => 10,
     :ftp_ignore_failing_connections => true,
     :ftp_servers => [{
-                        :host     => '101.200.174.126',
-                        :user     => 'ftp',
-                        :password => 'ftp!@#$',
+                        :host     => ENV['FTP_HOST'],
+                        :user     => ENV['FTP_USER'],
+                        :password => ENV['FTP_PASSWORD'],
                         :passive => true
                       }]
   }
@@ -29,6 +29,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   def avatar_url
-    avatar.url(:medium).html_safe
+    avatar.url(:medium)
   end
 end

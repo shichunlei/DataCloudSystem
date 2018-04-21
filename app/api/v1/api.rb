@@ -16,6 +16,7 @@ module V1
 		mount V1::Recipes
 		mount V1::Educations
 		mount V1::Entertainments
+		mount V1::Astros
 	end
 
 	# 返回码

@@ -3,7 +3,7 @@ class TomorrowFortunesController < ApplicationController
   # GET /tomorrow_fortunes
   def index
     @page = params[:page]
-    @tomorrow_fortunes = TomorrowFortune.order(:id).page(@page)
+    @tomorrow_fortunes = TomorrowFortune.order("tdate desc, astro_id asc").page(@page)
   end
   # GET /tomorrow_fortunes/1
   def show

@@ -3,7 +3,7 @@ class YearFortunesController < ApplicationController
   # GET /year_fortunes
   def index
     @page = params[:page]
-    @year_fortunes = YearFortune.order(:id).page(@page)
+    @year_fortunes = YearFortune.order("year desc, astro_id asc").page(@page)
   end
   # GET /year_fortunes/1
   def show

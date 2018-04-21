@@ -3,7 +3,7 @@ class MonthFortunesController < ApplicationController
   # GET /month_fortunes
   def index
     @page = params[:page]
-    @month_fortunes = MonthFortune.order(:id).page(@page)
+    @month_fortunes = MonthFortune.order("mdate desc, astro_id asc").page(@page)
   end
   # GET /month_fortunes/1
   def show

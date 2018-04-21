@@ -3,7 +3,7 @@ class TodayFortunesController < ApplicationController
   # GET /today_fortunes
   def index
     @page = params[:page]
-    @today_fortunes = TodayFortune.order(:id).page(@page)
+    @today_fortunes = TodayFortune.order("tdate desc, astro_id asc").page(@page)
   end
   # GET /today_fortunes/1
   def show

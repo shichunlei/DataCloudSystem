@@ -3,7 +3,7 @@ class WeekFortunesController < ApplicationController
   # GET /week_fortunes
   def index
     @page = params[:page]
-    @week_fortunes = WeekFortune.order(:id).page(@page)
+    @week_fortunes = WeekFortune.order("start_date desc, astro_id asc").page(@page)
   end
   # GET /week_fortunes/1
   def show

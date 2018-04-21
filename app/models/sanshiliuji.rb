@@ -5,13 +5,13 @@ class Sanshiliuji < ApplicationRecord
     :default_url => "",
     :storage => :ftp,
     :path => "/data_cloud_system/36ji/:attachment/:id/:style/:filename",
-    :url => "http://101.200.174.126:10000/data_cloud_system/36ji/:attachment/:id/:style/:filename",
+    :url => "#{ENV['FTP_URL']}/data_cloud_system/36ji/:attachment/:id/:style/:filename",
     :ftp_connect_timeout => 10,
     :ftp_ignore_failing_connections => true,
     :ftp_servers => [{
-                        :host     => '101.200.174.126',
-                        :user     => 'ftp',
-                        :password => 'ftp!@#$',
+                        :host     => ENV['FTP_HOST'],
+                        :user     => ENV['FTP_USER'],
+                        :password => ENV['FTP_PASSWORD'],
                         :passive => true
                       }]
   }
@@ -21,6 +21,6 @@ class Sanshiliuji < ApplicationRecord
   before_validation { self.gallery.clear if self.delete_gallery == '1' }
 
   def gallery_url
-    gallery.url(:medium).html_safe
+    gallery.url(:medium)
   end
 end

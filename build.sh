@@ -142,11 +142,11 @@ rails g scaffold zizhitongjian name:string chapter:string content:text commentar
 #-----------------------------------笑林广记---------------------------
 rails g scaffold xiaolin name:string content:text commentary:text appreciation:text translation:text interpretation:text
 
-#-----------------------------------三十六计---------------------------
-rails g scaffold sanshiliuji name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
-
 #-----------------------------------乐府诗集---------------------------
 rails g scaffold yuefu name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+
+#-----------------------------------三十六计---------------------------
+rails g scaffold sanshiliuji name:string chapter:string gallery:attachment analogy:text content:text commentary:text comment:text appreciation:text translation:text interpretation:text story:text simple_explanation:text
 
 #-----------------------------------本草纲目---------------------------
 rails g scaffold bencao name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text

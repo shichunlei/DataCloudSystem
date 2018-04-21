@@ -1,0 +1,1 @@
+json.array! @yuefus, partial: 'yuefus/yuefu', as: :yuefu

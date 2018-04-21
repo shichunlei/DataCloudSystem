@@ -7,8 +7,8 @@ class User < ApplicationRecord
     :styles => { :medium => "600x600>", :thumb => "300x300>" },
     :default_url => "http://101.200.174.126:9898/assets/images/head.png",
     :storage => :ftp,
-    :path => "/nursing_cloud/user/:attachment/:id/:style/:filename",
-    :url => "http://101.200.174.126:10000/nursing_cloud/user/:attachment/:id/:style/:filename",
+    :path => "/data_cloud_system/user/:attachment/:id/:style/:filename",
+    :url => "http://101.200.174.126:10000/data_cloud_system/user/:attachment/:id/:style/:filename",
     :ftp_connect_timeout => 10,
     :ftp_ignore_failing_connections => true,
     :ftp_servers => [{

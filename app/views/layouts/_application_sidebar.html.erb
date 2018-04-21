@@ -217,6 +217,12 @@
           诗经
         <% end %>
       <% end%>
+      <% if can? :read, Yuefu %>
+        <%= nav_link yuefus_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          乐府诗集
+        <% end %>
+      <% end%>
       <% if can? :read, Lvshichunqiu %>
         <%= nav_link lvshichunqius_path do %>
         <i class="fa fa-angle-double-right"></i>
@@ -293,6 +299,12 @@
         <%= nav_link tiangongs_path do %>
         <i class="fa fa-angle-double-right"></i>
           天工开物
+        <% end %>
+      <% end%>
+      <% if can? :read, Sanshiliuji %>
+        <%= nav_link sanshiliujis_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          三十六计
         <% end %>
       <% end%>
     <% end %>

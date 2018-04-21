@@ -1,0 +1,101 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.sanshiliuji') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.sanshiliuji'), sanshiliujis_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, Sanshiliuji %>
+              <%= link_to edit_sanshiliuji_path(@sanshiliuji), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{sanshiliujis_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanshiliuji.name')%>:
+            </span></dt>
+            <dd class="well"><%= @sanshiliuji.name %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanshiliuji.chapter')%>:
+            </span></dt>
+            <dd class="well"><%= @sanshiliuji.chapter %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanshiliuji.gallery')%>:
+            </span></dt>
+            <dd class="well">
+                <img src='<%= @sanshiliuji.gallery_url -%>' style="width:500px;height:300px;"/>
+            </dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanshiliuji.analogy')%>:
+            </span></dt>
+            <dd class="well"><%= @sanshiliuji.analogy %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanshiliuji.content')%>:
+            </span></dt>
+            <dd class="well"><%= @sanshiliuji.content %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanshiliuji.commentary')%>:
+            </span></dt>
+            <dd class="well"><%= @sanshiliuji.commentary %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanshiliuji.comment')%>:
+            </span></dt>
+            <dd class="well"><%= @sanshiliuji.comment %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanshiliuji.appreciation')%>:
+            </span></dt>
+            <dd class="well"><%= @sanshiliuji.appreciation %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanshiliuji.translation')%>:
+            </span></dt>
+            <dd class="well"><%= @sanshiliuji.translation %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanshiliuji.interpretation')%>:
+            </span></dt>
+            <dd class="well"><%= @sanshiliuji.interpretation %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanshiliuji.story')%>:
+            </span></dt>
+            <dd class="well"><%= @sanshiliuji.story %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.sanshiliuji.simple_explanation')%>:
+            </span></dt>
+            <dd class="well"><%= @sanshiliuji.simple_explanation %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,2 @@
+class Yuefu < ApplicationRecord
+end

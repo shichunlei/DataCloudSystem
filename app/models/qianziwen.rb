@@ -1,0 +1,2 @@
+class Qianziwen < ApplicationRecord
+end

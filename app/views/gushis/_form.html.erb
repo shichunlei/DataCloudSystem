@@ -1,0 +1,52 @@
+<section class="content invoice">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_for(@gushi, :html => { :role => "form" }) do |f| %>
+        <% if @gushi.errors.any? %>
+          <div class="alert alert-danger alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            <h4><%= pluralize(@gushi.errors.count, "error") %> prohibited this gushi from being saved:</h4>
+
+            <ul>
+            <% @gushi.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+                  <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :author %>
+            <%= f.text_field :author, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :mtype %>
+            <%= f.text_field :mtype, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :content %>
+            <%= f.text_area :content, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :translation %>
+            <%= f.text_area :translation, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :explanation %>
+            <%= f.text_area :explanation, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :appreciation %>
+            <%= f.text_area :appreciation, :class => "form-control" %>
+          </div>
+                <div class="form-group">
+          <%= f.submit :class => "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

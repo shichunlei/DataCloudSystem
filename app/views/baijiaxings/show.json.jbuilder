@@ -1,0 +1,1 @@
+json.partial! "baijiaxings/baijiaxing", baijiaxing: @baijiaxing

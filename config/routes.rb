@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :baijiaxings
+  resources :qianziwens
+  resources :sanzijings
+  resources :zhongyongs
+  resources :daxues
+  resources :gushis
   resources :chucis
   resources :sanshiliujis
   resources :yuefus

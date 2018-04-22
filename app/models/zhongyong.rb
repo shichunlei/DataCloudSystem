@@ -1,0 +1,2 @@
+class Zhongyong < ApplicationRecord
+end

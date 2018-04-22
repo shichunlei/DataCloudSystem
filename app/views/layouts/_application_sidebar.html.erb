@@ -163,22 +163,28 @@
       <% end%>
     <% end %>
     <%= treeview_link '亲子教育' do %>
+      <% if can? :read, Gushi %>
+        <%= nav_link gushis_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          古诗300首
+        <% end %>
+      <% end%>
       <% if can? :read, Tangshi %>
         <%= nav_link tangshis_path do %>
         <i class="fa fa-angle-double-right"></i>
-          唐诗
+          唐诗300首
         <% end %>
       <% end%>
       <% if can? :read, Songci %>
         <%= nav_link songcis_path do %>
         <i class="fa fa-angle-double-right"></i>
-          宋词
+          宋词300首
         <% end %>
       <% end%>
       <% if can? :read, Yuanqu %>
         <%= nav_link yuanqus_path do %>
         <i class="fa fa-angle-double-right"></i>
-          元曲
+          元曲300首
         <% end %>
       <% end%>
       <% if can? :read, Lunyu %>
@@ -311,6 +317,24 @@
         <%= nav_link chucis_path do %>
         <i class="fa fa-angle-double-right"></i>
           楚辞
+        <% end %>
+      <% end%>
+      <% if can? :read, Sanzijing %>
+        <%= nav_link sanzijings_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          三字经
+        <% end %>
+      <% end%>
+      <% if can? :read, Baijiaxing %>
+        <%= nav_link baijiaxings_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          百家姓
+        <% end %>
+      <% end%>
+      <% if can? :read, Qianziwen %>
+        <%= nav_link qianziwens_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          千字文
         <% end %>
       <% end%>
     <% end %>

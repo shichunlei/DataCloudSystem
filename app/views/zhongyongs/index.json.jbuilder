@@ -1,0 +1,1 @@
+json.array! @zhongyongs, partial: 'zhongyongs/zhongyong', as: :zhongyong

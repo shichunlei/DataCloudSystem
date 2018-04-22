@@ -61,6 +61,9 @@ rails g scaffold recipe_process recipe:references pcontent:text pic:string
 #-----------------------------------唐诗---------------------------
 rails g scaffold tangshi name:string author:string mtype:string content:text explanation:text appreciation:text
 
+#-----------------------------------古诗---------------------------
+rails g scaffold gushi name:string author:string mtype:string content:text translation:text explanation:text appreciation:text
+
 #-----------------------------------宋词---------------------------
 rails g scaffold songci name:string author:string mtype:string content:text explanation:text appreciation:text
 
@@ -72,6 +75,12 @@ rails g scaffold lunyu chapter:string name:string content:text commentary:text t
 
 #-----------------------------------孟子---------------------------
 rails g scaffold mengzi chapter:string name:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------大学---------------------------
+rails g scaffold daxue name:string author:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------中庸---------------------------
+rails g scaffold zhongyong name:string author:string content:text commentary:text translation:text appreciation:text interpretation:text
 
 #-----------------------------------老子 - 道德经---------------------------
 rails g scaffold daodejing name:string content:text commentary:text translation:text appreciation:text interpretation:text
@@ -163,6 +172,17 @@ rails g scaffold dizangjing name:string content:text commentary:text translation
 #-----------------------------------楚辞---------------------------
 rails g scaffold chuci name:string author:string chapter:string content:text commentary:text translation:text appreciation:text interpretation:text
 
+#-----------------------------------孝经---------------------------
+rails g scaffold xiaojing name:string author:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------三字经---------------------------
+rails g scaffold sanzijing name:string author:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------千字文---------------------------
+rails g scaffold qianziwen name:string author:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------百家姓---------------------------
+rails g scaffold baijiaxing name:string author:string source:text celebrity:text distributing:text
 
 
 #-----------------------------------历史上的今天---------------------------

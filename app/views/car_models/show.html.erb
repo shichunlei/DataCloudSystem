@@ -16,7 +16,7 @@
       <div class="box box-primary">
         <div class="box-header">
           <div class="box-tools pull-right">
-            <% if can? :edit, CarModel %>
+            <!-- <% if can? :edit, CarModel %>
               <%= link_to edit_car_model_path(@car_model), :class => 'btn btn-primary' do %>
                 <span class="glyphicon glyphicon-pencil"></span>
                 <%=t('views.edit')%>
@@ -26,7 +26,7 @@
             <%= link_to "#{car_models_path}?page=#{@page}", :class => 'btn btn-success' do %>
             <span class="glyphicon glyphicon-chevron-left"></span>
             <%=t('views.return')%>
-            <% end %>
+            <% end %> -->
           </div>
         </div>
         <div class="box-body">
@@ -73,6 +73,74 @@
             <%=t('activerecord.attributes.car_model.sizetype')%>:
             </span></dt>
             <dd class="well"><%= @car_model.sizetype %></dd>
+            <dt class="label-change"><span class="label-content label-info">基本信息:</span></dt>
+            <dd class="well">
+              <%= t('activerecord.attributes.car_basic.price') %>：                <span class="label-content label-info"><strong><%= @car_model.basic["price"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_basic.saleprice') %>：                <span class="label-content label-info"><strong><%= @car_model.basic["saleprice"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_basic.warrantypolicy') %>：                <span class="label-content label-info"><strong><%= @car_model.basic["warrantypolicy"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_basic.vechiletax') %>：                <span class="label-content label-info"><strong><%= @car_model.basic["vechiletax"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_basic.displacement') %>：                <span class="label-content label-info"><strong><%= @car_model.basic["displacement"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_basic.gearbox') %>：                <span class="label-content label-info"><strong><%= @car_model.basic["gearbox"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_basic.comfuelconsumption') %>：                <span class="label-content label-info"><strong><%= @car_model.basic["comfuelconsumption"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_basic.userfuelconsumption') %>：                <span class="label-content label-info"><strong><%= @car_model.basic["userfuelconsumption"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_basic.officialaccelerationtime100') %>：                <span class="label-content label-info"><strong><%= @car_model.basic["officialaccelerationtime100"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_basic.maxspeed') %>：                <span class="label-content label-info"><strong><%= @car_model.basic["maxspeed"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_basic.seatnum') %>：                <span class="label-content label-info"><strong><%= @car_model.basic["seatnum"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_basic.testaccelerationtime100') %>：                <span class="label-content label-info"><strong><%= @car_model.basic["testaccelerationtime100"] %></strong></span>
+            </dd>
+            <dt class="label-change"><span class="label-content label-info">车体信息:</span></dt>
+            <dd class="well">
+              <%= t('activerecord.attributes.car_body.color') %>：                <span class="label-content label-info"><strong><%= @car_model.body["color"] %></strong></span>
+              <br><br>
+              长*宽*高（mm）：                <span class="label-content label-info"><strong><%= "#{@car_model.body["len"]}*#{@car_model.body["width"]}*#{@car_model.body["height"]}" %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.wheelbase') %>：                <span class="label-content label-info"><strong><%= @car_model.body["wheelbase"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.fronttrack') %>：                <span class="label-content label-info"><strong><%= @car_model.body["fronttrack"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.reartrack') %>：                <span class="label-content label-info"><strong><%= @car_model.body["reartrack"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.weight') %>：                <span class="label-content label-info"><strong><%= @car_model.body["weight"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.fullweight') %>：                <span class="label-content label-info"><strong><%= @car_model.body["fullweight"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.mingroundclearance') %>：                <span class="label-content label-info"><strong><%= @car_model.body["mingroundclearance"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.approachangle') %>：                <span class="label-content label-info"><strong><%= @car_model.body["approachangle"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.departureangle') %>：                <span class="label-content label-info"><strong><%= @car_model.body["departureangle"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.luggagevolume') %>：                <span class="label-content label-info"><strong><%= @car_model.body["luggagevolume"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.luggagemode') %>：                <span class="label-content label-info"><strong><%= @car_model.body["luggagemode"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.luggageopenmode') %>：                <span class="label-content label-info"><strong><%= @car_model.body["luggageopenmode"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.inductionluggage') %>：                <span class="label-content label-info"><strong><%= @car_model.body["inductionluggage"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.departureangle') %>：                <span class="label-content label-info"><strong><%= @car_model.body["departureangle"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.doornum') %>：                <span class="label-content label-info"><strong><%= @car_model.body["doornum"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.tooftype') %>：                <span class="label-content label-info"><strong><%= @car_model.body["tooftype"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.hoodtype') %>：                <span class="label-content label-info"><strong><%= @car_model.body["hoodtype"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.roofluggagerack') %>：                <span class="label-content label-info"><strong><%= @car_model.body["roofluggagerack"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.car_body.sportpackage') %>：                <span class="label-content label-info"><strong><%= @car_model.body["sportpackage"] %></strong></span>
+            </dd>
           </dl>
         </div>
       </div>

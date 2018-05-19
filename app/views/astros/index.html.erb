@@ -20,46 +20,32 @@
       <div class="box box-primary">
         <div class="box-header">
           <div class="box-tools pull-right">
-            <% if can? :create, Astro %>
-              <%= link_to new_astro_path(@astro), :class => 'btn btn-success' do %>
-                <span class="glyphicon glyphicon-plus"></span>
-                <%=t('views.create')%><%=t('activerecord.models.astro')%>
-              <% end %>
-            <% end %>
           </div>
         </div>
         <div class="box-body table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>
-                            <th><%=t('activerecord.attributes.astro.id') -%></th>
-                              <th><%=t('activerecord.attributes.astro.name') -%></th>
-                              <th><%=t('activerecord.attributes.astro.pic') -%></th>
-                              <th><%=t('activerecord.attributes.astro.start_date') -%></th>
-                              <th><%=t('activerecord.attributes.astro.end_date') -%></th>
-                                             <th></th>
-                <th></th>
+                <th><%=t('activerecord.attributes.astro.id') -%></th>
+                <th><%=t('activerecord.attributes.astro.name') -%></th>
+                <th><%=t('activerecord.attributes.astro.pic') -%></th>
+                <th><%=t('activerecord.attributes.astro.start_date') -%></th>
+                <th><%=t('activerecord.attributes.astro.end_date') -%></th>
+                <th>操作</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <% current_page = @page.nil? ? 1 : @page -%>
-              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
               <%= content_tag_for(:tr, @astros) do |astro| %>
-                                <td><%= @page = @page + 1   -%></td>
-                  <td><%= astro.name -%></td>
-                  <td><img src='<%= astro.pic -%>' style="width:50px;height:50px;"/></td>
-                  <td><%= astro.start_date -%></td>
-                  <td><%= astro.end_date -%></td>
-                                                  <% if can? :read, astro %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{astro_path(astro)}?page=#{current_page}" %></td>
+                <td><%= astro.id -%></td>
+                <td><%= astro.name -%></td>
+                <td><img src='<%= astro.pic -%>' style="width:50px;height:50px;"/></td>
+                <td><%= astro.start_date -%></td>
+                <td><%= astro.end_date -%></td>
+                <% if can? :read, astro %>
+                  <td class="list-opertion"><%= link_to "运势", "#{astro_path(astro)}" %></td>
                 <% end %>
-                <% if can? :edit, astro %>
-                  <td class="list-opertion"><%= link_to t('views.edit'), edit_astro_path(astro) %></td>
-                <% end %>
-                <% if can? :destroy, astro %>
-                  <td class="list-opertion"><%= link_to t('views.destroy'), astro, method: :delete, data: { confirm: t('views.confirm') } %></td>
-                <% end %>
+                <td></td>
 
               <% end %>
             </tbody>
@@ -68,5 +54,5 @@
       </div>
     </div>
   </div>
-    <%= paginate @astros %>
+
 </section>

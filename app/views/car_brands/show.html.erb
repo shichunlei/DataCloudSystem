@@ -16,12 +16,12 @@
       <div class="box box-primary">
         <div class="box-header">
           <div class="box-tools pull-right">
-            <% if can? :edit, CarBrand %>
+            <!-- <% if can? :edit, CarBrand %>
               <%= link_to edit_car_brand_path(@car_brand), :class => 'btn btn-primary' do %>
                 <span class="glyphicon glyphicon-pencil"></span>
                 <%=t('views.edit')%>
               <% end %>
-            <% end %>
+            <% end %> -->
 
             <%= link_to "#{car_brands_path}?page=#{@page}", :class => 'btn btn-success' do %>
             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -43,11 +43,19 @@
             <%=t('activerecord.attributes.car_brand.name')%>:
             </span></dt>
             <dd class="well"><%= @car_brand.name %></dd>
-            <dt class="label-change">
-            <span class="label-content label-info">
-            <%=t('activerecord.attributes.car_brand.initial')%>:
-            </span></dt>
-            <dd class="well"><%= @car_brand.initial %></dd>
+            <dd>
+              <% @car_brand.cartype.each do |item| %>
+                <dt class="label-change">
+                  <span class="label-content label-info">
+                    <%= "#{item["fullname"]}" %>
+                  </span>
+                </dt>
+                <dd class="well">
+                  <%= item["salestate"] %>            <%= link_to "查看详情》》", "/car_types/#{item["id"]}" -%><br><br>
+                  <img src='<%= item["logo"] -%>' style="width:200px;height:150px;"/>
+                </dd>
+              <% end %>
+            </dd>
           </dl>
         </div>
       </div>

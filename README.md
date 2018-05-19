@@ -25,8 +25,9 @@ Things you may want to cover:
 
 * ...
 
-Gem  devise-sms-登录注册（支持手机号）https://github.com/giano/devise_sms_activable/pull/8
-权限cancancan/角色/审计
+Gem  
+devise-sms-登录注册（支持手机号）https://github.com/giano/devise_sms_activable/pull/8
+权限/角色/审计 [cancancan](https://github.com/CanCanCommunity/cancancan)
 布局 AdminLTE   & slim
 分页kaminari
 carriewave & upyun
@@ -37,6 +38,9 @@ figaro
 postgres
 mina
 puma
+文件上传 [paperclip](https://github.com/thoughtbot/paperclip)
+数据库 pg
+提供API [grape](https://github.com/ruby-grape/grape)
 
 rails 数据库对应的字段类型
 
@@ -64,4 +68,9 @@ rails 数据库对应的字段类型
 
 :timestamp DATETIME
 
-### 部分数据来源于极速数据
+
+### 部分数据来源
+
+  [极速数据](https://www.jisuapi.com/)
+
+  [古诗文网](https://www.gushiwen.org/)

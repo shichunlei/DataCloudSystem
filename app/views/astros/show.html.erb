@@ -16,14 +16,7 @@
       <div class="box box-primary">
         <div class="box-header">
           <div class="box-tools pull-right">
-            <% if can? :edit, Astro %>
-              <%= link_to edit_astro_path(@astro), :class => 'btn btn-primary' do %>
-                <span class="glyphicon glyphicon-pencil"></span>
-                <%=t('views.edit')%>
-              <% end %>
-            <% end %>
-
-            <%= link_to "#{astros_path}?page=#{@page}", :class => 'btn btn-success' do %>
+            <%= link_to "#{astros_path}", :class => 'btn btn-success' do %>
             <span class="glyphicon glyphicon-chevron-left"></span>
             <%=t('views.return')%>
             <% end %>
@@ -44,15 +37,105 @@
               <img src='<%= @astro.pic -%>' style="width:150px;height:150px;"/>
             </dd>
             <dt class="label-change">
-            <span class="label-content label-info">
-            <%=t('activerecord.attributes.astro.start_date')%>:
-            </span></dt>
-            <dd class="well"><%= @astro.start_date %></dd>
+            <span class="label-content label-info">日期:</span></dt>
+            <dd class="well"><%= @astro.start_date %>至<%= @astro.end_date %></dd>
             <dt class="label-change">
             <span class="label-content label-info">
-            <%=t('activerecord.attributes.astro.end_date')%>:
+            <%=t('activerecord.attributes.astro.today_fortune')%>:
             </span></dt>
-            <dd class="well"><%= @astro.end_date %></dd>
+            <dd class="well">
+              <%= t('activerecord.attributes.today_fortune.tdate') %>：<span class="label-content label-info"><strong><%= @astro.today_fortune["tdate"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.today_fortune.love') %>：<span class="label-content label-info"><strong><%= @astro.today_fortune["love"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.today_fortune.health') %>：<span class="label-content label-info"><strong><%= @astro.today_fortune["health"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.today_fortune.career') %>：<span class="label-content label-info"><strong><%= @astro.today_fortune["career"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.today_fortune.color') %>：<span class="label-content label-info"><strong><%= @astro.today_fortune["color"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.today_fortune.star') %>：<span class="label-content label-info"><strong><%= @astro.today_fortune["star"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.today_fortune.number') %>：<span class="label-content label-info"><strong><%= @astro.today_fortune["number"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.today_fortune.money') %>：<span class="label-content label-info"><strong><%= @astro.today_fortune["money"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.today_fortune.summary') %>：<span class="label-content label-info"><strong><%= @astro.today_fortune["summary"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.today_fortune.presummary') %>：<br><br><p><strong><%= @astro.today_fortune["presummary"] %></strong></p>
+            </dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.astro.tomorrow_fortune')%>:
+            </span></dt>
+            <dd class="well">
+              <%= t('activerecord.attributes.tomorrow_fortune.tdate') %>：<span class="label-content label-info"><strong><%= @astro.tomorrow_fortune["tdate"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.tomorrow_fortune.love') %>：<span class="label-content label-info"><strong><%= @astro.tomorrow_fortune["love"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.tomorrow_fortune.health') %>：<span class="label-content label-info"><strong><%= @astro.tomorrow_fortune["health"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.tomorrow_fortune.career') %>：<span class="label-content label-info"><strong><%= @astro.tomorrow_fortune["career"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.tomorrow_fortune.color') %>：<span class="label-content label-info"><strong><%= @astro.tomorrow_fortune["color"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.tomorrow_fortune.star') %>：<span class="label-content label-info"><strong><%= @astro.tomorrow_fortune["star"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.tomorrow_fortune.number') %>：<span class="label-content label-info"><strong><%= @astro.tomorrow_fortune["number"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.tomorrow_fortune.money') %>：<span class="label-content label-info"><strong><%= @astro.tomorrow_fortune["money"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.tomorrow_fortune.summary') %>：<span class="label-content label-info"><strong><%= @astro.tomorrow_fortune["summary"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.tomorrow_fortune.presummary') %>：<br><br><p><strong><%= @astro.tomorrow_fortune["presummary"] %></strong></p>
+            </dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.astro.week_fortune')%>:
+            </span></dt>
+            <dd class="well">
+              <%= t('activerecord.attributes.week_fortune.w_date') %>：<span class="label-content label-info"><strong><%= @astro.week_fortune["start_date"] %>至<%= @astro.week_fortune["end_date"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.week_fortune.love') %>：<br><br><p><strong><%= @astro.week_fortune["love"] %></strong></p>
+              <br><br>
+              <%= t('activerecord.attributes.week_fortune.career') %>：<br><br><p><strong><%= @astro.week_fortune["career"] %></strong></p>
+              <br><br>
+              <%= t('activerecord.attributes.week_fortune.money') %>：<br><br><p><strong><%= @astro.week_fortune["money"] %></strong></p>
+              <br><br>
+              <%= t('activerecord.attributes.week_fortune.job') %>：<br><br><p><strong><%= @astro.week_fortune["job"] %></strong></p>
+            </dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.astro.month_fortune')%>:
+            </span></dt>
+            <dd class="well">
+              <%= t('activerecord.attributes.month_fortune.mdate') %>：<span class="label-content label-info"><strong><%= @astro.month_fortune["mdate"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.month_fortune.summary') %>：<br><br><p><strong><%= @astro.month_fortune["summary"] %></strong></p>
+              <br><br>
+              <%= t('activerecord.attributes.month_fortune.love') %>：<br><br><p><strong><%= @astro.month_fortune["love"] %></strong></p>
+              <br><br>
+              <%= t('activerecord.attributes.month_fortune.health') %>：<br><br><p><strong><%= @astro.month_fortune["health"] %></strong></p>
+              <br><br>
+              <%= t('activerecord.attributes.month_fortune.career') %>：<br><br><p><strong><%= @astro.month_fortune["career"] %></strong></p>
+              <br><br>
+              <%= t('activerecord.attributes.month_fortune.money') %>：<br><br><p><strong><%= @astro.month_fortune["money"] %></strong></p>
+            </dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.astro.year_fortune')%>:
+            </span></dt>
+            <dd class="well">
+              <%= t('activerecord.attributes.year_fortune.year') %>：<span class="label-content label-info"><strong><%= @astro.year_fortune["year"] %></strong></span>
+              <br><br>
+              <%= t('activerecord.attributes.year_fortune.summary') %>：<br><br><p><strong><%= @astro.year_fortune["summary"] %></strong></p>
+              <br><br>
+              <%= t('activerecord.attributes.year_fortune.love') %>：<br><br><p><strong><%= @astro.year_fortune["love"] %></strong></p>
+              <br><br>
+              <%= t('activerecord.attributes.year_fortune.career') %>：<br><br><p><strong><%= @astro.year_fortune["career"] %></strong></p>
+              <br><br>
+              <%= t('activerecord.attributes.year_fortune.money') %>：<br><br><p><strong><%= @astro.year_fortune["money"] %></strong></p>
+            </dd>
           </dl>
         </div>
       </div>

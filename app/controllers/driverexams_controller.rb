@@ -4,7 +4,7 @@ class DriverexamsController < ApplicationController
   # GET /driverexams
   def index
     @page = params[:page]
-    @driverexams = Driverexam.order(:id).page(@page)
+    @driverexams = Driverexam.order(:subject, :chapter_no, :id).page(@page)
   end
 
   # GET /driverexams/1

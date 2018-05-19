@@ -62,10 +62,32 @@
             </span></dt>
             <dd class="well"><%= @recipe.cookingtime %></dd>
             <dt class="label-change">
+              <span class="label-content label-info">食材:</span>
+            </dt>
+            <dd class="well">
+              <% (0..@recipe.material.size-1).each do |i| %>
+                <%= "#{@recipe.material[i]["mname"]}#{@recipe.material[i]["amount"]}" %>
+                <% if i != @recipe.material.size-1%>
+                  、
+                <% end %>
+              <% end %>
+            </dd>
+            <dt class="label-change">
+              <span class="label-content label-info">步骤:</span>
+            </dt>
+            <dd class="well">
+              <% (0..@recipe.process.size - 1).each do |i| %>
+                <br><br>
+                <%= "第#{i+1}步：#{@recipe.process[i]["pcontent"]}" %>
+                <br><br>
+                <img src='<%= @recipe.process[i]["pic"] %>' style="width:180px;height:150px;"/>
+              <% end %>
+            </dd>
+            <dt class="label-change">
             <span class="label-content label-info">
             <%=t('activerecord.attributes.recipe.content')%>:
             </span></dt>
-            <dd class="well"><%= @recipe.content %></dd>
+            <dd class="well"><%= raw @recipe.content %></dd>
             <dt class="label-change">
             <span class="label-content label-info">
             <%=t('activerecord.attributes.recipe.tag')%>:

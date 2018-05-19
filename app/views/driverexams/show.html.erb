@@ -16,12 +16,12 @@
       <div class="box box-primary">
         <div class="box-header">
           <div class="box-tools pull-right">
-            <% if can? :edit, Driverexam %>
+            <!-- <% if can? :edit, Driverexam %>
               <%= link_to edit_driverexam_path(@driverexam), :class => 'btn btn-primary' do %>
                 <span class="glyphicon glyphicon-pencil"></span>
                 <%=t('views.edit')%>
               <% end %>
-            <% end %>
+            <% end %> -->
 
             <%= link_to "#{driverexams_path}?page=#{@page}", :class => 'btn btn-success' do %>
               <span class="glyphicon glyphicon-chevron-left"></span>
@@ -35,47 +35,40 @@
               <span class="label-content label-info">
               <%=t('activerecord.attributes.driverexam.subject')%>:
               </span></dt>
-              <dd class="well"><%= @driverexam.subject %></dd>
+              <dd class="well">科目<%= @driverexam.subject %></dd>
               <dt class="label-change">
               <span class="label-content label-info">
               <%=t('activerecord.attributes.driverexam.chapter')%>:
               </span></dt>
-              <dd class="well"><%= @driverexam.chapter %></dd>
+              <dd class="well">第<%= @driverexam.chapter_no %>章、<%= @driverexam.chapter %></dd>
               <dt class="label-change">
               <span class="label-content label-info">
               <%=t('activerecord.attributes.driverexam.q_type')%>:
               </span></dt>
               <dd class="well"><%= @driverexam.q_type %></dd>
+              <% if !@driverexam.pic.blank? %>
+                <dt class="label-change">
+                <span class="label-content label-info">
+                <%=t('activerecord.attributes.driverexam.pic')%>:
+                </span></dt>
+                <dd class="well">
+                  <img src='<%= @driverexam.pic -%>' style="width:440px;height:300px;"/>
+                </dd>
+              <% end %>
               <dt class="label-change">
               <span class="label-content label-info">
               <%=t('activerecord.attributes.driverexam.question')%>:
               </span></dt>
               <dd class="well"><%= @driverexam.question %></dd>
               <dt class="label-change">
-              <span class="label-content label-info">
-              <%=t('activerecord.attributes.driverexam.option1')%>:
-              </span></dt>
-              <dd class="well"><%= @driverexam.option1 %></dd>
-              <dt class="label-change">
-              <span class="label-content label-info">
-              <%=t('activerecord.attributes.driverexam.option2')%>:
-              </span></dt>
-              <dd class="well"><%= @driverexam.option2 %></dd>
-              <dt class="label-change">
-              <span class="label-content label-info">
-              <%=t('activerecord.attributes.driverexam.option3')%>:
-              </span></dt>
-              <dd class="well"><%= @driverexam.option3 %></dd>
-              <dt class="label-change">
-              <span class="label-content label-info">
-              <%=t('activerecord.attributes.driverexam.option4')%>:
-              </span></dt>
-              <dd class="well"><%= @driverexam.option4 %></dd>
-              <dt class="label-change">
-              <span class="label-content label-info">
-              <%=t('activerecord.attributes.driverexam.pic')%>:
-              </span></dt>
-              <dd class="well"><%= @driverexam.pic %></dd>
+              <span class="label-content label-info">选项:</span></dt>
+              <dd class="well">
+                <% if @driverexam.option1.blank? %>
+                  A、对<br><br>B、错
+                <% else %>
+                  <%= @driverexam.option1 %><br><br><%= @driverexam.option2 %><br><br><%= @driverexam.option3 %><br><br><%= @driverexam.option4 %>
+                <% end %>
+              </dd>
               <dt class="label-change">
               <span class="label-content label-info">
               <%=t('activerecord.attributes.driverexam.answer')%>:
@@ -86,11 +79,6 @@
               <%=t('activerecord.attributes.driverexam.explain')%>:
               </span></dt>
               <dd class="well"><%= @driverexam.explain %></dd>
-              <dt class="label-change">
-              <span class="label-content label-info">
-              <%=t('activerecord.attributes.driverexam.chapter_no')%>:
-              </span></dt>
-              <dd class="well"><%= @driverexam.chapter_no %></dd>
           </dl>
         </div>
       </div>

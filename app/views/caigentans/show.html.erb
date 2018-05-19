@@ -1,0 +1,79 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.caigentan') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.caigentan'), caigentans_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, Caigentan %>
+              <%= link_to edit_caigentan_path(@caigentan), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{caigentans_path}?page=#{@page}", :class => 'btn btn-success' do %>
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.caigentan.name')%>:
+              </span></dt>
+              <dd class="well"><%= @caigentan.name %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.caigentan.author')%>:
+              </span></dt>
+              <dd class="well"><%= @caigentan.author %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.caigentan.chapter')%>:
+              </span></dt>
+              <dd class="well"><%= @caigentan.chapter %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.caigentan.content')%>:
+              </span></dt>
+              <dd class="well"><%= raw @caigentan.content %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.caigentan.commentary')%>:
+              </span></dt>
+              <dd class="well"><%= raw @caigentan.commentary %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.caigentan.translation')%>:
+              </span></dt>
+              <dd class="well"><%= raw @caigentan.translation %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.caigentan.appreciation')%>:
+              </span></dt>
+              <dd class="well"><%= raw @caigentan.appreciation %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.caigentan.interpretation')%>:
+              </span></dt>
+              <dd class="well"><%= @caigentan.interpretation %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,2 @@
+class Mingshu < ApplicationRecord
+end

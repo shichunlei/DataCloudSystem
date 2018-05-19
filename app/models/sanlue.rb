@@ -1,0 +1,2 @@
+class Sanlue < ApplicationRecord
+end

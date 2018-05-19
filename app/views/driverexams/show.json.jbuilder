@@ -1,0 +1,1 @@
+json.partial! "driverexams/driverexam", driverexam: @driverexam

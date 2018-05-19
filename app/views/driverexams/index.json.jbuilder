@@ -1,0 +1,1 @@
+json.array! @driverexams, partial: 'driverexams/driverexam', as: :driverexam

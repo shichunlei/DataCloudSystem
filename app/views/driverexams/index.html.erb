@@ -1,0 +1,68 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.list')%> <small><%= t('activerecord.models.driverexam') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li class="active"><%= t('activerecord.models.driverexam') %></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :create, Driverexam %>
+              <%= link_to new_driverexam_path(@driverexam), :class => 'btn btn-success' do %>
+                <span class="glyphicon glyphicon-plus"></span>
+                <%=t('views.create')%><%=t('activerecord.models.driverexam')%>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                                <th><%=t('activerecord.attributes.driverexam.id') -%></th>
+                                                    <th><%=t('activerecord.attributes.driverexam.subject') -%></th>
+                                                                      <th><%=t('activerecord.attributes.driverexam.chapter') -%></th>
+                                                                      <th><%=t('activerecord.attributes.driverexam.q_type') -%></th>
+                                                                      <th><%=t('activerecord.attributes.driverexam.question') -%></th>
+                                                                      <th><%=t('activerecord.attributes.driverexam.option1') -%></th>
+                                                                                                                                                                                                                                                                                                                            <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% current_page = @page.nil? ? 1 : @page -%>
+              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
+              <%= content_tag_for(:tr, @driverexams) do |driverexam| %>
+                                <td><%= @page = @page + 1   -%></td>
+                                                    <td><%= driverexam.subject -%></td>
+                                                                      <td><%= driverexam.chapter -%></td>
+                                                                      <td><%= driverexam.q_type -%></td>
+                                                                      <td><%= driverexam.question -%></td>
+                                                                      <td><%= driverexam.option1 -%></td>
+                                                                                                                                                                                                                                                                                                                            <% if can? :read, driverexam %>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{driverexam_path(driverexam)}?page=#{current_page}" %></td>
+                <% end %>
+                <% if can? :edit, driverexam %>
+                  <td class="list-opertion"><%= link_to t('views.edit'), edit_driverexam_path(driverexam) %></td>
+                <% end %>
+                <% if can? :destroy, driverexam %>
+                  <td class="list-opertion"><%= link_to t('views.destroy'), driverexam, method: :delete, data: { confirm: t('views.confirm') } %></td>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= paginate @driverexams %>
+</section>

@@ -48,6 +48,8 @@ rails g scaffold car_aircondrefrigerator car_model:references airconditioningcon
 rails g scaffold car_actualtest car_model:references accelerationtime100:string brakingdistance:string
 
 
+rails g scaffold driverexam subject:string chapter:string q_type:string question:string option1:string option2:string option3:string option4:string pic:string answer:string explain:text chapter_no:string
+
 #-----------------------------------菜谱管理---------------------------
 rails g scaffold recipe_classify name:string recipe_classify:references
 
@@ -164,7 +166,7 @@ rails g scaffold bencao name:string chapter:string content:text commentary:text 
 rails g scaffold jingangjing name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
 
 #-----------------------------------菜根谭---------------------------
-rails g scaffold caigentan name:string content:text commentary:text translation:text appreciation:text interpretation:text
+rails g scaffold caigentan name:string author:string chapter:string content:text commentary:text translation:text appreciation:text interpretation:text
 
 #-----------------------------------地藏经---------------------------
 rails g scaffold dizangjing name:string content:text commentary:text translation:text appreciation:text interpretation:text
@@ -183,6 +185,33 @@ rails g scaffold qianziwen name:string author:string content:text commentary:tex
 
 #-----------------------------------百家姓---------------------------
 rails g scaffold baijiaxing name:string author:string source:text celebrity:text distributing:text
+
+#-----------------------------------弟子规---------------------------
+rails g scaffold dizigui name:string author:string chapter:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------增广贤文---------------------------
+rails g scaffold zengguangxianwen name:string chapter:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------了凡四训---------------------------
+rails g scaffold liaofansixun name:string author:string chapter:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------三略---------------------------
+rails g scaffold sanlue name:string author:string chapter:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------词源---------------------------
+rails g scaffold ciyuan name:string author:string chapter:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------浮生六记---------------------------
+rails g scaffold fushengliuji name:string author:string chapter:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------朝野佥载---------------------------
+rails g scaffold chaoyeqianzai name:string author:string chapter:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------李虚中命书---------------------------
+rails g scaffold mingshu name:string author:string chapter:string content:text commentary:text translation:text appreciation:text interpretation:text
+
+#-----------------------------------文言文---------------------------
+rails g scaffold wenyanwen name:string author:string content:text commentary:text translation:text appreciation:text interpretation:text background:text
 
 
 #-----------------------------------历史上的今天---------------------------

@@ -1,0 +1,2 @@
+class Driverexam < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class Wenyanwen < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+json.extract! driverexam, :id, :subject, :chapter, :q_type, :question, :option1, :option2, :option3, :option4, :pic, :answer, :explain, :chapter_no, :created_at, :updated_at
+json.url driverexam_url(driverexam, format: :json)

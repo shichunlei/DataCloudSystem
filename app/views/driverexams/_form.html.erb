@@ -1,0 +1,72 @@
+<section class="content invoice">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_for(@driverexam, :html => { :role => "form" }) do |f| %>
+        <% if @driverexam.errors.any? %>
+          <div class="alert alert-danger alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            <h4><%= pluralize(@driverexam.errors.count, "error") %> prohibited this driverexam from being saved:</h4>
+
+            <ul>
+            <% @driverexam.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+                  <div class="form-group">
+            <%= f.label :subject %>
+            <%= f.text_field :subject, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :chapter %>
+            <%= f.text_field :chapter, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :q_type %>
+            <%= f.text_field :q_type, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :question %>
+            <%= f.text_field :question, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :option1 %>
+            <%= f.text_field :option1, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :option2 %>
+            <%= f.text_field :option2, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :option3 %>
+            <%= f.text_field :option3, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :option4 %>
+            <%= f.text_field :option4, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :pic %>
+            <%= f.text_field :pic, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :answer %>
+            <%= f.text_field :answer, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :explain %>
+            <%= f.text_area :explain, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :chapter_no %>
+            <%= f.text_field :chapter_no, :class => "form-control" %>
+          </div>
+                <div class="form-group">
+          <%= f.submit :class => "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

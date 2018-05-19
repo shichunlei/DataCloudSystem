@@ -1,0 +1,2 @@
+class Chaoyeqianzai < ApplicationRecord
+end

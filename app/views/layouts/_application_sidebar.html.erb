@@ -27,6 +27,12 @@
       <i class="fa fa-dashboard"></i> <span>首页</span>
     <% end %>
     <%= treeview_link '汽车大全管理' do %>
+      <% if can? :read, Driverexam %>
+        <%= nav_link driverexams_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          驾考题库
+        <% end %>
+      <% end%>
       <% if can? :read, CarBrand %>
         <%= nav_link car_brands_path do %>
         <i class="fa fa-angle-double-right"></i>
@@ -45,7 +51,7 @@
           汽车型号管理
         <% end %>
       <% end%>
-      <% if can? :read, CarBasic %>
+      <!-- <% if can? :read, CarBasic %>
         <%= nav_link car_basics_path do %>
         <i class="fa fa-angle-double-right"></i>
           汽车基本信息管理
@@ -134,7 +140,7 @@
         <i class="fa fa-angle-double-right"></i>
           实际测试信息管理
         <% end %>
-      <% end%>
+      <% end%> -->
     <% end %>
     <%= treeview_link '菜谱管理' do %>
       <% if can? :read, RecipeClassify %>
@@ -149,7 +155,7 @@
           菜谱信息管理
         <% end %>
       <% end%>
-      <% if can? :read, RecipeMaterial %>
+      <!-- <% if can? :read, RecipeMaterial %>
         <%= nav_link recipe_materials_path do %>
         <i class="fa fa-angle-double-right"></i>
           材料管理
@@ -160,9 +166,9 @@
         <i class="fa fa-angle-double-right"></i>
           步骤管理
         <% end %>
-      <% end%>
+      <% end%> -->
     <% end %>
-    <%= treeview_link '亲子教育' do %>
+    <%= treeview_link '诗词歌赋' do %>
       <% if can? :read, Gushi %>
         <%= nav_link gushis_path do %>
         <i class="fa fa-angle-double-right"></i>
@@ -187,36 +193,6 @@
           元曲300首
         <% end %>
       <% end%>
-      <% if can? :read, Lunyu %>
-        <%= nav_link lunyus_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          论语
-        <% end %>
-      <% end%>
-      <% if can? :read, Mengzi %>
-        <%= nav_link mengzis_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          孟子
-        <% end %>
-      <% end%>
-      <% if can? :read, Daodejing %>
-        <%= nav_link daodejings_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          老子 - 道德经
-        <% end %>
-      <% end%>
-      <% if can? :read, Zhuangzi %>
-        <%= nav_link zhuangzis_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          庄子
-        <% end %>
-      <% end%>
-      <% if can? :read, Shiji %>
-        <%= nav_link shijis_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          史记
-        <% end %>
-      <% end%>
       <% if can? :read, Shijing %>
         <%= nav_link shijings_path do %>
         <i class="fa fa-angle-double-right"></i>
@@ -229,122 +205,222 @@
           乐府诗集
         <% end %>
       <% end%>
-      <% if can? :read, Lvshichunqiu %>
-        <%= nav_link lvshichunqius_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          吕氏春秋
-        <% end %>
-      <% end%>
-      <% if can? :read, Guwen %>
-        <%= nav_link guwens_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          古文观止
-        <% end %>
-      <% end%>
-      <% if can? :read, Mengxibitan %>
-        <%= nav_link mengxibitans_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          梦溪笔谈
-        <% end %>
-      <% end%>
-      <% if can? :read, Sunzibingfa %>
-        <%= nav_link sunzibingfas_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          孙子兵法
-        <% end %>
-      <% end%>
-      <% if can? :read, Huangdineijing %>
-        <%= nav_link huangdineijings_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          黄帝内经
-        <% end %>
-      <% end%>
-      <% if can? :read, Sanguozhi %>
-        <%= nav_link sanguozhis_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          三国志
-        <% end %>
-      <% end%>
-      <% if can? :read, Shanhaijing %>
-        <%= nav_link shanhaijings_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          山海经
-        <% end %>
-      <% end%>
-      <% if can? :read, Xuxiake %>
-        <%= nav_link xuxiakes_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          徐霞客游记
-        <% end %>
-      <% end%>
-      <% if can? :read, Shishuoxinyu %>
-        <%= nav_link shishuoxinyus_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          世说新语
-        <% end %>
-      <% end%>
-      <% if can? :read, Soushenji %>
-        <%= nav_link soushenjis_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          搜神记
-        <% end %>
-      <% end%>
-      <% if can? :read, Wenxindiaolong %>
-        <%= nav_link wenxindiaolongs_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          文心雕龙
-        <% end %>
-      <% end%>
-      <% if can? :read, Zhouyi %>
-        <%= nav_link zhouyis_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          周易
-        <% end %>
-      <% end%>
-      <% if can? :read, Tiangong %>
-        <%= nav_link tiangongs_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          天工开物
-        <% end %>
-      <% end%>
-      <% if can? :read, Sanshiliuji %>
-        <%= nav_link sanshiliujis_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          三十六计
-        <% end %>
-      <% end%>
       <% if can? :read, Chuci %>
         <%= nav_link chucis_path do %>
         <i class="fa fa-angle-double-right"></i>
           楚辞
         <% end %>
       <% end%>
-      <% if can? :read, Sanzijing %>
-        <%= nav_link sanzijings_path do %>
+      <% if can? :read, Wenyanwen %>
+        <%= nav_link wenyanwens_path do %>
         <i class="fa fa-angle-double-right"></i>
-          三字经
-        <% end %>
-      <% end%>
-      <% if can? :read, Baijiaxing %>
-        <%= nav_link baijiaxings_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          百家姓
-        <% end %>
-      <% end%>
-      <% if can? :read, Qianziwen %>
-        <%= nav_link qianziwens_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          千字文
+          文言文
         <% end %>
       <% end%>
     <% end %>
+    <%= treeview_link '古籍' do %>
+      <%= treeview_link '经部' do %>
+        <% if can? :read, Lunyu %>
+          <%= nav_link lunyus_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            论语
+          <% end %>
+        <% end%>
+        <% if can? :read, Mengzi %>
+          <%= nav_link mengzis_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            孟子
+          <% end %>
+        <% end%>
+        <% if can? :read, Lvshichunqiu %>
+          <%= nav_link lvshichunqius_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            吕氏春秋
+          <% end %>
+        <% end%>
+      <% end%>
+      <%= treeview_link '史部' do %>
+        <% if can? :read, Shiji %>
+          <%= nav_link shijis_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            史记
+          <% end %>
+        <% end%>
+        <% if can? :read, Sanguozhi %>
+          <%= nav_link sanguozhis_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            三国志
+          <% end %>
+        <% end%>
+        <% if can? :read, Xuxiake %>
+          <%= nav_link xuxiakes_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            徐霞客游记
+          <% end %>
+        <% end%>
+        <% if can? :read, Fushengliuji %>
+          <%= nav_link fushengliujis_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            浮生六记
+          <% end %>
+        <% end%>
+      <% end%>
+      <%= treeview_link '子部' do %>
+        <% if can? :read, Daodejing %>
+          <%= nav_link daodejings_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            老子 - 道德经
+          <% end %>
+        <% end%>
+        <% if can? :read, Zhuangzi %>
+          <%= nav_link zhuangzis_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            庄子
+          <% end %>
+        <% end%>
+        <% if can? :read, Shanhaijing %>
+          <%= nav_link shanhaijings_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            山海经
+          <% end %>
+        <% end%>
+        <% if can? :read, Sanshiliuji %>
+          <%= nav_link sanshiliujis_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            三十六计
+          <% end %>
+        <% end%>
+        <% if can? :read, Zhouyi %>
+          <%= nav_link zhouyis_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            周易
+          <% end %>
+        <% end%>
+        <% if can? :read, Caigentan %>
+          <%= nav_link caigentans_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            菜根谭
+          <% end %>
+        <% end%>
+        <% if can? :read, Sunzibingfa %>
+          <%= nav_link sunzibingfas_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            孙子兵法
+          <% end %>
+        <% end%>
+        <% if can? :read, Huangdineijing %>
+          <%= nav_link huangdineijings_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            黄帝内经
+          <% end %>
+        <% end%>
+        <% if can? :read, Sanzijing %>
+          <%= nav_link sanzijings_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            三字经
+          <% end %>
+        <% end%>
+        <% if can? :read, Baijiaxing %>
+          <%= nav_link baijiaxings_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            百家姓
+          <% end %>
+        <% end%>
+        <% if can? :read, Qianziwen %>
+          <%= nav_link qianziwens_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            千字文
+          <% end %>
+        <% end%>
+        <% if can? :read, Dizigui %>
+          <%= nav_link diziguis_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            弟子规
+          <% end %>
+        <% end%>
+        <% if can? :read, Zengguangxianwen %>
+          <%= nav_link zengguangxianwens_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            增广贤文
+          <% end %>
+        <% end%>
+        <% if can? :read, Guwen %>
+          <%= nav_link guwens_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            古文观止
+          <% end %>
+        <% end%>
+        <% if can? :read, Mengxibitan %>
+          <%= nav_link mengxibitans_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            梦溪笔谈
+          <% end %>
+        <% end%>
+        <% if can? :read, Shishuoxinyu %>
+          <%= nav_link shishuoxinyus_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            世说新语
+          <% end %>
+        <% end%>
+        <% if can? :read, Soushenji %>
+          <%= nav_link soushenjis_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            搜神记
+          <% end %>
+        <% end%>
+        <% if can? :read, Tiangong %>
+          <%= nav_link tiangongs_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            天工开物
+          <% end %>
+        <% end%>
+        <% if can? :read, Liaofansixun %>
+          <%= nav_link liaofansixuns_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            了凡四训
+          <% end %>
+        <% end%>
+        <% if can? :read, Sanlue %>
+          <%= nav_link sanlues_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            三略
+          <% end %>
+        <% end%>
+        <% if can? :read, Chaoyeqianzai %>
+          <%= nav_link chaoyeqianzais_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            朝野佥载
+          <% end %>
+        <% end%>
+        <% if can? :read, Mingshu %>
+          <%= nav_link mingshus_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            李虚中命书
+          <% end %>
+        <% end%>
+      <% end%>
+      <%= treeview_link '集部' do %>
+        <% if can? :read, Wenxindiaolong %>
+          <%= nav_link wenxindiaolongs_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            文心雕龙
+          <% end %>
+        <% end%>
+        <% if can? :read, Ciyuan %>
+          <%= nav_link ciyuans_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            词源
+          <% end %>
+        <% end%>
+      <% end%>
+    <% end %>
     <%= treeview_link '娱乐游戏' do %>
-      <% if can? :read, MiyuClassify %>
+      <!-- <% if can? :read, MiyuClassify %>
         <%= nav_link miyu_classifies_path do %>
         <i class="fa fa-angle-double-right"></i>
           谜语类别
         <% end %>
-      <% end%>
+      <% end%> -->
       <% if can? :read, Miyu %>
         <%= nav_link miyus_path do %>
         <i class="fa fa-angle-double-right"></i>
@@ -373,7 +449,7 @@
           星座
         <% end %>
       <% end%>
-      <% if can? :read, YearFortune %>
+      <!-- <% if can? :read, YearFortune %>
         <%= nav_link year_fortunes_path do %>
         <i class="fa fa-angle-double-right"></i>
           星座年运势
@@ -402,7 +478,7 @@
         <i class="fa fa-angle-double-right"></i>
           星座当日运势
         <% end %>
-      <% end%>
+      <% end%> -->
     <% end %>
     <%= treeview_link '系统管理' do %>
       <%= nav_link organizations_path do %>

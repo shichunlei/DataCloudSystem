@@ -1,0 +1,2 @@
+class Ciyuan < ApplicationRecord
+end

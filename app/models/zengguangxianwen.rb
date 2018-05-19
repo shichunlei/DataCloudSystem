@@ -1,0 +1,2 @@
+class Zengguangxianwen < ApplicationRecord
+end

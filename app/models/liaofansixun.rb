@@ -1,0 +1,2 @@
+class Liaofansixun < ApplicationRecord
+end

@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
 
+  resources :wenyanwens
+  resources :mingshus
+  resources :chaoyeqianzais
+  resources :fushengliujis
+  resources :ciyuans
+  resources :sanlues
+  resources :liaofansixuns
+  resources :zengguangxianwens
+  resources :diziguis
+  resources :caigentans
+  resources :driverexams
   resources :baijiaxings
   resources :qianziwens
   resources :sanzijings

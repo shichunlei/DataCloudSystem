@@ -1,0 +1,79 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.chaoyeqianzai') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.chaoyeqianzai'), chaoyeqianzais_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, Chaoyeqianzai %>
+              <%= link_to edit_chaoyeqianzai_path(@chaoyeqianzai), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{chaoyeqianzais_path}?page=#{@page}", :class => 'btn btn-success' do %>
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.chaoyeqianzai.name')%>:
+              </span></dt>
+              <dd class="well"><%= @chaoyeqianzai.name %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.chaoyeqianzai.author')%>:
+              </span></dt>
+              <dd class="well"><%= @chaoyeqianzai.author %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.chaoyeqianzai.chapter')%>:
+              </span></dt>
+              <dd class="well"><%= @chaoyeqianzai.chapter %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.chaoyeqianzai.content')%>:
+              </span></dt>
+              <dd class="well"><%= raw @chaoyeqianzai.content %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.chaoyeqianzai.commentary')%>:
+              </span></dt>
+              <dd class="well"><%= raw @chaoyeqianzai.commentary %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.chaoyeqianzai.translation')%>:
+              </span></dt>
+              <dd class="well"><%= raw @chaoyeqianzai.translation %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.chaoyeqianzai.appreciation')%>:
+              </span></dt>
+              <dd class="well"><%= raw @chaoyeqianzai.appreciation %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.chaoyeqianzai.interpretation')%>:
+              </span></dt>
+              <dd class="well"><%= raw @chaoyeqianzai.interpretation %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,1 @@
+json.array! @chaoyeqianzais, partial: 'chaoyeqianzais/chaoyeqianzai', as: :chaoyeqianzai

@@ -1,0 +1,2 @@
+json.extract! chaoyeqianzai, :id, :name, :author, :chapter, :content, :commentary, :translation, :appreciation, :interpretation, :created_at, :updated_at
+json.url chaoyeqianzai_url(chaoyeqianzai, format: :json)

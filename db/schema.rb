@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180422044545) do
+ActiveRecord::Schema.define(version: 20180519025835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,19 @@ ActiveRecord::Schema.define(version: 20180422044545) do
     t.text     "distributing", default: ""
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "caigentans", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "car_actualtests", force: :cascade do |t|
@@ -374,7 +387,33 @@ ActiveRecord::Schema.define(version: 20180422044545) do
     t.index ["car_model_id"], name: "index_car_wheels_on_car_model_id", using: :btree
   end
 
+  create_table "chaoyeqianzais", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "chucis", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "ciyuans", force: :cascade do |t|
     t.string   "name",           default: ""
     t.string   "author",         default: ""
     t.string   "chapter",        default: ""
@@ -401,6 +440,49 @@ ActiveRecord::Schema.define(version: 20180422044545) do
   create_table "daxues", force: :cascade do |t|
     t.string   "name",           default: ""
     t.string   "author",         default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "diziguis", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "driverexams", force: :cascade do |t|
+    t.string   "subject",    default: ""
+    t.string   "chapter",    default: ""
+    t.string   "q_type",     default: ""
+    t.string   "question",   default: ""
+    t.string   "option1",    default: ""
+    t.string   "option2",    default: ""
+    t.string   "option3",    default: ""
+    t.string   "option4",    default: ""
+    t.string   "pic",        default: ""
+    t.string   "answer",     default: ""
+    t.text     "explain",    default: ""
+    t.string   "chapter_no", default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "fushengliujis", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.string   "chapter",        default: ""
     t.text     "content",        default: ""
     t.text     "commentary",     default: ""
     t.text     "translation",    default: ""
@@ -475,6 +557,19 @@ ActiveRecord::Schema.define(version: 20180422044545) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "liaofansixuns", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "lunyus", force: :cascade do |t|
     t.string   "chapter",        default: ""
     t.string   "name",           default: ""
@@ -513,6 +608,19 @@ ActiveRecord::Schema.define(version: 20180422044545) do
   create_table "mengzis", force: :cascade do |t|
     t.string   "chapter",        default: ""
     t.string   "name",           default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "mingshus", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.string   "chapter",        default: ""
     t.text     "content",        default: ""
     t.text     "commentary",     default: ""
     t.text     "translation",    default: ""
@@ -652,6 +760,19 @@ ActiveRecord::Schema.define(version: 20180422044545) do
     t.text     "commentary",     default: ""
     t.text     "appreciation",   default: ""
     t.text     "translation",    default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "sanlues", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
     t.text     "interpretation", default: ""
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
@@ -893,6 +1014,19 @@ ActiveRecord::Schema.define(version: 20180422044545) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "wenyanwens", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.text     "background",     default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "xuxiakes", force: :cascade do |t|
     t.string   "name",           default: ""
     t.text     "content",        default: ""
@@ -933,6 +1067,18 @@ ActiveRecord::Schema.define(version: 20180422044545) do
     t.text     "commentary",     default: ""
     t.text     "appreciation",   default: ""
     t.text     "translation",    default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "zengguangxianwens", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
     t.text     "interpretation", default: ""
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false

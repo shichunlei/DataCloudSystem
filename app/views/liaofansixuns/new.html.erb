@@ -1,0 +1,13 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.create')%> <small><%=t('activerecord.models.liaofansixun') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('views.show'), liaofansixuns_path %></li>
+      <li class="active"><%=t('views.create')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<%= render 'form' %>

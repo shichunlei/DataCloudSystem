@@ -1,0 +1,1 @@
+json.array! @ciyuans, partial: 'ciyuans/ciyuan', as: :ciyuan

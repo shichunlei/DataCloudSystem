@@ -15,12 +15,12 @@
       <div class="box box-primary">
         <div class="box-header">
           <div class="box-tools pull-right">
-            <% if can? :create, Lvshichunqiu %>
+            <!-- <% if can? :create, Lvshichunqiu %>
               <%= link_to new_lvshichunqiu_path(@lvshichunqiu), :class => 'btn btn-success' do %>
                 <span class="glyphicon glyphicon-plus"></span>
                 <%=t('views.create')%><%=t('activerecord.models.lvshichunqiu')%>
               <% end %>
-            <% end %>
+            <% end %> -->
           </div>
         </div>
         <div class="box-body table-responsive">
@@ -32,8 +32,7 @@
                               <th><%=t('activerecord.attributes.lvshichunqiu.name') -%></th>
 
                               <th><%=t('activerecord.attributes.lvshichunqiu.chapter') -%></th>
-                                              <th></th>
-                <th></th>
+                <th>操作</th>
                 <th></th>
               </tr>
             </thead>
@@ -51,12 +50,13 @@
                                                       <% if can? :read, lvshichunqiu %>
                   <td class="list-opertion"><%= link_to t('views.show'), "#{lvshichunqiu_path(lvshichunqiu)}?page=#{current_page}" %></td>
                 <% end %>
-                <% if can? :edit, lvshichunqiu %>
+                <!-- <% if can? :edit, lvshichunqiu %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_lvshichunqiu_path(lvshichunqiu) %></td>
                 <% end %>
                 <% if can? :destroy, lvshichunqiu %>
                   <td class="list-opertion"><%= link_to t('views.destroy'), lvshichunqiu, method: :delete, data: { confirm: t('views.confirm') } %></td>
-                <% end %>
+                <% end %> -->
+                <td></td>
 
               <% end %>
             </tbody>

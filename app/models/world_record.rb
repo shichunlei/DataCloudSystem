@@ -1,0 +1,2 @@
+class WorldRecord < ApplicationRecord
+end

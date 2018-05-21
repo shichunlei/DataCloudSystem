@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180520045919) do
+ActiveRecord::Schema.define(version: 20180521063847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "airports", force: :cascade do |t|
+    t.string   "name",       default: ""
+    t.string   "iata",       default: ""
+    t.string   "icao",       default: ""
+    t.string   "other_name", default: ""
+    t.integer  "country_id"
+    t.string   "city_name",  default: ""
+    t.text     "intro",      default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["country_id"], name: "index_airports_on_country_id", using: :btree
+  end
 
   create_table "astros", force: :cascade do |t|
     t.string   "name",       default: ""
@@ -424,6 +437,25 @@ ActiveRecord::Schema.define(version: 20180520045919) do
     t.text     "interpretation", default: ""
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string   "name",       default: ""
+    t.string   "enname",     default: ""
+    t.string   "area",       default: ""
+    t.string   "enarea",     default: ""
+    t.text     "info",       default: ""
+    t.string   "flag",       default: ""
+    t.text     "finfo",      default: ""
+    t.text     "emblem",     default: ""
+    t.text     "einfo",      default: ""
+    t.string   "anthems",    default: ""
+    t.string   "lyrics",     default: ""
+    t.string   "compose",    default: ""
+    t.text     "lrc",        default: ""
+    t.text     "otherlrc",   default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "daodejings", force: :cascade do |t|
@@ -1066,6 +1098,16 @@ ActiveRecord::Schema.define(version: 20180520045919) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "world_records", force: :cascade do |t|
+    t.string   "name",        default: ""
+    t.string   "category",    default: ""
+    t.string   "pic_url",     default: ""
+    t.text     "pic_all_url", default: ""
+    t.text     "content",     default: ""
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "xuxiakes", force: :cascade do |t|
     t.string   "name",           default: ""
     t.text     "content",        default: ""
@@ -1172,6 +1214,7 @@ ActiveRecord::Schema.define(version: 20180520045919) do
     t.datetime "updated_at",                  null: false
   end
 
+  add_foreign_key "airports", "countries"
   add_foreign_key "car_actualtests", "car_models"
   add_foreign_key "car_aircondrefrigerators", "car_models"
   add_foreign_key "car_basics", "car_models"

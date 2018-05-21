@@ -1,0 +1,76 @@
+<section class="content invoice">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_for(@country, :html => { :role => "form" }) do |f| %>
+        <% if @country.errors.any? %>
+          <div class="alert alert-danger alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            <h4><%= pluralize(@country.errors.count, "error") %> prohibited this country from being saved:</h4>
+
+            <ul>
+            <% @country.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+                  <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :enname %>
+            <%= f.text_field :enname, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :area %>
+            <%= f.text_field :area, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :info %>
+            <%= f.text_area :info, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :flag %>
+            <%= f.text_field :flag, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :finfo %>
+            <%= f.text_area :finfo, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :emblem %>
+            <%= f.text_area :emblem, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :einfo %>
+            <%= f.text_area :einfo, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :anthems %>
+            <%= f.text_field :anthems, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :lyrics %>
+            <%= f.text_field :lyrics, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :compose %>
+            <%= f.text_field :compose, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :lrc %>
+            <%= f.text_area :lrc, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :otherlrc %>
+            <%= f.text_area :otherlrc, :class => "form-control" %>
+          </div>
+                <div class="form-group">
+          <%= f.submit :class => "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

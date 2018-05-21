@@ -16,12 +16,12 @@
       <div class="box box-primary">
         <div class="box-header">
           <div class="box-tools pull-right">
-            <% if can? :edit, Tangshi %>
+            <!-- <% if can? :edit, Tangshi %>
               <%= link_to edit_tangshi_path(@tangshi), :class => 'btn btn-primary' do %>
                 <span class="glyphicon glyphicon-pencil"></span>
                 <%=t('views.edit')%>
               <% end %>
-            <% end %>
+            <% end %> -->
 
             <%= link_to "#{tangshis_path}?page=#{@page}", :class => 'btn btn-success' do %>
             <span class="glyphicon glyphicon-chevron-left"></span>

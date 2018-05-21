@@ -4,7 +4,7 @@ class BaijiaxingsController < ApplicationController
   # GET /baijiaxings
   def index
     @page = params[:page]
-    @baijiaxings = Baijiaxing.order(:id).page(@page)
+    @baijiaxings = Baijiaxing.order("id desc").page(@page)
   end
 
   # GET /baijiaxings/1

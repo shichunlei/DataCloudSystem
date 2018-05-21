@@ -15,12 +15,12 @@
       <div class="box box-primary">
         <div class="box-header">
           <div class="box-tools pull-right">
-            <% if can? :create, Tangshi %>
+            <!-- <% if can? :create, Tangshi %>
               <%= link_to new_tangshi_path(@tangshi), :class => 'btn btn-success' do %>
                 <span class="glyphicon glyphicon-plus"></span>
                 <%=t('views.create')%><%=t('activerecord.models.tangshi')%>
               <% end %>
-            <% end %>
+            <% end %> -->
           </div>
         </div>
         <div class="box-body table-responsive">
@@ -31,8 +31,7 @@
                 <th><%=t('activerecord.attributes.tangshi.name') -%></th>
                 <th><%=t('activerecord.attributes.tangshi.author') -%></th>
                 <th><%=t('activerecord.attributes.tangshi.mtype') -%></th>
-                <th></th>
-                <th></th>
+                <th>操作</th>
                 <th></th>
               </tr>
             </thead>
@@ -47,12 +46,13 @@
                 <% if can? :read, tangshi %>
                   <td class="list-opertion"><%= link_to t('views.show'), "#{tangshi_path(tangshi)}?page=#{current_page}" %></td>
                 <% end %>
-                <% if can? :edit, tangshi %>
+                <!-- <% if can? :edit, tangshi %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_tangshi_path(tangshi) %></td>
                 <% end %>
                 <% if can? :destroy, tangshi %>
                   <td class="list-opertion"><%= link_to t('views.destroy'), tangshi, method: :delete, data: { confirm: t('views.confirm') } %></td>
-                <% end %>
+                <% end %> -->
+                <td></td>
 
               <% end %>
             </tbody>

@@ -1,0 +1,108 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.country') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.country'), countries_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, Country %>
+              <%= link_to edit_country_path(@country), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{countries_path}?page=#{@page}", :class => 'btn btn-success' do %>
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.country.name')%>:
+              </span></dt>
+              <dd class="well"><%= @country.name %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.country.enname')%>:
+              </span></dt>
+              <dd class="well"><%= @country.enname %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.country.area')%>:
+              </span></dt>
+              <dd class="well"><%= @country.area %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.country.info')%>:
+              </span></dt>
+              <dd class="well"><%= @country.info %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.country.flag')%>:
+              </span></dt>
+              <dd class="well">
+                <img src='<%= @country.flag -%>' style="width:240px;height:180px;"/>
+              </dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.country.finfo')%>:
+              </span></dt>
+              <dd class="well"><%= @country.finfo %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.country.emblem')%>:
+              </span></dt>
+              <dd class="well">
+                <img src='<%= @country.emblem -%>' style="width:180px;height:180px;"/>
+              </dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.country.einfo')%>:
+              </span></dt>
+              <dd class="well"><%= @country.einfo %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.country.anthems')%>:
+              </span></dt>
+              <dd class="well"><%= @country.anthems %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.country.lyrics')%>:
+              </span></dt>
+              <dd class="well"><%= @country.lyrics %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.country.compose')%>:
+              </span></dt>
+              <dd class="well"><%= @country.compose %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.country.lrc')%>:
+              </span></dt>
+              <dd class="well"><%= @country.lrc %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.country.otherlrc')%>:
+              </span></dt>
+              <dd class="well"><%= @country.otherlrc %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

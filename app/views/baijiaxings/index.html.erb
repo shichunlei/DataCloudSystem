@@ -30,8 +30,7 @@
                                 <th><%=t('activerecord.attributes.baijiaxing.id') -%></th>
                                                     <th><%=t('activerecord.attributes.baijiaxing.name') -%></th>
                                                                       <th><%=t('activerecord.attributes.baijiaxing.author') -%></th>
-                                                  <th></th>
-                <th></th>
+                <th>查看</th>
                 <th></th>
               </tr>
             </thead>
@@ -45,12 +44,13 @@
                                                   <% if can? :read, baijiaxing %>
                   <td class="list-opertion"><%= link_to t('views.show'), "#{baijiaxing_path(baijiaxing)}?page=#{current_page}" %></td>
                 <% end %>
-                <% if can? :edit, baijiaxing %>
+                <!-- <% if can? :edit, baijiaxing %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_baijiaxing_path(baijiaxing) %></td>
                 <% end %>
                 <% if can? :destroy, baijiaxing %>
                   <td class="list-opertion"><%= link_to t('views.destroy'), baijiaxing, method: :delete, data: { confirm: t('views.confirm') } %></td>
-                <% end %>
+                <% end %> -->
+                <td/>
               <% end %>
             </tbody>
           </table>

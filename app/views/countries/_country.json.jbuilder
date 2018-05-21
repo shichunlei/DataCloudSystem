@@ -1,0 +1,2 @@
+json.extract! country, :id, :name, :enname, :area, :info, :flag, :finfo, :emblem, :einfo, :anthems, :lyrics, :compose, :lrc, :otherlrc, :created_at, :updated_at
+json.url country_url(country, format: :json)

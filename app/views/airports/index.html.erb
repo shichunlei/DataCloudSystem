@@ -1,0 +1,70 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.list')%> <small><%= t('activerecord.models.airport') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li class="active"><%= t('activerecord.models.airport') %></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :create, Airport %>
+              <%= link_to new_airport_path(@airport), :class => 'btn btn-success' do %>
+                <span class="glyphicon glyphicon-plus"></span>
+                <%=t('views.create')%><%=t('activerecord.models.airport')%>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                                <th><%=t('activerecord.attributes.airport.id') -%></th>
+                                                    <th><%=t('activerecord.attributes.airport.name') -%></th>
+                <th><%=t('activerecord.attributes.airport.iata') -%></th>
+                <th><%=t('activerecord.attributes.airport.icao') -%></th>
+                <th><%=t('activerecord.attributes.airport.other_name') -%></th>
+                <th><%=t('activerecord.attributes.airport.country') -%></th>
+                <th><%=t('activerecord.attributes.airport.city_name') -%></th>
+                <th>查看</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% current_page = @page.nil? ? 1 : @page -%>
+              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
+              <%= content_tag_for(:tr, @airports) do |airport| %>
+                                <td><%= @page = @page + 1   -%></td>
+                                                    <td><%= airport.name -%></td>
+                <td><%= airport.iata -%></td>
+                <td><%= airport.icao -%></td>
+                <td><%= airport.other_name -%></td>
+                <td><%= airport.country.name -%></td>
+                <td><%= airport.city_name -%></td>
+                <% if can? :read, airport %>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{airport_path(airport)}?page=#{current_page}" %></td>
+                <% end %>
+                <!-- <% if can? :edit, airport %>
+                  <td class="list-opertion"><%= link_to t('views.edit'), edit_airport_path(airport) %></td>
+                <% end %> -->
+                <!-- <% if can? :destroy, airport %>
+                  <td class="list-opertion"><%= link_to t('views.destroy'), airport, method: :delete, data: { confirm: t('views.confirm') } %></td>
+                <% end %> -->
+                <td/>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= paginate @airports %>
+</section>

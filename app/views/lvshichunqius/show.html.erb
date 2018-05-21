@@ -16,12 +16,12 @@
       <div class="box box-primary">
         <div class="box-header">
           <div class="box-tools pull-right">
-            <% if can? :edit, Lvshichunqiu %>
+            <!-- <% if can? :edit, Lvshichunqiu %>
               <%= link_to edit_lvshichunqiu_path(@lvshichunqiu), :class => 'btn btn-primary' do %>
                 <span class="glyphicon glyphicon-pencil"></span>
                 <%=t('views.edit')%>
               <% end %>
-            <% end %>
+            <% end %> -->
 
             <%= link_to "#{lvshichunqius_path}?page=#{@page}", :class => 'btn btn-success' do %>
             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -48,6 +48,11 @@
             <dd class="well"><%=  raw @lvshichunqiu.content %></dd>
             <dt class="label-change">
             <span class="label-content label-info">
+            <%=t('activerecord.attributes.lvshichunqiu.translation')%>:
+            </span></dt>
+            <dd class="well"><%=  raw @lvshichunqiu.translation %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
             <%=t('activerecord.attributes.lvshichunqiu.commentary')%>:
             </span></dt>
             <dd class="well"><%=  raw @lvshichunqiu.commentary %></dd>
@@ -56,11 +61,6 @@
             <%=t('activerecord.attributes.lvshichunqiu.appreciation')%>:
             </span></dt>
             <dd class="well"><%=  raw @lvshichunqiu.appreciation %></dd>
-            <dt class="label-change">
-            <span class="label-content label-info">
-            <%=t('activerecord.attributes.lvshichunqiu.translation')%>:
-            </span></dt>
-            <dd class="well"><%=  raw @lvshichunqiu.translation %></dd>
             <dt class="label-change">
             <span class="label-content label-info">
             <%=t('activerecord.attributes.lvshichunqiu.interpretation')%>:

@@ -1,0 +1,1 @@
+json.array! @world_records, partial: 'world_records/world_record', as: :world_record

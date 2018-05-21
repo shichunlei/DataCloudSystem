@@ -39,108 +39,6 @@
           汽车大全
         <% end %>
       <% end%>
-      <!-- <% if can? :read, CarType %>
-        <%= nav_link car_types_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          车系管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarModel %>
-        <%= nav_link car_models_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          汽车型号管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarBasic %>
-        <%= nav_link car_basics_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          汽车基本信息管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarBody %>
-        <%= nav_link car_bodies_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          车体配置信息管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarEngine %>
-        <%= nav_link car_engines_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          发动机配置信息管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarGearbox %>
-        <%= nav_link car_gearboxes_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          变速箱配置信息管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarSafe %>
-        <%= nav_link car_saves_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          安全配置信息管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarSeat %>
-        <%= nav_link car_seats_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          座椅配置信息管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarLight %>
-        <%= nav_link car_lights_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          灯光配置信息管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarWheel %>
-        <%= nav_link car_wheels_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          车轮配置信息管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarEntcom %>
-        <%= nav_link car_entcoms_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          娱乐配置管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarInternalconfig %>
-        <%= nav_link car_internalconfigs_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          内部配置管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarDrivingauxiliary %>
-        <%= nav_link car_drivingauxiliaries_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          行车辅助配置管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarDoormirror %>
-        <%= nav_link car_doormirrors_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          门窗/后视镜配置管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarChassisbrake %>
-        <%= nav_link car_chassisbrakes_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          底盘制动配置管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarAircondrefrigerator %>
-        <%= nav_link car_aircondrefrigerators_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          空调冰箱配置管理
-        <% end %>
-      <% end%>
-      <% if can? :read, CarActualtest %>
-        <%= nav_link car_actualtests_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          实际测试信息管理
-        <% end %>
-      <% end%> -->
     <% end %>
     <%= treeview_link '菜谱管理' do %>
       <% if can? :read, RecipeClassify %>
@@ -155,18 +53,6 @@
           菜谱信息管理
         <% end %>
       <% end%>
-      <!-- <% if can? :read, RecipeMaterial %>
-        <%= nav_link recipe_materials_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          材料管理
-        <% end %>
-      <% end%>
-      <% if can? :read, RecipeProcess %>
-        <%= nav_link recipe_processes_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          步骤管理
-        <% end %>
-      <% end%> -->
     <% end %>
     <%= treeview_link '诗词歌赋' do %>
       <% if can? :read, Gushi %>
@@ -450,7 +336,7 @@
         <% end%>
       <% end%>
     <% end %>
-    <%= treeview_link '娱乐游戏' do %>
+    <%= treeview_link '休闲娱乐' do %>
       <!-- <% if can? :read, MiyuClassify %>
         <%= nav_link miyu_classifies_path do %>
         <i class="fa fa-angle-double-right"></i>
@@ -461,6 +347,30 @@
         <%= nav_link miyus_path do %>
         <i class="fa fa-angle-double-right"></i>
           谜语
+        <% end %>
+      <% end%>
+      <% if can? :read, Astro %>
+        <%= nav_link astros_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          星座
+        <% end %>
+      <% end%>
+      <% if can? :read, WorldRecord %>
+        <%= nav_link world_records_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          世界之最
+        <% end %>
+      <% end%>
+      <% if can? :read, Country %>
+        <%= nav_link countries_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          全球各个国家信息
+        <% end %>
+      <% end%>
+      <% if can? :read, Airport %>
+        <%= nav_link airports_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          世界各地机场信息
         <% end %>
       <% end%>
     <% end %>
@@ -478,43 +388,8 @@
         <% end %>
       <% end%>
     <% end %>
-    <%= treeview_link '星座算命' do %>
-      <% if can? :read, Astro %>
-        <%= nav_link astros_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          星座
-        <% end %>
-      <% end%>
-      <!-- <% if can? :read, YearFortune %>
-        <%= nav_link year_fortunes_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          星座年运势
-        <% end %>
-      <% end%>
-      <% if can? :read, MonthFortune %>
-        <%= nav_link month_fortunes_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          星座月运势
-        <% end %>
-      <% end%>
-      <% if can? :read, WeekFortune %>
-        <%= nav_link week_fortunes_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          星座周运势
-        <% end %>
-      <% end%>
-      <% if can? :read, TomorrowFortune %>
-        <%= nav_link tomorrow_fortunes_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          星座明日运势
-        <% end %>
-      <% end%>
-      <% if can? :read, TodayFortune %>
-        <%= nav_link today_fortunes_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          星座当日运势
-        <% end %>
-      <% end%> -->
+    <%= treeview_link '健康医疗' do %>
+
     <% end %>
     <%= treeview_link '系统管理' do %>
       <%= nav_link organizations_path do %>

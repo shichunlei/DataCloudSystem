@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :airports
+  resources :countries
+  resources :world_records
   resources :guiguzis
   resources :zuozhuans
   resources :houhanshus

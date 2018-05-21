@@ -15,12 +15,12 @@
       <div class="box box-primary">
         <div class="box-header">
           <div class="box-tools pull-right">
-            <% if can? :create, Lunyu %>
+            <!-- <% if can? :create, Lunyu %>
               <%= link_to new_lunyu_path(@lunyu), :class => 'btn btn-success' do %>
                 <span class="glyphicon glyphicon-plus"></span>
                 <%=t('views.create')%><%=t('activerecord.models.lunyu')%>
               <% end %>
-            <% end %>
+            <% end %> -->
           </div>
         </div>
         <div class="box-body table-responsive">
@@ -32,8 +32,7 @@
                               <th><%=t('activerecord.attributes.lunyu.chapter') -%></th>
 
                               <th><%=t('activerecord.attributes.lunyu.name') -%></th>
-                                              <th></th>
-                <th></th>
+                <th>操作</th>
                 <th></th>
               </tr>
             </thead>
@@ -47,12 +46,13 @@
                                                       <% if can? :read, lunyu %>
                   <td class="list-opertion"><%= link_to t('views.show'), "#{lunyu_path(lunyu)}?page=#{current_page}" %></td>
                 <% end %>
-                <% if can? :edit, lunyu %>
+                <!-- <% if can? :edit, lunyu %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_lunyu_path(lunyu) %></td>
                 <% end %>
                 <% if can? :destroy, lunyu %>
                   <td class="list-opertion"><%= link_to t('views.destroy'), lunyu, method: :delete, data: { confirm: t('views.confirm') } %></td>
-                <% end %>
+                <% end %> -->
+                <td></td>
 
               <% end %>
             </tbody>

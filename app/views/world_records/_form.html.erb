@@ -1,0 +1,44 @@
+<section class="content invoice">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_for(@world_record, :html => { :role => "form" }) do |f| %>
+        <% if @world_record.errors.any? %>
+          <div class="alert alert-danger alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            <h4><%= pluralize(@world_record.errors.count, "error") %> prohibited this world_record from being saved:</h4>
+
+            <ul>
+            <% @world_record.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+                  <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :category %>
+            <%= f.text_field :category, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :pic_url %>
+            <%= f.text_field :pic_url, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :pic_all_url %>
+            <%= f.text_area :pic_all_url, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :content %>
+            <%= f.text_area :content, :class => "form-control" %>
+          </div>
+                <div class="form-group">
+          <%= f.submit :class => "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -727,6 +727,7 @@ zh-CN:
         id: "编号"
         chapter: "章节"
         name: "名称"
+        author: "作者"
         content: "内容"
         commentary: "注释"
         translation: "翻译"
@@ -749,6 +750,7 @@ zh-CN:
         id: "编号"
         chapter: "章节"
         name: "名称"
+        author: "作者"
         content: "内容"
         commentary: "注释"
         translation: "翻译"
@@ -759,6 +761,7 @@ zh-CN:
       hanshu:
         id: "编号"
         chapter: "章节"
+        author: "作者"
         name: "名称"
         content: "内容"
         commentary: "注释"
@@ -769,6 +772,7 @@ zh-CN:
         updated_at: "更新于"
       houhanshu:
         id: "编号"
+        author: "作者"
         chapter: "章节"
         name: "名称"
         content: "内容"
@@ -941,8 +945,7 @@ zh-CN:
         updated_at: "更新于"
       daxue:
         id: "编号"
-        chapter: "章节"
-        name: "名称"
+        name: "章节"
         author: "作者"
         content: "内容"
         commentary: "注释"

@@ -232,10 +232,28 @@
             孟子
           <% end %>
         <% end%>
+        <% if can? :read, Daxue %>
+          <%= nav_link daxues_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            大学
+          <% end %>
+        <% end%>
+        <% if can? :read, Zhongyong %>
+          <%= nav_link zhongyongs_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            中庸
+          <% end %>
+        <% end%>
         <% if can? :read, Lvshichunqiu %>
           <%= nav_link lvshichunqius_path do %>
           <i class="fa fa-angle-double-right"></i>
             吕氏春秋
+          <% end %>
+        <% end%>
+        <% if can? :read, Zuozhuan %>
+          <%= nav_link zuozhuans_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            左传
           <% end %>
         <% end%>
       <% end%>
@@ -252,10 +270,22 @@
             三国志
           <% end %>
         <% end%>
+        <% if can? :read, Hanshu %>
+          <%= nav_link hanshus_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            汉书
+          <% end %>
+        <% end%>
         <% if can? :read, Xuxiake %>
           <%= nav_link xuxiakes_path do %>
           <i class="fa fa-angle-double-right"></i>
             徐霞客游记
+          <% end %>
+        <% end%>
+        <% if can? :read, Houhanshu %>
+          <%= nav_link houhanshus_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            后汉书
           <% end %>
         <% end%>
         <% if can? :read, Fushengliuji %>
@@ -294,6 +324,12 @@
           <%= nav_link zhouyis_path do %>
           <i class="fa fa-angle-double-right"></i>
             周易
+          <% end %>
+        <% end%>
+        <% if can? :read, Guiguzi %>
+          <%= nav_link guiguzis_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            鬼谷子
           <% end %>
         <% end%>
         <% if can? :read, Caigentan %>

@@ -1,0 +1,1 @@
+json.array! @guiguzis, partial: 'guiguzis/guiguzi', as: :guiguzi

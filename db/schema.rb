@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180519025835) do
+ActiveRecord::Schema.define(version: 20180520045919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -492,6 +492,19 @@ ActiveRecord::Schema.define(version: 20180519025835) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "guiguzis", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "chapter",        default: ""
+    t.string   "author",         default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "translation",    default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "gushis", force: :cascade do |t|
     t.string   "name",         default: ""
     t.string   "author",       default: ""
@@ -507,6 +520,32 @@ ActiveRecord::Schema.define(version: 20180519025835) do
   create_table "guwens", force: :cascade do |t|
     t.string   "name",           default: ""
     t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "translation",    default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "hanshus", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "chapter",        default: ""
+    t.string   "author",         default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "translation",    default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "houhanshus", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "chapter",        default: ""
+    t.string   "author",         default: ""
     t.text     "content",        default: ""
     t.text     "commentary",     default: ""
     t.text     "appreciation",   default: ""
@@ -1118,6 +1157,19 @@ ActiveRecord::Schema.define(version: 20180519025835) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.string   "parent_chapter", default: ""
+  end
+
+  create_table "zuozhuans", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "chapter",        default: ""
+    t.string   "author",         default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "translation",    default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_foreign_key "car_actualtests", "car_models"

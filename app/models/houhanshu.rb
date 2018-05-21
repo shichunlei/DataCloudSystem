@@ -1,0 +1,2 @@
+class Houhanshu < ApplicationRecord
+end

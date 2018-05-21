@@ -25,24 +25,37 @@ Things you may want to cover:
 
 * ...
 
-Gem  
+## Gem
+
 devise-sms-登录注册（支持手机号）https://github.com/giano/devise_sms_activable/pull/8
+
 权限/角色/审计 [cancancan](https://github.com/CanCanCommunity/cancancan)
+
 布局 AdminLTE   & slim
+
 分页kaminari
+
 carriewave & upyun
+
 表格WiceGrid
+
 simple_form
+
 daemon-spawn
+
 figaro
+
 postgres
+
 mina
+
 puma
+
 文件上传 [paperclip](https://github.com/thoughtbot/paperclip)
-数据库 pg
+
 提供API [grape](https://github.com/ruby-grape/grape)
 
-rails 数据库对应的字段类型
+## rails 数据库对应的字段类型
 
 :binary TINYBLOB, BLOB, MEDIUMBLOB, or LONGBLOB2 :limit => 1 to 4294967296 (default = 65536)2
 
@@ -68,6 +81,7 @@ rails 数据库对应的字段类型
 
 :timestamp DATETIME
 
+:attachment FILE
 
 ### 部分数据来源
 

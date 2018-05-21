@@ -1,0 +1,2 @@
+class Hanshu < ApplicationRecord
+end

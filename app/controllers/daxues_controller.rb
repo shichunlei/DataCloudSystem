@@ -3,13 +3,11 @@ class DaxuesController < ApplicationController
 
   # GET /daxues
   def index
-    @page = params[:page]
-    @daxues = Daxue.order(:id).page(@page)
+    @daxues = Daxue.order(:id)
   end
 
   # GET /daxues/1
   def show
-    @page = params[:page].nil? ? 1 : params[:page]
   end
 
   # GET /daxues/new

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :guiguzis
+  resources :zuozhuans
+  resources :houhanshus
+  resources :hanshus
   resources :wenyanwens
   resources :mingshus
   resources :chaoyeqianzais

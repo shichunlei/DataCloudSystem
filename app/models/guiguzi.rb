@@ -1,0 +1,2 @@
+class Guiguzi < ApplicationRecord
+end

@@ -133,22 +133,22 @@ rails g scaffold soushenji name:string content:text commentary:text appreciation
 rails g scaffold zhouyi name:string content:text commentary:text appreciation:text translation:text interpretation:text
 
 #-----------------------------------鬼谷子---------------------------
-rails g scaffold guiguzi name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+rails g scaffold guiguzi name:string chapter:string author:string content:text commentary:text appreciation:text translation:text interpretation:text
 
 #-----------------------------------徐霞客游记---------------------------
 rails g scaffold xuxiake name:string content:text commentary:text appreciation:text translation:text interpretation:text
 
 #-----------------------------------左传--------------------------
-rails g scaffold zuozhuan name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+rails g scaffold zuozhuan name:string chapter:string author:string content:text commentary:text appreciation:text translation:text interpretation:text
 
 #-----------------------------------汉书--------------------------
-rails g scaffold hanshu name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+rails g scaffold hanshu name:string chapter:string author:string content:text commentary:text appreciation:text translation:text interpretation:text
 
 #-----------------------------------后汉书--------------------------
-rails g scaffold houhanshu name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+rails g scaffold houhanshu name:string chapter:string author:string content:text commentary:text appreciation:text translation:text interpretation:text
 
 #-----------------------------------资治通鉴---------------------------
-rails g scaffold zizhitongjian name:string chapter:string content:text commentary:text appreciation:text translation:text interpretation:text
+rails g scaffold zizhitongjian name:string chapter:string author:string content:text commentary:text appreciation:text translation:text interpretation:text
 
 #-----------------------------------笑林广记---------------------------
 rails g scaffold xiaolin name:string content:text commentary:text appreciation:text translation:text interpretation:text

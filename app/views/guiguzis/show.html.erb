@@ -1,10 +1,10 @@
 <% content_for :content_header  do %>
   <section class="content-header">
-    <h1><%=t('views.show')%> <small><%=t('activerecord.models.daxue') %></small></h1>
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.guiguzi') %></small></h1>
 
     <ol class="breadcrumb">
       <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
-      <li><%= link_to t('activerecord.models.daxue'), daxues_path %></li>
+      <li><%= link_to t('activerecord.models.guiguzi'), guiguzis_path %></li>
       <li class="active"><%=t('views.show')%></li>
     </ol>
   </section>
@@ -16,14 +16,14 @@
       <div class="box box-primary">
         <div class="box-header">
           <div class="box-tools pull-right">
-            <!-- <% if can? :edit, Daxue %>
-              <%= link_to edit_daxue_path(@daxue), :class => 'btn btn-primary' do %>
+            <% if can? :edit, Guiguzi %>
+              <%= link_to edit_guiguzi_path(@guiguzi), :class => 'btn btn-primary' do %>
                 <span class="glyphicon glyphicon-pencil"></span>
                 <%=t('views.edit')%>
               <% end %>
-            <% end %> -->
+            <% end %>
 
-            <%= link_to "#{daxues_path}", :class => 'btn btn-success' do %>
+            <%= link_to "#{guiguzis_path}?page=#{@page}", :class => 'btn btn-success' do %>
               <span class="glyphicon glyphicon-chevron-left"></span>
               <%=t('views.return')%>
             <% end %>
@@ -33,39 +33,44 @@
           <dl class="dl-horizontal">
               <dt class="label-change">
               <span class="label-content label-info">
-              <%=t('activerecord.attributes.daxue.name')%>:
+              <%=t('activerecord.attributes.guiguzi.name')%>:
               </span></dt>
-              <dd class="well"><%= @daxue.name %></dd>
+              <dd class="well"><%= @guiguzi.name %></dd>
               <dt class="label-change">
               <span class="label-content label-info">
-              <%=t('activerecord.attributes.daxue.author')%>:
+              <%=t('activerecord.attributes.guiguzi.chapter')%>:
               </span></dt>
-              <dd class="well"><%= @daxue.author %></dd>
+              <dd class="well"><%= @guiguzi.chapter %></dd>
               <dt class="label-change">
               <span class="label-content label-info">
-              <%=t('activerecord.attributes.daxue.content')%>:
+              <%=t('activerecord.attributes.guiguzi.author')%>:
               </span></dt>
-              <dd class="well"><%= raw  @daxue.content %></dd>
+              <dd class="well"><%= @guiguzi.author %></dd>
               <dt class="label-change">
               <span class="label-content label-info">
-              <%=t('activerecord.attributes.daxue.commentary')%>:
+              <%=t('activerecord.attributes.guiguzi.content')%>:
               </span></dt>
-              <dd class="well"><%= raw  @daxue.commentary %></dd>
+              <dd class="well"><%= @guiguzi.content %></dd>
               <dt class="label-change">
               <span class="label-content label-info">
-              <%=t('activerecord.attributes.daxue.translation')%>:
+              <%=t('activerecord.attributes.guiguzi.commentary')%>:
               </span></dt>
-              <dd class="well"><%= raw  @daxue.translation %></dd>
+              <dd class="well"><%= @guiguzi.commentary %></dd>
               <dt class="label-change">
               <span class="label-content label-info">
-              <%=t('activerecord.attributes.daxue.appreciation')%>:
+              <%=t('activerecord.attributes.guiguzi.appreciation')%>:
               </span></dt>
-              <dd class="well"><%= raw  @daxue.appreciation %></dd>
+              <dd class="well"><%= @guiguzi.appreciation %></dd>
               <dt class="label-change">
               <span class="label-content label-info">
-              <%=t('activerecord.attributes.daxue.interpretation')%>:
+              <%=t('activerecord.attributes.guiguzi.translation')%>:
               </span></dt>
-              <dd class="well"><%= raw  @daxue.interpretation %></dd>
+              <dd class="well"><%= @guiguzi.translation %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.guiguzi.interpretation')%>:
+              </span></dt>
+              <dd class="well"><%= @guiguzi.interpretation %></dd>
           </dl>
         </div>
       </div>

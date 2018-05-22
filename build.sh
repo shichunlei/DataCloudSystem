@@ -243,6 +243,33 @@ rails g scaffold year_fortune year:integer summary:text money:text career:text l
 
 
 
+#-----------------------------------世界各地机场---------------------------
+rails g scaffold Airport name:string iata:string icao:string other_name:string country:references city_name:string intro:text
+
+#-----------------------------------世界之最---------------------------
+rails g scaffold WorldRecord name:string category:string pic_url:string pic_all_url:text content:text
+
+#-----------------------------------世界各国信息---------------------------
+rails g scaffold Country name:string enname:string area:string enarea:string info:text flag:string finfo:text emblem:text einfo:text anthems:string lyrics:string compose:string lrc:text otherlrc:text
+
+#-----------------------------------全国大学---------------------------
+rails g scaffold university universityid:string name:string f211:string f985:string area:string address:string phone:string email:string level:string membership:string nature:string schoolid:string schooltype:string website:string shoufei:text intro:text
+
+#-----------------------------------法律法规---------------------------
+rails g scaffold law name:string pub_department:string reference_num:string pub_date:date exec_date:date pub_timeliness:string effectiveness_level:string regcategory:string content:text
+
+#-----------------------------------全国小吃--------------------------
+rails g scaffold snack name:string intro:text history:text practice:text
+
+#-----------------------------------全国医院--------------------------
+rails g scaffold hospital name:string nature:string grade:string province:string city:string area:string address:string phone:string dean:string about:text specialist:string year:string department:string equipment:string bed_number:integer medical_workers:integer honor:string annual_outpatient_service:string department_number:integer health_insurance:string
+
+
+
+
+
+
+
 
 
 

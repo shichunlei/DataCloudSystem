@@ -1,0 +1,104 @@
+<section class="content invoice">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_for(@hospital, :html => { :role => "form" }) do |f| %>
+        <% if @hospital.errors.any? %>
+          <div class="alert alert-danger alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            <h4><%= pluralize(@hospital.errors.count, "error") %> prohibited this hospital from being saved:</h4>
+
+            <ul>
+            <% @hospital.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+                  <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :nature %>
+            <%= f.text_field :nature, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :grade %>
+            <%= f.text_field :grade, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :province %>
+            <%= f.text_field :province, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :city %>
+            <%= f.text_field :city, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :area %>
+            <%= f.text_field :area, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :address %>
+            <%= f.text_field :address, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :phone %>
+            <%= f.text_field :phone, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :dean %>
+            <%= f.text_field :dean, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :about %>
+            <%= f.text_area :about, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :specialist %>
+            <%= f.text_field :specialist, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :year %>
+            <%= f.text_field :year, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :department %>
+            <%= f.text_field :department, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :equipment %>
+            <%= f.text_field :equipment, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :bed_number %>
+            <%= f.number_field :bed_number, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :medical_workers %>
+            <%= f.number_field :medical_workers, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :honor %>
+            <%= f.text_field :honor, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :annual_outpatient_service %>
+            <%= f.text_field :annual_outpatient_service, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :department_number %>
+            <%= f.number_field :department_number, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :health_insurance %>
+            <%= f.text_field :health_insurance, :class => "form-control" %>
+          </div>
+                <div class="form-group">
+          <%= f.submit :class => "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

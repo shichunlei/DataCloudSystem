@@ -1,0 +1,2 @@
+json.extract! hospital, :id, :name, :nature, :grade, :province, :city, :area, :address, :phone, :dean, :about, :specialist, :year, :department, :equipment, :bed_number, :medical_workers, :honor, :annual_outpatient_service, :department_number, :health_insurance, :created_at, :updated_at
+json.url hospital_url(hospital, format: :json)

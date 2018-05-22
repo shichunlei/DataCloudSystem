@@ -1,0 +1,2 @@
+json.extract! law, :id, :name, :pub_department, :reference_num, :pub_date, :exec_date, :pub_timeliness, :effectiveness_level, :regcategory, :content, :created_at, :updated_at
+json.url law_url(law, format: :json)

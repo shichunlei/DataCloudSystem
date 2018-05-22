@@ -1,0 +1,139 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.hospital') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.hospital'), hospitals_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, Hospital %>
+              <%= link_to edit_hospital_path(@hospital), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{hospitals_path}?page=#{@page}", :class => 'btn btn-success' do %>
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.name')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.name %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.nature')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.nature %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.grade')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.grade %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.province')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.province %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.city')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.city %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.area')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.area %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.address')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.address %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.phone')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.phone %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.dean')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.dean %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.about')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.about %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.specialist')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.specialist %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.year')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.year %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.department')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.department %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.equipment')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.equipment %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.bed_number')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.bed_number %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.medical_workers')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.medical_workers %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.honor')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.honor %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.annual_outpatient_service')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.annual_outpatient_service %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.department_number')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.department_number %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.hospital.health_insurance')%>:
+              </span></dt>
+              <dd class="well"><%= @hospital.health_insurance %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

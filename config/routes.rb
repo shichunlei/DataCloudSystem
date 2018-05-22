@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :hospitals
+  resources :snacks
+  resources :laws
+  resources :universities
   resources :airports
   resources :countries
   resources :world_records

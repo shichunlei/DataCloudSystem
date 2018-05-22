@@ -26,7 +26,7 @@
     <%= nav_link root_path do %>
       <i class="fa fa-dashboard"></i> <span>首页</span>
     <% end %>
-    <%= treeview_link '交通出行管理' do %>
+    <%= treeview_link '交通出行' do %>
       <% if can? :read, Driverexam %>
         <%= nav_link driverexams_path do %>
         <i class="fa fa-angle-double-right"></i>
@@ -37,20 +37,6 @@
         <%= nav_link car_brands_path do %>
         <i class="fa fa-angle-double-right"></i>
           汽车大全
-        <% end %>
-      <% end%>
-    <% end %>
-    <%= treeview_link '菜谱管理' do %>
-      <% if can? :read, RecipeClassify %>
-        <%= nav_link recipe_classifies_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          菜谱分类管理
-        <% end %>
-      <% end%>
-      <% if can? :read, Recipe %>
-        <%= nav_link recipes_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          菜谱信息管理
         <% end %>
       <% end%>
     <% end %>
@@ -355,6 +341,32 @@
           星座
         <% end %>
       <% end%>
+    <% end %>
+    <%= treeview_link '日常生活' do %>
+      <!-- <% if can? :read, RecipeClassify %>
+        <%= nav_link recipe_classifies_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          菜谱分类
+        <% end %>
+      <% end%> -->
+      <% if can? :read, Recipe %>
+        <%= nav_link recipes_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          菜谱信息
+        <% end %>
+      <% end%>
+      <% if can? :read, Todayhistory %>
+        <%= nav_link todayhistories_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          历史上的今天
+        <% end %>
+      <% end%>
+      <% if can? :read, Huangli %>
+        <%= nav_link huanglis_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          黄历
+        <% end %>
+      <% end%>
       <% if can? :read, WorldRecord %>
         <%= nav_link world_records_path do %>
         <i class="fa fa-angle-double-right"></i>
@@ -373,23 +385,32 @@
           世界各地机场信息
         <% end %>
       <% end%>
-    <% end %>
-    <%= treeview_link '生活常用' do %>
-      <% if can? :read, Todayhistory %>
-        <%= nav_link todayhistories_path do %>
+      <% if can? :read, Snack %>
+        <%= nav_link snacks_path do %>
         <i class="fa fa-angle-double-right"></i>
-          历史上的今天
+          全国小吃
         <% end %>
       <% end%>
-      <% if can? :read, Huangli %>
-        <%= nav_link huanglis_path do %>
+      <% if can? :read, University %>
+        <%= nav_link universities_path do %>
         <i class="fa fa-angle-double-right"></i>
-          黄历
+          全国大学
+        <% end %>
+      <% end%>
+      <% if can? :read, Law %>
+        <%= nav_link laws_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          法律法规
         <% end %>
       <% end%>
     <% end %>
     <%= treeview_link '健康医疗' do %>
-
+      <% if can? :read, Hospital %>
+        <%= nav_link hospitals_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          全国医院
+        <% end %>
+      <% end%>
     <% end %>
     <%= treeview_link '系统管理' do %>
       <%= nav_link organizations_path do %>

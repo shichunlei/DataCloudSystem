@@ -1,0 +1,40 @@
+<section class="content invoice">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_for(@snack, :html => { :role => "form" }) do |f| %>
+        <% if @snack.errors.any? %>
+          <div class="alert alert-danger alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            <h4><%= pluralize(@snack.errors.count, "error") %> prohibited this snack from being saved:</h4>
+
+            <ul>
+            <% @snack.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+                  <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :intro %>
+            <%= f.text_area :intro, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :history %>
+            <%= f.text_area :history, :class => "form-control" %>
+          </div>
+                  <div class="form-group">
+            <%= f.label :practice %>
+            <%= f.text_area :practice, :class => "form-control" %>
+          </div>
+                <div class="form-group">
+          <%= f.submit :class => "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

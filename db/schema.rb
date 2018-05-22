@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180521063847) do
+ActiveRecord::Schema.define(version: 20180522021857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -574,6 +574,31 @@ ActiveRecord::Schema.define(version: 20180521063847) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "hospitals", force: :cascade do |t|
+    t.string   "name",                      default: ""
+    t.string   "nature",                    default: ""
+    t.string   "grade",                     default: ""
+    t.string   "province",                  default: ""
+    t.string   "city",                      default: ""
+    t.string   "area",                      default: ""
+    t.string   "address",                   default: ""
+    t.string   "phone",                     default: ""
+    t.string   "dean",                      default: ""
+    t.text     "about",                     default: ""
+    t.string   "specialist",                default: ""
+    t.string   "year",                      default: ""
+    t.string   "department",                default: ""
+    t.string   "equipment",                 default: ""
+    t.integer  "bed_number",                default: -1
+    t.integer  "medical_workers",           default: -1
+    t.string   "honor",                     default: ""
+    t.string   "annual_outpatient_service", default: ""
+    t.integer  "department_number",         default: -1
+    t.string   "health_insurance",          default: ""
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
   create_table "houhanshus", force: :cascade do |t|
     t.string   "name",           default: ""
     t.string   "chapter",        default: ""
@@ -626,6 +651,20 @@ ActiveRecord::Schema.define(version: 20180521063847) do
     t.string   "week",       default: ""
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "laws", force: :cascade do |t|
+    t.string   "name",                default: ""
+    t.string   "pub_department",      default: ""
+    t.string   "reference_num",       default: ""
+    t.date     "pub_date"
+    t.date     "exec_date"
+    t.string   "pub_timeliness",      default: ""
+    t.string   "effectiveness_level", default: ""
+    t.string   "regcategory",         default: ""
+    t.text     "content",             default: ""
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "liaofansixuns", force: :cascade do |t|
@@ -928,6 +967,15 @@ ActiveRecord::Schema.define(version: 20180521063847) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "snacks", force: :cascade do |t|
+    t.string   "name",       default: ""
+    t.text     "intro",      default: ""
+    t.text     "history",    default: ""
+    t.text     "practice",   default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "songcis", force: :cascade do |t|
     t.string   "name",         default: ""
     t.string   "author",       default: ""
@@ -1027,6 +1075,27 @@ ActiveRecord::Schema.define(version: 20180521063847) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.index ["astro_id"], name: "index_tomorrow_fortunes_on_astro_id", using: :btree
+  end
+
+  create_table "universities", force: :cascade do |t|
+    t.string   "universityid", default: ""
+    t.string   "name",         default: ""
+    t.string   "f211",         default: ""
+    t.string   "f985",         default: ""
+    t.string   "area",         default: ""
+    t.string   "address",      default: ""
+    t.string   "phone",        default: ""
+    t.string   "email",        default: ""
+    t.string   "level",        default: ""
+    t.string   "membership",   default: ""
+    t.string   "nature",       default: ""
+    t.string   "schoolid",     default: ""
+    t.string   "schooltype",   default: ""
+    t.string   "website",      default: ""
+    t.text     "shoufei",      default: ""
+    t.text     "intro",        default: ""
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|

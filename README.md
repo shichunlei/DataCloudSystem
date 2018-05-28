@@ -33,7 +33,7 @@ devise-sms-登录注册（支持手机号）https://github.com/giano/devise_sms_
 
 布局 AdminLTE   & slim
 
-分页kaminari
+分页 [kaminari](https://github.com/kaminari/kaminari)
 
 carriewave & upyun
 
@@ -49,7 +49,7 @@ postgres
 
 mina
 
-puma
+[puma](https://github.com/puma/puma)
 
 文件上传 [paperclip](https://github.com/thoughtbot/paperclip)
 
@@ -93,4 +93,46 @@ puma
 
 ## 数据接口
 
-  待完善
+* ===============================星座运势====================================
+
+* [星座列表 :GET请求](http://101.200.174.126:8898/api/v1/astros/list)
+
+* [星座运势 :GET请求](http://101.200.174.126:8898/api/v1/astros/fortune_details?astro_id=1)
+
+* [指定日期星座运势 :GET请求](http://101.200.174.126:8898/api/v1/astros/fortune_details?astro_id=1&select_date=2018-01-01)
+
+* ===============================文学=========================================
+
+* [三字经 :GET](http://101.200.174.126:8898/api/v1/educations/sanzijing)
+
+* [百家姓 :GET](http://101.200.174.126:8898/api/v1/educations/baijiaxing)
+
+* [百家姓列表 :GET](http://101.200.174.126:8898/api/v1/educations/baijiaxing_list)
+
+* [百家姓列表 :GET](http://101.200.174.126:8898/api/v1/educations/baijiaxing_detail?id=343)
+
+* [千字文 :GET](http://101.200.174.126:8898/api/v1/educations/qianziwen)
+
+* [弟子规 :GET](http://101.200.174.126:8898/api/v1/educations/dizigui)
+
+* [弟子规 :GET](http://101.200.174.126:8898/api/v1/educations/dizigui_detail?id=1)
+
+待完善
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#

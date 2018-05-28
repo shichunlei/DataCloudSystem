@@ -50,9 +50,9 @@
                 <% if can? :edit, law %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_law_path(law) %></td>
                 <% end %>
-                <% if can? :destroy, law %>
+                <!-- <% if can? :destroy, law %>
                   <td class="list-opertion"><%= link_to t('views.destroy'), law, method: :delete, data: { confirm: t('views.confirm') } %></td>
-                <% end %>
+                <% end %> -->
               <% end %>
             </tbody>
           </table>

@@ -11,7 +11,7 @@ module V1
         return {"code" => 20001, "message" => "请求成功", :result => list.as_json(:only => [:id, :name], :methods => [:sub_classify])}
       end
 
-      desc "根据分类ID得到菜谱"
+      desc "根据分类ID得到菜谱列表"
       params do
         requires :appkey, type: String, desc: 'AppKey'
         requires :classify_id, type: Integer, desc: '分类ID'
@@ -22,7 +22,7 @@ module V1
         return {"code" => 20001, "message" => "请求成功", :result => list.as_json(:only => [:id, :name, :tag, :pic, :peoplenum, :cookingtime, :preparetime])}
       end
 
-      desc "根据分类ID得到菜谱"
+      desc "根据菜谱ID得到菜谱详情"
       params do
         requires :appkey, type: String, desc: 'AppKey'
         requires :recipe_id, type: Integer, desc: '菜谱ID'

@@ -138,16 +138,16 @@ module V1
 			params do
 			end
 			get :sanzijing do
-				object = Sanzijing.find(1)
-				return {"code" => 20001, "message" => "请求成功", :result => object.as_json(:only => [:content, :name, :author, :interpretation])}
+				object = Book.find_by(id:1)
+				return {"code" => 20001, "message" => "请求成功", :result => object.as_json()}
 			end
 
 			desc "弟子规章节"
 			params do
 			end
 			get :dizigui do
-				list = Dizigui.all
-				return {"code" => 20001, "message" => "请求成功", :result => list.as_json(:only => [:id, :name, :chapter, :author])}
+				list = Book.where(name:"弟子规").order(:id)
+				return {"code" => 20001, "message" => "请求成功", :result => list.as_json()}
 			end
 
 			desc "弟子规详情"
@@ -156,24 +156,24 @@ module V1
 			end
 			get :dizigui_detail do
 				id = params[:id]
-				object = Dizigui.find_by(id:id)
-				return {"code" => 20001, "message" => "请求成功", :result => object.as_json(:only => [:name, :chapter, :author, :content, :translation])}
+				object = Book.find_by(id:id)
+				return {"code" => 20001, "message" => "请求成功", :result => object.as_json()}
 			end
 
 			desc "千字文"
 			params do
 			end
 			get :qianziwen do
-				object = Qianziwen.find(1)
-				return {"code" => 20001, "message" => "请求成功", :result => object.as_json(:only => [:content, :name, :author, :interpretation])}
+				object = Book.find_by(id:3)
+				return {"code" => 20001, "message" => "请求成功", :result => object.as_json()}
 			end
 
 			desc "百家姓列表"
 			params do
 			end
 			get :baijiaxing do
-				list = Baijiaxing.where("id <> ?", 835).order("id desc")
-				return {"code" => 20001, "message" => "请求成功", :result => list.as_json(:only => [:id, :name])}
+				object = Book.find_by(id:2)
+				return {"code" => 20001, "message" => "请求成功", :result => object.as_json()}
 			end
 
 			desc "百家姓介绍"

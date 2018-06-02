@@ -32,11 +32,10 @@
         <div class="box-body">
           <dl class="dl-horizontal">
             <%- attributes.each do |attribute| -%>
-              <dt class="label-change">
-              <span class="label-content label-info">
-              <%%=t('activerecord.attributes.<%=singular_table_name%>.<%=attribute.name%>')%>:
-              </span></dt>
-              <dd class="well"><%%= @<%= singular_table_name %>.<%= attribute.name %> %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%%=t('activerecord.attributes.<%=singular_table_name%>.<%=attribute.name%>')%>:</span>
+            </dt>
+            <dd class="well"><%%= @<%= singular_table_name %>.<%= attribute.name %> %></dd>
             <%- end -%>
           </dl>
         </div>

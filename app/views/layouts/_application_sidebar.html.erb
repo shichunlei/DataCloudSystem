@@ -91,6 +91,12 @@
       <% end%>
     <% end %>
     <%= treeview_link '古籍' do %>
+      <% if can? :read, Book %>
+        <%= nav_link books_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          古籍管理
+        <% end %>
+      <% end%>
       <%= treeview_link '经部' do %>
         <% if can? :read, Lunyu %>
           <%= nav_link lunyus_path do %>

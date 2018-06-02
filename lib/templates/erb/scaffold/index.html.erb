@@ -1,3 +1,8 @@
+<style media="screen">
+  td{
+    vertical-align:middle!important;
+  }
+</style>
 <%% content_for :content_header  do %>
   <section class="content-header">
     <h1><%%=t('views.list')%> <small><%%= t('activerecord.models.<%=singular_table_name%>') %></small></h1>
@@ -30,14 +35,14 @@
                 <% @i = 0 -%>
                 <th><%%=t('activerecord.attributes.<%=singular_table_name%>.id') -%></th>
                 <% attributes.each do |attribute| -%>
-                  <% if @i>=5 -%>
-                    <% next -%>
-                  <% end -%>
-                  <th><%%=t('activerecord.attributes.<%=singular_table_name%>.<%=attribute.name%>') -%></th>
-                  <% @i = @i + 1 -%>
+                <% if @i>=5 -%>
+                  <% next -%>
+                <% end -%>
+                <th><%%=t('activerecord.attributes.<%=singular_table_name%>.<%=attribute.name%>') -%></th>
+                <% @i = @i + 1 -%>
                 <% end -%>
                 <th></th>
-                <th></th>
+                <th>操作</th>
                 <th></th>
               </tr>
             </thead>
@@ -48,11 +53,11 @@
                 <% @j = 0 -%>
                 <td><%%= @page = @page + 1   -%></td>
                 <% attributes.each do |attribute| -%>
-                  <% if @j >=5 -%>
-                    <% next -%>
-                  <% end -%>
-                  <td><%%= <%= singular_table_name %>.<%= attribute.name %> -%></td>
-                  <% @j = @j + 1 -%>
+                <% if @j >=5 -%>
+                <% next -%>
+                <% end -%>
+                <td><%%= <%= singular_table_name %>.<%= attribute.name %> -%></td>
+                <% @j = @j + 1 -%>
                 <% end -%>
                 <%% if can? :read, <%=singular_table_name %> %>
                   <td class="list-opertion"><%%= link_to t('views.show'), "#{<%= singular_table_name %>_path(<%= singular_table_name %>)}?page=#{current_page}" %></td>

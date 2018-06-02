@@ -105,11 +105,9 @@ mina
 
 * [三字经 :GET](http://101.200.174.126:8898/api/v1/educations/sanzijing)
 
-* [百家姓 :GET](http://101.200.174.126:8898/api/v1/educations/baijiaxing)
+* [百家姓列表 :GET](http://101.200.174.126:8898/api/v1/educations/baijiaxing)
 
-* [百家姓列表 :GET](http://101.200.174.126:8898/api/v1/educations/baijiaxing_list)
-
-* [百家姓列表 :GET](http://101.200.174.126:8898/api/v1/educations/baijiaxing_detail?id=343)
+* [百家姓介绍 :GET](http://101.200.174.126:8898/api/v1/educations/baijiaxing_detail?id=343)
 
 * [千字文 :GET](http://101.200.174.126:8898/api/v1/educations/qianziwen)
 

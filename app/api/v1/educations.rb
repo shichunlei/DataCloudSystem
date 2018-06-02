@@ -168,18 +168,10 @@ module V1
 				return {"code" => 20001, "message" => "请求成功", :result => object.as_json(:only => [:content, :name, :author, :interpretation])}
 			end
 
-			desc "百家姓"
-			params do
-			end
-			get :baijiaxing do
-				object = Baijiaxing.find(835)
-				return {"code" => 20001, "message" => "请求成功", :result => object.as_json(:only => [:source, :name])}
-			end
-
 			desc "百家姓列表"
 			params do
 			end
-			get :baijiaxing_list do
+			get :baijiaxing do
 				list = Baijiaxing.where("id <> ?", 835).order("id desc")
 				return {"code" => 20001, "message" => "请求成功", :result => list.as_json(:only => [:id, :name])}
 			end

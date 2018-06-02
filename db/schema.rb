@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180522021857) do
+ActiveRecord::Schema.define(version: 20180529015911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,27 @@ ActiveRecord::Schema.define(version: 20180522021857) do
     t.text     "distributing", default: ""
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string   "name",               default: ""
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "author",             default: ""
+    t.string   "dynasty",            default: ""
+    t.string   "chapter",            default: ""
+    t.string   "section",            default: ""
+    t.text     "content",            default: ""
+    t.text     "commentary",         default: ""
+    t.text     "translation",        default: ""
+    t.text     "appreciation",       default: ""
+    t.text     "interpretation",     default: ""
+    t.text     "background",         default: ""
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "category"
   end
 
   create_table "caigentans", force: :cascade do |t|

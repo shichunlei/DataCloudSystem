@@ -1,0 +1,121 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.book') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.book'), books_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, Book %>
+              <%= link_to edit_book_path(@book), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{books_path}?page=#{@page}", :class => 'btn btn-success' do %>
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+              <dt class="label-change">
+                <span class="label-content label-info">
+                  <%=t('activerecord.attributes.book.name')%>:
+                </span>
+              </dt>
+              <dd class="well"><%= @book.name %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.book.image')%>:
+              </span></dt>
+              <dd class="well">
+                <img src='<%= @book.image_url -%>' style="width:150px;height:200px;"/>
+              </dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.book.author')%>:
+              </span></dt>
+              <dd class="well"><%= @book.author %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.book.category')%>:
+              </span></dt>
+              <dd class="well"><%= @book.category %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.book.dynasty')%>:
+              </span></dt>
+              <dd class="well"><%= @book.dynasty %></dd>
+              <% if !@book.chapter.blank? %>
+                <dt class="label-change">
+                <span class="label-content label-info">
+                <%=t('activerecord.attributes.book.chapter')%>:
+                </span></dt>
+                <dd class="well"><%= @book.chapter %></dd>
+              <% end %>
+              <% if !@book.section.blank? %>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.book.section')%>:
+              </span></dt>
+              <dd class="well"><%= @book.section %></dd>
+              <% end %>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.book.content')%>:
+              </span></dt>
+              <dd class="well"><%= raw @book.content %></dd>
+              <% if !@book.commentary.blank? %>
+                <dt class="label-change">
+                <span class="label-content label-info">
+                <%=t('activerecord.attributes.book.commentary')%>:
+                </span></dt>
+                <dd class="well"><%= raw @book.commentary %></dd>
+              <% end %>
+              <% if !@book.translation.blank? %>
+                <dt class="label-change">
+                <span class="label-content label-info">
+                <%=t('activerecord.attributes.book.translation')%>:
+                </span></dt>
+                <dd class="well"><%= raw @book.translation %></dd>
+              <% end %>
+              <% if !@book.appreciation.blank? %>
+                <dt class="label-change">
+                <span class="label-content label-info">
+                <%=t('activerecord.attributes.book.appreciation')%>:
+                </span></dt>
+                <dd class="well"><%= raw @book.appreciation %></dd>
+              <% end %>
+              <% if !@book.interpretation.blank? %>
+                <dt class="label-change">
+                <span class="label-content label-info">
+                <%=t('activerecord.attributes.book.interpretation')%>:
+                </span></dt>
+                <dd class="well"><%= raw @book.interpretation %></dd>
+              <% end %>
+              <% if !@book.background.blank? %>
+                <dt class="label-change">
+                <span class="label-content label-info">
+                <%=t('activerecord.attributes.book.background')%>:
+                </span></dt>
+                <dd class="well"><%= raw @book.background %></dd>
+              <% end %>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

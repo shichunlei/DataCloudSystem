@@ -60,6 +60,8 @@ rails g scaffold recipe_material recipe:references mname:string mtype:integer am
 rails g scaffold recipe_process recipe:references pcontent:text pic:string
 
 
+rails g scaffold book name:string image:attachment author:string dynasty:string chapter:string section:string content:text commentary:text translation:text appreciation:text interpretation:text background:text
+
 #-----------------------------------唐诗---------------------------
 rails g scaffold tangshi name:string author:string mtype:string content:text explanation:text appreciation:text
 

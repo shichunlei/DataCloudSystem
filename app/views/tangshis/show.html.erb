@@ -33,6 +33,11 @@
           <dl class="dl-horizontal">
             <dt class="label-change">
             <span class="label-content label-info">
+            <%=t('activerecord.attributes.tangshi.sid')%>:
+            </span></dt>
+            <dd class="well"><%= @tangshi.sid %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
             <%=t('activerecord.attributes.tangshi.name')%>:
             </span></dt>
             <dd class="well"><%= @tangshi.name %></dd>
@@ -41,6 +46,11 @@
             <%=t('activerecord.attributes.tangshi.author')%>:
             </span></dt>
             <dd class="well"><%= @tangshi.author %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.tangshi.dynasty')%>:
+            </span></dt>
+            <dd class="well"><%= @tangshi.dynasty %></dd>
             <dt class="label-change">
             <span class="label-content label-info">
             <%=t('activerecord.attributes.tangshi.mtype')%>:
@@ -61,6 +71,21 @@
             <%=t('activerecord.attributes.tangshi.appreciation')%>:
             </span></dt>
             <dd class="well"><%= raw @tangshi.appreciation %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.tangshi.translation')%>:
+            </span></dt>
+            <dd class="well"><%= raw @tangshi.translation %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.tangshi.tags')%>:
+            </span></dt>
+            <dd class="well"><%= @tangshi.tags %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.tangshi.background')%>:
+            </span></dt>
+            <dd class="well"><%= raw @tangshi.background %></dd>
           </dl>
         </div>
       </div>

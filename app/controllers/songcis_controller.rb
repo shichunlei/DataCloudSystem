@@ -3,7 +3,7 @@ class SongcisController < ApplicationController
   # GET /songcis
   def index
     @page = params[:page]
-    @songcis = Songci.order(:id).page(@page)
+    @songcis = Songci.order(:id).page(@page).per(30)
   end
   # GET /songcis/1
   def show

@@ -3,7 +3,7 @@ class YuanqusController < ApplicationController
   # GET /yuanqus
   def index
     @page = params[:page]
-    @yuanqus = Yuanqu.order(:id).page(@page)
+    @yuanqus = Yuanqu.order(:id).page(@page).per(30)
   end
   # GET /yuanqus/1
   def show

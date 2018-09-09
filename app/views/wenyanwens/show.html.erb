@@ -33,6 +33,11 @@
           <dl class="dl-horizontal">
               <dt class="label-change">
               <span class="label-content label-info">
+              <%=t('activerecord.attributes.wenyanwen.sid')%>:
+              </span></dt>
+              <dd class="well"><%= raw @wenyanwen.sid %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
               <%=t('activerecord.attributes.wenyanwen.name')%>:
               </span></dt>
               <dd class="well"><%= @wenyanwen.name %></dd>
@@ -41,6 +46,11 @@
               <%=t('activerecord.attributes.wenyanwen.author')%>:
               </span></dt>
               <dd class="well"><%= @wenyanwen.author %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.wenyanwen.dynasty')%>:
+              </span></dt>
+              <dd class="well"><%= @wenyanwen.dynasty %></dd>
               <dt class="label-change">
               <span class="label-content label-info">
               <%=t('activerecord.attributes.wenyanwen.content')%>:
@@ -71,6 +81,11 @@
               <%=t('activerecord.attributes.wenyanwen.background')%>:
               </span></dt>
               <dd class="well"><%= raw @wenyanwen.background %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.wenyanwen.tags')%>:
+              </span></dt>
+              <dd class="well"><%= raw @wenyanwen.tags %></dd>
           </dl>
         </div>
       </div>

@@ -3,7 +3,7 @@ class ShijingsController < ApplicationController
   # GET /shijings
   def index
     @page = params[:page]
-    @shijings = Shijing.order(:id).page(@page)
+    @shijings = Shijing.order(:id).page(@page).per(30)
   end
   # GET /shijings/1
   def show

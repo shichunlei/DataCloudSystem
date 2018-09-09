@@ -3,7 +3,7 @@ class GuwensController < ApplicationController
   # GET /guwens
   def index
     @page = params[:page]
-    @guwens = Guwen.order(:id).page(@page)
+    @guwens = Guwen.order(:id).page(@page).per(30)
   end
   # GET /guwens/1
   def show
@@ -50,6 +50,6 @@ class GuwensController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def guwen_params
-      params.require(:guwen).permit(:name, :chapter, :content, :commentary, :appreciation, :translation, :interpretation)
+      params.require(:guwen).permit(:name, :chapter, :content, :commentary, :appreciation, :translation, :interpretation, :tags, :sid, :dynasty, :author)
     end
 end

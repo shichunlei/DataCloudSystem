@@ -8,6 +8,11 @@ class CreateYuefus < ActiveRecord::Migration[5.0]
       t.text :appreciation, default:""
       t.text :translation, default:""
       t.text :interpretation, default:""
+      t.string :dynasty, default:""
+      t.string :sid, default:""
+      t.string :tags, default:""
+      t.string :author, default:""
+      t.text :background, default:""
 
       t.timestamps
     end

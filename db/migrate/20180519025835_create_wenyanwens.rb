@@ -9,6 +9,9 @@ class CreateWenyanwens < ActiveRecord::Migration[5.0]
       t.text :appreciation, default:""
       t.text :interpretation, default:""
       t.text :background, default:""
+      t.string :dynasty, default:""
+      t.string :sid, default:""
+      t.string :tags, default:""
 
       t.timestamps
     end

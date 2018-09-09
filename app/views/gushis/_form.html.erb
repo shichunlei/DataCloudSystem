@@ -15,35 +15,47 @@
           </div>
         <% end %>
 
-                  <div class="form-group">
-            <%= f.label :name %>
-            <%= f.text_field :name, :class => "form-control" %>
-          </div>
-                  <div class="form-group">
-            <%= f.label :author %>
-            <%= f.text_field :author, :class => "form-control" %>
-          </div>
-                  <div class="form-group">
-            <%= f.label :mtype %>
-            <%= f.text_field :mtype, :class => "form-control" %>
-          </div>
-                  <div class="form-group">
-            <%= f.label :content %>
-            <%= f.text_area :content, :class => "form-control" %>
-          </div>
-                  <div class="form-group">
-            <%= f.label :translation %>
-            <%= f.text_area :translation, :class => "form-control" %>
-          </div>
-                  <div class="form-group">
-            <%= f.label :explanation %>
-            <%= f.text_area :explanation, :class => "form-control" %>
-          </div>
-                  <div class="form-group">
-            <%= f.label :appreciation %>
-            <%= f.text_area :appreciation, :class => "form-control" %>
-          </div>
-                <div class="form-group">
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :sid %>
+          <%= f.text_field :sid, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :author %>
+          <%= f.text_field :author, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :dynasty %>
+          <%= f.text_field :dynasty, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :mtype %>
+          <%= f.text_field :mtype, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :content %>
+          <%= f.text_area :content, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :translation %>
+          <%= f.text_area :translation, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :explanation %>
+          <%= f.text_area :explanation, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :appreciation %>
+          <%= f.text_area :appreciation, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :tags %>
+          <%= f.text_field :tags, :class => "form-control" %>
+        </div>
+        <div class="form-group">
           <%= f.submit :class => "btn btn-primary" %>
         </div>
       <% end %>

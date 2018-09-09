@@ -3,7 +3,7 @@ class ChucisController < ApplicationController
   # GET /chucis
   def index
     @page = params[:page]
-    @chucis = Chuci.order(:id).page(@page)
+    @chucis = Chuci.order(:id).page(@page).per(30)
   end
   # GET /chucis/1
   def show

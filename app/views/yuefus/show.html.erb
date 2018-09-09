@@ -33,9 +33,24 @@
           <dl class="dl-horizontal">
             <dt class="label-change">
             <span class="label-content label-info">
+            <%=t('activerecord.attributes.yuefu.sid')%>:
+            </span></dt>
+            <dd class="well"><%= @yuefu.sid %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
             <%=t('activerecord.attributes.yuefu.name')%>:
             </span></dt>
             <dd class="well"><%= @yuefu.name %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.yuefu.author')%>:
+            </span></dt>
+            <dd class="well"><%= @yuefu.author %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.yuefu.dynasty')%>:
+            </span></dt>
+            <dd class="well"><%= @yuefu.dynasty %></dd>
             <dt class="label-change">
             <span class="label-content label-info">
             <%=t('activerecord.attributes.yuefu.chapter')%>:
@@ -66,6 +81,16 @@
             <%=t('activerecord.attributes.yuefu.interpretation')%>:
             </span></dt>
             <dd class="well"><%= raw @yuefu.interpretation %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.yuefu.tags')%>:
+            </span></dt>
+            <dd class="well"><%= @yuefu.tags %></dd>
+            <dt class="label-change">
+            <span class="label-content label-info">
+            <%=t('activerecord.attributes.yuefu.background')%>:
+            </span></dt>
+            <dd class="well"><%= raw @yuefu.background %></dd>
           </dl>
         </div>
       </div>

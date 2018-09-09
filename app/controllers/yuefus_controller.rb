@@ -3,7 +3,7 @@ class YuefusController < ApplicationController
   # GET /yuefus
   def index
     @page = params[:page]
-    @yuefus = Yuefu.order(:id).page(@page)
+    @yuefus = Yuefu.order(:id).page(@page).per(30)
   end
   # GET /yuefus/1
   def show
@@ -50,6 +50,6 @@ class YuefusController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def yuefu_params
-      params.require(:yuefu).permit(:name, :chapter, :content, :commentary, :appreciation, :translation, :interpretation)
+      params.require(:yuefu).permit(:name, :chapter, :content, :commentary, :appreciation, :translation, :interpretation, :background, :tags, :sid, :dynasty, :author)
     end
 end

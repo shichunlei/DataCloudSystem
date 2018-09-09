@@ -33,6 +33,11 @@
           <dl class="dl-horizontal">
               <dt class="label-change">
               <span class="label-content label-info">
+              <%=t('activerecord.attributes.gushi.sid')%>:
+              </span></dt>
+              <dd class="well"><%= raw @gushi.sid %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
               <%=t('activerecord.attributes.gushi.name')%>:
               </span></dt>
               <dd class="well"><%= @gushi.name %></dd>
@@ -41,6 +46,11 @@
               <%=t('activerecord.attributes.gushi.author')%>:
               </span></dt>
               <dd class="well"><%= @gushi.author %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.gushi.dynasty')%>:
+              </span></dt>
+              <dd class="well"><%= @gushi.dynasty %></dd>
               <dt class="label-change">
               <span class="label-content label-info">
               <%=t('activerecord.attributes.gushi.mtype')%>:
@@ -66,6 +76,11 @@
               <%=t('activerecord.attributes.gushi.appreciation')%>:
               </span></dt>
               <dd class="well"><%= raw @gushi.appreciation %></dd>
+              <dt class="label-change">
+              <span class="label-content label-info">
+              <%=t('activerecord.attributes.gushi.tags')%>:
+              </span></dt>
+              <dd class="well"><%= raw @gushi.tags %></dd>
           </dl>
         </div>
       </div>

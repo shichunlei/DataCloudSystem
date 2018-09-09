@@ -4,7 +4,7 @@ class WenyanwensController < ApplicationController
   # GET /wenyanwens
   def index
     @page = params[:page]
-    @wenyanwens = Wenyanwen.order(:id).page(@page)
+    @wenyanwens = Wenyanwen.order(:id).page(@page).per(30)
   end
 
   # GET /wenyanwens/1
@@ -55,6 +55,6 @@ class WenyanwensController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def wenyanwen_params
-      params.require(:wenyanwen).permit(:name, :author, :content, :commentary, :translation, :appreciation, :interpretation, :background)
+      params.require(:wenyanwen).permit(:name, :author, :content, :commentary, :translation, :appreciation, :interpretation, :background, :tags, :sid, :dynasty)
     end
 end

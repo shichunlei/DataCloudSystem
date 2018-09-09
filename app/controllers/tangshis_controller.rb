@@ -3,7 +3,7 @@ class TangshisController < ApplicationController
   # GET /tangshis
   def index
     @page = params[:page]
-    @tangshis = Tangshi.order(:id).page(@page)
+    @tangshis = Tangshi.order(:id).page(@page).per(30)
   end
   # GET /tangshis/1
   def show
@@ -50,6 +50,6 @@ class TangshisController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def tangshi_params
-      params.require(:tangshi).permit(:name, :author, :mtype, :content, :explanation, :appreciation)
+      params.require(:tangshi).permit(:name, :author, :mtype, :content, :explanation, :appreciation, :tags, :sid, :dynasty, :translation, :background)
     end
 end

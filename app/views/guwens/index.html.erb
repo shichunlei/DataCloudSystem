@@ -30,7 +30,7 @@
                             <th><%=t('activerecord.attributes.guwen.id') -%></th>
 
                               <th><%=t('activerecord.attributes.guwen.name') -%></th>
-
+<th><%=t('activerecord.attributes.guwen.author') -%></th>
                               <th><%=t('activerecord.attributes.guwen.chapter') -%></th>
                                               <th></th>
                 <th></th>
@@ -39,14 +39,14 @@
             </thead>
             <tbody>
               <% current_page = @page.nil? ? 1 : @page -%>
-              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
+              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 30 -%>
               <%= content_tag_for(:tr, @guwens) do |guwen| %>
                                 <td><%= @page = @page + 1   -%></td>
 
 
                   <td><%= guwen.name -%></td>
 
-
+<td><%= guwen.author -%></td>
                   <td><%= guwen.chapter -%></td>
                                                       <% if can? :read, guwen %>
                   <td class="list-opertion"><%= link_to t('views.show'), "#{guwen_path(guwen)}?page=#{current_page}" %></td>

@@ -4,7 +4,7 @@ class GushisController < ApplicationController
   # GET /gushis
   def index
     @page = params[:page]
-    @gushis = Gushi.order(:id).page(@page)
+    @gushis = Gushi.order(:id).page(@page).per(30)
   end
 
   # GET /gushis/1
@@ -55,6 +55,6 @@ class GushisController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def gushi_params
-      params.require(:gushi).permit(:name, :author, :mtype, :content, :translation, :explanation, :appreciation)
+      params.require(:gushi).permit(:name, :author, :mtype, :content, :translation, :explanation, :appreciation, :tags, :sid, :dynasty)
     end
 end

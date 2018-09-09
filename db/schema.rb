@@ -568,6 +568,9 @@ ActiveRecord::Schema.define(version: 20180529015911) do
     t.text     "appreciation", default: ""
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "dynasty",      default: ""
+    t.string   "sid",          default: ""
+    t.string   "tags",         default: ""
   end
 
   create_table "guwens", force: :cascade do |t|
@@ -580,6 +583,10 @@ ActiveRecord::Schema.define(version: 20180529015911) do
     t.text     "interpretation", default: ""
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.string   "dynasty",        default: ""
+    t.string   "sid",            default: ""
+    t.string   "tags",           default: ""
+    t.string   "author",         default: ""
   end
 
   create_table "hanshus", force: :cascade do |t|
@@ -1039,6 +1046,11 @@ ActiveRecord::Schema.define(version: 20180529015911) do
     t.text     "appreciation", default: ""
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "tags",         default: ""
+    t.text     "translation",  default: ""
+    t.string   "sid",          default: ""
+    t.string   "dynasty",      default: ""
+    t.text     "background",   default: ""
   end
 
   create_table "tiangongs", force: :cascade do |t|
@@ -1186,6 +1198,9 @@ ActiveRecord::Schema.define(version: 20180529015911) do
     t.text     "background",     default: ""
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.string   "dynasty",        default: ""
+    t.string   "sid",            default: ""
+    t.string   "tags",           default: ""
   end
 
   create_table "world_records", force: :cascade do |t|
@@ -1241,6 +1256,11 @@ ActiveRecord::Schema.define(version: 20180529015911) do
     t.text     "interpretation", default: ""
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.string   "author",         default: ""
+    t.string   "dynasty",        default: ""
+    t.string   "sid",            default: ""
+    t.string   "tags",           default: ""
+    t.text     "background",     default: ""
   end
 
   create_table "zengguangxianwens", force: :cascade do |t|

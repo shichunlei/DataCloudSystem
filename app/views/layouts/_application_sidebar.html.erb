@@ -361,6 +361,12 @@
           菜谱信息
         <% end %>
       <% end%>
+      <% if can? :read, FoodNutrition %>
+        <%= nav_link food_nutritions_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          食物营养成分分析
+        <% end %>
+      <% end%>
       <% if can? :read, Todayhistory %>
         <%= nav_link todayhistories_path do %>
         <i class="fa fa-angle-double-right"></i>

@@ -1,0 +1,2 @@
+json.extract! food_nutrition, :id, :food_name, :category, :heat, :thiamine, :calcium, :protein, :riboflavin, :magnesium, :fat, :niacin, :iron, :carbohydrate, :vc, :manganese, :fiber, :ve, :zinc, :va, :cholesterol, :copper, :carotene, :potassium, :phosphorus, :retinol_equivalent, :sodium, :selenium, :created_at, :updated_at
+json.url food_nutrition_url(food_nutrition, format: :json)

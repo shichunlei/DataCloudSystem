@@ -91,31 +91,7 @@ mina
 
   [古诗文网](https://www.gushiwen.org/)
 
-## 数据接口
-
-* ===============================星座运势====================================
-
-* [星座列表 :GET请求](http://101.200.174.126:8898/api/v1/astros/list)
-
-* [星座运势 :GET请求](http://101.200.174.126:8898/api/v1/astros/fortune_details?astro_id=1)
-
-* [指定日期星座运势 :GET请求](http://101.200.174.126:8898/api/v1/astros/fortune_details?astro_id=1&select_date=2018-01-01)
-
-* ===============================文学=========================================
-
-* [三字经 :GET](http://101.200.174.126:8898/api/v1/educations/sanzijing)
-
-* [百家姓列表 :GET](http://101.200.174.126:8898/api/v1/educations/baijiaxing)
-
-* [百家姓介绍 :GET](http://101.200.174.126:8898/api/v1/educations/baijiaxing_detail?id=343)
-
-* [千字文 :GET](http://101.200.174.126:8898/api/v1/educations/qianziwen)
-
-* [弟子规 :GET](http://101.200.174.126:8898/api/v1/educations/dizigui)
-
-* [弟子规 :GET](http://101.200.174.126:8898/api/v1/educations/dizigui_detail?id=1)
-
-待完善
+  [便民查询网](https://www.51240.com/)
 
 
 

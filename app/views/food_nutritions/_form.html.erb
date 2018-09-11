@@ -1,0 +1,127 @@
+<section class="content invoice">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_for(@food_nutrition, :html => { :role => "form" }) do |f| %>
+        <% if @food_nutrition.errors.any? %>
+          <div class="alert alert-danger alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            <h4><%= pluralize(@food_nutrition.errors.count, "error") %> prohibited this food_nutrition from being saved:</h4>
+            <ul>
+            <% @food_nutrition.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+                <div class="form-group">
+          <%= f.label :food_name %>
+          <%= f.text_field :food_name, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :category %>
+          <%= f.text_field :category, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :heat %>
+          <%= f.text_field :heat, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :thiamine %>
+          <%= f.text_field :thiamine, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :calcium %>
+          <%= f.text_field :calcium, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :protein %>
+          <%= f.text_field :protein, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :riboflavin %>
+          <%= f.text_field :riboflavin, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :magnesium %>
+          <%= f.text_field :magnesium, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :fat %>
+          <%= f.text_field :fat, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :niacin %>
+          <%= f.text_field :niacin, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :iron %>
+          <%= f.text_field :iron, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :carbohydrate %>
+          <%= f.text_field :carbohydrate, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :vc %>
+          <%= f.text_field :vc, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :manganese %>
+          <%= f.text_field :manganese, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :fiber %>
+          <%= f.text_field :fiber, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :ve %>
+          <%= f.text_field :ve, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :zinc %>
+          <%= f.text_field :zinc, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :va %>
+          <%= f.text_field :va, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :cholesterol %>
+          <%= f.text_field :cholesterol, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :copper %>
+          <%= f.text_field :copper, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :carotene %>
+          <%= f.text_field :carotene, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :potassium %>
+          <%= f.text_field :potassium, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :phosphorus %>
+          <%= f.text_field :phosphorus, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :retinol_equivalent %>
+          <%= f.text_field :retinol_equivalent, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :sodium %>
+          <%= f.text_field :sodium, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :selenium %>
+          <%= f.text_field :selenium, :class => "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.submit :class => "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

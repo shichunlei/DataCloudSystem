@@ -1,0 +1,143 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.food_nutrition') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.food_nutrition'), food_nutritions_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, FoodNutrition %>
+              <%= link_to edit_food_nutrition_path(@food_nutrition), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{food_nutritions_path}?page=#{@page}", :class => 'btn btn-success' do %>
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.food_name')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.food_name %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.category')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.category %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.heat')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.heat %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.thiamine')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.thiamine %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.calcium')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.calcium %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.protein')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.protein %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.riboflavin')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.riboflavin %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.magnesium')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.magnesium %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.fat')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.fat %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.niacin')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.niacin %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.iron')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.iron %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.carbohydrate')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.carbohydrate %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.vc')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.vc %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.manganese')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.manganese %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.fiber')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.fiber %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.ve')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.ve %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.zinc')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.zinc %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.va')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.va %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.cholesterol')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.cholesterol %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.copper')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.copper %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.carotene')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.carotene %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.potassium')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.potassium %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.phosphorus')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.phosphorus %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.retinol_equivalent')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.retinol_equivalent %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.sodium')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.sodium %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.food_nutrition.selenium')%>:</span>
+            </dt>
+            <dd class="well"><%= @food_nutrition.selenium %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

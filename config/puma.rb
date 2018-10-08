@@ -13,10 +13,8 @@ port        ENV.fetch("PORT") { 8898 }
 
 # Specifies the `environment` that Puma will run in.
 #
-#environment ENV.fetch("RAILS_ENV") { "development" }
-environment "development"
-#daemonize true
-pidfile   "puma.pid"
+environment ENV.fetch("RAILS_ENV") { "development" }
+
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
 # the concurrency of the application would be max `threads` * `workers`.
@@ -32,7 +30,7 @@ pidfile   "puma.pid"
 # you need to make sure to reconnect any threads in the `on_worker_boot`
 # block.
 #
-preload_app!
+# preload_app!
 
 # The code in the `on_worker_boot` will be called if you are using
 # clustered mode by specifying a number of `workers`. After each worker
@@ -41,9 +39,9 @@ preload_app!
 # or connections that may have been created at application boot, Ruby
 # cannot share connections between processes.
 #
-on_worker_boot do
-  ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
-end
+# on_worker_boot do
+#   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
+# end
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart

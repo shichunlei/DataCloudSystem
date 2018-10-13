@@ -98,6 +98,9 @@ Rails.application.routes.draw do
   # v1基础数据接口路由
   mount V1::API => '/api/v1/'
 
+  # 百度接口
+  mount BAIDU::API => '/api/baidu/'
+
   # 搜索品牌
   get '/search_brands' => "car_brands#search_brands"
   # 查询品牌

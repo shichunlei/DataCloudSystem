@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  resources :liwengduiyuns
+  resources :zixiayizhuans
+  resources :wenchangs
+  resources :gongyangzhuans
+  resources :eryas
+  resources :yilis
+  resources :zhoulis
+  resources :xiaojings
+  resources :shangshus
+  resources :lijis
   resources :xiaolins
   resources :bencaos
   resources :jingangjings

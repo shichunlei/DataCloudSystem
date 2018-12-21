@@ -4,7 +4,7 @@ class XiaolinsController < ApplicationController
   # GET /xiaolins
   def index
     @page = params[:page]
-    @xiaolins = Xiaolin.order(:id).page(@page)
+    @xiaolins = Xiaolin.order(:id).page(@page).per(20)
   end
 
   # GET /xiaolins/1

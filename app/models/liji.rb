@@ -1,0 +1,2 @@
+class Liji < ApplicationRecord
+end

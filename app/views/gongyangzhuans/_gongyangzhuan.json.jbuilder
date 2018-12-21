@@ -1,0 +1,2 @@
+json.extract! gongyangzhuan, :id, :chapter, :name, :author, :content, :commentary, :translation, :appreciation, :interpretation, :created_at, :updated_at
+json.url gongyangzhuan_url(gongyangzhuan, format: :json)

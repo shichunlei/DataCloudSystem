@@ -1,0 +1,2 @@
+class Gongyangzhuan < ApplicationRecord
+end

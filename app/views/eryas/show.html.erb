@@ -1,0 +1,67 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.erya') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.erya'), eryas_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, Erya %>
+              <%= link_to edit_erya_path(@erya), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{eryas_path}?page=#{@page}", :class => 'btn btn-success' do %>
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.erya.name')%>:</span>
+            </dt>
+            <dd class="well"><%= @erya.name %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.erya.author')%>:</span>
+            </dt>
+            <dd class="well"><%= @erya.author %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.erya.content')%>:</span>
+            </dt>
+            <dd class="well"><%= @erya.content %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.erya.commentary')%>:</span>
+            </dt>
+            <dd class="well"><%= @erya.commentary %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.erya.translation')%>:</span>
+            </dt>
+            <dd class="well"><%= @erya.translation %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.erya.appreciation')%>:</span>
+            </dt>
+            <dd class="well"><%= @erya.appreciation %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.erya.interpretation')%>:</span>
+            </dt>
+            <dd class="well"><%= @erya.interpretation %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

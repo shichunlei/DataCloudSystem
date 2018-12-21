@@ -1,0 +1,1 @@
+json.partial! "eryas/erya", erya: @erya

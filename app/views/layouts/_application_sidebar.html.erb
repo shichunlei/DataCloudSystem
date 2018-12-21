@@ -104,16 +104,16 @@
             论语
           <% end %>
         <% end%>
-        <% if can? :read, Mengzi %>
-          <%= nav_link mengzis_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            孟子
-          <% end %>
-        <% end%>
         <% if can? :read, Daxue %>
           <%= nav_link daxues_path do %>
           <i class="fa fa-angle-double-right"></i>
             大学
+          <% end %>
+        <% end%>
+        <% if can? :read, Mengzi %>
+          <%= nav_link mengzis_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            孟子
           <% end %>
         <% end%>
         <% if can? :read, Zhongyong %>
@@ -132,6 +132,66 @@
           <%= nav_link zuozhuans_path do %>
           <i class="fa fa-angle-double-right"></i>
             左传
+          <% end %>
+        <% end%>
+        <% if can? :read, Liji %>
+          <%= nav_link lijis_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            礼记
+          <% end %>
+        <% end%>
+        <% if can? :read, Liwengduiyun %>
+          <%= nav_link liwengduiyuns_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            笠翁对韵
+          <% end %>
+        <% end%>
+        <% if can? :read, Shangshu %>
+          <%= nav_link shangshus_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            尚书
+          <% end %>
+        <% end%>
+        <% if can? :read, Xiaojing %>
+          <%= nav_link xiaojings_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            孝经
+          <% end %>
+        <% end%>
+        <% if can? :read, Zhouli %>
+          <%= nav_link zhoulis_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            周礼
+          <% end %>
+        <% end%>
+        <% if can? :read, Zixiayizhuaun %>
+          <%= nav_link zixiayizhuauns_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            子夏易传
+          <% end %>
+        <% end%>
+        <% if can? :read, Yili %>
+          <%= nav_link yilis_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            仪礼
+          <% end %>
+        <% end%>
+        <% if can? :read, Wenchang %>
+          <%= nav_link wenchangs_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            文昌孝经
+          <% end %>
+        <% end%>
+        <% if can? :read, Erya %>
+          <%= nav_link eryas_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            尔雅
+          <% end %>
+        <% end%>
+        <% if can? :read, Gongyangzhuan %>
+          <%= nav_link gongyangzhuans_path do %>
+          <i class="fa fa-angle-double-right"></i>
+            公羊传
           <% end %>
         <% end%>
       <% end%>

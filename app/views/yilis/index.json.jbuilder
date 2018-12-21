@@ -1,0 +1,1 @@
+json.array! @yilis, partial: 'yilis/yili', as: :yili

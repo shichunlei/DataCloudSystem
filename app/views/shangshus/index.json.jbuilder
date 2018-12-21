@@ -1,0 +1,1 @@
+json.array! @shangshus, partial: 'shangshus/shangshu', as: :shangshu

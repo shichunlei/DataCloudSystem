@@ -1,0 +1,1 @@
+json.array! @zhoulis, partial: 'zhoulis/zhouli', as: :zhouli

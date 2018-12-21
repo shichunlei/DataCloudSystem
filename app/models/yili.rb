@@ -1,0 +1,2 @@
+class Yili < ApplicationRecord
+end

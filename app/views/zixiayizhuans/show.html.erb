@@ -1,0 +1,71 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.show')%> <small><%=t('activerecord.models.zixiayizhuan') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li><%= link_to t('activerecord.models.zixiayizhuan'), zixiayizhuans_path %></li>
+      <li class="active"><%=t('views.show')%></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :edit, Zixiayizhuan %>
+              <%= link_to edit_zixiayizhuan_path(@zixiayizhuan), :class => 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                <%=t('views.edit')%>
+              <% end %>
+            <% end %>
+
+            <%= link_to "#{zixiayizhuans_path}?page=#{@page}", :class => 'btn btn-success' do %>
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <%=t('views.return')%>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.zixiayizhuan.chapter')%>:</span>
+            </dt>
+            <dd class="well"><%= @zixiayizhuan.chapter %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.zixiayizhuan.name')%>:</span>
+            </dt>
+            <dd class="well"><%= @zixiayizhuan.name %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.zixiayizhuan.author')%>:</span>
+            </dt>
+            <dd class="well"><%= @zixiayizhuan.author %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.zixiayizhuan.content')%>:</span>
+            </dt>
+            <dd class="well"><%= @zixiayizhuan.content %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.zixiayizhuan.commentary')%>:</span>
+            </dt>
+            <dd class="well"><%= @zixiayizhuan.commentary %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.zixiayizhuan.translation')%>:</span>
+            </dt>
+            <dd class="well"><%= @zixiayizhuan.translation %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.zixiayizhuan.appreciation')%>:</span>
+            </dt>
+            <dd class="well"><%= @zixiayizhuan.appreciation %></dd>
+            <dt class="label-change">
+              <span class="label-content label-info"><%=t('activerecord.attributes.zixiayizhuan.interpretation')%>:</span>
+            </dt>
+            <dd class="well"><%= @zixiayizhuan.interpretation %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

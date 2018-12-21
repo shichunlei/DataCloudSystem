@@ -1,0 +1,2 @@
+class Wenchang < ApplicationRecord
+end

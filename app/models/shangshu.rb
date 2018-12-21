@@ -1,0 +1,2 @@
+class Shangshu < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class Zhouli < ApplicationRecord
+end

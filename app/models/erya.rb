@@ -1,0 +1,2 @@
+class Erya < ApplicationRecord
+end

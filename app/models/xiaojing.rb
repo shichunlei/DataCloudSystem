@@ -1,0 +1,2 @@
+class Xiaojing < ApplicationRecord
+end

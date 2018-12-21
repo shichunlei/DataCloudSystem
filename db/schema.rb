@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181221044305) do
+ActiveRecord::Schema.define(version: 20181221101028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -545,6 +545,18 @@ ActiveRecord::Schema.define(version: 20181221044305) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "eryas", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "food_nutritions", force: :cascade do |t|
     t.string   "food_name",          default: ""
     t.string   "category",           default: ""
@@ -580,6 +592,19 @@ ActiveRecord::Schema.define(version: 20181221044305) do
     t.string   "name",           default: ""
     t.string   "author",         default: ""
     t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "gongyangzhuans", force: :cascade do |t|
+    t.string   "chapter",        default: ""
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
     t.text     "content",        default: ""
     t.text     "commentary",     default: ""
     t.text     "translation",    default: ""
@@ -754,6 +779,30 @@ ActiveRecord::Schema.define(version: 20181221044305) do
     t.string   "name",           default: ""
     t.string   "author",         default: ""
     t.string   "chapter",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "lijis", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "liwengduiyuns", force: :cascade do |t|
+    t.string   "chapter",        default: ""
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
     t.text     "content",        default: ""
     t.text     "commentary",     default: ""
     t.text     "translation",    default: ""
@@ -1003,6 +1052,19 @@ ActiveRecord::Schema.define(version: 20181221044305) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "shangshus", force: :cascade do |t|
+    t.string   "chapter",        default: ""
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "shanhaijings", force: :cascade do |t|
     t.string   "name",           default: ""
     t.string   "chapter",        default: ""
@@ -1231,6 +1293,18 @@ ActiveRecord::Schema.define(version: 20181221044305) do
     t.index ["astro_id"], name: "index_week_fortunes_on_astro_id", using: :btree
   end
 
+  create_table "wenchangs", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "wenxindiaolongs", force: :cascade do |t|
     t.string   "name",           default: ""
     t.text     "content",        default: ""
@@ -1268,6 +1342,18 @@ ActiveRecord::Schema.define(version: 20181221044305) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "xiaojings", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "xiaolins", force: :cascade do |t|
     t.string   "name",           default: ""
     t.text     "content",        default: ""
@@ -1300,6 +1386,18 @@ ActiveRecord::Schema.define(version: 20181221044305) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.index ["astro_id"], name: "index_year_fortunes_on_astro_id", using: :btree
+  end
+
+  create_table "yilis", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "yuanqus", force: :cascade do |t|
@@ -1353,6 +1451,19 @@ ActiveRecord::Schema.define(version: 20181221044305) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "zhoulis", force: :cascade do |t|
+    t.string   "chapter",        default: ""
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "zhouyis", force: :cascade do |t|
     t.string   "name",           default: ""
     t.text     "content",        default: ""
@@ -1375,6 +1486,19 @@ ActiveRecord::Schema.define(version: 20181221044305) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.string   "parent_chapter", default: ""
+  end
+
+  create_table "zixiayizhuans", force: :cascade do |t|
+    t.string   "chapter",        default: ""
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "zizhitongjians", force: :cascade do |t|

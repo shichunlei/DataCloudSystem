@@ -4,7 +4,7 @@ class GuiguzisController < ApplicationController
   # GET /guiguzis
   def index
     @page = params[:page]
-    @guiguzis = Guiguzi.order(:id).page(@page)
+    @guiguzis = Guiguzi.order(:id).page(@page).per(30)
   end
 
   # GET /guiguzis/1

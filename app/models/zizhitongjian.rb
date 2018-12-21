@@ -1,0 +1,2 @@
+class Zizhitongjian < ApplicationRecord
+end

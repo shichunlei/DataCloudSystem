@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :bencaos
+  resources :jingangjings
+  resources :zizhitongjians
   resources :food_nutritions
   resources :books
   resources :hospitals

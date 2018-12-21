@@ -4,7 +4,7 @@ class HanshusController < ApplicationController
   # GET /hanshus
   def index
     @page = params[:page]
-    @hanshus = Hanshu.order(:id).page(@page)
+    @hanshus = Hanshu.order(:id).page(@page).per(30)
   end
 
   # GET /hanshus/1

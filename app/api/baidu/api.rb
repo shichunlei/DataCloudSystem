@@ -13,7 +13,7 @@ module BAIDU
 
 		mount BAIDU::Ocr
 		mount BAIDU::Image
-		mount BAIDU::Nlp
+		mount BAIDU::Rpc
 		mount BAIDU::Util
 	end
 

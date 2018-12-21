@@ -1,0 +1,2 @@
+class Jingangjing < ApplicationRecord
+end

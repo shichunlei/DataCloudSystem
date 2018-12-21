@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180911014140) do
+ActiveRecord::Schema.define(version: 20181221041652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(version: 20180911014140) do
     t.text     "distributing", default: ""
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "bencaos", force: :cascade do |t|
+    t.string   "chapter",        default: ""
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "books", force: :cascade do |t|
@@ -712,6 +725,17 @@ ActiveRecord::Schema.define(version: 20180911014140) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "jingangjings", force: :cascade do |t|
+    t.string   "name",           default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "laws", force: :cascade do |t|
     t.string   "name",                default: ""
     t.string   "pub_department",      default: ""
@@ -1340,6 +1364,19 @@ ActiveRecord::Schema.define(version: 20180911014140) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.string   "parent_chapter", default: ""
+  end
+
+  create_table "zizhitongjians", force: :cascade do |t|
+    t.string   "chapter",        default: ""
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "zuozhuans", force: :cascade do |t|

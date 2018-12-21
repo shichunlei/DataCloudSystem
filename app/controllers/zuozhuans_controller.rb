@@ -4,7 +4,7 @@ class ZuozhuansController < ApplicationController
   # GET /zuozhuans
   def index
     @page = params[:page]
-    @zuozhuans = Zuozhuan.order(:id).page(@page)
+    @zuozhuans = Zuozhuan.order(:id).page(@page).per(30)
   end
 
   # GET /zuozhuans/1

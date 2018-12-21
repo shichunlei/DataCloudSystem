@@ -4,7 +4,7 @@ class HouhanshusController < ApplicationController
   # GET /houhanshus
   def index
     @page = params[:page]
-    @houhanshus = Houhanshu.order(:id).page(@page)
+    @houhanshus = Houhanshu.order(:id).page(@page).per(30)
   end
 
   # GET /houhanshus/1

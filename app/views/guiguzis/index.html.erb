@@ -38,7 +38,7 @@
             </thead>
             <tbody>
               <% current_page = @page.nil? ? 1 : @page -%>
-              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
+              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 30 -%>
               <%= content_tag_for(:tr, @guiguzis) do |guiguzi| %>
                                 <td><%= @page = @page + 1   -%></td>
                                                     <td><%= guiguzi.name -%></td>

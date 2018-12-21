@@ -2,7 +2,7 @@ module V1
 
 	module ErrorFormatter
       def self.call message, backtrace, options, env
-        {:code => '20000', :message => message}.to_json
+        {:code => "-1", :message => message}.to_json
       end
 	end
 
@@ -17,6 +17,7 @@ module V1
 		mount V1::Educations
 		mount V1::Entertainments
 		mount V1::Astros
+		mount V1::Meizi
 	end
 
 	# 返回码

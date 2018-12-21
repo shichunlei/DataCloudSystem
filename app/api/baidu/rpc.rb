@@ -15,9 +15,9 @@
 # 词性标注				为自然语言文本中的每个词汇赋予词性（已合并到词法分析接口）
 
 module BAIDU
-	class Nlp < Grape::API
+	class Rpc < Grape::API
     include Utils
-    resource :nlp do
+    resource :rpc do
 
     end
   end

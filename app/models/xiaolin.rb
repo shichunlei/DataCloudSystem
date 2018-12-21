@@ -1,0 +1,2 @@
+class Xiaolin < ApplicationRecord
+end

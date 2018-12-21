@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :xiaolins
   resources :bencaos
   resources :jingangjings
   resources :zizhitongjians

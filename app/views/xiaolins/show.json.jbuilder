@@ -1,0 +1,1 @@
+json.partial! "xiaolins/xiaolin", xiaolin: @xiaolin

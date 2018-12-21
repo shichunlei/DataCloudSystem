@@ -32,13 +32,11 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                                <th><%=t('activerecord.attributes.bencao.id') -%></th>
-                                                <th><%=t('activerecord.attributes.bencao.chapter') -%></th>
-                                                                <th><%=t('activerecord.attributes.bencao.name') -%></th>
-                                                                <th><%=t('activerecord.attributes.bencao.author') -%></th>
-                                                                <th><%=t('activerecord.attributes.bencao.content') -%></th>
-                                                                <th><%=t('activerecord.attributes.bencao.commentary') -%></th>
-                                                                                                                                                      <th></th>
+                <th><%=t('activerecord.attributes.bencao.id') -%></th>
+                <th><%=t('activerecord.attributes.bencao.chapter') -%></th>
+                <th><%=t('activerecord.attributes.bencao.name') -%></th>
+                <th><%=t('activerecord.attributes.bencao.author') -%></th>
+                <th></th>
                 <th>操作</th>
                 <th></th>
               </tr>
@@ -47,13 +45,11 @@
               <% current_page = @page.nil? ? 1 : @page -%>
               <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 30 -%>
               <%= content_tag_for(:tr, @bencaos) do |bencao| %>
-                                <td><%= @page = @page + 1   -%></td>
-                                                <td><%= bencao.chapter -%></td>
-                                                                <td><%= bencao.name -%></td>
-                                                                <td><%= bencao.author -%></td>
-                                                                <td><%= bencao.content -%></td>
-                                                                <td><%= bencao.commentary -%></td>
-                                                                                                                                                <% if can? :read, bencao %>
+                <td><%= @page = @page + 1   -%></td>
+                <td><%= bencao.chapter -%></td>
+                <td><%= bencao.name -%></td>
+                <td><%= bencao.author -%></td>
+                <% if can? :read, bencao %>
                   <td class="list-opertion"><%= link_to t('views.show'), "#{bencao_path(bencao)}?page=#{current_page}" %></td>
                 <% end %>
                 <% if can? :edit, bencao %>

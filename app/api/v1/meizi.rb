@@ -60,7 +60,7 @@ module V1
         list.each do |dd|
           id = dd.css('a').first['href'].gsub('https://www.mzitu.com/tag/','').gsub('/','')
           puts id
-          image = dd.css('a').css("img").first['src']
+          image = dd.css('a').css("img").first['data-original']
           puts image
           title = dd.css('a').text
           puts title

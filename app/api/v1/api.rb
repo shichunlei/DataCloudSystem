@@ -18,6 +18,7 @@ module V1
 		mount V1::Entertainments
 		mount V1::Astros
 		mount V1::Meizi
+		mount V1::Juzimi
 	end
 
 	# 返回码

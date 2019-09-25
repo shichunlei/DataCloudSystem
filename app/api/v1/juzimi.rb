@@ -11,7 +11,7 @@ module V1
         page = params[:page]
         type = params[:type]
 
-        doc = Nokogiri::HTML(open("http://www.cnjxn.com/#{type}/index_#{page}.html"))
+        doc = Nokogiri::HTML(open("http:#{ENV['JUZIMI_BASE_URL']}#{type}/index_#{page}.html"))
         doc.encoding = 'utf-8'
 
         list = doc.css('section.main').css('section.news-list-module').css('article.item')
@@ -35,7 +35,7 @@ module V1
           juzimi.store("desc", desc)
           type_name = li.css('section.column-name').css('a').css('span.name').text
           juzimi.store("type_name", type_name)
-					type = li.css('section.column-name').css('a').first['href'].gsub('//www.cnjxn.com/', '').gsub('/', '')
+					type = li.css('section.column-name').css('a').first['href'].gsub("#{ENV['JUZIMI_BASE_URL']}", '').gsub('/', '')
           juzimi.store("type", type)
           comment_count = li.css('section.comment').css('a').css('span.count').text
           juzimi.store("comment_count", comment_count.to_i)
@@ -64,7 +64,7 @@ module V1
         page = params[:page]
         tag_id = params[:tag_id]
 
-        doc = Nokogiri::HTML(open("http://www.cnjxn.com/tags/#{tag_id}_#{page}.html"))
+        doc = Nokogiri::HTML(open("http:#{ENV['JUZIMI_BASE_URL']}tags/#{tag_id}_#{page}.html"))
         doc.encoding = 'utf-8'
 
         list = doc.css('section.main').css('section.news-list-module').css('article.item')
@@ -88,7 +88,7 @@ module V1
           juzimi.store("desc", desc)
 					type_name = li.css('section.column-name').css('a').css('span.name').text
           juzimi.store("type_name", type_name)
-					type = li.css('section.column-name').css('a').first['href'].gsub('//www.cnjxn.com/', '').gsub('/', '')
+					type = li.css('section.column-name').css('a').first['href'].gsub("#{ENV['JUZIMI_BASE_URL']}", '').gsub('/', '')
           juzimi.store("type", type)
           comment_count = li.css('section.comment').css('a').css('span.count').text
           juzimi.store("comment_count", comment_count.to_i)
@@ -117,7 +117,7 @@ module V1
         id = params[:id]
 				type = params[:type]
 
-        doc = Nokogiri::HTML(open("http://www.cnjxn.com/#{type}/#{id}.html"))
+        doc = Nokogiri::HTML(open("http:#{ENV['JUZIMI_BASE_URL']}#{type}/#{id}.html"))
         doc.encoding = 'utf-8'
 
 				info = doc.css('section.article-row')
@@ -146,7 +146,7 @@ module V1
 				copyright = main.css('section.contribute-contact').css('p').text
 
 				# 详情
-				details = main.css('article p').to_s.gsub('/storage', 'http://www.cnjxn.com/storage')
+				details = main.css('article p').to_s.gsub('/storage', "http:#{ENV['JUZIMI_BASE_URL']}storage")
 
 				recommend = info.css('aside.recommend').css('section.scroll')
 
@@ -160,7 +160,7 @@ module V1
 					__juzimi.store('id', id.to_i)
 					title = item.css('a').text
 					__juzimi.store('title', title)
-					type = item.css('a').first['href'].gsub("//www.cnjxn.com/", '').gsub('.html', '').gsub(/[0-9\/]/, '')
+					type = item.css('a').first['href'].gsub("#{ENV['JUZIMI_BASE_URL']}", '').gsub('.html', '').gsub(/[0-9\/]/, '')
 					__juzimi.store('type', type)
 					time = item.css('span.author').text
 					__juzimi.store('time', time.gsub(/[\n\r ]/, ''))
@@ -192,7 +192,7 @@ module V1
 					__juzimi.store('id', id.to_i)
 					title = item.css('a').text
 					__juzimi.store('title', title)
-					type = item.css('a').first['href'].gsub("//www.cnjxn.com/", '').gsub('.html', '').gsub(/[0-9\/]/, '')
+					type = item.css('a').first['href'].gsub("#{ENV['JUZIMI_BASE_URL']}", '').gsub('.html', '').gsub(/[0-9\/]/, '')
 					__juzimi.store('type', type)
 
 					author_news.push(__juzimi)

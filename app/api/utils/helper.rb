@@ -40,27 +40,48 @@ module Utils
       return md5_str
     end
 
+    def Helper::get(url, params, header = nil)
+      uri = URI.parse(url)
+      https = Net::HTTP.new(uri.host, uri.port)
+      if uri.scheme == 'https'
+        https.use_ssl = true
+        https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      end
+      req = Net::HTTP::Get.new(uri.path, initheader = header ? header : {'Content-Type' => 'application/json; charset=utf-8'})
+      req.set_form_data(params)
+      body = https.request(req).body
+      result = JSON.parse(body)
+      # puts result
+      return result
+    end
+
     def Helper::post(url, params)
       uri = URI.parse(url)
       https = Net::HTTP.new(uri.host, uri.port)
-      https.use_ssl = true
+      if uri.scheme == 'https'
+        https.use_ssl = true
+        https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      end
       req = Net::HTTP::Post.new(uri.path, initheader = {'Content-Type' => 'application/json'})
       req.set_form_data(params)
       body = https.request(req).body
       result = JSON.parse(body)
-      puts result
+      # puts result
       return result
     end
 
     def Helper::post(url, params, header = nil)
       uri = URI.parse(url)
       https = Net::HTTP.new(uri.host, uri.port)
-      https.use_ssl = true
+      if uri.scheme == 'https'
+        https.use_ssl = true
+        https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      end
       req = Net::HTTP::Post.new(uri.path, initheader = header ? header : {'Content-Type' => 'application/json'})
       req.set_form_data(params)
       body = https.request(req).body
       result = JSON.parse(body)
-      puts result
+      # puts result
       return result
     end
 

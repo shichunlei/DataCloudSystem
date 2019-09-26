@@ -363,7 +363,16 @@ module V1
         result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/papers/detail/#{paper_id}.json", params)
 
         if result['meta']['status'] == 200
-					return {:code => 0, :message => result['meta']['msg'], :data => result['response'].as_json()}
+					if result['response']["questions"] != nil
+						data = {}
+						data.store("question", result['response']["questions"][0])
+						data.store("type", result['response']["type"])
+						data.store("image", result['response']["image"])
+						data.store("post", result['response']["post"])
+						return {:code => 0, :message => result['meta']['msg'], :data => data.as_json()}
+					else
+						return {:code => 1, :message => result['meta']['msg']}
+					end
         else
           return {:code => 1, :message => result['meta']['msg']}
         end

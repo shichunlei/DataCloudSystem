@@ -245,12 +245,22 @@ module V1
         result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/columns/info/#{column_id}.json", params)
 
         if result['meta']['status'] == 200
+					column = result['response']['column']
+					column.store('authors', result['response']['authors'])
+					column.store('subscribers', result['response']['subscribers'])
 
-          column = result['response']['column']
-          column.store('authors', result['response']['authors'])
-          column.store('subscribers', result['response']['subscribers'])
+					news_result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/columns/index/#{column_id}/0.json", params)
 
-          return {:code => 0, :message => result['meta']['msg'], :data => column.as_json()}
+					if news_result['meta']['status'] == 200
+						data = {}
+						data.store("last_key", news_result['response']['last_key'])
+						data.store("has_more", news_result['response']['has_more'])
+						data.store("feeds", news_result['response']['feeds'])
+						data.store("column", column)
+	          return {:code => 0, :message => result['meta']['msg'], :data => data.as_json()}
+	        else
+	          return {:code => 1, :message => result['meta']['msg']}
+	        end
         else
           return {:code => 1, :message => result['meta']['msg']}
         end

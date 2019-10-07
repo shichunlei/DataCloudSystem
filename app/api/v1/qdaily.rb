@@ -1,10 +1,3 @@
-require 'uri'
-require 'open-uri'
-require 'nokogiri'
-require 'json'
-require 'net/http'
-require 'net/https'
-
 module V1
 	class Qdaily < Grape::API
 

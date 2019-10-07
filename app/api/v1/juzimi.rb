@@ -1,5 +1,8 @@
 module V1
 	class Juzimi < Grape::API
+
+		include Utils
+
 		resource :juzimi do
 
       desc "句子迷分类列表"
@@ -213,6 +216,56 @@ module V1
 
         return {"code" => 0, "message" => "SUCCESS", :data => juzimi.as_json()}
       end
+
+			ARTICLE_BASE_URL = "https://interface.meiriyiwen.com";
+
+			desc "每日一文-今天"
+			params do
+      end
+      get :article_today do
+				params = {
+					:dev => 1
+				}
+
+				result = Utils::Helper::get("#{ARTICLE_BASE_URL}/article/today", params)
+
+				puts result.to_json
+
+				data = {}
+				data = result["data"]
+				data.store("id", result["data"]["wc"])
+				data.store("curr", result["data"]["date"]["curr"])
+				data.store("next", result["data"]["date"]["next"])
+				data.store("prev", result["data"]["date"]["prev"])
+				data.delete("wc")
+				data.delete("date")
+
+				return {:code => 0, :message => "SUCCESS", :data => data}
+			end
+
+			desc "每日一文-随机"
+			params do
+      end
+      get :article_random do
+				params = {
+					:dev => 1
+				}
+
+				result = Utils::Helper::get("#{ARTICLE_BASE_URL}/article/random", params)
+
+				puts result.to_json
+
+				data = {}
+				data = result["data"]
+				data.store("id", result["data"]["wc"])
+				data.store("curr", result["data"]["date"]["curr"])
+				data.store("next", result["data"]["date"]["next"])
+				data.store("prev", result["data"]["date"]["prev"])
+				data.delete("wc")
+				data.delete("date")
+
+				return {:code => 0, :message => "SUCCESS", :data => data}
+			end
 
     end
   end

@@ -94,14 +94,14 @@ module V1
         meizis = []
 
         list.each do |li|
-          image = li.css('div.comment-body').css('p').css("img").first['src']
+          image = li.css('div.comment-body').css('p').css("img").first['data-original']
           puts image
-          time = li.css('div.comment-body').css("div.comment-meta").css('a').text.gsub('/\n','').gsub('/\t','')
+          time = li.css('div.comment-body').css("div.comment-meta").css('a').text
           puts time
 
           meizi = {}
           meizi.store("image", image)
-          meizi.store("time", time)
+          meizi.store("time", time.gsub(/[\n\t]/, ''))
 
           meizis.push(meizi)
         end
@@ -173,7 +173,7 @@ module V1
         number = content.css("div.main-meta").css('span')[2].text
         puts number
         meizi.store("number", number)
-        image = content.css('div.main-image').css('p').css('a').css('img').first['src']
+        image = content.css('div.main-image').css('p').css('a').css('img').first['data-original']
         puts image
         meizi.store("image", image)
         meizis.push(meizi)
@@ -198,7 +198,7 @@ module V1
             number = content.css("div.main-meta").css('span')[2].text
             puts number
             meizi.store("number", number)
-            image = content.css('div.main-image').css('p').css('a').css('img').first['src']
+            image = content.css('div.main-image').css('p').css('a').css('img').first['data-original']
             puts image
             meizi.store("image", image)
             meizis.push(meizi)

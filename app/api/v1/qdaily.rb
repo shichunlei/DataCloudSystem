@@ -58,8 +58,7 @@ module V1
       get :home_data do
         lastKey = params[:last_key]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/homes/index_v2/#{lastKey}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/homes/index_v2/#{lastKey}.json")
 
         if result['meta']['status'] == 200
           result['response'].delete("banners_ad")
@@ -76,8 +75,7 @@ module V1
       params do
       end
       get :categories do
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/homes/left_sidebar.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/homes/left_sidebar.json")
 
         if result['meta']['status'] == 200
           return {:code => 0, :message => result['meta']['msg'], :data => result['response'].as_json()}
@@ -95,8 +93,7 @@ module V1
         lastKey = params[:last_key]
         tagId = params[:tag_id]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/categories/index/#{tagId}/#{lastKey}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/categories/index/#{tagId}/#{lastKey}.json")
 
         if result['meta']['status'] == 200
           result['response'].delete("banners_ad")
@@ -115,10 +112,9 @@ module V1
       get :articles_details do
         id = params[:id]
 
-        params = {}
-        info = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/articles/info/#{id}.json", params)
+        info = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/articles/info/#{id}.json")
 
-				details = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/articles/detail/#{id}.json", params)
+				details = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/articles/detail/#{id}.json")
 
         if info['meta']['status'] == 200
 					if details['meta']['status'] == 200
@@ -145,8 +141,7 @@ module V1
         id = params[:id]
         datatype = params[:datatype]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/comments/index/#{datatype}/#{id}/#{lastKey}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/comments/index/#{datatype}/#{id}/#{lastKey}.json")
 
         if result['meta']['status'] == 200
           result['response'].delete("top_comments")
@@ -216,8 +211,7 @@ module V1
       get :columns do
         lastKey = params[:last_key]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/columns/all_columns_index/#{lastKey}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/columns/all_columns_index/#{lastKey}.json")
 
 				if result['meta']['status'] == 200
           result['response'].delete("columns_ad")
@@ -234,15 +228,14 @@ module V1
       get :column_info do
         column_id = params[:column_id]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/columns/info/#{column_id}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/columns/info/#{column_id}.json")
 
         if result['meta']['status'] == 200
 					column = result['response']['column']
 					column.store('authors', result['response']['authors'])
 					column.store('subscribers', result['response']['subscribers'])
 
-					news_result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/columns/index/#{column_id}/0.json", params)
+					news_result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/columns/index/#{column_id}/0.json")
 
 					if news_result['meta']['status'] == 200
 						data = {}
@@ -268,8 +261,7 @@ module V1
         column_id = params[:column_id]
         lastKey = params[:last_key]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/columns/index/#{column_id}/#{lastKey}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/columns/index/#{column_id}/#{lastKey}.json")
 
         if result['meta']['status'] == 200
           result['response'].delete("top_comments")
@@ -286,8 +278,7 @@ module V1
       get :papers do
         lastKey = params[:last_key]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/papers/index/#{lastKey}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/papers/index/#{lastKey}.json")
 
         if result['meta']['status'] == 200
           result['response'].delete('feeds_ad')
@@ -306,8 +297,7 @@ module V1
         lastKey = params[:last_key]
 				topic_id = params[:topic_id]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/paper_topics/index/#{topic_id}/#{lastKey}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/paper_topics/index/#{topic_id}/#{lastKey}.json")
 
         if result['meta']['status'] == 200
           result['response'].delete('feeds_ad')
@@ -326,8 +316,7 @@ module V1
         lastKey = params[:last_key]
 				genre = params[:genre]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/paper_genres/index/#{genre}/#{lastKey}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/paper_genres/index/#{genre}/#{lastKey}.json")
 
         if result['meta']['status'] == 200
           result['response'].delete('feeds_ad')
@@ -344,8 +333,7 @@ module V1
       get :paper_info do
         paper_id = params[:paper_id]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/papers/detail/#{paper_id}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/papers/detail/#{paper_id}.json")
 
         if result['meta']['status'] == 200
 					# result['response'].delete('options')
@@ -362,8 +350,7 @@ module V1
       get :vote_info do
         paper_id = params[:paper_id]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/papers/detail/#{paper_id}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/papers/detail/#{paper_id}.json")
 
         if result['meta']['status'] == 200
 					if result['response']["questions"] != nil
@@ -388,8 +375,7 @@ module V1
       get :vote_result do
         paper_id = params[:paper_id]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/papers/#{paper_id}/vote_result.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/papers/#{paper_id}/vote_result.json")
 
         if result['meta']['status'] == 200
 					result['response'].delete('option')
@@ -408,8 +394,7 @@ module V1
         id = params[:id]
 				last_key = params[:last_key]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/options/index/#{id}/#{last_key}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/options/index/#{id}/#{last_key}.json")
 
         if result['meta']['status'] == 200
           result['response'].delete('my_options')
@@ -426,8 +411,7 @@ module V1
       get :tots do
         id = params[:id]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/paper/tots/#{id}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/paper/tots/#{id}.json")
 
         if result['meta']['status'] == 200
 					data = {}
@@ -449,8 +433,7 @@ module V1
       get :tot_results do
         id = params[:id]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/paper/tot_results/#{id}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/paper/tot_results/#{id}.json")
 
         if result['meta']['status'] == 200
           return {:code => 0, :message => result['meta']['msg'], :data => result['response'].as_json()}
@@ -466,8 +449,7 @@ module V1
       get :whos do
         id = params[:id]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/paper/whos/#{id}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/paper/whos/#{id}.json")
 
         if result['meta']['status'] == 200
 					data = {}
@@ -486,8 +468,7 @@ module V1
       get :whos_result do
         id = params[:id]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/paper/whos/result/#{id}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/paper/whos/result/#{id}.json")
 
         if result['meta']['status'] == 200
           return {:code => 0, :message => result['meta']['msg'], :data => result['response'].as_json()}
@@ -503,8 +484,7 @@ module V1
       get :choices do
         id = params[:id]
 
-        params = {}
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/paper/choices/#{id}.json", params)
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/paper/choices/#{id}.json")
 
         if result['meta']['status'] == 200
 					data = {}
@@ -525,17 +505,12 @@ module V1
         lastKey = params[:last_key]
         keyword = params[:keyword]
 
-        params = {
-          :search => keyword,
-          :last_key => lastKey
-        }
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/searches/post_list.json?last_key=#{lastKey}&search=#{keyword}")
 
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}/app3/searches/post_list.json", params)
-
-        if result['status']
-          return {:code => 0, :message => 'SUCCESS', :data => result['data'].as_json()}
+        if result['meta']['status'] == 200
+          return {:code => 0, :message => result['meta']['msg'], :data => result['response'].as_json()}
         else
-          return {:code => 1, :message => ''}
+          return {:code => 1, :message => result['meta']['msg']}
         end
       end
 
@@ -548,21 +523,35 @@ module V1
         lastKey = params[:last_key]
         keyword = params[:keyword]
 
-        params = {
-          :search => keyword,
-          :last_key => lastKey
-        }
+        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}app3/searches/post_highlighting_list.json?last_key=#{lastKey}&search=#{keyword}")
 
-        result = Utils::Helper::get("#{ENV['QDAILY_BASE_URL']}/app3/searches/post_highlighting_list.json", params)
-
-        if result['status']
-          return {:code => 0, :message => 'SUCCESS', :data => result['data'].as_json()}
+				if result['meta']['status'] == 200
+					result['response'].delete('authors')
+					result['response'].store("feeds", result['response']["searches"])
+					result['response'].delete('searches')
+          return {:code => 0, :message => result['meta']['msg'], :data => result['response'].as_json()}
         else
-          return {:code => 1, :message => ''}
+          return {:code => 1, :message => result['meta']['msg']}
         end
       end
 
+			desc "搜索（有图）"
+      params do
+        requires :last_key, type: String, desc: 'lastKey'
+        requires :keyword, type: String, desc: '关键字'
+      end
+      get :search_web do
+        lastKey = params[:last_key]
+        keyword = params[:keyword]
 
+        result = Utils::Helper::get("http://www.qdaily.com/searches/more_search.json?last_key=#{lastKey}&key=#{keyword}")
+
+        if result['status']
+          return {:code => 0, :message => "", :data => result["data"].as_json()}
+        else
+          return {:code => 1, :message => ""}
+        end
+      end
 
     end
   end

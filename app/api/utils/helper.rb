@@ -40,13 +40,12 @@ module Utils
       return md5_str
     end
 
-    def Helper::get(url, params, header = nil)
-      uri = URI.parse(url)
+    def Helper::get(url, header = nil)
+      uri = URI.parse(URI.escape(url))
       https = Net::HTTP.new(uri.host, uri.port)
       https.use_ssl = true if uri.scheme == "https"  # enable SSL/TLS
       https.verify_mode = OpenSSL::SSL::VERIFY_NONE #这个也很重要
-      req = Net::HTTP::Get.new(uri.path, initheader = header ? header : {'Content-Type' => 'application/json; charset=utf-8'})
-      req.set_form_data(params)
+      req = Net::HTTP::Get.new(uri.request_uri)
       body = https.request(req).body
       result = JSON.parse(body)
       # puts result

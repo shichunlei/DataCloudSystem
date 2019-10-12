@@ -16,6 +16,7 @@ module V1
 		mount V1::Recipes
 		mount V1::Educations
 		mount V1::Astros
+		mount V1::Movies
 		mount V1::Meizi
 		mount V1::Juzimi
 		mount V1::Qdaily

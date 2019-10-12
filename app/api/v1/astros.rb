@@ -1,9 +1,8 @@
-require 'json'
-require 'net/http'
-require 'openssl'
-
 module V1
 	class Astros < Grape::API
+
+		include Utils
+
 		resource :astros do
 
       desc "星座列表"
@@ -165,6 +164,143 @@ module V1
         data.store("year_fortune", year_fortune.as_json(:except => [:created_at, :updated_at, :astro_id]))
         return {"code" => 20001, "message" => "请求成功", :result => data}
       end
+
+			desc "猜成语"
+			params do
+      end
+      get :caichengyu do
+				result = Utils::Helper::get("#{ENV['TIAN_BASE_URL']}/txapi/caichengyu/?key=#{ENV['TIAN_KEY']}")
+
+				return {:code => 0, :message => result["msg"], :data => result["newslist"][0].as_json()}
+			end
+
+			desc "成语接龙"
+			params do
+				requires :word, type: String, desc: '成语'
+				requires :userid, type: String, desc: '用户唯一识别码'
+				requires :statetime, type: String, desc: '状态维持时间，单位秒，默认1800'
+      end
+      get :chengyujielong do
+				statetime = params[:statetime]
+				word = params[:word]
+				userid = params[:userid]
+
+				result = Utils::Helper::get("#{ENV['TIAN_BASE_URL']}/txapi/chengyujielong/?key=#{ENV['TIAN_KEY']}&word=#{word}&userid=#{userid}&statetime=#{statetime}")
+
+				return {:code => 0, :message => result["msg"], :data => result["newslist"][0].as_json()}
+			end
+
+			desc "故事大全"
+			params do
+      end
+      get :story do
+				result = Utils::Helper::get("#{ENV['TIAN_BASE_URL']}/txapi/story/?key=#{ENV['TIAN_KEY']}")
+
+				return {:code => 0, :message => result["msg"], :data => result["newslist"][0].as_json()}
+			end
+
+			desc "土味情话"
+			params do
+      end
+      get :saylove do
+				result = Utils::Helper::get("#{ENV['TIAN_BASE_URL']}/txapi/saylove/?key=#{ENV['TIAN_KEY']}")
+
+				return {:code => 0, :message => result["msg"], :data => result["newslist"][0].as_json()}
+			end
+
+			desc "一站到底"
+			params do
+      end
+      get :wenda do
+				result = Utils::Helper::get("#{ENV['TIAN_BASE_URL']}/txapi/wenda/?key=#{ENV['TIAN_KEY']}")
+
+				return {:code => 0, :message => result["msg"], :data => result["newslist"][0].as_json()}
+			end
+
+			desc "英语一句话"
+			params do
+      end
+      get :ensentence do
+				result = Utils::Helper::get("#{ENV['TIAN_BASE_URL']}/txapi/ensentence/?key=#{ENV['TIAN_KEY']}")
+
+				return {:code => 0, :message => result["msg"], :data => result["newslist"][0].as_json()}
+			end
+
+			desc "优美诗句"
+			params do
+				requires :word, type: String, desc: '搜索词，来源或作者'
+				requires :page, type: Integer, desc: '页码'
+				requires :num, type: Integer, desc: '每页条数'
+      end
+      get :verse do
+				word = params[:word]
+				page = params[:page]
+				num = params[:num]
+
+				result = Utils::Helper::get("#{ENV['TIAN_BASE_URL']}/txapi/verse/?key=#{ENV['TIAN_KEY']}&word=#{word}&page=#{page}&num=#{num}")
+
+				return {:code => 0, :message => result["msg"], :data => result["newslist"].as_json()}
+			end
+
+			desc "唐诗大全"
+			params do
+				requires :word, type: String, desc: '搜索词，来源或作者'
+				requires :page, type: Integer, desc: '页码'
+				requires :num, type: Integer, desc: '每页条数'
+      end
+      get :poetries do
+				word = params[:word]
+				page = params[:page]
+				num = params[:num]
+
+				result = Utils::Helper::get("#{ENV['TIAN_BASE_URL']}/txapi/poetries/?key=#{ENV['TIAN_KEY']}&word=#{word}&page=#{page}&num=#{num}")
+
+				return {:code => 0, :message => result["msg"], :data => result["newslist"].as_json()}
+			end
+
+			desc "唐诗三百首"
+			params do
+				requires :word, type: String, desc: '搜索词，来源或作者'
+				requires :page, type: Integer, desc: '页码'
+				requires :num, type: Integer, desc: '每页条数'
+      end
+      get :poetry do
+				word = params[:word]
+				page = params[:page]
+				num = params[:num]
+
+				result = Utils::Helper::get("#{ENV['TIAN_BASE_URL']}/txapi/poetry/?key=#{ENV['TIAN_KEY']}&word=#{word}&page=#{page}&num=#{num}")
+
+				return {:code => 0, :message => result["msg"], :data => result["newslist"].as_json()}
+			end
+
+			desc "精选宋词"
+			params do
+				requires :word, type: String, desc: '搜索词，来源或作者'
+				requires :page, type: Integer, desc: '页码'
+				requires :num, type: Integer, desc: '每页条数'
+      end
+      get :songci do
+				word = params[:word]
+				page = params[:page]
+				num = params[:num]
+
+				result = Utils::Helper::get("#{ENV['TIAN_BASE_URL']}/txapi/songci/?key=#{ENV['TIAN_KEY']}&word=#{word}&page=#{page}&num=#{num}")
+
+				return {:code => 0, :message => result["msg"], :data => result["newslist"].as_json()}
+			end
+
+			desc "姓氏起源"
+			params do
+				requires :word, type: String, desc: '搜索词，来源或作者'
+      end
+      get :surname do
+				xing = params[:word]
+
+				result = Utils::Helper::get("#{ENV['TIAN_BASE_URL']}/txapi/surname/?key=#{ENV['TIAN_KEY']}&xing=#{xing}")
+
+				return {:code => 0, :message => result["msg"], :data => result["newslist"].as_json()}
+			end
 
     end
   end

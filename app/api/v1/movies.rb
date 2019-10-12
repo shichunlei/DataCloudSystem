@@ -201,43 +201,228 @@ module V1
 				requires :count, type: Integer, desc: '每页条数'
       end
       get :in_theaters do
-				page = params[:page]
         count = params[:count]
+				start = (params[:page] - 1) * count
 				city = params[:city]
 
-				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/v2/movie/in_theaters?city=#{city}&start=#{(page - 1) * count}&count=#{count}&apikey=#{ENV['DOUBAN_KEY']}")
+				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/in_theaters?apikey=#{ENV['DOUBAN_KEY']}&city=#{city}&start=#{start}&count=#{count}")
 
 				return {:code => 0, :message => "SUCCESS", :data => result["subjects"]}
+			end
+
+			desc "即将上映"
+			params do
+        requires :page, type: Integer, desc: '页码'
+				requires :count, type: Integer, desc: '每页条数'
+      end
+      get :coming_soon do
+        count = params[:count]
+				start = (params[:page] - 1) * count
+
+				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/coming_soon?apikey=#{ENV['DOUBAN_KEY']}&start=#{start}&count=#{count}")
+
+				return {:code => 0, :message => "SUCCESS", :data => result["subjects"]}
+			end
+
+			desc "新片榜"
+			params do
+      end
+      get :new_movies do
+				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/new_movies?apikey=#{ENV['DOUBAN_KEY']}")
+
+				return {:code => 0, :message => "SUCCESS", :data => result["subjects"]}
+			end
+
+			desc "Top250"
+			params do
+				requires :page, type: Integer, desc: '页码'
+				requires :count, type: Integer, desc: '每页条数'
+      end
+      get :top250 do
+				count = params[:count]
+				start = (params[:page] - 1) * count
+				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/top250?apikey=#{ENV['DOUBAN_KEY']}&start=#{start}&count=#{count}")
+
+				return {:code => 0, :message => "SUCCESS", :data => result["subjects"]}
+			end
+
+			desc "一周口碑榜"
+			params do
+      end
+      get :weekly do
+				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/weekly?apikey=#{ENV['DOUBAN_KEY']}")
+
+				data = []
+
+				result["subjects"].each do |item|
+					item['subject'].store("rank", item['rank'])
+					item['subject'].store("delta", item['delta'])
+					data.push(item['subject'])
+				end
+
+				return {:code => 0, :message => "SUCCESS", :data => data}
+			end
+
+			desc "北美票房榜"
+			params do
+      end
+      get :us_box do
+				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/us_box?apikey=#{ENV['DOUBAN_KEY']}")
+
+				data = []
+
+				result["subjects"].each do |item|
+					item['subject'].store("rank", item['rank'])
+					item['subject'].store("box", item['box'])
+					item['subject'].store("new", item['new'])
+					data.push(item['subject'])
+				end
+
+				return {:code => 0, :message => "SUCCESS", :data => data}
+			end
+
+			desc "影片详情"
+			params do
+				requires :id, type: Integer, desc: 'ID'
+      end
+      get :details do
+				id = params[:id]
+				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/subject/#{id}?apikey=#{ENV['DOUBAN_KEY']}")
+
+				return {:code => 0, :message => "SUCCESS", :data => result}
+			end
+
+			desc "影评"
+			params do
+				requires :id, type: Integer, desc: 'ID'
+				requires :page, type: Integer, desc: '页码'
+				requires :limit, type: Integer, desc: '每页条数'
+      end
+      get :reviews do
+				id = params[:id]
+				count = params[:limit]
+				start = (params[:page] - 1) * count
+
+				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/subject/#{id}/reviews?apikey=#{ENV['DOUBAN_KEY']}&count=#{count}&start=#{start}")
+
+				return {:code => 0, :message => "SUCCESS", :data => result['reviews']}
+			end
+
+			desc "短评"
+			params do
+				requires :id, type: Integer, desc: 'ID'
+				requires :page, type: Integer, desc: '页码'
+				requires :limit, type: Integer, desc: '每页条数'
+      end
+      get :comments do
+				id = params[:id]
+				count = params[:limit]
+				start = (params[:page] - 1) * count
+
+				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/subject/#{id}/comments?apikey=#{ENV['DOUBAN_KEY']}&count=#{count}&start=#{start}")
+
+				return {:code => 0, :message => "SUCCESS", :data => result['comments']}
+			end
+
+			desc "影片剧照"
+			params do
+				requires :id, type: Integer, desc: 'ID'
+				requires :page, type: Integer, desc: '页码'
+				requires :limit, type: Integer, desc: '每页条数'
+      end
+      get :movie_photos do
+				id = params[:id]
+				start = (params[:page] - 1) * params[:limit]
+				count = start + params[:limit]
+
+				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/subject/#{id}/photos?apikey=#{ENV['DOUBAN_KEY']}&count=#{count}&start=#{start}")
+
+				return {:code => 0, :message => "SUCCESS", :data => result['photos']}
+			end
+
+			desc "影人详情"
+			params do
+				requires :id, type: Integer, desc: 'ID'
+      end
+      get :celebrity do
+				id = params[:id]
+				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/celebrity/#{id}?apikey=#{ENV['DOUBAN_KEY']}")
+
+				return {:code => 0, :message => "SUCCESS", :data => result}
+			end
+
+			desc "影人剧照"
+			params do
+				requires :id, type: Integer, desc: 'ID'
+				requires :page, type: Integer, desc: '页码'
+				requires :limit, type: Integer, desc: '每页条数'
+      end
+      get :celebrity_photos do
+				id = params[:id]
+				start = (params[:page] - 1) * params[:limit]
+				count = start + params[:limit]
+
+				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/celebrity/#{id}/photos?apikey=#{ENV['DOUBAN_KEY']}&count=#{count}&start=#{start}")
+
+				return {:code => 0, :message => "SUCCESS", :data => result['photos']}
+			end
+
+			desc "影人作品"
+			params do
+				requires :id, type: Integer, desc: 'ID'
+				requires :page, type: Integer, desc: '页码'
+				requires :limit, type: Integer, desc: '每页条数'
+      end
+      get :works do
+				id = params[:id]
+				count = params[:limit]
+				start = (params[:page] - 1) * count
+
+				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/celebrity/#{id}/works?apikey=#{ENV['DOUBAN_KEY']}&count=#{count}&start=#{start}")
+
+				return {:code => 0, :message => "SUCCESS", :data => result['works']}
 			end
 
 			desc "影视筛选"
 			params do
         requires :page, type: Integer, desc: '页码'
-				requires :count, type: Integer, desc: '每页条数'
         requires :range, type: String, desc: '评分区间' # 默认 0,10 用逗号,隔开
 				requires :sort, type: String, desc: '排序方式' # U 近期热门（默认）；T 标签数量；S 评分；R 最新上映
-				requires :tags, type: String, desc: '形式' # 电影 电视剧 综艺 动漫 纪录片 短片
-				requires :feature, type: String, desc: '特色' # 放在tags后面用逗号,隔开，多个特色也可用逗号,隔开
-				requires :genres, type: String, desc: '类型' # 喜剧 动作 爱情 科幻 动画 悬疑 惊悚 恐怖 犯罪 同性 音乐 歌舞 传记 历史 战争 西部 奇幻 冒险 灾难 武侠 情色
-				requires :country, type: String, desc: '地区' # 中国大陆 美国 中国香港 中国台湾 日本 韩国 英国 法国 德国 意大利 西班牙 印度 泰国 俄罗斯 伊朗 加拿大 澳大利亚 爱尔兰 瑞典 巴西 丹麦
-				requires :year_range, type: String, desc: '类型' # 2019 2018 2010年代 2000年代 90年代 80年代70年代 60年代 更早
-				requires :playable, type: Integer, desc: '是否可播放' # 1 或 空
-				requires :unwatched, type: Integer, desc: '我没看过' # 1 或 空
+				optional :type, type: String, desc: '形式' # 电影 电视剧 综艺 动漫 纪录片 短片
+				optional :feature, type: String, desc: '特色' # 放在tags后面用逗号,隔开，多个特色也可用逗号,隔开
+				optional :genres, type: String, desc: '类型' # 喜剧 动作 爱情 科幻 动画 悬疑 惊悚 恐怖 犯罪 同性 音乐 歌舞 传记 历史 战争 西部 奇幻 冒险 灾难 武侠 情色
+				optional :countries, type: String, desc: '地区' # 中国大陆 美国 中国香港 中国台湾 日本 韩国 英国 法国 德国 意大利 西班牙 印度 泰国 俄罗斯 伊朗 加拿大 澳大利亚 爱尔兰 瑞典 巴西 丹麦
+				optional :year_range, type: String, desc: '类型' # 2019 2018 2010年代 2000年代 90年代 80年代70年代 60年代 更早
+				optional :playable, type: Integer, desc: '是否可播放' # 1 或 空
+				optional :unwatched, type: Integer, desc: '我没看过' # 1 或 空
       end
       get :screening do
-				page = params[:page]
-        count = params[:count]
-				range = params[:range]
-				sort = params[:sort]
-				genres = params[:genres]
-				country = params[:country]
-				tags = params[:tags]
-				feature = params[:feature]
-				playable = params[:playable]
-				unwatched = params[:unwatched]
-				year_range = params[:year_range]
+				_params = declared(params)
+				_params.delete_if{|k, v| v.blank? }
+				_params.store("start", (_params['page'] - 1)  * 20)
+				_params.delete('page')
+				if _params.include?('type') || _params.include?('feature')
+					if _params.include?('type') && _params.include?('feature')
+						_params.store('tags', "#{_params['type']},#{_params['feature']}")
+					else
+						if _params.include?('type')
+							_params.store('tags', "#{_params['type']}")
+						end
+						if _params.include?('feature')
+							_params.store('tags', "#{_params['feature']}")
+						end
+					end
+				end
+				_params.delete('type')
+				_params.delete('feature')
 
-				result = Utils::Helper::get("#{BASE_URL}/j/new_search_subjects?sort=#{sort}&range=#{range}&tags=#{tags},#{feature}&playable=#{playable}&unwatched=#{unwatched}&start=#{(page - 1)  * count}&genres=#{genres}&countries=#{country}&year_range=#{year_range}")
+				url = "#{BASE_URL}/j/new_search_subjects?"
+
+				_params.each do |k, v|
+					url += "#{k}=#{v}&"
+				end
+
+				result = Utils::Helper::get(url)
 
 				subjects = []
 				result["data"].each do |item|

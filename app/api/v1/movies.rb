@@ -369,6 +369,16 @@ module V1
 				id = params[:id]
 				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/celebrity/#{id}?apikey=#{ENV['DOUBAN_KEY']}")
 
+				data = result
+				subjects = []
+				data["works"].each do |item|
+					subject = item["subject"]
+					subject.store("roles", item["roles"])
+					subjects.push(subject)
+				end
+				data.store("subjects", subjects)
+				data.delete("works")
+
 				return {:code => 0, :message => "SUCCESS", :data => result.as_json()}
 			end
 

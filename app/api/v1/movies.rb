@@ -163,7 +163,7 @@ module V1
 						subject.store("images", image)
 
 						subject.store("new", item["is_new"])
-						subject.store("playable", item["playable"])
+						subject.store("has_video", item["playable"])
 						# subject.store("alt", item["url"])
 						subject.store("original_title", item["title"])
 
@@ -418,6 +418,56 @@ module V1
 				end
 
 				return {:code => 0, :message => "SUCCESS", :data => data.as_json()}
+			end
+
+			desc "根据标签搜索影视"
+			params do
+				requires :page, type: Integer, desc: '页码'
+				requires :limit, type: Integer, desc: '每页返回条数'
+				optional :type, type: String, desc: '类型'
+				requires :tag, type: String, desc: '标签'
+			end
+			get :search_by_tag do
+				count = params[:limit]
+				start = (params[:page] - 1) * count
+				tag = params[:tag]
+				type = params[:type]
+				if type.blank?
+					type = "movie"
+				end
+
+				url = "#{BASE_URL}/j/search_subjects?page_start=#{start}&page_limit=#{count}&tag=#{tag}&type=#{type}"
+
+				result = Utils::Helper::get(url)
+
+				subjects = []
+				result["data"].each do |item|
+					subject = {}
+					subject.store("id", item["id"])
+					subject.store("new", item["is_new"])
+					subject.store("has_video", item["playable"])
+					subject.store("title", item["title"])
+
+					image = {}
+					image.store("small", item["cover"])
+					image.store("large", item["cover"])
+					image.store("medium", item["cover"])
+					subject.store("images", image)
+
+					# subject.store("alt", item["url"])
+					subject.store("original_title", item["title"])
+
+					rating = {}
+					rating.store("average", item["rate"].to_f)
+					rating.store("min", 0)
+					rating.store("max", 10)
+
+					subject.store("rating", rating)
+
+					subjects.push(subject)
+				end
+
+				return {:code => 0, :message => "SUCCESS", :data => subjects}
 			end
 
 			desc "影视筛选"

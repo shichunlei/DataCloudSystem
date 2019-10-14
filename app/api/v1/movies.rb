@@ -324,6 +324,27 @@ module V1
 				return {:code => 0, :message => "SUCCESS", :data => result['comments']}
 			end
 
+			desc "剧照"
+			params do
+				requires :id, type: String, desc: 'ID'
+				requires :type, type: String, desc: '类型'
+				requires :page, type: Integer, desc: '页码'
+				requires :limit, type: Integer, desc: '每页条数'
+      end
+      get :photos do
+				id = params[:id]
+				start = (params[:page] - 1) * params[:limit]
+				count = start + params[:limit]
+				type = params[:type]
+
+				if type == "subject" || type == "celebrity"
+					result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/#{type}/#{id}/photos?apikey=#{ENV['DOUBAN_KEY']}&count=#{count}&start=#{start}")
+					return {:code => 0, :message => "SUCCESS", :data => result['photos']}
+				else
+					return {:code => -1, :message => "请求错误"}
+				end
+			end
+
 			desc "影片剧照"
 			params do
 				requires :id, type: Integer, desc: 'ID'

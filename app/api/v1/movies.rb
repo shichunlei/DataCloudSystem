@@ -197,31 +197,31 @@ module V1
 			desc "正在上映"
 			params do
         requires :page, type: Integer, desc: '页码'
-        requires :city, type: String, desc: '城市'
-				requires :count, type: Integer, desc: '每页条数'
+				requires :limit, type: Integer, desc: '每页条数'
+				requires :city, type: String, desc: '城市'
       end
       get :in_theaters do
-        count = params[:count]
+        count = params[:limit]
 				start = (params[:page] - 1) * count
 				city = params[:city]
 
 				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/in_theaters?apikey=#{ENV['DOUBAN_KEY']}&city=#{city}&start=#{start}&count=#{count}")
 
-				return {:code => 0, :message => "SUCCESS", :data => result["subjects"]}
+				return {:code => 0, :message => "SUCCESS", :data => result["subjects"].as_json()}
 			end
 
 			desc "即将上映"
 			params do
         requires :page, type: Integer, desc: '页码'
-				requires :count, type: Integer, desc: '每页条数'
+				requires :limit, type: Integer, desc: '每页条数'
       end
       get :coming_soon do
-        count = params[:count]
+        count = params[:limit]
 				start = (params[:page] - 1) * count
 
 				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/coming_soon?apikey=#{ENV['DOUBAN_KEY']}&start=#{start}&count=#{count}")
 
-				return {:code => 0, :message => "SUCCESS", :data => result["subjects"]}
+				return {:code => 0, :message => "SUCCESS", :data => result["subjects"].as_json()}
 			end
 
 			desc "新片榜"
@@ -230,20 +230,20 @@ module V1
       get :new_movies do
 				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/new_movies?apikey=#{ENV['DOUBAN_KEY']}")
 
-				return {:code => 0, :message => "SUCCESS", :data => result["subjects"]}
+				return {:code => 0, :message => "SUCCESS", :data => result["subjects"].as_json()}
 			end
 
 			desc "Top250"
 			params do
 				requires :page, type: Integer, desc: '页码'
-				requires :count, type: Integer, desc: '每页条数'
+				requires :limit, type: Integer, desc: '每页条数'
       end
       get :top250 do
-				count = params[:count]
+				count = params[:limit]
 				start = (params[:page] - 1) * count
 				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/top250?apikey=#{ENV['DOUBAN_KEY']}&start=#{start}&count=#{count}")
 
-				return {:code => 0, :message => "SUCCESS", :data => result["subjects"]}
+				return {:code => 0, :message => "SUCCESS", :data => result["subjects"].as_json()}
 			end
 
 			desc "一周口碑榜"
@@ -260,7 +260,7 @@ module V1
 					data.push(item['subject'])
 				end
 
-				return {:code => 0, :message => "SUCCESS", :data => data}
+				return {:code => 0, :message => "SUCCESS", :data => data.as_json()}
 			end
 
 			desc "北美票房榜"
@@ -278,23 +278,23 @@ module V1
 					data.push(item['subject'])
 				end
 
-				return {:code => 0, :message => "SUCCESS", :data => data}
+				return {:code => 0, :message => "SUCCESS", :data => data.as_json()}
 			end
 
 			desc "影片详情"
 			params do
-				requires :id, type: Integer, desc: 'ID'
+				requires :id, type: String, desc: 'ID'
       end
       get :details do
 				id = params[:id]
 				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/subject/#{id}?apikey=#{ENV['DOUBAN_KEY']}")
 
-				return {:code => 0, :message => "SUCCESS", :data => result}
+				return {:code => 0, :message => "SUCCESS", :data => result.as_json()}
 			end
 
 			desc "影评"
 			params do
-				requires :id, type: Integer, desc: 'ID'
+				requires :id, type: String, desc: 'ID'
 				requires :page, type: Integer, desc: '页码'
 				requires :limit, type: Integer, desc: '每页条数'
       end
@@ -305,12 +305,12 @@ module V1
 
 				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/subject/#{id}/reviews?apikey=#{ENV['DOUBAN_KEY']}&count=#{count}&start=#{start}")
 
-				return {:code => 0, :message => "SUCCESS", :data => result['reviews']}
+				return {:code => 0, :message => "SUCCESS", :data => result['reviews'].as_json()}
 			end
 
 			desc "短评"
 			params do
-				requires :id, type: Integer, desc: 'ID'
+				requires :id, type: String, desc: 'ID'
 				requires :page, type: Integer, desc: '页码'
 				requires :limit, type: Integer, desc: '每页条数'
       end
@@ -321,7 +321,7 @@ module V1
 
 				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/subject/#{id}/comments?apikey=#{ENV['DOUBAN_KEY']}&count=#{count}&start=#{start}")
 
-				return {:code => 0, :message => "SUCCESS", :data => result['comments']}
+				return {:code => 0, :message => "SUCCESS", :data => result['comments'].as_json()}
 			end
 
 			desc "剧照"
@@ -339,7 +339,7 @@ module V1
 
 				if type == "subject" || type == "celebrity"
 					result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/#{type}/#{id}/photos?apikey=#{ENV['DOUBAN_KEY']}&count=#{count}&start=#{start}")
-					return {:code => 0, :message => "SUCCESS", :data => result['photos']}
+					return {:code => 0, :message => "SUCCESS", :data => result['photos'].as_json()}
 				else
 					return {:code => -1, :message => "请求错误"}
 				end
@@ -347,7 +347,7 @@ module V1
 
 			desc "影片剧照"
 			params do
-				requires :id, type: Integer, desc: 'ID'
+				requires :id, type: String, desc: 'ID'
 				requires :page, type: Integer, desc: '页码'
 				requires :limit, type: Integer, desc: '每页条数'
       end
@@ -358,23 +358,23 @@ module V1
 
 				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/subject/#{id}/photos?apikey=#{ENV['DOUBAN_KEY']}&count=#{count}&start=#{start}")
 
-				return {:code => 0, :message => "SUCCESS", :data => result['photos']}
+				return {:code => 0, :message => "SUCCESS", :data => result['photos'].as_json()}
 			end
 
 			desc "影人详情"
 			params do
-				requires :id, type: Integer, desc: 'ID'
+				requires :id, type: String, desc: 'ID'
       end
       get :celebrity do
 				id = params[:id]
 				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/celebrity/#{id}?apikey=#{ENV['DOUBAN_KEY']}")
 
-				return {:code => 0, :message => "SUCCESS", :data => result}
+				return {:code => 0, :message => "SUCCESS", :data => result.as_json()}
 			end
 
 			desc "影人剧照"
 			params do
-				requires :id, type: Integer, desc: 'ID'
+				requires :id, type: String, desc: 'ID'
 				requires :page, type: Integer, desc: '页码'
 				requires :limit, type: Integer, desc: '每页条数'
       end
@@ -385,12 +385,12 @@ module V1
 
 				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/celebrity/#{id}/photos?apikey=#{ENV['DOUBAN_KEY']}&count=#{count}&start=#{start}")
 
-				return {:code => 0, :message => "SUCCESS", :data => result['photos']}
+				return {:code => 0, :message => "SUCCESS", :data => result['photos'].as_json()}
 			end
 
 			desc "影人作品"
 			params do
-				requires :id, type: Integer, desc: 'ID'
+				requires :id, type: String, desc: 'ID'
 				requires :page, type: Integer, desc: '页码'
 				requires :limit, type: Integer, desc: '每页条数'
       end
@@ -401,7 +401,13 @@ module V1
 
 				result = Utils::Helper::get("#{ENV['DOUBAN_BASE_URL']}/celebrity/#{id}/works?apikey=#{ENV['DOUBAN_KEY']}&count=#{count}&start=#{start}")
 
-				return {:code => 0, :message => "SUCCESS", :data => result['works']}
+				data = []
+				result['works'].each do |item|
+					item["subject"].store("roles", item["roles"])
+					data.push(item["subject"])
+				end
+
+				return {:code => 0, :message => "SUCCESS", :data => data.as_json()}
 			end
 
 			desc "影视筛选"

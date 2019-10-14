@@ -425,6 +425,7 @@ module V1
 				requires :page, type: Integer, desc: '页码'
 				requires :limit, type: Integer, desc: '每页返回条数'
 				optional :type, type: String, desc: '类型'
+				optional :sort, type: String, desc: '排序'
 				requires :tag, type: String, desc: '标签'
 			end
 			get :search_by_tag do
@@ -435,13 +436,17 @@ module V1
 				if type.blank?
 					type = "movie"
 				end
+				sort = params[:sort]
+				if sort.blank?
+					sort = "recommend"
+				end
 
-				url = "#{BASE_URL}/j/search_subjects?page_start=#{start}&page_limit=#{count}&tag=#{tag}&type=#{type}"
+				url = "#{BASE_URL}/j/search_subjects?type=#{type}&tag=#{tag}&sort=#{sort}&page_start=#{start}&page_limit=#{count}"
 
 				result = Utils::Helper::get(url)
 
 				subjects = []
-				result["data"].each do |item|
+				result["subjects"].each do |item|
 					subject = {}
 					subject.store("id", item["id"])
 					subject.store("new", item["is_new"])

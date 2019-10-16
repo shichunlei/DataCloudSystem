@@ -567,7 +567,7 @@ module V1
 			params do
 				requires :year, type: Integer, desc: '年份'
 			end
-			get :year_range_movie do
+			get :ranges do
 				year = params[:year]
 				result0 = Utils::Helper::get("#{BASE_URL}/ithil_j/activity/movie_annual#{year}/widget/0")
 

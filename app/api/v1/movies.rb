@@ -563,6 +563,72 @@ module V1
 				return {:code => 0, :message => "SUCCESS", :data => subjects}
 			end
 
+			desc "豆瓣年度电影榜单"
+			params do
+				requires :year, type: Integer, desc: '年份'
+			end
+			get :year_range_movie do
+				year = params[:year]
+				result0 = Utils::Helper::get("#{BASE_URL}/ithil_j/activity/movie_annual#{year}/widget/0")
+
+				data = {}
+				payload = {}
+				payload.store("description", result0['res']['payload']['description'])
+				payload.store("background_img", result0['res']['payload']['mobile_background_img'])
+				payload.store("title_img", result0['res']['payload']['title_img'])
+				payload.store("video", result0['res']['payload']['video'])
+				payload.store("title", "豆瓣#{year}年度电影榜单")
+				payload.store("year", year.to_i)
+				data.store("cover", payload)
+
+				if year == 2018
+					pages = [1,2,4,5,8,9,11,12,14,15,17,18,20,21,23,24,26,27,53,54,55,56,57,63,64]
+				end
+				if year == 2016
+					pages = [1,2,4,5,7,8,10,11,12,13,15,16,17,18,20,21,22,41,42,43,45,46,47,49,50,51,53,54,55,57,58,59,61,62,68,69,70]
+				end
+				if year == 2017
+					pages = [1,2,4,5,8,9,10,12,13,14,16,17,18,20,21,22,24,25,26,27,56,57,58,60,61,62,64,65,66,68,69,70,72,73,74,75,76,85,86,87]
+				end
+
+				ranges = []
+
+				pages.each do |index|
+					item_result = Utils::Helper::get("#{BASE_URL}/ithil_j/activity/movie_annual#{year}/widget/#{index}")
+
+					item = {}
+					info = {}
+					info.store("id", item_result['res']['id'])
+					info.store("background_img", item_result['res']['payload']['mobile_background_img'])
+					info.store("description", item_result['res']['payload']['description'])
+					info.store("left", item_result['res']['payload']['left'] == 'on' ? true : false)
+					info.store("title", item_result['res']['payload']['title'])
+
+					item_result["res"]['subject']['color_scheme'].delete("_avg_color")
+					item_result["res"]['subject']['color_scheme'].delete("_base_color")
+					item_result["res"]['subject'].delete("url")
+					item_result["res"]['subject'].delete("m_url")
+					item_result["res"]['subject'].delete("interest")
+					info.store("subject", item_result["res"]['subject'])
+
+					item.store("info", info)
+
+					item_result["res"]['subjects'].each do |subject|
+						subject.delete("color_scheme")
+						subject.delete("url")
+						subject.delete("m_url")
+						subject.delete("interest")
+					end
+
+					item.store("subjects", item_result["res"]['subjects'])
+					ranges.push(item)
+				end
+
+				data.store("ranges", ranges)
+
+				return {:code => 0, :message => "SUCCESS", :data => data}
+			end
+
     end
   end
 end

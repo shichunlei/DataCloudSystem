@@ -609,7 +609,40 @@ module V1
 					item_result["res"]['subject'].delete("url")
 					item_result["res"]['subject'].delete("m_url")
 					item_result["res"]['subject'].delete("interest")
-					info.store("subject", item_result["res"]['subject'])
+
+					subject = {}
+					rating = {}
+					rating.store("average", item_result["res"]['subject']['rating'])
+					rating.store("max", 10)
+					rating.store("min", 0)
+
+					details = {}
+					details.store("1", item_result["res"]['subject']['rating_stats'][0])
+					details.store("2", item_result["res"]['subject']['rating_stats'][1])
+					details.store("3", item_result["res"]['subject']['rating_stats'][2])
+					details.store("4", item_result["res"]['subject']['rating_stats'][3])
+					details.store("5", item_result["res"]['subject']['rating_stats'][4])
+					rating.store("details", details)
+
+					subject.store("rating", rating)
+
+					subject.store("original_title", item_result["res"]['subject']['orig_title'])
+					subject.store("playable", item_result["res"]['subject']['playable'])
+					subject.store("is_released", item_result["res"]['subject']['is_released'])
+					subject.store("subtype", item_result["res"]['subject']['type'])
+					subject.store("id", item_result["res"]['subject']['id'])
+					subject.store("title", item_result["res"]['subject']['title'])
+					subject.store("rating_count", item_result["res"]['subject']['rating_count'])
+					subject.store("primary_color_light", item_result["res"]['subject']['color_scheme']['primary_color_light'])
+					subject.store("primary_color_dark", item_result["res"]['subject']['color_scheme']['primary_color_dark'])
+
+					image = {}
+					image.store("small", item_result["res"]['subject']["cover"])
+					image.store("large", item_result["res"]['subject']["cover"])
+					image.store("medium", item_result["res"]['subject']["cover"])
+					subject.store("images", image)
+
+					info.store("subject", subject)
 
 					item.store("info", info)
 
@@ -618,6 +651,35 @@ module V1
 						subject.delete("url")
 						subject.delete("m_url")
 						subject.delete("interest")
+						subject.delete("directors")
+
+						rating = {}
+						rating.store("average", subject['rating'])
+						rating.store("max", 10)
+						rating.store("min", 0)
+
+						details = {}
+						details.store("1", subject['rating_stats'][0])
+						details.store("2", subject['rating_stats'][1])
+						details.store("3", subject['rating_stats'][2])
+						details.store("4", subject['rating_stats'][3])
+						details.store("5", subject['rating_stats'][4])
+
+						rating.store("details", details)
+
+						subject.delete('rating')
+						subject.delete('rating_stats')
+						subject.store("rating", rating)
+						subject.store("original_title", subject['orig_title'])
+						subject.delete('orig_title')
+						subject.store("subtype", subject['type'])
+						subject.delete('type')
+						image = {}
+						image.store("small", subject["cover"])
+						image.store("large", subject["cover"])
+						image.store("medium", subject["cover"])
+						subject.store("images", image)
+						subject.delete('cover')
 					end
 
 					item.store("subjects", item_result["res"]['subjects'])

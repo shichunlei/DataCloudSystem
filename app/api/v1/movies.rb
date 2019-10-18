@@ -599,7 +599,7 @@ module V1
 					item = {}
 					info = {}
 					info.store("id", item_result['res']['id'])
-					info.store("background_img", item_result['res']['payload']['mobile_background_img'])
+					info.store("background_img", item_result['res']['payload']['background_img'])
 					info.store("mobile_background_img", item_result['res']['payload']['mobile_background_img'])
 					info.store("description", item_result['res']['payload']['description'])
 					info.store("left", item_result['res']['payload']['left'] == 'on' ? true : false)

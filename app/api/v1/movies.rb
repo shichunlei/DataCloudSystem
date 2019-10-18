@@ -600,15 +600,12 @@ module V1
 					info = {}
 					info.store("id", item_result['res']['id'])
 					info.store("background_img", item_result['res']['payload']['mobile_background_img'])
+					info.store("mobile_background_img", item_result['res']['payload']['mobile_background_img'])
 					info.store("description", item_result['res']['payload']['description'])
 					info.store("left", item_result['res']['payload']['left'] == 'on' ? true : false)
 					info.store("title", item_result['res']['payload']['title'])
-
-					item_result["res"]['subject']['color_scheme'].delete("_avg_color")
-					item_result["res"]['subject']['color_scheme'].delete("_base_color")
-					item_result["res"]['subject'].delete("url")
-					item_result["res"]['subject'].delete("m_url")
-					item_result["res"]['subject'].delete("interest")
+					info.store("primary_color_light", item_result["res"]['subject']['color_scheme']['primary_color_light'])
+					info.store("primary_color_dark", item_result["res"]['subject']['color_scheme']['primary_color_dark'])
 
 					subject = {}
 					rating = {}

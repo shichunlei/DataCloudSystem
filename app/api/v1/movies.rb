@@ -629,7 +629,7 @@ module V1
 					subject.store("subtype", item_result["res"]['subject']['type'])
 					subject.store("id", item_result["res"]['subject']['id'])
 					subject.store("title", item_result["res"]['subject']['title'])
-					subject.store("rating_count", item_result["res"]['subject']['rating_count'])
+					subject.store("ratings_count", item_result["res"]['subject']['rating_count'])
 					subject.store("primary_color_light", item_result["res"]['subject']['color_scheme']['primary_color_light'])
 					subject.store("primary_color_dark", item_result["res"]['subject']['color_scheme']['primary_color_dark'])
 
@@ -677,6 +677,8 @@ module V1
 						image.store("medium", subject["cover"])
 						subject.store("images", image)
 						subject.delete('cover')
+						subject.store("ratings_count", subject["rating_count"])
+						subject.delete('rating_count')
 					end
 
 					item.store("subjects", item_result["res"]['subjects'])

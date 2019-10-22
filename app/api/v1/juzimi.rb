@@ -228,9 +228,9 @@ module V1
 				data = {}
 				data = result["data"]
 				data.store("id", result["data"]["wc"])
-				data.store("curr", result["data"]["date"]["curr"])
-				data.store("next", result["data"]["date"]["next"])
-				data.store("prev", result["data"]["date"]["prev"])
+				data.store("curr", Utils::Helper::format_datetime(result["data"]["date"]["curr"], format = "%Y-%m-%d"))
+				data.store("next", Utils::Helper::format_datetime(result["data"]["date"]["next"], format = "%Y-%m-%d"))
+				data.store("prev", Utils::Helper::format_datetime(result["data"]["date"]["prev"], format = "%Y-%m-%d"))
 				data.delete("wc")
 				data.delete("date")
 
@@ -248,9 +248,9 @@ module V1
 				data = {}
 				data = result["data"]
 				data.store("id", result["data"]["wc"])
-				data.store("curr", result["data"]["date"]["curr"])
-				data.store("next", result["data"]["date"]["next"])
-				data.store("prev", result["data"]["date"]["prev"])
+				data.store("curr", Utils::Helper::format_datetime(result["data"]["date"]["curr"], format = "%Y-%m-%d"))
+				data.store("next", Utils::Helper::format_datetime(result["data"]["date"]["next"], format = "%Y-%m-%d"))
+				data.store("prev", Utils::Helper::format_datetime(result["data"]["date"]["prev"], format = "%Y-%m-%d"))
 				data.delete("wc")
 				data.delete("date")
 
@@ -262,7 +262,7 @@ module V1
 				requires :date, type: String, desc: '日期'
       end
       get :article_day do
-				date = params[:date]
+				date = params[:date].gsub('-', '')
 
 				result = Utils::Helper::get("#{ENV['ARTICLE_BASE_URL']}/article/day?date=#{date}")
 
@@ -271,9 +271,9 @@ module V1
 				data = {}
 				data = result["data"]
 				data.store("id", result["data"]["wc"])
-				data.store("curr", result["data"]["date"]["curr"])
-				data.store("next", result["data"]["date"]["next"])
-				data.store("prev", result["data"]["date"]["prev"])
+				data.store("curr", Utils::Helper::format_datetime(result["data"]["date"]["curr"], format = "%Y-%m-%d"))
+				data.store("next", Utils::Helper::format_datetime(result["data"]["date"]["next"], format = "%Y-%m-%d"))
+				data.store("prev", Utils::Helper::format_datetime(result["data"]["date"]["prev"], format = "%Y-%m-%d"))
 				data.delete("wc")
 				data.delete("date")
 

@@ -65,5 +65,13 @@ module Utils
       return result
     end
 
+    def Helper::format_datetime(datetime, format = "%Y-%m-%d %H:%M:%S")
+      if datetime.blank?
+        return '';
+      else
+        return DateTime.parse(datetime).strftime(format)
+      end
+    end
+
   end
 end

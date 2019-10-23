@@ -176,7 +176,6 @@ module V1
 
 				user_like_tags = []
 				_user_like.each do |item|
-					puts item
 					tag = {}
 
 					tag.store('id', item.css('a').first['href'].gsub(/[.\/a-z]/, '').to_i)
@@ -223,8 +222,6 @@ module V1
       get :article_today do
 				result = Utils::Helper::get("#{ENV['ARTICLE_BASE_URL']}/article/today")
 
-				puts result.to_json
-
 				data = {}
 				data = result["data"]
 				data.store("id", result["data"]["wc"])
@@ -242,8 +239,6 @@ module V1
       end
       get :article_random do
 				result = Utils::Helper::get("#{ENV['ARTICLE_BASE_URL']}/article/random")
-
-				puts result.to_json
 
 				data = {}
 				data = result["data"]
@@ -265,8 +260,6 @@ module V1
 				date = params[:date].gsub('-', '')
 
 				result = Utils::Helper::get("#{ENV['ARTICLE_BASE_URL']}/article/day?date=#{date}")
-
-				puts result.to_json
 
 				data = {}
 				data = result["data"]

@@ -20,14 +20,10 @@ module V1
 		mount V1::Meizi
 		mount V1::Juzimi
 		mount V1::Qdaily
+		mount V1::TubiTV
 	end
 
 	# 返回码
 	# 20001 成功
 	# 20002 错误
-
-	# 20003 账户未激活
-	# 20004 密码错误
-	# 20005 账号不存在
-	# 20006 参数错误
 end

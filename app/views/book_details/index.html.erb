@@ -37,7 +37,6 @@
                 <th><%=t('activerecord.attributes.book_detail.chapter') -%></th>
                 <th><%=t('activerecord.attributes.book_detail.name') -%></th>
                 <th><%=t('activerecord.attributes.book_detail.author') -%></th>
-                <th><%=t('activerecord.attributes.book_detail.sid') -%></th>
                 <th></th>
                 <th>操作</th>
                 <th></th>
@@ -48,11 +47,10 @@
               <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
               <%= content_tag_for(:tr, @book_details) do |book_detail| %>
                 <td><%= @page = @page + 1   -%></td>
-                <td><%= book_detail.book -%></td>
+                <td><%= book_detail.book.name -%></td>
                 <td><%= book_detail.chapter -%></td>
                 <td><%= book_detail.name -%></td>
                 <td><%= book_detail.author -%></td>
-                <td><%= book_detail.sid -%></td>
                 <% if can? :read, book_detail %>
                   <td class="list-opertion"><%= link_to t('views.show'), "#{book_detail_path(book_detail)}?page=#{current_page}" %></td>
                 <% end %>

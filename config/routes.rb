@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   resources :driverexams
   resources :gushis
   resources :chucis
-  resources :sanshiliujis
   resources :yuefus
   resources :year_fortunes
   resources :month_fortunes
@@ -44,11 +43,8 @@ Rails.application.routes.draw do
   resources :guwens
   resources :mengxibitans
   resources :huangdineijings
-  resources :sunzibingfas
   resources :shijings
   resources :todayhistories
-  resources :zhuangzis
-  resources :daodejings
   resources :yuanqus
   resources :songcis
   resources :tangshis

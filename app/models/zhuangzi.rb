@@ -1,2 +1,0 @@
-class Zhuangzi < ApplicationRecord
-end

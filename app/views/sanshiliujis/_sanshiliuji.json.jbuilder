@@ -1,2 +1,0 @@
-json.extract! sanshiliuji, :id, :name, :chapter, :gallery, :analogy, :content, :commentary, :comment, :appreciation, :translation, :interpretation, :story, :simple_explanation, :created_at, :updated_at
-json.url sanshiliuji_url(sanshiliuji, format: :json)

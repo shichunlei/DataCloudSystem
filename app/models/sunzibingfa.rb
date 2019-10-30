@@ -1,2 +1,0 @@
-class Sunzibingfa < ApplicationRecord
-end

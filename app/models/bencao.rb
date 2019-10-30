@@ -1,2 +1,0 @@
-class Bencao < ApplicationRecord
-end

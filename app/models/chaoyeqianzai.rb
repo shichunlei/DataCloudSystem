@@ -1,2 +1,0 @@
-class Chaoyeqianzai < ApplicationRecord
-end

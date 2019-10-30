@@ -1,2 +1,0 @@
-class Zengguangxianwen < ApplicationRecord
-end

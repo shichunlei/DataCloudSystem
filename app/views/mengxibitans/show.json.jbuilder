@@ -1,1 +1,0 @@
-json.partial! "mengxibitans/mengxibitan", mengxibitan: @mengxibitan

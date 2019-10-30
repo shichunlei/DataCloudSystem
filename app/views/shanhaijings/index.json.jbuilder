@@ -1,1 +1,0 @@
-json.array! @shanhaijings, partial: 'shanhaijings/shanhaijing', as: :shanhaijing

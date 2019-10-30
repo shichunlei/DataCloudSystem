@@ -1,2 +1,0 @@
-class Jingangjing < ApplicationRecord
-end

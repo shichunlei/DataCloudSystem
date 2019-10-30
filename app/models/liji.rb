@@ -1,2 +1,0 @@
-class Liji < ApplicationRecord
-end

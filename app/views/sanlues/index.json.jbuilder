@@ -1,1 +1,0 @@
-json.array! @sanlues, partial: 'sanlues/sanlue', as: :sanlue

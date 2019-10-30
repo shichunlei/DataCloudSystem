@@ -1,2 +1,0 @@
-class Liaofansixun < ApplicationRecord
-end

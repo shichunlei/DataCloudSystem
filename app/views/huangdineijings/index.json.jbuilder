@@ -1,1 +1,0 @@
-json.array! @huangdineijings, partial: 'huangdineijings/huangdineijing', as: :huangdineijing

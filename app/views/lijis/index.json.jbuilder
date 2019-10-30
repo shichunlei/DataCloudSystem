@@ -1,1 +1,0 @@
-json.array! @lijis, partial: 'lijis/liji', as: :liji

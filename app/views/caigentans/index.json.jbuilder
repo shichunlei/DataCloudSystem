@@ -1,1 +1,0 @@
-json.array! @caigentans, partial: 'caigentans/caigentan', as: :caigentan

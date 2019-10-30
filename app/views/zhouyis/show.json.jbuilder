@@ -1,1 +1,0 @@
-json.partial! "zhouyis/zhouyi", zhouyi: @zhouyi

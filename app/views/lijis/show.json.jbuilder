@@ -1,1 +1,0 @@
-json.partial! "lijis/liji", liji: @liji

@@ -1,1 +1,0 @@
-json.array! @shishuoxinyus, partial: 'shishuoxinyus/shishuoxinyu', as: :shishuoxinyu

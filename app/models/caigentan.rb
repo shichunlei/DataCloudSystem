@@ -1,2 +1,0 @@
-class Caigentan < ApplicationRecord
-end

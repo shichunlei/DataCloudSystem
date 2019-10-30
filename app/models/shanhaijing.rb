@@ -1,2 +1,0 @@
-class Shanhaijing < ApplicationRecord
-end

@@ -1,2 +1,0 @@
-class Huangdineijing < ApplicationRecord
-end

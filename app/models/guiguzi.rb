@@ -1,2 +1,0 @@
-class Guiguzi < ApplicationRecord
-end

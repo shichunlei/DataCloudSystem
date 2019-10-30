@@ -1,2 +1,0 @@
-class Daxue < ApplicationRecord
-end

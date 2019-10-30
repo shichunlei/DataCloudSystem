@@ -1,2 +1,0 @@
-class Wenxindiaolong < ApplicationRecord
-end

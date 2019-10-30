@@ -1,1 +1,0 @@
-json.array! @mengzis, partial: 'mengzis/mengzi', as: :mengzi

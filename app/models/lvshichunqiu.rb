@@ -1,2 +1,0 @@
-class Lvshichunqiu < ApplicationRecord
-end

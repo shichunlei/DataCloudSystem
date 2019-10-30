@@ -1,1 +1,0 @@
-json.partial! "daxues/daxue", daxue: @daxue

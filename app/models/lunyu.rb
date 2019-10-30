@@ -1,2 +1,0 @@
-class Lunyu < ApplicationRecord
-end

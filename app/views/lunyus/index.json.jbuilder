@@ -1,1 +1,0 @@
-json.array! @lunyus, partial: 'lunyus/lunyu', as: :lunyu

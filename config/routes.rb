@@ -1,20 +1,10 @@
 Rails.application.routes.draw do
 
   resources :book_details
-  resources :liwengduiyuns
-  resources :zixiayizhuans
-  resources :wenchangs
-  resources :gongyangzhuans
-  resources :eryas
-  resources :yilis
-  resources :zhoulis
-  resources :xiaojings
-  resources :shangshus
   resources :lijis
   resources :xiaolins
   resources :bencaos
   resources :jingangjings
-  resources :zizhitongjians
   resources :food_nutritions
   resources :books
   resources :hospitals
@@ -25,25 +15,14 @@ Rails.application.routes.draw do
   resources :countries
   resources :world_records
   resources :guiguzis
-  resources :zuozhuans
-  resources :houhanshus
-  resources :hanshus
   resources :wenyanwens
   resources :mingshus
   resources :chaoyeqianzais
-  resources :fushengliujis
-  resources :ciyuans
   resources :sanlues
   resources :liaofansixuns
   resources :zengguangxianwens
-  resources :diziguis
   resources :caigentans
   resources :driverexams
-  resources :baijiaxings
-  resources :qianziwens
-  resources :sanzijings
-  resources :zhongyongs
-  resources :daxues
   resources :gushis
   resources :chucis
   resources :sanshiliujis
@@ -58,25 +37,18 @@ Rails.application.routes.draw do
   resources :miyus
   resources :miyu_classifies
   resources :zhouyis
-  resources :wenxindiaolongs
   resources :tiangongs
-  resources :xuxiakes
   resources :soushenjis
   resources :shishuoxinyus
   resources :shanhaijings
   resources :guwens
   resources :mengxibitans
-  resources :lvshichunqius
   resources :huangdineijings
-  resources :sanguozhis
   resources :sunzibingfas
-  resources :shijis
   resources :shijings
   resources :todayhistories
   resources :zhuangzis
   resources :daodejings
-  resources :mengzis
-  resources :lunyus
   resources :yuanqus
   resources :songcis
   resources :tangshis

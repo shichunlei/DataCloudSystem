@@ -1,2 +1,0 @@
-json.extract! liwengduiyun, :id, :chapter, :name, :author, :content, :commentary, :translation, :appreciation, :interpretation, :created_at, :updated_at
-json.url liwengduiyun_url(liwengduiyun, format: :json)

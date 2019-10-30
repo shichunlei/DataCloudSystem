@@ -1,2 +1,0 @@
-class Qianziwen < ApplicationRecord
-end

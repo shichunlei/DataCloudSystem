@@ -1,2 +1,0 @@
-class Gongyangzhuan < ApplicationRecord
-end

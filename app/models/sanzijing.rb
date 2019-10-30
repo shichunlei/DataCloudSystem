@@ -1,2 +1,0 @@
-class Sanzijing < ApplicationRecord
-end

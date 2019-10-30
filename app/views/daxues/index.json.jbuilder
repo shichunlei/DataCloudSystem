@@ -1,1 +1,0 @@
-json.array! @daxues, partial: 'daxues/daxue', as: :daxue

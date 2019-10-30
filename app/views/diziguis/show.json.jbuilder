@@ -1,1 +1,0 @@
-json.partial! "diziguis/dizigui", dizigui: @dizigui

@@ -1,1 +1,0 @@
-json.array! @xiaojings, partial: 'xiaojings/xiaojing', as: :xiaojing

@@ -1,2 +1,0 @@
-class Zixiayizhuan < ApplicationRecord
-end

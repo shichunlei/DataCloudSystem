@@ -1,2 +1,0 @@
-class Dizigui < ApplicationRecord
-end

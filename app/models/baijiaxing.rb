@@ -1,2 +1,0 @@
-class Baijiaxing < ApplicationRecord
-end

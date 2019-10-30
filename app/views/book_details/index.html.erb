@@ -44,7 +44,7 @@
             </thead>
             <tbody>
               <% current_page = @page.nil? ? 1 : @page -%>
-              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 10 -%>
+              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 50 -%>
               <%= content_tag_for(:tr, @book_details) do |book_detail| %>
                 <td><%= @page = @page + 1   -%></td>
                 <td><%= book_detail.book.name -%></td>

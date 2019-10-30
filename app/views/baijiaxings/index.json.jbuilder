@@ -1,1 +1,0 @@
-json.array! @baijiaxings, partial: 'baijiaxings/baijiaxing', as: :baijiaxing

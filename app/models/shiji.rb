@@ -1,2 +1,0 @@
-class Shiji < ApplicationRecord
-end

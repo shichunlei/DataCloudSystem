@@ -1,2 +1,0 @@
-class Liwengduiyun < ApplicationRecord
-end

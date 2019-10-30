@@ -1,2 +1,0 @@
-class Fushengliuji < ApplicationRecord
-end

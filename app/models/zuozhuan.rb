@@ -1,2 +1,0 @@
-class Zuozhuan < ApplicationRecord
-end

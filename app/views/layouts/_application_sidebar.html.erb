@@ -97,148 +97,6 @@
           古籍管理
         <% end %>
       <% end%>
-      <%= treeview_link '经部' do %>
-        <% if can? :read, Lunyu %>
-          <%= nav_link lunyus_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            论语
-          <% end %>
-        <% end%>
-        <% if can? :read, Daxue %>
-          <%= nav_link daxues_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            大学
-          <% end %>
-        <% end%>
-        <% if can? :read, Mengzi %>
-          <%= nav_link mengzis_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            孟子
-          <% end %>
-        <% end%>
-        <% if can? :read, Zhongyong %>
-          <%= nav_link zhongyongs_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            中庸
-          <% end %>
-        <% end%>
-        <% if can? :read, Lvshichunqiu %>
-          <%= nav_link lvshichunqius_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            吕氏春秋
-          <% end %>
-        <% end%>
-        <% if can? :read, Zuozhuan %>
-          <%= nav_link zuozhuans_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            左传
-          <% end %>
-        <% end%>
-        <% if can? :read, Liji %>
-          <%= nav_link lijis_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            礼记
-          <% end %>
-        <% end%>
-        <% if can? :read, Liwengduiyun %>
-          <%= nav_link liwengduiyuns_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            笠翁对韵
-          <% end %>
-        <% end%>
-        <% if can? :read, Shangshu %>
-          <%= nav_link shangshus_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            尚书
-          <% end %>
-        <% end%>
-        <% if can? :read, Xiaojing %>
-          <%= nav_link xiaojings_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            孝经
-          <% end %>
-        <% end%>
-        <% if can? :read, Zhouli %>
-          <%= nav_link zhoulis_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            周礼
-          <% end %>
-        <% end%>
-        <% if can? :read, Zixiayizhuan %>
-          <%= nav_link zixiayizhuans_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            子夏易传
-          <% end %>
-        <% end%>
-        <% if can? :read, Yili %>
-          <%= nav_link yilis_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            仪礼
-          <% end %>
-        <% end%>
-        <% if can? :read, Wenchang %>
-          <%= nav_link wenchangs_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            文昌孝经
-          <% end %>
-        <% end%>
-        <% if can? :read, Erya %>
-          <%= nav_link eryas_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            尔雅
-          <% end %>
-        <% end%>
-        <% if can? :read, Gongyangzhuan %>
-          <%= nav_link gongyangzhuans_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            公羊传
-          <% end %>
-        <% end%>
-      <% end%>
-      <%= treeview_link '史部' do %>
-        <% if can? :read, Shiji %>
-          <%= nav_link shijis_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            史记
-          <% end %>
-        <% end%>
-        <% if can? :read, Zizhitongjian %>
-          <%= nav_link zizhitongjians_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            资治通鉴
-          <% end %>
-        <% end%>
-        <% if can? :read, Sanguozhi %>
-          <%= nav_link sanguozhis_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            三国志
-          <% end %>
-        <% end%>
-        <% if can? :read, Hanshu %>
-          <%= nav_link hanshus_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            汉书
-          <% end %>
-        <% end%>
-        <% if can? :read, Xuxiake %>
-          <%= nav_link xuxiakes_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            徐霞客游记
-          <% end %>
-        <% end%>
-        <% if can? :read, Houhanshu %>
-          <%= nav_link houhanshus_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            后汉书
-          <% end %>
-        <% end%>
-        <% if can? :read, Fushengliuji %>
-          <%= nav_link fushengliujis_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            浮生六记
-          <% end %>
-        <% end%>
-      <% end%>
       <%= treeview_link '子部' do %>
         <% if can? :read, Daodejing %>
           <%= nav_link daodejings_path do %>
@@ -292,30 +150,6 @@
           <%= nav_link huangdineijings_path do %>
           <i class="fa fa-angle-double-right"></i>
             黄帝内经
-          <% end %>
-        <% end%>
-        <% if can? :read, Sanzijing %>
-          <%= nav_link sanzijings_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            三字经
-          <% end %>
-        <% end%>
-        <% if can? :read, Baijiaxing %>
-          <%= nav_link baijiaxings_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            百家姓
-          <% end %>
-        <% end%>
-        <% if can? :read, Qianziwen %>
-          <%= nav_link qianziwens_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            千字文
-          <% end %>
-        <% end%>
-        <% if can? :read, Dizigui %>
-          <%= nav_link diziguis_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            弟子规
           <% end %>
         <% end%>
         <% if can? :read, Zengguangxianwen %>
@@ -394,20 +228,6 @@
           <%= nav_link mingshus_path do %>
           <i class="fa fa-angle-double-right"></i>
             李虚中命书
-          <% end %>
-        <% end%>
-      <% end%>
-      <%= treeview_link '集部' do %>
-        <% if can? :read, Wenxindiaolong %>
-          <%= nav_link wenxindiaolongs_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            文心雕龙
-          <% end %>
-        <% end%>
-        <% if can? :read, Ciyuan %>
-          <%= nav_link ciyuans_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            词源
           <% end %>
         <% end%>
       <% end%>

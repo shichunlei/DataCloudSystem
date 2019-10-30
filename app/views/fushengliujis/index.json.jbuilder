@@ -1,1 +1,0 @@
-json.array! @fushengliujis, partial: 'fushengliujis/fushengliuji', as: :fushengliuji

@@ -1,1 +1,0 @@
-json.partial! "liwengduiyuns/liwengduiyun", liwengduiyun: @liwengduiyun

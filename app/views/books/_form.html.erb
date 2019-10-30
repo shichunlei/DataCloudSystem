@@ -32,7 +32,11 @@
         </div>
         <div class="form-group">
           <%= f.label :category %>
-          <%= f.select :category, [['经部', '经部'], ['史部', '史部'], ['子部', '子部'], ['集部', '集部'], ['其他', '其他']], {:include_blank => true}, {:class => 'form-control'} %>
+          <%= f.select :category, [['经部', '经部'], ['史部', '史部'], ['子部', '子部'], ['集部', '集部'], ['诗词歌赋', '诗词歌赋'], ['其他', '其他']], {:include_blank => true}, {:class => 'form-control'} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :sub_category %>
+          <%= f.text_field :sub_category, :class => "form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :chapter %>
@@ -43,20 +47,8 @@
           <%= f.text_field :section, :class => "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :content %>
-          <%= f.text_area :content, :class => "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :commentary %>
-          <%= f.text_area :commentary, :class => "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :translation %>
-          <%= f.text_area :translation, :class => "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :appreciation %>
-          <%= f.text_area :appreciation, :class => "form-control" %>
+          <%= f.label :tag %>
+          <%= f.text_field :tag, :class => "form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :interpretation %>

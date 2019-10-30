@@ -1,0 +1,2 @@
+json.extract! book_detail, :id, :book_id, :chapter, :name, :author, :sid, :category, :dynasty, :content, :commentary, :translation, :appreciation, :interpretation, :background, :tags, :created_at, :updated_at
+json.url book_detail_url(book_detail, format: :json)

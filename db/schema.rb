@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181221101028) do
+ActiveRecord::Schema.define(version: 20191030040903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,26 @@ ActiveRecord::Schema.define(version: 20181221101028) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "book_details", force: :cascade do |t|
+    t.integer  "book_id"
+    t.string   "chapter",        default: ""
+    t.string   "name",           default: ""
+    t.string   "author",         default: ""
+    t.string   "sid",            default: ""
+    t.string   "category",       default: ""
+    t.string   "dynasty",        default: ""
+    t.text     "content",        default: ""
+    t.text     "commentary",     default: ""
+    t.text     "translation",    default: ""
+    t.text     "appreciation",   default: ""
+    t.text     "interpretation", default: ""
+    t.text     "background",     default: ""
+    t.string   "tags",           default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["book_id"], name: "index_book_details_on_book_id", using: :btree
+  end
+
   create_table "books", force: :cascade do |t|
     t.string   "name",               default: ""
     t.string   "image_file_name"
@@ -68,17 +88,15 @@ ActiveRecord::Schema.define(version: 20181221101028) do
     t.datetime "image_updated_at"
     t.string   "author",             default: ""
     t.string   "dynasty",            default: ""
-    t.string   "chapter",            default: ""
-    t.string   "section",            default: ""
-    t.text     "content",            default: ""
-    t.text     "commentary",         default: ""
-    t.text     "translation",        default: ""
-    t.text     "appreciation",       default: ""
     t.text     "interpretation",     default: ""
     t.text     "background",         default: ""
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "category"
+    t.string   "sub_category",       default: ""
+    t.string   "tag",                default: ""
+    t.integer  "chapter",            default: 0
+    t.integer  "section",            default: 0
   end
 
   create_table "caigentans", force: :cascade do |t|
@@ -1528,6 +1546,7 @@ ActiveRecord::Schema.define(version: 20181221101028) do
   end
 
   add_foreign_key "airports", "countries"
+  add_foreign_key "book_details", "books"
   add_foreign_key "car_actualtests", "car_models"
   add_foreign_key "car_aircondrefrigerators", "car_models"
   add_foreign_key "car_basics", "car_models"

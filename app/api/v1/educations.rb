@@ -256,6 +256,78 @@ module V1
 				return {"code" => 20001, "message" => "请求成功", :result => object.as_json(:only => [:id, :name, :content, :chapter, :commentary, :translation, :appreciation])}
 			end
 
+			desc "诗经全集"
+			params do
+			end
+			get :shijing_all do
+				list = Shijing.order(:id).as_json(:only => [:name, :content, :chapter])
+				return {"code" => 20001, "message" => "请求成功", :result => list.as_json()}
+			end
+
+			desc "文言文"
+			params do
+			end
+			get :wenyanwen_list do
+				list = Wenyanwen.order(:id).as_json(:only => [:id, :name, :author, :dynasty, :tags])
+				return {"code" => 20001, "message" => "请求成功", :result => list.as_json()}
+			end
+
+			desc "文言文"
+			params do
+				requires :id, type: Integer, desc: 'ID'
+			end
+			get :wenyanwen_details do
+				id = params[:id]
+				list = Wenyanwen.find_by(id:id).as_json(:only => [:id, :name, :author, :dynasty, :content, :tags, :background])
+				return {"code" => 20001, "message" => "请求成功", :result => list.as_json()}
+			end
+
+			desc "文言文"
+			params do
+			end
+			get :wenyanwen_all do
+				list = Wenyanwen.order(:id).as_json(:only => [:name, :content, :author, :dynasty, :tags])
+				return {"code" => 20001, "message" => "请求成功", :result => list.as_json()}
+			end
+
+			desc "楚辞篇章"
+			params do
+			end
+			get :chuci_chapter do
+				list = Chuci.order(:id).as_json(:only => [:chapter])
+				arr = []
+				list.each do |item|
+					arr.push(item["chapter"])
+				end
+				chapters = []
+				chapternames = arr.uniq
+				chapternames.each do |item|
+		      chapter = {}
+		      chapter.store("chaptername", item)
+		      object = Chuci.where(chapter:item).order(:id).as_json(:only => [:id, :name, :author])
+		      chapter.store("chapter", object)
+		      chapters.push(chapter)
+		    end
+				return {"code" => 20001, "message" => "请求成功", :result => chapters.as_json()}
+			end
+
+			desc "楚辞详情"
+			params do
+				requires :id, type: Integer, desc: 'ID'
+			end
+			get :chuci_detail do
+				object = Chuci.find_by(id:params[:id])
+				return {"code" => 20001, "message" => "请求成功", :result => object.as_json(:only => [:id, :name, :author, :content, :chapter, :commentary, :translation, :appreciation])}
+			end
+
+			desc "楚辞全集"
+			params do
+			end
+			get :chuci_all do
+				list = Chuci.order(:id).as_json(:only => [:name, :content, :chapter, :author])
+				return {"code" => 20001, "message" => "请求成功", :result => list.as_json()}
+			end
+
     end
   end
 end

@@ -5,15 +5,13 @@ class CreateBooks < ActiveRecord::Migration[5.0]
       t.attachment :image
       t.string :author, default:""
       t.string :dynasty, default:""
-      t.string :chapter, default:""
-      t.string :section, default:""
-      t.text :content, default:""
-      t.text :commentary, default:""
-      t.text :translation, default:""
-      t.text :appreciation, default:""
-      t.text :interpretation, default:""
-      t.text :background, default:""
       t.string :category, default:""
+      t.string :sub_category, default:""
+      t.string :tag, default:""
+      t.integer :chapter, default:0
+      t.integer :section, default:0
+      t.text :interpretation, default: ""
+      t.text :background, default: ""
 
       t.timestamps
     end

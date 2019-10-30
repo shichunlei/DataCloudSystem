@@ -98,28 +98,10 @@
         <% end %>
       <% end%>
       <%= treeview_link '子部' do %>
-        <% if can? :read, Daodejing %>
-          <%= nav_link daodejings_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            老子 - 道德经
-          <% end %>
-        <% end%>
-        <% if can? :read, Zhuangzi %>
-          <%= nav_link zhuangzis_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            庄子
-          <% end %>
-        <% end%>
         <% if can? :read, Shanhaijing %>
           <%= nav_link shanhaijings_path do %>
           <i class="fa fa-angle-double-right"></i>
             山海经
-          <% end %>
-        <% end%>
-        <% if can? :read, Sanshiliuji %>
-          <%= nav_link sanshiliujis_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            三十六计
           <% end %>
         <% end%>
         <% if can? :read, Zhouyi %>
@@ -138,12 +120,6 @@
           <%= nav_link caigentans_path do %>
           <i class="fa fa-angle-double-right"></i>
             菜根谭
-          <% end %>
-        <% end%>
-        <% if can? :read, Sunzibingfa %>
-          <%= nav_link sunzibingfas_path do %>
-          <i class="fa fa-angle-double-right"></i>
-            孙子兵法
           <% end %>
         <% end%>
         <% if can? :read, Huangdineijing %>

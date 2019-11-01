@@ -85,23 +85,9 @@ module V1
         key = params[:key]
         device_id = params[:device_id]
         platform = params[:platform]
-        result = Utils::Helper::get("https://uapi.adrise.tv/cms/search?app_id=tubitv&categorize=true&device_id=#{device_id}&platform=#{platform}&search=#{key}")
+        result = Utils::Helper::get("https://uapi.adrise.tv/cms/search?app_id=tubitv&categorize=false&device_id=#{device_id}&platform=#{platform}&search=#{key}")
 
-        matches_title = []
-        mentioned_in = []
-        result['match_types']['title'].each do |item|
-          matches_title.push(result['contents']["#{item}"])
-        end
-
-        result['match_types']['description'].each do |item|
-          mentioned_in.push(result['contents']["#{item}"])
-        end
-
-        data = {}
-        data.store("matches_title", matches_title)
-        data.store("mentioned_in", mentioned_in)
-
-        return {:code => 0, :message => "SUCCESS", :data => data.as_json()}
+        return {:code => 0, :message => "SUCCESS", :data => result.as_json()}
       end
 
     end

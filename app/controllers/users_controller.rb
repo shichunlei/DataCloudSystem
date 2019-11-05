@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /users
   def index
     @page = params[:page]
@@ -23,9 +23,13 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
+    user_params.store("organization_id", 1)
     @user = User.new(user_params)
 
     if @user.save
+      if current_user.has_role? :admin
+        @user.add_role :member
+      end
       redirect_to @user, notice: "创建成功"
     else
       render :new

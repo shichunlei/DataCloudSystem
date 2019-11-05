@@ -1,4 +1,4 @@
-<section class="content invoice">
+<section class="content invoice" style="overflow:initial;">
   <div class="row">
     <div class="col-md-10">
       <%%= form_for(@<%= singular_table_name %>, :html => { :role => "form" }) do |f| %>
@@ -15,10 +15,12 @@
         <%% end %>
 
         <% attributes.each do |attribute| -%>
+
         <div class="form-group">
           <%%= f.label :<%= attribute.name %> %>
           <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => "form-control" %>
         </div>
+
         <% end -%>
         <div class="form-group">
           <%%= f.submit :class => "btn btn-primary" %>

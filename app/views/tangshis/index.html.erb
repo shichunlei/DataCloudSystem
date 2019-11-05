@@ -44,7 +44,7 @@
                 <td><%= tangshi.author -%></td>
                 <td><%= tangshi.mtype -%></td>
                 <% if can? :read, tangshi %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{tangshi_path(tangshi)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{tangshi_path(tangshi)}" %></td>
                 <% end %>
                 <!-- <% if can? :edit, tangshi %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_tangshi_path(tangshi) %></td>

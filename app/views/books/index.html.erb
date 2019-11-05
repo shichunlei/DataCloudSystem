@@ -54,7 +54,7 @@
                 <td><%= book.category -%></td>
                 <td><%= book.dynasty -%></td>
                 <% if can? :read, book %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{book_path(book)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{book_path(book)}" %></td>
                 <% end %>
                 <% if can? :edit, book %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_book_path(book) %></td>

@@ -50,7 +50,7 @@
                 <td><%= food_nutrition.category -%></td>
                 <td><%= food_nutrition.heat -%></td>
                 <% if can? :read, food_nutrition %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{food_nutrition_path(food_nutrition)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{food_nutrition_path(food_nutrition)}" %></td>
                 <% end %>
                 <% if can? :edit, food_nutrition %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_food_nutrition_path(food_nutrition) %></td>

@@ -16,7 +16,7 @@
       <div class="box box-primary">
         <div class="box-header">
           <div class="box-tools pull-right">
-            <%% if can? :edit, <%=singular_table_name.capitalize %> %>
+            <%% if can? :edit, <%=singular_table_name.camelize %> %>
               <%%= link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), :class => 'btn btn-primary' do %>
                 <span class="glyphicon glyphicon-pencil"></span>
                 <%%=t('views.edit')%>
@@ -32,10 +32,16 @@
         <div class="box-body">
           <dl class="dl-horizontal">
             <%- attributes.each do |attribute| -%>
+
             <dt class="label-change">
-              <span class="label-content label-info"><%%=t('activerecord.attributes.<%=singular_table_name%>.<%=attribute.name%>')%>:</span>
+              <span class="label-content label-info">
+                <%%=t('activerecord.attributes.<%=singular_table_name%>.<%=attribute.name%>')%>:
+              </span>
             </dt>
-            <dd class="well"><%%= @<%= singular_table_name %>.<%= attribute.name %> %></dd>
+            <dd class="well">
+              <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
+            </dd>
+
             <%- end -%>
           </dl>
         </div>

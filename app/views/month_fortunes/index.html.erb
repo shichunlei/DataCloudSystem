@@ -43,7 +43,7 @@
                 <td><%= month_fortune.mdate -%></td>
                 <td><%= month_fortune.astro.name -%></td>
                 <% if can? :read, month_fortune %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{month_fortune_path(month_fortune)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{month_fortune_path(month_fortune)}" %></td>
                 <% end %>
                 <% if can? :edit, month_fortune %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_month_fortune_path(month_fortune) %></td>

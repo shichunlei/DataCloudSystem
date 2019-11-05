@@ -54,7 +54,7 @@
                 <td><%= car_chassisbrake.frontbraketype -%></td>
                 <td><%= car_chassisbrake.rearbraketype -%></td>
                 <% if can? :read, car_chassisbrake %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_chassisbrake_path(car_chassisbrake)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_chassisbrake_path(car_chassisbrake)}" %></td>
                 <% end %>
                 <% if can? :edit, car_chassisbrake %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_chassisbrake_path(car_chassisbrake) %></td>

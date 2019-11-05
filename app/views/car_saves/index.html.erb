@@ -54,7 +54,7 @@
                 <td><%= car_safe.airbagfrontside -%></td>
                 <td><%= car_safe.airbagfronthead -%></td>
                 <% if can? :read, car_safe %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_safe_path(car_safe)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_safe_path(car_safe)}" %></td>
                 <% end %>
                 <% if can? :edit, car_safe %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_safe_path(car_safe) %></td>

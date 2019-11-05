@@ -71,7 +71,7 @@
                   <td><%= tomorrow_fortune.color -%></td>
 <td><%= tomorrow_fortune.astro.name -%></td>
                                                       <% if can? :read, tomorrow_fortune %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{tomorrow_fortune_path(tomorrow_fortune)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{tomorrow_fortune_path(tomorrow_fortune)}" %></td>
                 <% end %>
                 <% if can? :edit, tomorrow_fortune %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_tomorrow_fortune_path(tomorrow_fortune) %></td>

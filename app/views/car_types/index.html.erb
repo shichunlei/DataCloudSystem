@@ -54,7 +54,7 @@
                 <td><%= car_type.parentname -%></td>
                 <td><%= car_type.salestate -%></td>
                 <% if can? :read, car_type %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_type_path(car_type)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_type_path(car_type)}" %></td>
                 <% end %>
                 <% if can? :edit, car_type %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_type_path(car_type) %></td>

@@ -56,7 +56,7 @@
                 <td><%= recipe.preparetime -%></td>
                 <td><%= recipe.cookingtime -%></td>
                 <% if can? :read, recipe %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{recipe_path(recipe)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{recipe_path(recipe)}" %></td>
                 <% end %>
                 <% if can? :edit, recipe %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_recipe_path(recipe) %></td>

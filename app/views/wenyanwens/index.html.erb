@@ -43,7 +43,7 @@
                                                     <td><%= wenyanwen.name -%></td>
                                                                       <td><%= wenyanwen.author -%></td>
                                                                                                                                                                     <% if can? :read, wenyanwen %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{wenyanwen_path(wenyanwen)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{wenyanwen_path(wenyanwen)}" %></td>
                 <% end %>
                 <% if can? :edit, wenyanwen %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_wenyanwen_path(wenyanwen) %></td>

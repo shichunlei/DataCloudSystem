@@ -48,7 +48,7 @@
                   <td><%= week_fortune.end_date -%></td>
 <td><%= week_fortune.astro.name -%></td>
                                                       <% if can? :read, week_fortune %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{week_fortune_path(week_fortune)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{week_fortune_path(week_fortune)}" %></td>
                 <% end %>
                 <% if can? :edit, week_fortune %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_week_fortune_path(week_fortune) %></td>

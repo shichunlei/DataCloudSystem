@@ -47,7 +47,7 @@
                 <td><%= driverexam.q_type -%></td>
                 <td><%= driverexam.question -%></td>
                 <% if can? :read, driverexam %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{driverexam_path(driverexam)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{driverexam_path(driverexam)}" %></td>
                 <% end %>
                 <!-- <% if can? :edit, driverexam %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_driverexam_path(driverexam) %></td>

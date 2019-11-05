@@ -48,7 +48,7 @@
                 <td><%= car_gearbox.gearbox -%></td>
                 <td><%= car_gearbox.shiftpaddles -%></td>
                 <% if can? :read, car_gearbox %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_gearbox_path(car_gearbox)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_gearbox_path(car_gearbox)}" %></td>
                 <% end %>
                 <% if can? :edit, car_gearbox %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_gearbox_path(car_gearbox) %></td>

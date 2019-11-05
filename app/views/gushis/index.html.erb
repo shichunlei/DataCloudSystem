@@ -31,9 +31,9 @@
                 <th><%=t('activerecord.attributes.gushi.name') -%></th>
                 <th><%=t('activerecord.attributes.gushi.author') -%></th>
                 <th><%=t('activerecord.attributes.gushi.mtype') -%></th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <!-- <th></th> -->
+                <th>操作</th>
+                <!-- <th></th> -->
               </tr>
             </thead>
             <tbody>
@@ -44,14 +44,20 @@
                 <td><%= gushi.name -%></td>
                 <td><%= gushi.author -%></td>
                 <td><%= gushi.mtype -%></td>
-                <% if can? :read, gushi %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{gushi_path(gushi)}?page=#{current_page}" %></td>
+                <% if can? :read, Gushi %>
+                  <td class="list-opertion">
+                    <%= link_to t('views.show'), "#{gushi_path(gushi)}" %>
+                  </td>
                 <% end %>
-                <% if can? :edit, gushi %>
-                  <td class="list-opertion"><%= link_to t('views.edit'), edit_gushi_path(gushi) %></td>
+                <% if can? :edit, Gushi %>
+                  <td class="list-opertion">
+                    <%= link_to t('views.edit'), edit_gushi_path(gushi) %>
+                  </td>
                 <% end %>
-                <% if can? :destroy, gushi %>
-                  <td class="list-opertion"><%= link_to t('views.destroy'), gushi, method: :delete, data: { confirm: t('views.confirm') } %></td>
+                <% if can? :destroy, Gushi %>
+                  <td class="list-opertion">
+                    <%= link_to t('views.destroy'), gushi, method: :delete, data: { confirm: t('views.confirm') } %>
+                  </td>
                 <% end %>
               <% end %>
             </tbody>

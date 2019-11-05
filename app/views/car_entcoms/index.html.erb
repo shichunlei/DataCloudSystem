@@ -54,7 +54,7 @@
                 <td><%= car_entcom.externalaudiointerface -%></td>
                 <td><%= car_entcom.builtinharddisk -%></td>
                 <% if can? :read, car_entcom %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_entcom_path(car_entcom)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_entcom_path(car_entcom)}" %></td>
                 <% end %>
                 <% if can? :edit, car_entcom %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_entcom_path(car_entcom) %></td>

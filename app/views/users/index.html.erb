@@ -52,7 +52,7 @@
                 <td><%= user.name -%></td>
                 <td><%= user.mobile -%></td>
                 <% if can? :read, User %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{user_path(user)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{user_path(user)}" %></td>
                 <% end %>
                 <% if can? :edit, User %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_user_path(user) %></td>

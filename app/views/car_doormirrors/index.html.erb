@@ -54,7 +54,7 @@
                 <td><%= car_doormirror.uvinterceptingglass -%></td>
                 <td><%= car_doormirror.privacyglass -%></td>
                 <% if can? :read, car_doormirror %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_doormirror_path(car_doormirror)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_doormirror_path(car_doormirror)}" %></td>
                 <% end %>
                 <% if can? :edit, car_doormirror %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_doormirror_path(car_doormirror) %></td>

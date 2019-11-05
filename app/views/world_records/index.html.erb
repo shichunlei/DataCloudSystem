@@ -53,7 +53,7 @@
                   <% end %>
                 </td>
                 <% if can? :read, world_record %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{world_record_path(world_record)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{world_record_path(world_record)}" %></td>
                 <% end %>
                 <!-- <% if can? :edit, world_record %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_world_record_path(world_record) %></td>

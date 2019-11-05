@@ -45,7 +45,7 @@
                 <td><%= huangli.yangli -%></td>
                 <td><%= huangli.nongli -%></td>
                 <% if can? :read, huangli %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{huangli_path(huangli)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{huangli_path(huangli)}" %></td>
                 <% end %>
                 <% if can? :edit, huangli %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_huangli_path(huangli) %></td>

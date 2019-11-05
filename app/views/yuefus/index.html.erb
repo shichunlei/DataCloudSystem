@@ -49,7 +49,7 @@
 
                   <td><%= yuefu.chapter -%></td>
                                                       <% if can? :read, yuefu %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{yuefu_path(yuefu)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{yuefu_path(yuefu)}" %></td>
                 <% end %>
                 <% if can? :edit, yuefu %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_yuefu_path(yuefu) %></td>

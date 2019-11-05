@@ -51,7 +51,7 @@
                 <td><%= hospital.city -%></td>
                 <td><%= hospital.area -%></td>
                 <% if can? :read, hospital %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{hospital_path(hospital)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{hospital_path(hospital)}" %></td>
                 <% end %>
                 <% if can? :edit, hospital %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_hospital_path(hospital) %></td>

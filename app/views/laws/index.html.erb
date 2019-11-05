@@ -45,7 +45,7 @@
                 <td><%= law.pub_date -%></td>
                 <td><%= law.exec_date -%></td>
                 <% if can? :read, law %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{law_path(law)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{law_path(law)}" %></td>
                 <% end %>
                 <% if can? :edit, law %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_law_path(law) %></td>

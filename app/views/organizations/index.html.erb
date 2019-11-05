@@ -54,7 +54,7 @@
                                     
                   <td><%= organization.organization -%></td>
                                                   <% if can? :read, Organization %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{organization_path(organization)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{organization_path(organization)}" %></td>
                 <% end %>
                 <% if can? :edit, Organization %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_organization_path(organization) %></td>

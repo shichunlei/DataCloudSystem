@@ -64,7 +64,7 @@
 
                 <td><%= car_basic.displacement -%></td>
                 <% if can? :read, car_basic %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_basic_path(car_basic)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_basic_path(car_basic)}" %></td>
                 <% end %>
                 <% if can? :edit, car_basic %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_basic_path(car_basic) %></td>

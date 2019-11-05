@@ -54,7 +54,7 @@
                 <td><%= car_wheel.sparetiretype -%></td>
                 <td><%= car_wheel.hubmaterial -%></td>
                 <% if can? :read, car_wheel %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_wheel_path(car_wheel)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_wheel_path(car_wheel)}" %></td>
                 <% end %>
                 <% if can? :edit, car_wheel %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_wheel_path(car_wheel) %></td>

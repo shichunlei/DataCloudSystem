@@ -53,7 +53,7 @@
                 <td><%= country.enarea -%></td>
                 <td><img src='<%= country.flag -%>' style="width:120px;height:80px;"/></td>
                 <% if can? :read, country %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{country_path(country)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{country_path(country)}" %></td>
                 <% end %>
                 <% if can? :edit, country %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_country_path(country) %></td>

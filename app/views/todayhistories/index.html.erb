@@ -50,7 +50,7 @@
                 <td><%= todayhistory.history_date -%></td>
                 <td><img src='<%= todayhistory.image -%>' style="width:80px;height:50px;"/></td>
                 <% if can? :read, todayhistory %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{todayhistory_path(todayhistory)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{todayhistory_path(todayhistory)}" %></td>
                 <% end %>
                 <% if can? :edit, todayhistory %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_todayhistory_path(todayhistory) %></td>

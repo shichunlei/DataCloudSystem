@@ -8,7 +8,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   # GET <%= route_url %>
   def index
     @page = params[:page]
-    @<%= plural_table_name %> = <%=singular_table_name.capitalize%>.order(:id).page(@page)
+    @<%= plural_table_name %> = <%=singular_table_name.camelize%>.order(:id).page(@page).per(30)
   end
 
   # GET <%= route_url %>/1

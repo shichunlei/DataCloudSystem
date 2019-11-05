@@ -32,9 +32,9 @@
                               <th><%=t('activerecord.attributes.shijing.name') -%></th>
 
                               <th><%=t('activerecord.attributes.shijing.chapter') -%></th>
-                                              <th></th>
-                <th></th>
-                <th></th>
+                                              <th>操作</th>
+                <!-- <th></th> -->
+                <!-- <th></th> -->
               </tr>
             </thead>
             <tbody>
@@ -49,7 +49,7 @@
 
                   <td><%= shijing.chapter -%></td>
                                                       <% if can? :read, shijing %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{shijing_path(shijing)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{shijing_path(shijing)}" %></td>
                 <% end %>
                 <% if can? :edit, shijing %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_shijing_path(shijing) %></td>

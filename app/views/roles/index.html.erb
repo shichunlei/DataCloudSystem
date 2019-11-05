@@ -46,7 +46,7 @@
                 <td><%= role.display_name -%></td>
                 <td><%= role.resource -%></td>
                 <% if can? :read, Role %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{role_path(role)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{role_path(role)}" %></td>
                 <% end %>
                 <% if can? :edit, Role %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_role_path(role) %></td>

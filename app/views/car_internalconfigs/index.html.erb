@@ -54,7 +54,7 @@
                 <td><%= car_internalconfig.steeringwheeladjustmentmode -%></td>
                 <td><%= car_internalconfig.steeringwheelmemory -%></td>
                 <% if can? :read, car_internalconfig %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_internalconfig_path(car_internalconfig)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_internalconfig_path(car_internalconfig)}" %></td>
                 <% end %>
                 <% if can? :edit, car_internalconfig %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_internalconfig_path(car_internalconfig) %></td>

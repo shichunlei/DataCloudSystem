@@ -47,7 +47,7 @@
                 <td><%= recipe_material.mtype == 0 ? "辅料" : "主料" -%></td>
                 <td><%= recipe_material.amount -%></td>
                 <% if can? :read, recipe_material %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{recipe_material_path(recipe_material)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{recipe_material_path(recipe_material)}" %></td>
                 <% end %>
                 <% if can? :edit, recipe_material %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_recipe_material_path(recipe_material) %></td>

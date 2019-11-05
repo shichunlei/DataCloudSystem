@@ -49,13 +49,13 @@
                 <td><%= airport.other_name -%></td>
                 <td><%= airport.country.name -%></td>
                 <td><%= airport.city_name -%></td>
-                <% if can? :read, airport %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{airport_path(airport)}?page=#{current_page}" %></td>
+                <% if can? :read, Airport %>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{airport_path(airport)}" %></td>
                 <% end %>
-                <!-- <% if can? :edit, airport %>
+                <!-- <% if can? :edit, Airport %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_airport_path(airport) %></td>
                 <% end %> -->
-                <!-- <% if can? :destroy, airport %>
+                <!-- <% if can? :destroy, Airport %>
                   <td class="list-opertion"><%= link_to t('views.destroy'), airport, method: :delete, data: { confirm: t('views.confirm') } %></td>
                 <% end %> -->
                 <td/>

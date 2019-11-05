@@ -54,7 +54,7 @@
                 <td><%= car_seat.seatheightadjustment -%></td>
                 <td><%= car_seat.driverseatadjustmentmode -%></td>
                 <% if can? :read, car_seat %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_seat_path(car_seat)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_seat_path(car_seat)}" %></td>
                 <% end %>
                 <% if can? :edit, car_seat %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_seat_path(car_seat) %></td>

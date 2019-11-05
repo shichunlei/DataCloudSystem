@@ -48,7 +48,7 @@
                 <td><%= university.f985 -%></td>
                 <td><%= university.schooltype -%></td>
                 <% if can? :read, university %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{university_path(university)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{university_path(university)}" %></td>
                 <% end %>
                 <% if can? :edit, university %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_university_path(university) %></td>

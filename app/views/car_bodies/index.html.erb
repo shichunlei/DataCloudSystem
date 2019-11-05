@@ -54,7 +54,7 @@
                 <td><%= car_body.width -%></td>
                 <td><%= car_body.height -%></td>
                 <% if can? :read, car_body %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_body_path(car_body)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_body_path(car_body)}" %></td>
                 <% end %>
                 <% if can? :edit, car_body %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_body_path(car_body) %></td>

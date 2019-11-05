@@ -54,7 +54,7 @@
                 <td><%= car_light.headlightautomaticopen -%></td>
                 <td><%= car_light.headlightautomaticclean -%></td>
                 <% if can? :read, car_light %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_light_path(car_light)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_light_path(car_light)}" %></td>
                 <% end %>
                 <% if can? :edit, car_light %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_light_path(car_light) %></td>

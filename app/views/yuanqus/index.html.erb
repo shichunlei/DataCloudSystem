@@ -42,7 +42,7 @@
                 <td><%= yuanqu.name -%></td>
                 <td><%= yuanqu.author -%></td>
                 <% if can? :read, yuanqu %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{yuanqu_path(yuanqu)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{yuanqu_path(yuanqu)}" %></td>
                 <% end %>
                 <% if can? :edit, yuanqu %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_yuanqu_path(yuanqu) %></td>

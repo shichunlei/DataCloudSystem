@@ -54,7 +54,7 @@
                 <td><%= car_drivingauxiliary.brakeassist -%></td>
                 <td><%= car_drivingauxiliary.tractioncontrol -%></td>
                 <% if can? :read, car_drivingauxiliary %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_drivingauxiliary_path(car_drivingauxiliary)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_drivingauxiliary_path(car_drivingauxiliary)}" %></td>
                 <% end %>
                 <% if can? :edit, car_drivingauxiliary %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_drivingauxiliary_path(car_drivingauxiliary) %></td>

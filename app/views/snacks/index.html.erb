@@ -41,7 +41,7 @@
                                 <td><%= @page = @page + 1   -%></td>
                                                     <td><%= snack.name -%></td>
                                                   <% if can? :read, snack %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{snack_path(snack)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{snack_path(snack)}" %></td>
                 <% end %>
                 <% if can? :edit, snack %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_snack_path(snack) %></td>

@@ -46,7 +46,7 @@
                   <td><%= year_fortune.year -%></td>
 <td><%= year_fortune.astro.name -%></td>
                                                       <% if can? :read, year_fortune %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{year_fortune_path(year_fortune)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{year_fortune_path(year_fortune)}" %></td>
                 <% end %>
                 <% if can? :edit, year_fortune %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_year_fortune_path(year_fortune) %></td>

@@ -23,4 +23,22 @@ class Book < ApplicationRecord
   def image_url
     image.url(:medium)
   end
+
+  def chapter_list
+    list = BookDetail.where(book_id:self.id).order(:id).as_json(:only => [:chapter])
+    arr = []
+    list.each do |item|
+      arr.push(item["chapter"])
+    end
+    chapters = []
+    chapternames = arr.uniq
+    chapternames.each do |item|
+      chapter = {}
+      chapter.store("chapter", item)
+      object = BookDetail.where(chapter:item).order(:id).as_json(:only => [:id, :name])
+      chapter.store("data", object)
+      chapters.push(chapter)
+    end
+    return chapters.as_json()
+  end
 end

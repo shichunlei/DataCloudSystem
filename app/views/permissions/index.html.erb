@@ -54,7 +54,7 @@
                                     
                   <td><%= permission.description -%></td>
                                                   <% if can? :read, Permission %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{permission_path(permission)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{permission_path(permission)}" %></td>
                 <% end %>
                 <% if can? :edit, Permission %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_permission_path(permission) %></td>

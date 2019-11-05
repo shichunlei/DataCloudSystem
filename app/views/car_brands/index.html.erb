@@ -50,7 +50,7 @@
                 <td><%= car_brand.name -%></td>
                 <td><%= car_brand.initial -%></td>
                 <% if can? :read, car_brand %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_brand_path(car_brand)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_brand_path(car_brand)}" %></td>
                 <% end %>
                 <!-- <% if can? :edit, car_brand %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_brand_path(car_brand) %></td>

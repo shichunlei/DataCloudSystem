@@ -54,7 +54,7 @@
                 <td><%= car_engine.displacement -%></td>
                 <td><%= car_engine.displacementml -%></td>
                 <% if can? :read, car_engine %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_engine_path(car_engine)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_engine_path(car_engine)}" %></td>
                 <% end %>
                 <% if can? :edit, car_engine %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_engine_path(car_engine) %></td>

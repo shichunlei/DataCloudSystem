@@ -43,7 +43,7 @@
                 <td><%= recipe_classify.name -%></td>
                 <td><%= recipe_classify.recipe_classify.nil? ? "" : recipe_classify.recipe_classify.name -%></td>
                 <% if can? :read, recipe_classify %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{recipe_classify_path(recipe_classify)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{recipe_classify_path(recipe_classify)}" %></td>
                 <% end %>
                 <% if can? :edit, recipe_classify %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_recipe_classify_path(recipe_classify) %></td>

@@ -192,22 +192,24 @@
         <% end %>
       <% end%>
     <% end %>
-    <%= treeview_link '系统管理' do %>
-      <%= nav_link organizations_path do %>
-        <i class="fa fa-angle-double-right"></i>
-        部门管理
-      <% end %>
-      <%= nav_link users_path do %>
-        <i class="fa fa-angle-double-right"></i>
-        用户管理
-      <% end %>
-      <%= nav_link  roles_path do %>
-        <i class="fa fa-angle-double-right"></i>
-        角色管理
-      <% end %>
-       <%= nav_link permissions_path do %>
-        <i class="fa fa-angle-double-right"></i>
-        权限管理
+    <% if current_user.has_role? :admin %>
+      <%= treeview_link '系统管理' do %>
+        <%= nav_link organizations_path do %>
+          <i class="fa fa-angle-double-right"></i>
+          部门管理
+        <% end %>
+        <%= nav_link users_path do %>
+          <i class="fa fa-angle-double-right"></i>
+          用户管理
+        <% end %>
+        <%= nav_link  roles_path do %>
+          <i class="fa fa-angle-double-right"></i>
+          角色管理
+        <% end %>
+         <%= nav_link permissions_path do %>
+          <i class="fa fa-angle-double-right"></i>
+          权限管理
+        <% end %>
       <% end %>
     <% end %>
   </ul>

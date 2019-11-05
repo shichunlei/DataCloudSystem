@@ -54,7 +54,7 @@
                 <td><%= car_aircondrefrigerator.rearairconditioning -%></td>
                 <td><%= car_aircondrefrigerator.reardischargeoutlet -%></td>
                 <% if can? :read, car_aircondrefrigerator %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_aircondrefrigerator_path(car_aircondrefrigerator)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_aircondrefrigerator_path(car_aircondrefrigerator)}" %></td>
                 <% end %>
                 <% if can? :edit, car_aircondrefrigerator %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_aircondrefrigerator_path(car_aircondrefrigerator) %></td>

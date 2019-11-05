@@ -44,7 +44,7 @@
 
                   <td><%= miyu_classify.name -%></td>
                                                   <% if can? :read, miyu_classify %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{miyu_classify_path(miyu_classify)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{miyu_classify_path(miyu_classify)}" %></td>
                 <% end %>
                 <% if can? :edit, miyu_classify %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_miyu_classify_path(miyu_classify) %></td>

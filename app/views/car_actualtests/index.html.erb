@@ -48,7 +48,7 @@
                 <td><%= car_actualtest.accelerationtime100 -%></td>
                 <td><%= car_actualtest.brakingdistance -%></td>
                 <% if can? :read, car_actualtest %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_actualtest_path(car_actualtest)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{car_actualtest_path(car_actualtest)}" %></td>
                 <% end %>
                 <% if can? :edit, car_actualtest %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_car_actualtest_path(car_actualtest) %></td>

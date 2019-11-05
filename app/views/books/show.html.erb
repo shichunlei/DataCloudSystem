@@ -103,6 +103,18 @@
               </dt>
               <dd class="well"><%= raw @book.background %></dd>
             <% end %>
+            <% @book.chapter_list.each do |item| %>
+              <dt class="label-change">
+                <span class="label-content label-info">
+                  <%= item['chapter'] %>:
+                </span>
+              </dt>
+              <% item['data'].each do |ii| %>
+                <dd class="well">
+                  <%= link_to ii["name"], "/book_details/#{ii["id"]}" -%>
+                </dd>
+              <% end %>
+            <% end %>
           </dl>
         </div>
       </div>

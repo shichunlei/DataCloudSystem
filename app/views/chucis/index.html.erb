@@ -54,7 +54,7 @@
 
                   <td><%= chuci.chapter -%></td>
                                                       <% if can? :read, chuci %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{chuci_path(chuci)}?page=#{current_page}" %></td>
+                  <td class="list-opertion"><%= link_to t('views.show'), "#{chuci_path(chuci)}" %></td>
                 <% end %>
                 <% if can? :edit, chuci %>
                   <td class="list-opertion"><%= link_to t('views.edit'), edit_chuci_path(chuci) %></td>

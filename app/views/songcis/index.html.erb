@@ -31,8 +31,9 @@
                 <th><%=t('activerecord.attributes.songci.name') -%></th>
                 <th><%=t('activerecord.attributes.songci.author') -%></th>
                 <th><%=t('activerecord.attributes.songci.mtype') -%></th>
+                <!-- <th></th> -->
                 <th>操作</th>
-                <th></th>
+                <!-- <th></th> -->
               </tr>
             </thead>
             <tbody>
@@ -43,17 +44,21 @@
                 <td><%= songci.name -%></td>
                 <td><%= songci.author -%></td>
                 <td><%= songci.mtype -%></td>
-                <% if can? :read, songci %>
-                  <td class="list-opertion"><%= link_to t('views.show'), "#{songci_path(songci)}?page=#{current_page}" %></td>
+                <% if can? :read, Songci %>
+                  <td class="list-opertion">
+                    <%= link_to t('views.show'), "#{songci_path(songci)}" %>
+                  </td>
                 <% end %>
-                <!-- <% if can? :edit, songci %>
-                  <td class="list-opertion"><%= link_to t('views.edit'), edit_songci_path(songci) %></td>
+                <% if can? :edit, Songci %>
+                  <td class="list-opertion">
+                    <%= link_to t('views.edit'), edit_songci_path(songci) %>
+                  </td>
                 <% end %>
-                <% if can? :destroy, songci %>
-                  <td class="list-opertion"><%= link_to t('views.destroy'), songci, method: :delete, data: { confirm: t('views.confirm') } %></td>
-                <% end %> -->
-                <td></td>
-
+                <% if can? :destroy, Songci %>
+                  <td class="list-opertion">
+                    <%= link_to t('views.destroy'), songci, method: :delete, data: { confirm: t('views.confirm') } %>
+                  </td>
+                <% end %>
               <% end %>
             </tbody>
           </table>

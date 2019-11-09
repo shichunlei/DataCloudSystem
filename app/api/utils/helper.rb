@@ -73,5 +73,15 @@ module Utils
       end
     end
 
+    def Helper::getHttpBody(url, header = nil)
+      uri = URI.parse(URI.escape(url))
+      https = Net::HTTP.new(uri.host, uri.port)
+      https.use_ssl = true if uri.scheme == "https"  # enable SSL/TLS
+      https.verify_mode = OpenSSL::SSL::VERIFY_NONE #这个也很重要
+      req = Net::HTTP::Get.new(uri.request_uri)
+      body = https.request(req).body
+      return body
+    end
+
   end
 end

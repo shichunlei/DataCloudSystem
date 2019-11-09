@@ -21,6 +21,7 @@ module V1
 		mount V1::Juzimi
 		mount V1::Qdaily
 		mount V1::TubiTV
+		mount V1::Sports
 	end
 
 	# 返回码

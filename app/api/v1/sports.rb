@@ -150,7 +150,56 @@ module V1
 
         result = JSON.parse(body.gsub("jQueryTeamRank_#{_}([0,", '').gsub(",\"\"]);", ''))
 
-        return {:code => '0', :message => "SUCCESS", :data => result}
+				data = []
+				east = {}
+				east.store("list", result['east'])
+				east.store("title", "东部联盟")
+				east.store("type", 1)
+				data.push(east)
+
+				west = {}
+				west.store("list", result['west'])
+				west.store("title", "西部联盟")
+				west.store("type", 1)
+				data.push(west)
+
+				atlantic = {}
+				atlantic.store("list", result['atlantic'])
+				atlantic.store("title", "大西洋赛区")
+				atlantic.store("type", 2)
+				data.push(atlantic)
+
+				eastsouth = {}
+				eastsouth.store("list", result['eastsouth'])
+				eastsouth.store("title", "东南赛区")
+				eastsouth.store("type", 2)
+				data.push(eastsouth)
+
+				central = {}
+				central.store("list", result['central'])
+				central.store("title", "中部赛区")
+				central.store("type", 2)
+				data.push(central)
+
+				pacific = {}
+				pacific.store("list", result['pacific'])
+				pacific.store("title", "太平洋赛区")
+				pacific.store("type", 2)
+				data.push(pacific)
+
+				westnorth = {}
+				westnorth.store("list", result['westnorth'])
+				westnorth.store("title", "西北赛区")
+				westnorth.store("type", 2)
+				data.push(westnorth)
+
+				westsouth = {}
+				westsouth.store("list", result['westsouth'])
+				westsouth.store("title", "西南赛区")
+				westsouth.store("type", 2)
+				data.push(westsouth)
+
+        return {:code => '0', :message => "SUCCESS", :data => data}
       end
 
       desc "NBA球队数据排名（前五）"

@@ -326,15 +326,23 @@ module V1
         info_result = JSON.parse(info.gsub("jQueryPlayerDetail_#{_}(", '').gsub(")", ''))
 
         if info_result['code'] == 0
-          data.store("playerBaseInfo", info_result['data']['playerBaseInfo'])
-          puts info_result['data']['playerBaseInfo']['position']
+          position =  info_result['data']['playerBaseInfo']['position']
+					teamId =  info_result['data']['playerBaseInfo']['teamId']
 
           # 同位置球员
-          pos = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerPos_#{_+3}&cubeId=8&dimId=6&params=t21:#{info_result['data']['playerBaseInfo']['position']}&from=sportsdatabase")
+          pos = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerPos_#{_+3}&cubeId=8&dimId=6&params=t21:#{position}&from=sportsdatabase")
 
           pos_result = JSON.parse(pos.gsub("jQueryPlayerPos_#{_+3}(", '').gsub(")", ''))
 
           data.store("playerPos", pos_result['data']['nbaPlayerPos'])
+
+					team = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerTeam_#{_+2}&cubeId=1&dimId=1&params=t1:#{teamId}&from=sportsdatabase")
+
+          team_result = JSON.parse(team.gsub("jQueryPlayerTeam_#{_+2}(", '').gsub(")", ''))
+
+					info_result['data']['playerBaseInfo'].store('teamName', team_result['data']['baseInfo']['cnName'])
+
+					data.store("playerBaseInfo", info_result['data']['playerBaseInfo'])
         end
 
         # 数据总览（联盟平均值、联盟最高值、联盟排名等）

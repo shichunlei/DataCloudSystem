@@ -204,8 +204,8 @@ module V1
 
       desc "NBA球队数据排名（前五）"
       params do
-        requires :year, type: Integer, desc: '赛纪年份'
-        requires :type, type: String, desc: '类型' # 0 季前赛；1 常规赛；2 季后赛
+        requires :year, type: Integer, desc: '赛季年份'
+        requires :type, type: Integer, desc: '类型' # 0 季前赛；1 常规赛；2 季后赛
       end
       get :team_range do
         _ = Time.now.to_i
@@ -219,8 +219,8 @@ module V1
 
       desc "NBA球队数据排名"
       params do
-        requires :year, type: Integer, desc: '赛纪年份'
-        requires :type, type: String, desc: '类型' # 0 季前赛；1 常规赛；2 季后赛
+        requires :year, type: Integer, desc: '赛季年份'
+        requires :type, type: Integer, desc: '类型' # 0 季前赛；1 常规赛；2 季后赛
         requires :alliance, type: String, desc: '联盟' # west,east 全联盟；west 西部联盟；east 东部联盟
       end
       get :team_range_all do
@@ -235,8 +235,8 @@ module V1
 
       desc "NBA球员数据排名（前五）"
       params do
-        requires :year, type: Integer, desc: '赛纪年份'
-        requires :type, type: String, desc: '类型' # 0 季前赛；1 常规赛；2 季后赛
+        requires :year, type: Integer, desc: '赛季年份'
+        requires :type, type: Integer, desc: '类型' # 0 季前赛；1 常规赛；2 季后赛
       end
       get :player_range do
         _ = Time.now.to_i
@@ -250,8 +250,8 @@ module V1
 
       desc "NBA球员数据排名（全）"
       params do
-        requires :year, type: Integer, desc: '赛纪年份'
-        requires :type, type: String, desc: '类型' # 0 季前赛；1 常规赛；2 季后赛
+        requires :year, type: Integer, desc: '赛季年份'
+        requires :type, type: Integer, desc: '类型' # 0 季前赛；1 常规赛；2 季后赛
         requires :page, type: Integer, desc: '页码'
         requires :limit, type: Integer, desc: '每页条数'
         requires :sort, type: String, desc: '排序方式' # 得分 t70；出手数 t83；命中率 t79；三分出手 t85；三分命中率 t80；罚球次数 t87；发球命中率 t81；篮板 t71；前场篮板 t77；后场篮板 t76；助攻 t68；抢断 t72；盖帽 t69；失误 t74；犯规 t73；场次 t5；上场时间 t78
@@ -296,12 +296,24 @@ module V1
         return {:code => result['code'], :message => "SUCCESS", :data => data}
       end
 
+			desc "NBA球员动态新闻"
+      params do
+        requires :name, type: String, desc: '球员名字'
+      end
+      get :player_news do
+				tagListCb = Utils::Helper::getHttpBody("https://pacaio.match.qq.com/tags/tag2articles?name=#{name}&num=100&callback=tagListCb")
+
+        result = JSON.parse(tagListCb.gsub("tagListCb(", '').gsub(")", ''))
+
+				return {:code => result['code'], :message => "SUCCESS", :data => result['data']}
+			end
+
       desc "NBA球员详情"
       params do
         requires :id, type: String, desc: '球员ID'
         requires :year, type: Integer, desc: '年份'
       end
-      get :player_info do
+      get :player_details do
         _ = Time.now.to_i
 
         id = params[:id]
@@ -322,10 +334,10 @@ module V1
 
           pos_result = JSON.parse(pos.gsub("jQueryPlayerPos_#{_+3}(", '').gsub(")", ''))
 
-          data.store("nbaPlayerPos", pos_result['data']['nbaPlayerPos'])
+          data.store("playerPos", pos_result['data']['nbaPlayerPos'])
         end
 
-        # 数据统计
+        # 数据总览（联盟平均值、联盟最高值、联盟排名等）
         stat = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerSeasonStat_#{_+5}&cubeId=10&dimId=9,10&params=t2:#{params[:year]}|t3:1|t1:#{id}&from=sportsdatabase")
 
         stat_result = JSON.parse(stat.gsub("jQueryPlayerSeasonStat_#{_+5}(", '').gsub(")", ''))
@@ -335,14 +347,153 @@ module V1
           data.store("nbaPlayerSeasonStat", stat_result['data']['nbaPlayerSeasonStat'])
         end
 
-        # 球员赛季比赛数据统计
-        match_stat = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerMatch_#{_+7}&cubeId=9&dimId=7,8&params=t27:#{params[:year]}|t28:1|t1:#{id}&from=sportsdatabase")
+				playerMatch = {}
 
-        match_stat_result = JSON.parse(match_stat.gsub("jQueryPlayerMatch_#{_+7}(", '').gsub(")", ''))
+        # 球员常规赛比赛数据统计
+        match_stat1 = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerMatch_#{_+7}&cubeId=9&dimId=7,8&params=t27:#{params[:year]}|t28:1|t1:#{id}&from=sportsdatabase")
+
+        match_stat1_result = JSON.parse(match_stat1.gsub("jQueryPlayerMatch_#{_+7}(", '').gsub(")", ''))
 
         if stat_result['code'] == 0
-          data.store("nbaPlayerMatch", match_stat_result['data']['nbaPlayerMatch'])
-          data.store("nbaPlayerMatchSeason", match_stat_result['data']['nbaPlayerMatchSeason'])
+					playerMatch.store('regular_season', match_stat1_result['data']['nbaPlayerMatch'] == nil ? [] : match_stat1_result['data']['nbaPlayerMatch'])
+        end
+
+				# 球员季后赛比赛数据统计
+        match_stat2 = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerMatch2_#{_+6}&cubeId=9&dimId=7,8&params=t27:#{params[:year]}|t28:2|t1:#{id}&from=sportsdatabase")
+
+        match_stat2_result = JSON.parse(match_stat2.gsub("jQueryPlayerMatch2_#{_+6}(", '').gsub(")", ''))
+
+        if stat_result['code'] == 0
+					playerMatch.store('postseason', match_stat2_result['data']['nbaPlayerMatch'] == nil ? [] : match_stat2_result['data']['nbaPlayerMatch'])
+        end
+
+				# 球员季前赛比赛数据统计
+        match_stat0 = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerMatch0_#{_+4}&cubeId=9&dimId=7,8&params=t27:#{params[:year]}|t28:0|t1:#{id}&from=sportsdatabase")
+
+        match_stat0_result = JSON.parse(match_stat0.gsub("jQueryPlayerMatch0_#{_+4}(", '').gsub(")", ''))
+
+        if stat_result['code'] == 0
+					playerMatch.store('preseason', (match_stat0_result['data']['nbaPlayerMatch'] == nil) ? [] : match_stat0_result['data']['nbaPlayerMatch'])
+        end
+
+				data.store("playerMatch", playerMatch)
+
+				# 球员生涯比赛数据统计
+        career = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerCareer_#{_+6}&cubeId=10&dimId=23&params=t1:#{id}&from=sportsdatabase")
+
+        career_result = JSON.parse(career.gsub("jQueryPlayerCareer_#{_+6}(", '').gsub(")", ''))
+
+				if career_result['code'] == 0
+					playerCareer = {}
+					playerCareer0 = []
+					playerCareer1 = []
+					playerCareer2 = []
+
+					career_result['data']['nbaPlayerCareer'].each do |item|
+						if item['seasonType'] == '0' # 季前赛
+							playerCareer0.push(item)
+						elsif item['seasonType'] == '1' # 常规赛
+							playerCareer1.push(item)
+						elsif item['seasonType'] == '2' # 季后赛
+							playerCareer2.push(item)
+						end
+					end
+
+					playerCareer.store('preseason', playerCareer0)
+					playerCareer.store('regular_season', playerCareer1)
+					playerCareer.store('postseason', playerCareer2)
+
+					data.store("playerCareer", playerCareer)
+				end
+
+        return {:code => '0', :message => "SUCCESS", :data => data}
+      end
+
+			desc "NBA球员生涯赛季（季前赛、常规赛、季后赛）数据统计"
+      params do
+        requires :id, type: String, desc: '球员ID'
+      end
+      get :player_career do
+        _ = Time.now.to_i
+
+        id = params[:id]
+
+        data = {}
+
+				# 球员生涯比赛数据统计
+        career = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerCareer_#{_}&cubeId=10&dimId=23&params=t1:#{id}&from=sportsdatabase")
+
+        career_result = JSON.parse(career.gsub("jQueryPlayerCareer_#{_}(", '').gsub(")", ''))
+
+				playerCareer = {}
+
+				if career_result['code'] == 0
+					playerCareer0 = []
+					playerCareer1 = []
+					playerCareer2 = []
+
+					career_result['data']['nbaPlayerCareer'].each do |item|
+						if item['seasonType'] == '0' # 季前赛
+							playerCareer0.push(item)
+						elsif item['seasonType'] == '1' # 常规赛
+							playerCareer1.push(item)
+						elsif item['seasonType'] == '2' # 季后赛
+							playerCareer2.push(item)
+						end
+					end
+
+					playerCareer.store('preseason', playerCareer0)
+					playerCareer.store('regular_season', playerCareer1)
+					playerCareer.store('postseason', playerCareer2)
+				end
+
+        return {:code => '0', :message => "SUCCESS", :data => playerCareer}
+      end
+
+			desc "NBA球员单赛季数据统计"
+      params do
+        requires :id, type: String, desc: '球员ID'
+        requires :year, type: Integer, desc: '年份'
+				requires :type, type: Integer, desc: '年份'
+      end
+      get :player_match do
+        _ = Time.now.to_i
+
+        id = params[:id]
+
+        # 球员常规赛比赛数据统计
+        match_stat = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerMatch_#{_}&cubeId=9&dimId=7,8&params=t27:#{params[:year]}|t28:#{params[:type]}|t1:#{id}&from=sportsdatabase")
+
+        match_stat_result = JSON.parse(match_stat.gsub("jQueryPlayerMatch_#{_}(", '').gsub(")", ''))
+
+        return {:code => match_stat_result['code'], :message => "SUCCESS", :data => match_stat_result['data']}
+      end
+
+			desc "NBA球员详情"
+      params do
+        requires :id, type: String, desc: '球员ID'
+      end
+      get :player_info do
+        _ = Time.now.to_i
+
+        id = params[:id]
+
+        data = {}
+
+        # 基本信息
+        info = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerDetail_#{_}&cubeId=8&dimId=5&params=t1:#{id}&from=sportsdatabase")
+
+        info_result = JSON.parse(info.gsub("jQueryPlayerDetail_#{_}(", '').gsub(")", ''))
+
+        if info_result['code'] == 0
+          data.store("playerBaseInfo", info_result['data']['playerBaseInfo'])
+
+          # 同位置球员
+          pos = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerPos_#{_+3}&cubeId=8&dimId=6&params=t21:#{info_result['data']['playerBaseInfo']['position']}&from=sportsdatabase")
+
+          pos_result = JSON.parse(pos.gsub("jQueryPlayerPos_#{_+3}(", '').gsub(")", ''))
+
+          data.store("playerPos", pos_result['data']['nbaPlayerPos'])
         end
 
         return {:code => '0', :message => "SUCCESS", :data => data}

@@ -496,11 +496,15 @@ module V1
         id = params[:id]
 
         # 球员常规赛比赛数据统计
-        match_stat = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerMatch_#{_}&cubeId=9&dimId=7,8&params=t27:#{params[:year]}|t28:#{params[:type]}|t1:#{id}&from=sportsdatabase")
+        body = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerMatch_#{_}&cubeId=9&dimId=7,8&params=t27:#{params[:year]}|t28:#{params[:type]}|t1:#{id}&from=sportsdatabase")
 
-        match_stat_result = JSON.parse(match_stat.gsub("jQueryPlayerMatch_#{_}(", '').gsub(")", ''))
+        result = JSON.parse(body.gsub("jQueryPlayerMatch_#{_}(", '').gsub(")", ''))
 
-        return {:code => match_stat_result['code'], :message => "SUCCESS", :data => match_stat_result['data']}
+				if result['data']['nbaPlayerMatch'] == nil
+					return {:code => result['code'], :message => "SUCCESS", :data => []}
+				end
+
+        return {:code => result['code'], :message => "SUCCESS", :data => result['data']['nbaPlayerMatch']}
       end
 
 			desc "NBA球员详情"

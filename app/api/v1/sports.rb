@@ -221,14 +221,40 @@ module V1
       params do
         requires :year, type: Integer, desc: '赛季年份'
         requires :type, type: Integer, desc: '类型' # 0 季前赛；1 常规赛；2 季后赛
-        requires :alliance, type: String, desc: '联盟' # west,east 全联盟；west 西部联盟；east 东部联盟
       end
       get :team_range_all do
         _ = Time.now.to_i
 
-        body = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?cubeId=12&dimId=43&from=sportsdatabase&order=t60&params=t2:#{params[:year]}|t3:#{params[:type]}|t64:#{params[:alliance]}&callback=jQueryTeamRangeAll_#{_}&_=#{Time.now.to_i}")
+        body = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?cubeId=12&dimId=43&from=sportsdatabase&order=t60&params=t2:#{params[:year]}|t3:#{params[:type]}|t64:west,east&callback=jQueryTeamRangeAll_#{_}&_=#{Time.now.to_i}")
 
         result = JSON.parse(body.gsub("jQueryTeamRangeAll_#{_}(", '').gsub(")", ''))
+
+				if result['code'] == 0
+					_body = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/rank/team?from=sporthp&callback=jQueryTeamRank_#{_+2}&competitionId=100000&from=NBA_PC&_=#{Time.now.to_i}")
+
+	        _result = JSON.parse(_body.gsub("jQueryTeamRank_#{_+2}([0,", '').gsub(",\"\"]);", ''))
+
+					teams = []
+
+					_result['east'].each do |item|
+						teams.push(item)
+					end
+
+					_result['west'].each do |item|
+						teams.push(item)
+					end
+
+					puts teams.size
+
+					result['data']['nbTeamSeasonStatRank'].each do |item|
+						teams.each do |team|
+							if item['teamId'] == team['teamId']
+								item.store('wins', team['wins'])
+								item.store('losses', team['losses'])
+							end
+						end
+					end
+				end
 
         return {:code => result['code'], :message => "SUCCESS", :data => result['data']['nbTeamSeasonStatRank']}
       end

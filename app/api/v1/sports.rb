@@ -520,7 +520,13 @@ module V1
         info_result = JSON.parse(info.gsub("jQueryPlayerDetail_#{_}(", '').gsub(")", ''))
 
         if info_result['code'] == 0
-          data.store("playerBaseInfo", info_result['data']['playerBaseInfo'])
+					team = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerTeam_#{_+2}&cubeId=1&dimId=1&params=t1:#{teamId}&from=sportsdatabase")
+
+          team_result = JSON.parse(team.gsub("jQueryPlayerTeam_#{_+2}(", '').gsub(")", ''))
+
+					info_result['data']['playerBaseInfo'].store('teamName', team_result['data']['baseInfo']['cnName'])
+
+					data.store("playerBaseInfo", info_result['data']['playerBaseInfo'])
 
           # 同位置球员
           pos = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerPos_#{_+3}&cubeId=8&dimId=6&params=t21:#{info_result['data']['playerBaseInfo']['position']}&from=sportsdatabase")

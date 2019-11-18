@@ -519,6 +519,9 @@ module V1
 
         info_result = JSON.parse(info.gsub("jQueryPlayerDetail_#{_}(", '').gsub(")", ''))
 
+				position =  info_result['data']['playerBaseInfo']['position']
+				teamId =  info_result['data']['playerBaseInfo']['teamId']
+
         if info_result['code'] == 0
 					team = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerTeam_#{_+2}&cubeId=1&dimId=1&params=t1:#{teamId}&from=sportsdatabase")
 
@@ -529,7 +532,7 @@ module V1
 					data.store("playerBaseInfo", info_result['data']['playerBaseInfo'])
 
           # 同位置球员
-          pos = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerPos_#{_+3}&cubeId=8&dimId=6&params=t21:#{info_result['data']['playerBaseInfo']['position']}&from=sportsdatabase")
+          pos = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerPos_#{_+3}&cubeId=8&dimId=6&params=t21:#{position}&from=sportsdatabase")
 
 					playerPos = []
 

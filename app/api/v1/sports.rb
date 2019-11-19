@@ -123,7 +123,15 @@ module V1
 
         result = JSON.parse(body.gsub("getTeamIntro(", '').gsub(")", ''))
 
-        return {:code => result['code'], :message => "SUCCESS", :data => result['data']}
+				data = {}
+				data = result['data']['baseInfo']
+				result['data']['rankData'].each do |key, value|
+					data.store(key, value)
+				end
+				data.store("continueRecord", result['data']['continueRecord'])
+				data.store("isCooperation", result['data']['clubInfo']['isCooperation'])
+
+        return {:code => result['code'], :message => "SUCCESS", :data => data}
       end
 
       desc "NBA球队数据"

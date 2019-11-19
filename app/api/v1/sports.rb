@@ -326,7 +326,7 @@ module V1
         requires :name, type: String, desc: '球员名字'
       end
       get :player_news do
-				tagListCb = Utils::Helper::getHttpBody("https://pacaio.match.qq.com/tags/tag2articles?name=#{name}&num=100&callback=tagListCb")
+				tagListCb = Utils::Helper::getHttpBody("https://pacaio.match.qq.com/tags/tag2articles?name=#{params[:name]}&num=100&callback=tagListCb")
 
         result = JSON.parse(tagListCb.gsub("tagListCb(", '').gsub(")", ''))
 

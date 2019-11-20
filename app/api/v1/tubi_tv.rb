@@ -31,7 +31,7 @@ module V1
       params do
         requires :page, type: Integer, desc: '页码'
         requires :category, type: String, desc: '类型'
-        optional :limit, type: Integer, desc: '每页条数'
+        optional :limit, type: Integer, desc: '每页条数', default: 10
       end
       get :list do
         page = params[:page]

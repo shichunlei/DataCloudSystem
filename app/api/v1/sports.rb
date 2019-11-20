@@ -210,10 +210,10 @@ module V1
         return {:code => '0', :message => "SUCCESS", :data => data}
       end
 
-      desc "NBA球队数据排名前N（得分，助攻，篮板，失误、抢断、盖帽）"
+      desc "NBA球队数据排名前5（得分，助攻，篮板，失误、抢断、盖帽）"
       params do
-        requires :year, type: Integer, desc: '赛季年份'
-        requires :type, type: Integer, desc: '类型' # 0 季前赛；1 常规赛；2 季后赛
+        optional :year, type: Integer, desc: '赛季年份', default: 2019
+        optional :type, type: Integer, desc: '类型', default: 1 # 0 季前赛；1 常规赛；2 季后赛
       end
       get :team_range do
         _ = Time.now.to_i
@@ -227,8 +227,8 @@ module V1
 
       desc "NBA球队数据排名"
       params do
-        requires :year, type: Integer, desc: '赛季年份'
-        requires :type, type: Integer, desc: '类型' # 0 季前赛；1 常规赛；2 季后赛
+        optional :year, type: Integer, desc: '赛季年份', default: 2019
+        optional :type, type: Integer, desc: '类型', default: 1 # 0 季前赛；1 常规赛；2 季后赛
       end
       get :team_range_all do
         _ = Time.now.to_i
@@ -267,9 +267,9 @@ module V1
 
       desc "NBA球员数据排名前N（得分，助攻，篮板，失误、抢断、盖帽）"
       params do
-        requires :year, type: Integer, desc: '赛季年份'
-        requires :type, type: Integer, desc: '类型' # 0 季前赛；1 常规赛；2 季后赛
-				requires :limit, type: Integer, desc: '返回数量'
+        optional :year, type: Integer, desc: '赛季年份', default: 2019
+        optional :type, type: Integer, desc: '类型', default: 1 # 0 季前赛；1 常规赛；2 季后赛
+				optional :limit, type: Integer, desc: '返回数量', default: 20
       end
       get :player_range do
         _ = Time.now.to_i
@@ -283,11 +283,11 @@ module V1
 
       desc "NBA球员数据排名（全）"
       params do
-        requires :year, type: Integer, desc: '赛季年份'
-        requires :type, type: Integer, desc: '类型' # 0 季前赛；1 常规赛；2 季后赛
-        requires :page, type: Integer, desc: '页码'
-        requires :limit, type: Integer, desc: '每页条数'
-        requires :sort, type: String, desc: '排序方式' # 得分 t70；出手数 t83；命中率 t79；三分出手 t85；三分命中率 t80；罚球次数 t87；发球命中率 t81；篮板 t71；前场篮板 t77；后场篮板 t76；助攻 t68；抢断 t72；盖帽 t69；失误 t74；犯规 t73；场次 t5；上场时间 t78
+        optional :year, type: Integer, desc: '赛季年份', default: 2019
+        optional :type, type: Integer, desc: '类型', default: 1 # 0 季前赛；1 常规赛；2 季后赛
+        optional :page, type: Integer, desc: '页码', default: 1
+        optional :limit, type: Integer, desc: '每页条数', default: 10
+        optional :sort, type: String, desc: '排序方式', default: 't70' # 得分 t70；出手数 t83；命中率 t79；三分出手 t85；三分命中率 t80；罚球次数 t87；发球命中率 t81；篮板 t71；前场篮板 t77；后场篮板 t76；助攻 t68；抢断 t72；盖帽 t69；失误 t74；犯规 t73；场次 t5；上场时间 t78
       end
       get :player_range_all do
         _ = Time.now.to_i
@@ -344,7 +344,7 @@ module V1
       desc "NBA球员详情"
       params do
         requires :id, type: String, desc: '球员ID'
-        requires :year, type: Integer, desc: '年份'
+        optional :year, type: Integer, desc: '年份', default: 2019
       end
       get :player_details do
         _ = Time.now.to_i
@@ -495,8 +495,8 @@ module V1
 			desc "NBA球员单赛季数据统计"
       params do
         requires :id, type: String, desc: '球员ID'
-        requires :year, type: Integer, desc: '年份'
-				requires :type, type: Integer, desc: ''
+        optional :year, type: Integer, desc: '年份', default: 2019
+				optional :type, type: Integer, desc: '', default: 1
       end
       get :player_match do
         _ = Time.now.to_i

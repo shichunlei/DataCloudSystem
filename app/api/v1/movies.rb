@@ -10,7 +10,7 @@ module V1
 
 			desc "首页数据"
 			params do
-        requires :city, type: String, desc: '城市'
+        optional :city, type: String, desc: '城市', default: "北京"
       end
       get :home_data do
 				city = params[:city]
@@ -197,8 +197,8 @@ module V1
 			desc "正在上映"
 			params do
         requires :page, type: Integer, desc: '页码'
-				requires :limit, type: Integer, desc: '每页条数'
-				requires :city, type: String, desc: '城市'
+				optional :limit, type: Integer, desc: '每页条数', default: 20
+				optional :city, type: String, desc: '城市', default: "北京"
       end
       get :in_theaters do
         count = params[:limit]
@@ -213,7 +213,7 @@ module V1
 			desc "即将上映"
 			params do
         requires :page, type: Integer, desc: '页码'
-				requires :limit, type: Integer, desc: '每页条数'
+				optional :limit, type: Integer, desc: '每页条数', default: 20
       end
       get :coming_soon do
         count = params[:limit]
@@ -236,7 +236,7 @@ module V1
 			desc "Top250"
 			params do
 				requires :page, type: Integer, desc: '页码'
-				requires :limit, type: Integer, desc: '每页条数'
+				optional :limit, type: Integer, desc: '每页条数', default: 20
       end
       get :top250 do
 				count = params[:limit]
@@ -296,7 +296,7 @@ module V1
 			params do
 				requires :id, type: String, desc: 'ID'
 				requires :page, type: Integer, desc: '页码'
-				requires :limit, type: Integer, desc: '每页条数'
+				optional :limit, type: Integer, desc: '每页条数', default: 20
       end
       get :reviews do
 				id = params[:id]
@@ -312,7 +312,7 @@ module V1
 			params do
 				requires :id, type: String, desc: 'ID'
 				requires :page, type: Integer, desc: '页码'
-				requires :limit, type: Integer, desc: '每页条数'
+				optional :limit, type: Integer, desc: '每页条数', default: 20
       end
       get :comments do
 				id = params[:id]
@@ -329,7 +329,7 @@ module V1
 				requires :id, type: String, desc: 'ID'
 				requires :type, type: String, desc: '类型'
 				requires :page, type: Integer, desc: '页码'
-				requires :limit, type: Integer, desc: '每页条数'
+				optional :limit, type: Integer, desc: '每页条数', default: 20
       end
       get :photos do
 				id = params[:id]
@@ -349,7 +349,7 @@ module V1
 			params do
 				requires :id, type: String, desc: 'ID'
 				requires :page, type: Integer, desc: '页码'
-				requires :limit, type: Integer, desc: '每页条数'
+				optional :limit, type: Integer, desc: '每页条数', default: 20
       end
       get :movie_photos do
 				id = params[:id]
@@ -386,7 +386,7 @@ module V1
 			params do
 				requires :id, type: String, desc: 'ID'
 				requires :page, type: Integer, desc: '页码'
-				requires :limit, type: Integer, desc: '每页条数'
+				optional :limit, type: Integer, desc: '每页条数', default: 20
       end
       get :celebrity_photos do
 				id = params[:id]
@@ -402,7 +402,7 @@ module V1
 			params do
 				requires :id, type: String, desc: 'ID'
 				requires :page, type: Integer, desc: '页码'
-				requires :limit, type: Integer, desc: '每页条数'
+				optional :limit, type: Integer, desc: '每页条数', default: 20
       end
       get :works do
 				id = params[:id]
@@ -424,8 +424,8 @@ module V1
 			params do
 				requires :page, type: Integer, desc: '页码'
 				requires :limit, type: Integer, desc: '每页返回条数'
-				optional :type, type: String, desc: '类型'
-				optional :sort, type: String, desc: '排序'
+				optional :type, type: String, desc: '类型', default: "movie"
+				optional :sort, type: String, desc: '排序', default: "recommend"
 				requires :tag, type: String, desc: '标签'
 			end
 			get :search_by_tag do
@@ -433,13 +433,7 @@ module V1
 				start = (params[:page] - 1) * count
 				tag = params[:tag]
 				type = params[:type]
-				if type.blank?
-					type = "movie"
-				end
 				sort = params[:sort]
-				if sort.blank?
-					sort = "recommend"
-				end
 
 				url = "#{BASE_URL}/j/search_subjects?type=#{type}&tag=#{tag}&sort=#{sort}&page_start=#{start}&page_limit=#{count}"
 

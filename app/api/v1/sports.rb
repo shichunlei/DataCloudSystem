@@ -329,11 +329,11 @@ module V1
         return {:code => result['code'], :message => "SUCCESS", :data => data}
       end
 
-			desc "NBA球员动态新闻"
+			desc "NBA动态新闻"
       params do
-        requires :name, type: String, desc: '球员名字'
+        requires :name, type: String, desc: '球员/球队名字'
       end
-      get :player_news do
+      get :nba_news do
 				tagListCb = Utils::Helper::getHttpBody("https://pacaio.match.qq.com/tags/tag2articles?name=#{params[:name]}&num=100&callback=tagListCb")
 
         result = JSON.parse(tagListCb.gsub("tagListCb(", '').gsub(")", ''))
@@ -510,6 +510,14 @@ module V1
 
 				if result['data']['nbaPlayerMatch'] == nil
 					return {:code => result['code'], :message => "SUCCESS", :data => []}
+				else
+					value = result['data']['nbaPlayerMatch']
+					value.class
+					if value.is_a?(Hash)
+						data = []
+						data.push(result['data']['nbaPlayerMatch'])
+						return {:code => result['code'], :message => "SUCCESS", :data => data}
+					end
 				end
 
         return {:code => result['code'], :message => "SUCCESS", :data => result['data']['nbaPlayerMatch']}

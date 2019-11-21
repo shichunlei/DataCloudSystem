@@ -53,6 +53,35 @@ module V1
 
         result = JSON.parse(body.gsub("matchStatsCallback0(", '').gsub(")", ''))
 
+				if result['code'] == 0
+					leftId = result['data']['teamInfo']['leftId']
+
+					leftBody = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/team/baseInfo?callback=getTeamIntro&teamId=#{leftId}&competitionId=100000&from=web&_=#{Time.now.to_i}")
+
+					leftResult = JSON.parse(leftBody.gsub("getTeamIntro(", '').gsub(")", ''))
+
+					if leftResult['code'] == 0
+						result['data']['teamInfo'].store('leftTeamColor', leftResult['data']['baseInfo']['teamColor'])
+						result['data']['teamInfo'].store('leftTeamColor4H5', leftResult['data']['baseInfo']['teamColor4H5'])
+					end
+
+					rightId = result['data']['teamInfo']['rightId']
+
+					rightBody = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/team/baseInfo?callback=getTeamIntro&teamId=#{rightId}&competitionId=100000&from=web&_=#{Time.now.to_i}")
+
+					rightResult = JSON.parse(rightBody.gsub("getTeamIntro(", '').gsub(")", ''))
+
+					if rightResult['code'] == 0
+						result['data']['teamInfo'].store('rightTeamColor', rightResult['data']['baseInfo']['teamColor'])
+						result['data']['teamInfo'].store('rightTeamColor4H5', rightResult['data']['baseInfo']['teamColor4H5'])
+					end
+				end
+
+				result['data']['playerStats']['left'].delete_at(0)
+				result['data']['playerStats']['right'].delete_at(0)
+
+				result['data']['periodGoals']['head'].insert(0, "球队")
+
         return {:code => result['code'], :message => "SUCCESS", :data => result['data']}
       end
 

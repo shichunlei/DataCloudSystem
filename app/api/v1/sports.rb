@@ -496,29 +496,18 @@ module V1
 
         career_result = JSON.parse(career.gsub("jQueryPlayerCareer_#{_}(", '').gsub(")", ''))
 
-				playerCareer = {}
-
 				if career_result['code'] == 0
-					playerCareer0 = []
-					playerCareer1 = []
-					playerCareer2 = []
-
 					career_result['data']['nbaPlayerCareer'].each do |item|
-						if item['seasonType'] == '0' # 季前赛
-							playerCareer0.push(item)
-						elsif item['seasonType'] == '1' # 常规赛
-							playerCareer1.push(item)
-						elsif item['seasonType'] == '2' # 季后赛
-							playerCareer2.push(item)
+						team = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerTeam_#{_+2}&cubeId=1&dimId=1&params=t1:#{item['teamId']}&from=sportsdatabase")
+
+	          team_result = JSON.parse(team.gsub("jQueryPlayerTeam_#{_+2}(", '').gsub(")", ''))
+						if team_result['code'] == 0
+							item.store("teamName", team_result['data']['baseInfo']['cnName'])
 						end
 					end
-
-					playerCareer.store('preseason', playerCareer0)
-					playerCareer.store('regular_season', playerCareer1)
-					playerCareer.store('postseason', playerCareer2)
 				end
 
-        return {:code => '0', :message => "SUCCESS", :data => playerCareer}
+        return {:code => '0', :message => "SUCCESS", :data => career_result['data']['nbaPlayerCareer']}
       end
 
 			desc "NBA球员单赛季数据统计"

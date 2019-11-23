@@ -1,6 +1,6 @@
-# README
+# 接口数据中转
 
-## 该项目为APP提供数据以及后台管理数据
+## 该项目为APP提供数据中转
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -93,7 +93,7 @@ mina
 
   [便民查询网](https://www.51240.com/)
 
-
+  [腾讯体育NBA数据库](https://nba.stats.qq.com/schedule/)
 
 
 

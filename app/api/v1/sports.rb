@@ -12,7 +12,7 @@ module V1
       get :team_roster do
         _ = Time.now.to_i
 
-        body = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/team/players?&callback=jQueryTeamRoster_#{_}&teamId=#{params[:id]}&competitionId=100000&_=#{Time.now.to_i}")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/team/players?&callback=jQueryTeamRoster_#{_}&teamId=#{params[:id]}&competitionId=100000&_=#{Time.now.to_i}")
 
         result = JSON.parse(body.gsub("jQueryTeamRoster_#{_}(", '').gsub(")", ''))
 
@@ -26,7 +26,7 @@ module V1
       get :team_schedule do
         puts Time.now.to_i
 
-        body = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/team/matchList?callback=getGameList&teamId=#{params[:id]}&competitionId=100000&_=#{Time.now.to_i}")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/team/matchList?callback=getGameList&teamId=#{params[:id]}&competitionId=100000&_=#{Time.now.to_i}")
 
         result = JSON.parse(body.gsub("getGameList(", '').gsub(")", ''))
 
@@ -49,14 +49,14 @@ module V1
         requires :mid, type: String, desc: '比赛ID'
       end
       get :match_stats do
-        body = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/kbs/matchStat?mid=#{params[:mid]}&callback=matchStatsCallback0")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/kbs/matchStat?mid=#{params[:mid]}&callback=matchStatsCallback0")
 
         result = JSON.parse(body.gsub("matchStatsCallback0(", '').gsub(")", ''))
 
 				if result['code'] == 0
 					leftId = result['data']['teamInfo']['leftId']
 
-					leftBody = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/team/baseInfo?callback=getTeamIntro&teamId=#{leftId}&competitionId=100000&from=web&_=#{Time.now.to_i}")
+					leftBody = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/team/baseInfo?callback=getTeamIntro&teamId=#{leftId}&competitionId=100000&from=web&_=#{Time.now.to_i}")
 
 					leftResult = JSON.parse(leftBody.gsub("getTeamIntro(", '').gsub(")", ''))
 
@@ -67,7 +67,7 @@ module V1
 
 					rightId = result['data']['teamInfo']['rightId']
 
-					rightBody = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/team/baseInfo?callback=getTeamIntro&teamId=#{rightId}&competitionId=100000&from=web&_=#{Time.now.to_i}")
+					rightBody = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/team/baseInfo?callback=getTeamIntro&teamId=#{rightId}&competitionId=100000&from=web&_=#{Time.now.to_i}")
 
 					rightResult = JSON.parse(rightBody.gsub("getTeamIntro(", '').gsub(")", ''))
 
@@ -90,7 +90,7 @@ module V1
         requires :mid, type: String, desc: '比赛ID'
       end
       get :match_all_video do
-        body = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/kbs/matchVideoAll?mid=#{params[:mid]}&callback=matchVideoAllVideo")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/kbs/matchVideoAll?mid=#{params[:mid]}&callback=matchVideoAllVideo")
 
         result = JSON.parse(body.gsub("matchVideoAllVideo(", '').gsub(")", ''))
 
@@ -102,7 +102,7 @@ module V1
         requires :mid, type: String, desc: '比赛ID'
       end
       get :related_news do
-        body = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/kbs/matchNews?mid=#{params[:mid]}&callback=relatedNewsCallback")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/kbs/matchNews?mid=#{params[:mid]}&callback=relatedNewsCallback")
 
         result = JSON.parse(body.gsub("relatedNewsCallback(", '').gsub(")", ''))
 
@@ -116,16 +116,16 @@ module V1
       get :fetch_match_history do
         puts Time.now.to_i
 
-        body = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/kbs/matchHistoryData?mid=#{params[:mid]}&callback=fetchMatchHistoryDataCallback")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/kbs/matchHistoryData?mid=#{params[:mid]}&callback=fetchMatchHistoryDataCallback")
 
         result = JSON.parse(body.gsub("fetchMatchHistoryDataCallback(", '').gsub(")", ''))
 
         if result['code'] == 0
-          leftInfo = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/team/baseInfo?teamId=#{result['data']['teamInfo']['leftId']}&competitionId=100000&from=web&callback=fetchTeamInfoCallbackleft")
+          leftInfo = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/team/baseInfo?teamId=#{result['data']['teamInfo']['leftId']}&competitionId=100000&from=web&callback=fetchTeamInfoCallbackleft")
 
           leftResult = JSON.parse(leftInfo.gsub("fetchTeamInfoCallbackleft(", '').gsub(")", ''))
 
-          rightInfo = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/team/baseInfo?teamId=#{result['data']['teamInfo']['rightId']}&competitionId=100000&from=web&callback=fetchTeamInfoCallbackright")
+          rightInfo = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/team/baseInfo?teamId=#{result['data']['teamInfo']['rightId']}&competitionId=100000&from=web&callback=fetchTeamInfoCallbackright")
 
           rightResult = JSON.parse(rightInfo.gsub("fetchTeamInfoCallbackright(", '').gsub(")", ''))
 
@@ -148,7 +148,7 @@ module V1
       get :team_info do
         puts Time.now.to_i
 
-        body = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/team/baseInfo?callback=getTeamIntro&teamId=#{params[:id]}&competitionId=100000&from=web&_=#{Time.now.to_i}")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/team/baseInfo?callback=getTeamIntro&teamId=#{params[:id]}&competitionId=100000&from=web&_=#{Time.now.to_i}")
 
         result = JSON.parse(body.gsub("getTeamIntro(", '').gsub(")", ''))
 
@@ -170,7 +170,7 @@ module V1
       get :team_stats do
         puts Time.now.to_i
 
-        body = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/team/stats?&callback=getTeamStats&teamId=#{params[:id]}&competitionId=100000&from=web&_=#{Time.now.to_i}")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/team/stats?&callback=getTeamStats&teamId=#{params[:id]}&competitionId=100000&from=web&_=#{Time.now.to_i}")
 
         result = JSON.parse(body.gsub("getTeamStats(", '').gsub(")", ''))
 
@@ -183,7 +183,7 @@ module V1
       get :team_rank do
         _ = Time.now.to_i
 
-        body = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/rank/team?from=sporthp&callback=jQueryTeamRank_#{_}&competitionId=100000&from=NBA_PC&_=#{Time.now.to_i}")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/rank/team?from=sporthp&callback=jQueryTeamRank_#{_}&competitionId=100000&from=NBA_PC&_=#{Time.now.to_i}")
 
         result = JSON.parse(body.gsub("jQueryTeamRank_#{_}([0,", '').gsub(",\"\"]);", ''))
 
@@ -247,7 +247,7 @@ module V1
       get :team_range do
         _ = Time.now.to_i
 
-        body = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?cubeId=12&dimId=45,46,47,49,50,51&from=sportsdatabase&limit=5&params=t2:#{params[:year]}|t3:#{params[:type]}&callback=jQueryTeamRangeFive_#{_}&_=#{Time.now.to_i}")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?cubeId=12&dimId=45,46,47,49,50,51&from=sportsdatabase&limit=5&params=t2:#{params[:year]}|t3:#{params[:type]}&callback=jQueryTeamRangeFive_#{_}&_=#{Time.now.to_i}")
 
         result = JSON.parse(body.gsub("jQueryTeamRangeFive_#{_}(", '').gsub(")", ''))
 
@@ -262,12 +262,12 @@ module V1
       get :team_range_all do
         _ = Time.now.to_i
 
-        body = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?cubeId=12&dimId=43&from=sportsdatabase&order=t60&params=t2:#{params[:year]}|t3:#{params[:type]}|t64:west,east&callback=jQueryTeamRangeAll_#{_}&_=#{Time.now.to_i}")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?cubeId=12&dimId=43&from=sportsdatabase&order=t60&params=t2:#{params[:year]}|t3:#{params[:type]}|t64:west,east&callback=jQueryTeamRangeAll_#{_}&_=#{Time.now.to_i}")
 
         result = JSON.parse(body.gsub("jQueryTeamRangeAll_#{_}(", '').gsub(")", ''))
 
 				if result['code'] == 0
-					_body = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/rank/team?from=sporthp&callback=jQueryTeamRank_#{_+2}&competitionId=100000&from=NBA_PC&_=#{Time.now.to_i}")
+					_body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/rank/team?from=sporthp&callback=jQueryTeamRank_#{_+2}&competitionId=100000&from=NBA_PC&_=#{Time.now.to_i}")
 
 	        _result = JSON.parse(_body.gsub("jQueryTeamRank_#{_+2}([0,", '').gsub(",\"\"]);", ''))
 
@@ -303,7 +303,7 @@ module V1
       get :player_range do
         _ = Time.now.to_i
 
-        body = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?cubeId=10&dimId=53,54,55,56,57,58&from=sportsdatabase&limit=#{params[:limit]}&params=t2:#{params[:year]}|t3:#{params[:type]}&callback=jQueryPlayerRangeFive_#{_}&_=#{Time.now.to_i}")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?cubeId=10&dimId=53,54,55,56,57,58&from=sportsdatabase&limit=#{params[:limit]}&params=t2:#{params[:year]}|t3:#{params[:type]}&callback=jQueryPlayerRangeFive_#{_}&_=#{Time.now.to_i}")
 
         result = JSON.parse(body.gsub("jQueryPlayerRangeFive_#{_}(", '').gsub(")", ''))
 
@@ -325,7 +325,7 @@ module V1
 
         _limit = "#{(page-1)*limit},#{(page)*limit}"
 
-        body = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?cubeId=10&dimId=52&from=sportsdatabase&order=#{params[:sort]}&params=t2:#{params[:year]}|t3:#{params[:type]}|&limit=#{_limit}&callback=jQueryPlayerRangeAll_#{_}&_=#{Time.now.to_i}")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?cubeId=10&dimId=52&from=sportsdatabase&order=#{params[:sort]}&params=t2:#{params[:year]}|t3:#{params[:type]}|&limit=#{_limit}&callback=jQueryPlayerRangeAll_#{_}&_=#{Time.now.to_i}")
 
         result = JSON.parse(body.gsub("jQueryPlayerRangeAll_#{_}(", '').gsub(")", ''))
 
@@ -340,7 +340,7 @@ module V1
       get :nba_schedule do
         puts Time.now.strftime('%Y-%m-%d')
 
-        body = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/matchUnion/list?today=#{Time.now.strftime('%Y-%m-%d')}&startTime=#{params[:startTime]}&endTime=#{params[:endTime]}&columnId=100000&index=3&isInit=true&timestamp=#{Time.now.to_i}&callback=fetchScheduleListCallback100000")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/matchUnion/list?today=#{Time.now.strftime('%Y-%m-%d')}&startTime=#{params[:startTime]}&endTime=#{params[:endTime]}&columnId=100000&index=3&isInit=true&timestamp=#{Time.now.to_i}&callback=fetchScheduleListCallback100000")
 
         result = JSON.parse(body.gsub("fetchScheduleListCallback100000(", '').gsub(")", ''))
 
@@ -384,7 +384,7 @@ module V1
         data = {}
 
         # 基本信息
-        info = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerDetail_#{_}&cubeId=8&dimId=5&params=t1:#{id}&from=sportsdatabase")
+        info = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerDetail_#{_}&cubeId=8&dimId=5&params=t1:#{id}&from=sportsdatabase")
 
         info_result = JSON.parse(info.gsub("jQueryPlayerDetail_#{_}(", '').gsub(")", ''))
 
@@ -393,13 +393,13 @@ module V1
 					teamId =  info_result['data']['playerBaseInfo']['teamId']
 
           # 同位置球员
-          pos = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerPos_#{_+3}&cubeId=8&dimId=6&params=t21:#{position}&from=sportsdatabase")
+          pos = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerPos_#{_+3}&cubeId=8&dimId=6&params=t21:#{position}&from=sportsdatabase")
 
           pos_result = JSON.parse(pos.gsub("jQueryPlayerPos_#{_+3}(", '').gsub(")", ''))
 
           data.store("playerPos", pos_result['data']['nbaPlayerPos'])
 
-					team = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerTeam_#{_+2}&cubeId=1&dimId=1&params=t1:#{teamId}&from=sportsdatabase")
+					team = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerTeam_#{_+2}&cubeId=1&dimId=1&params=t1:#{teamId}&from=sportsdatabase")
 
           team_result = JSON.parse(team.gsub("jQueryPlayerTeam_#{_+2}(", '').gsub(")", ''))
 
@@ -409,7 +409,7 @@ module V1
         end
 
         # 数据总览（联盟平均值、联盟最高值、联盟排名等）
-        stat = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerSeasonStat_#{_+5}&cubeId=10&dimId=9,10&params=t2:#{year}|t3:1|t1:#{id}&from=sportsdatabase")
+        stat = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerSeasonStat_#{_+5}&cubeId=10&dimId=9,10&params=t2:#{year}|t3:1|t1:#{id}&from=sportsdatabase")
 
         stat_result = JSON.parse(stat.gsub("jQueryPlayerSeasonStat_#{_+5}(", '').gsub(")", ''))
 
@@ -421,7 +421,7 @@ module V1
 				playerMatch = {}
 
         # 球员常规赛比赛数据统计
-        match_stat1 = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerMatch_#{_+7}&cubeId=9&dimId=7,8&params=t27:#{year}|t28:1|t1:#{id}&from=sportsdatabase")
+        match_stat1 = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerMatch_#{_+7}&cubeId=9&dimId=7,8&params=t27:#{year}|t28:1|t1:#{id}&from=sportsdatabase")
 
         match_stat1_result = JSON.parse(match_stat1.gsub("jQueryPlayerMatch_#{_+7}(", '').gsub(")", ''))
 
@@ -430,7 +430,7 @@ module V1
         end
 
 				# 球员季后赛比赛数据统计
-        match_stat2 = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerMatch2_#{_+6}&cubeId=9&dimId=7,8&params=t27:#{year}|t28:2|t1:#{id}&from=sportsdatabase")
+        match_stat2 = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerMatch2_#{_+6}&cubeId=9&dimId=7,8&params=t27:#{year}|t28:2|t1:#{id}&from=sportsdatabase")
 
         match_stat2_result = JSON.parse(match_stat2.gsub("jQueryPlayerMatch2_#{_+6}(", '').gsub(")", ''))
 
@@ -439,7 +439,7 @@ module V1
         end
 
 				# 球员季前赛比赛数据统计
-        match_stat0 = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerMatch0_#{_+4}&cubeId=9&dimId=7,8&params=t27:#{year}|t28:0|t1:#{id}&from=sportsdatabase")
+        match_stat0 = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerMatch0_#{_+4}&cubeId=9&dimId=7,8&params=t27:#{year}|t28:0|t1:#{id}&from=sportsdatabase")
 
         match_stat0_result = JSON.parse(match_stat0.gsub("jQueryPlayerMatch0_#{_+4}(", '').gsub(")", ''))
 
@@ -450,31 +450,12 @@ module V1
 				data.store("playerMatch", playerMatch)
 
 				# 球员生涯比赛数据统计
-        career = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerCareer_#{_+6}&cubeId=10&dimId=23&params=t1:#{id}&from=sportsdatabase")
+        career = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerCareer_#{_+6}&cubeId=10&dimId=23&params=t1:#{id}&from=sportsdatabase")
 
         career_result = JSON.parse(career.gsub("jQueryPlayerCareer_#{_+6}(", '').gsub(")", ''))
 
 				if career_result['code'] == 0
-					playerCareer = {}
-					playerCareer0 = []
-					playerCareer1 = []
-					playerCareer2 = []
-
-					career_result['data']['nbaPlayerCareer'].each do |item|
-						if item['seasonType'] == '0' # 季前赛
-							playerCareer0.push(item)
-						elsif item['seasonType'] == '1' # 常规赛
-							playerCareer1.push(item)
-						elsif item['seasonType'] == '2' # 季后赛
-							playerCareer2.push(item)
-						end
-					end
-
-					playerCareer.store('preseason', playerCareer0)
-					playerCareer.store('regular_season', playerCareer1)
-					playerCareer.store('postseason', playerCareer2)
-
-					data.store("playerCareer", playerCareer)
+					data.store("playerCareer", career_result['data']['nbaPlayerCareer'])
 				end
 
         return {:code => '0', :message => "SUCCESS", :data => data}
@@ -492,13 +473,13 @@ module V1
         data = {}
 
 				# 球员生涯比赛数据统计
-        career = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerCareer_#{_}&cubeId=10&dimId=23&params=t1:#{id}&from=sportsdatabase")
+        career = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerCareer_#{_}&cubeId=10&dimId=23&params=t1:#{id}&from=sportsdatabase")
 
         career_result = JSON.parse(career.gsub("jQueryPlayerCareer_#{_}(", '').gsub(")", ''))
 
 				if career_result['code'] == 0
 					career_result['data']['nbaPlayerCareer'].each do |item|
-						team = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerTeam_#{_+2}&cubeId=1&dimId=1&params=t1:#{item['teamId']}&from=sportsdatabase")
+						team = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerTeam_#{_+2}&cubeId=1&dimId=1&params=t1:#{item['teamId']}&from=sportsdatabase")
 
 	          team_result = JSON.parse(team.gsub("jQueryPlayerTeam_#{_+2}(", '').gsub(")", ''))
 						if team_result['code'] == 0
@@ -522,7 +503,7 @@ module V1
         id = params[:id]
 
         # 球员常规赛比赛数据统计
-        body = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerMatch_#{_}&cubeId=9&dimId=7,8&params=t27:#{params[:year]}|t28:#{params[:type]}|t1:#{id}&from=sportsdatabase")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerMatch_#{_}&cubeId=9&dimId=7,8&params=t27:#{params[:year]}|t28:#{params[:type]}|t1:#{id}&from=sportsdatabase")
 
         result = JSON.parse(body.gsub("jQueryPlayerMatch_#{_}(", '').gsub(")", ''))
 
@@ -553,7 +534,7 @@ module V1
         data = {}
 
         # 基本信息
-        info = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerDetail_#{_}&cubeId=8&dimId=5&params=t1:#{id}&from=sportsdatabase")
+        info = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerDetail_#{_}&cubeId=8&dimId=5&params=t1:#{id}&from=sportsdatabase")
 
         info_result = JSON.parse(info.gsub("jQueryPlayerDetail_#{_}(", '').gsub(")", ''))
 
@@ -561,7 +542,7 @@ module V1
 				teamId =  info_result['data']['playerBaseInfo']['teamId']
 
         if info_result['code'] == 0
-					team = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerTeam_#{_+2}&cubeId=1&dimId=1&params=t1:#{teamId}&from=sportsdatabase")
+					team = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerTeam_#{_+2}&cubeId=1&dimId=1&params=t1:#{teamId}&from=sportsdatabase")
 
           team_result = JSON.parse(team.gsub("jQueryPlayerTeam_#{_+2}(", '').gsub(")", ''))
 
@@ -570,7 +551,7 @@ module V1
 					data.store("playerBaseInfo", info_result['data']['playerBaseInfo'])
 
           # 同位置球员
-          pos = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerPos_#{_+3}&cubeId=8&dimId=6&params=t21:#{position}&from=sportsdatabase")
+          pos = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerPos_#{_+3}&cubeId=8&dimId=6&params=t21:#{position}&from=sportsdatabase")
 
 					playerPos = []
 
@@ -579,7 +560,7 @@ module V1
 					pos_result['data']['nbaPlayerPos'].each do |item|
 						time = Time.now.to_i
 
-						info = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerDetail_#{time}&cubeId=8&dimId=5&params=t1:#{item['playerId']}&from=sportsdatabase")
+						info = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerDetail_#{time}&cubeId=8&dimId=5&params=t1:#{item['playerId']}&from=sportsdatabase")
 
 		        info_result = JSON.parse(info.gsub("jQueryPlayerDetail_#{time}(", '').gsub(")", ''))
 
@@ -589,7 +570,7 @@ module V1
           data.store("playerPos", playerPos)
 
 					# 数据总览（联盟平均值、联盟最高值、联盟排名等）
-	        stat = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryPlayerSeasonStat_#{_+5}&cubeId=10&dimId=9,10&params=t2:2019|t3:1|t1:#{id}&from=sportsdatabase")
+	        stat = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerSeasonStat_#{_+5}&cubeId=10&dimId=9,10&params=t2:2019|t3:1|t1:#{id}&from=sportsdatabase")
 
 	        stat_result = JSON.parse(stat.gsub("jQueryPlayerSeasonStat_#{_+5}(", '').gsub(")", ''))
 
@@ -610,7 +591,7 @@ module V1
       get :hot_schedule do
         puts Time.now.strftime('%Y-%m-%d')
 
-        body = Utils::Helper::getHttpBody("https://matchweb.sports.qq.com/matchUnion/list?today=#{Time.now.strftime('%Y-%m-%d')}&startTime=#{params[:startTime]}&endTime=#{params[:endTime]}&columnId=hot&index=3&isInit=true&timestamp=#{Time.now.to_i}&callback=fetchScheduleListCallbackhot")
+        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/matchUnion/list?today=#{Time.now.strftime('%Y-%m-%d')}&startTime=#{params[:startTime]}&endTime=#{params[:endTime]}&columnId=hot&index=3&isInit=true&timestamp=#{Time.now.to_i}&callback=fetchScheduleListCallbackhot")
 
         result = JSON.parse(body.gsub("fetchScheduleListCallbackhot(", '').gsub(")", ''))
 

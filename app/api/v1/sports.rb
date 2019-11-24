@@ -75,12 +75,21 @@ module V1
 						result['data']['teamInfo'].store('rightTeamColor', rightResult['data']['baseInfo']['teamColor'])
 						result['data']['teamInfo'].store('rightTeamColor4H5', rightResult['data']['baseInfo']['teamColor4H5'])
 					end
+
+					result['data']['playerStats']['left'].delete_at(0)
+					result['data']['playerStats']['right'].delete_at(0)
+
+					result['data']['periodGoals']['head'].insert(0, "球队")
+
+					maxPlayers = []
+					result['data']['maxPlayers'].each do |item|
+						if (item['leftVal'] != '-' && item['rightVal'] != '-')
+							maxPlayers.push(item)
+						end
+					end
+
+					result['data']['maxPlayers'] = maxPlayers
 				end
-
-				result['data']['playerStats']['left'].delete_at(0)
-				result['data']['playerStats']['right'].delete_at(0)
-
-				result['data']['periodGoals']['head'].insert(0, "球队")
 
         return {:code => result['code'], :message => "SUCCESS", :data => result['data']}
       end
@@ -418,15 +427,28 @@ module V1
           data.store("playerSeasonStat", stat_result['data']['nbaPlayerSeasonStat'])
         end
 
-				playerMatch = {}
+				playerMatch = []
+
+				# 球员季前赛比赛数据统计
+        match_stat0 = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerMatch0_#{_+4}&cubeId=9&dimId=7,8&params=t27:#{year}|t28:0|t1:#{id}&from=sportsdatabase")
+
+        match_stat0_result = JSON.parse(match_stat0.gsub("jQueryPlayerMatch0_#{_+4}(", '').gsub(")", ''))
+
+        if match_stat0_result['code'] == 0 && match_stat0_result['data']['nbaPlayerMatch'] != nil
+					match_stat0_result['data']['nbaPlayerMatch'].each do |item|
+						playerMatch.push(item)
+					end
+        end
 
         # 球员常规赛比赛数据统计
         match_stat1 = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerMatch_#{_+7}&cubeId=9&dimId=7,8&params=t27:#{year}|t28:1|t1:#{id}&from=sportsdatabase")
 
         match_stat1_result = JSON.parse(match_stat1.gsub("jQueryPlayerMatch_#{_+7}(", '').gsub(")", ''))
 
-        if stat_result['code'] == 0
-					playerMatch.store('regular_season', match_stat1_result['data']['nbaPlayerMatch'] == nil ? [] : match_stat1_result['data']['nbaPlayerMatch'])
+        if match_stat1_result['code'] == 0 && match_stat1_result['data']['nbaPlayerMatch'] != nil
+					match_stat1_result['data']['nbaPlayerMatch'].each do |item|
+						playerMatch.push(item)
+					end
         end
 
 				# 球员季后赛比赛数据统计
@@ -434,17 +456,10 @@ module V1
 
         match_stat2_result = JSON.parse(match_stat2.gsub("jQueryPlayerMatch2_#{_+6}(", '').gsub(")", ''))
 
-        if stat_result['code'] == 0
-					playerMatch.store('postseason', match_stat2_result['data']['nbaPlayerMatch'] == nil ? [] : match_stat2_result['data']['nbaPlayerMatch'])
-        end
-
-				# 球员季前赛比赛数据统计
-        match_stat0 = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryPlayerMatch0_#{_+4}&cubeId=9&dimId=7,8&params=t27:#{year}|t28:0|t1:#{id}&from=sportsdatabase")
-
-        match_stat0_result = JSON.parse(match_stat0.gsub("jQueryPlayerMatch0_#{_+4}(", '').gsub(")", ''))
-
-        if stat_result['code'] == 0
-					playerMatch.store('preseason', (match_stat0_result['data']['nbaPlayerMatch'] == nil) ? [] : match_stat0_result['data']['nbaPlayerMatch'])
+        if match_stat2_result['code'] == 0 && match_stat2_result['data']['nbaPlayerMatch'] != nil
+					match_stat2_result['data']['nbaPlayerMatch'].each do |item|
+						playerMatch.push(item)
+					end
         end
 
 				data.store("playerMatch", playerMatch)

@@ -76,15 +76,19 @@ module V1
 						result['data']['teamInfo'].store('rightTeamColor4H5', rightResult['data']['baseInfo']['teamColor4H5'])
 					end
 
-					result['data']['playerStats']['left'].delete_at(0)
-					result['data']['playerStats']['right'].delete_at(0)
+					if result['data']['playerStats'] != nil
+						result['data']['playerStats']['left'].delete_at(0)
+						result['data']['playerStats']['right'].delete_at(0)
+					end
 
 					result['data']['periodGoals']['head'].insert(0, "球队")
 
 					maxPlayers = []
-					result['data']['maxPlayers'].each do |item|
-						if (item['leftVal'] != '-' && item['rightVal'] != '-')
-							maxPlayers.push(item)
+					if result['data']['maxPlayers'] != nil
+						result['data']['maxPlayers'].each do |item|
+							if (item['leftVal'] != '-' && item['rightVal'] != '-')
+								maxPlayers.push(item)
+							end
 						end
 					end
 

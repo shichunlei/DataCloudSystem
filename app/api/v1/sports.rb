@@ -176,18 +176,61 @@ module V1
         return {:code => result['code'], :message => "SUCCESS", :data => data}
       end
 
-      desc "NBA球队数据"
+      desc "NBA球队数据概况"
       params do
         requires :id, type: Integer, desc: '球队ID'
       end
       get :team_stats do
-        puts Time.now.to_i
+        _ = Time.now.to_i
 
-        body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/team/stats?&callback=getTeamStats&teamId=#{params[:id]}&competitionId=100000&from=web&_=#{Time.now.to_i}")
+        # body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_MATCH_WEB']}/team/stats?&callback=getTeamStats&teamId=#{params[:id]}&competitionId=100000&from=web&_=#{Time.now.to_i}")
+				#
+        # result = JSON.parse(body.gsub("getTeamStats(", '').gsub(")", ''))
 
-        result = JSON.parse(body.gsub("getTeamStats(", '').gsub(")", ''))
+				body = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryTeamStats_#{_}&cubeId=12&dimId=3,4,12,13&params=t1:#{params[:id]}&from=sportsdatabase")
 
-        return {:code => result['code'], :message => "SUCCESS", :data => result['data']}
+				result = JSON.parse(body.gsub("jQueryTeamStats_#{_}(", '').gsub(")", ''))
+
+				data = {}
+				teamSeasonStat = {}
+				teamSeasonStat.store('teamId', result['data']['nbaTeamRegSeasonStat']['teamId'])
+
+				teamSeasonStat.store('assistsPG', result['data']['nbaTeamRegSeasonStat']['assistsPG'])
+				teamSeasonStat.store('blocksPG', result['data']['nbaTeamRegSeasonStat']['blocksPG'])
+				teamSeasonStat.store('pointsPG', result['data']['nbaTeamRegSeasonStat']['pointsPG'])
+				teamSeasonStat.store('reboundsPG', result['data']['nbaTeamRegSeasonStat']['reboundsPG'])
+				teamSeasonStat.store('stealsPG', result['data']['nbaTeamRegSeasonStat']['stealsPG'])
+
+				teamSeasonStat.store('seasonId', result['data']['nbaTeamSeasonStatsConfig']['seasonId'])
+				teamSeasonStat.store('seasonType', result['data']['nbaTeamSeasonStatsConfig']['seasonType'])
+
+				teamSeasonStat.store('assistsSerial', result['data']['regStatRank']['assistsRank'])
+				teamSeasonStat.store('blocksSerial', result['data']['regStatRank']['blocksRank'])
+				teamSeasonStat.store('pointsSerial', result['data']['regStatRank']['pointsRank'])
+				teamSeasonStat.store('reboundsSerial', result['data']['regStatRank']['reboundsRank'])
+				teamSeasonStat.store('stealsSerial', result['data']['regStatRank']['stealsRank'])
+				data.store('teamSeasonStat', teamSeasonStat)
+
+				teamLeagueSeasonStat = {}
+				teamLeagueSeasonStat.store('assistsLeagueAvg', result['data']['nbaTeamUnionRegSeasonStat']['avgAssistsPG'])
+				teamLeagueSeasonStat.store('blockedLeagueAvg', result['data']['nbaTeamUnionRegSeasonStat']['avgBlocksPG'])
+				teamLeagueSeasonStat.store('foulsLeagueAvg', result['data']['nbaTeamUnionRegSeasonStat']['avgFoulsPG'])
+				teamLeagueSeasonStat.store('pointsLeagueAvg', result['data']['nbaTeamUnionRegSeasonStat']['avgPointsPG'])
+				teamLeagueSeasonStat.store('reboundsLeagueAvg', result['data']['nbaTeamUnionRegSeasonStat']['avgReboundsPG'])
+				teamLeagueSeasonStat.store('stealsLeagueAvg', result['data']['nbaTeamUnionRegSeasonStat']['avgStealsPG'])
+
+				teamLeagueSeasonStat.store('assistsLeagueMax', result['data']['nbaTeamUnionRegSeasonStat']['maxAssistsPG'])
+				teamLeagueSeasonStat.store('blockedLeagueMax', result['data']['nbaTeamUnionRegSeasonStat']['maxBlocksPG'])
+				teamLeagueSeasonStat.store('foulsLeagueMax', result['data']['nbaTeamUnionRegSeasonStat']['maxFoulsPG'])
+				teamLeagueSeasonStat.store('pointsLeagueMax', result['data']['nbaTeamUnionRegSeasonStat']['maxPointsPG'])
+				teamLeagueSeasonStat.store('reboundsLeagueMax', result['data']['nbaTeamUnionRegSeasonStat']['maxReboundsPG'])
+				teamLeagueSeasonStat.store('stealsLeagueMax', result['data']['nbaTeamUnionRegSeasonStat']['maxStealsPG'])
+
+				teamLeagueSeasonStat.store('seasonId', result['data']['nbaTeamSeasonStatsConfig']['seasonId'])
+				teamLeagueSeasonStat.store('seasonType', result['data']['nbaTeamSeasonStatsConfig']['seasonType'])
+				data.store('teamLeagueSeasonStat', teamLeagueSeasonStat)
+
+        return {:code => result['code'], :message => "SUCCESS", :data => data}
       end
 
       desc "NBA球队排名"

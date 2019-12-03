@@ -63,6 +63,9 @@ module V1
 					if leftResult['code'] == 0
 						result['data']['teamInfo'].store('leftTeamColor', leftResult['data']['baseInfo']['teamColor'])
 						result['data']['teamInfo'].store('leftTeamColor4H5', leftResult['data']['baseInfo']['teamColor4H5'])
+					else
+						result['data']['teamInfo'].store('leftTeamColor', "#0F1C47")
+						result['data']['teamInfo'].store('leftTeamColor4H5', "#0F1C47")
 					end
 
 					rightId = result['data']['teamInfo']['rightId']
@@ -74,6 +77,9 @@ module V1
 					if rightResult['code'] == 0
 						result['data']['teamInfo'].store('rightTeamColor', rightResult['data']['baseInfo']['teamColor'])
 						result['data']['teamInfo'].store('rightTeamColor4H5', rightResult['data']['baseInfo']['teamColor4H5'])
+					else
+						result['data']['teamInfo'].store('rightTeamColor', '#0F1C47')
+						result['data']['teamInfo'].store('rightTeamColor4H5', '#0F1C47')
 					end
 
 					if result['data']['playerStats'] != nil
@@ -187,7 +193,7 @@ module V1
 				#
         # result = JSON.parse(body.gsub("getTeamStats(", '').gsub(")", ''))
 
-				body = Utils::Helper::getHttpBody("https://ziliaoku.sports.qq.com/cube/index?callback=jQueryTeamStats_#{_}&cubeId=12&dimId=3,4,12,13&params=t1:#{params[:id]}&from=sportsdatabase")
+				body = Utils::Helper::getHttpBody("#{ENV['NBA_BASE_URL_ZILIAOKU']}/cube/index?callback=jQueryTeamStats_#{_}&cubeId=12&dimId=3,4,12,13&params=t1:#{params[:id]}&from=sportsdatabase")
 
 				result = JSON.parse(body.gsub("jQueryTeamStats_#{_}(", '').gsub(")", ''))
 

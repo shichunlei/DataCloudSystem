@@ -22,6 +22,7 @@ module V1
 		mount V1::Qdaily
 		mount V1::TubiTV
 		mount V1::Sports
+		mount V1::Music
 	end
 
 	# 返回码

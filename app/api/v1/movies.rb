@@ -3,7 +3,6 @@ module V1
 
 		include Utils
 
-		API_KEY = '0b2bdeda43b5688921839c8ecb20399b'
 		BASE_URL = 'https://movie.douban.com'
 
 		resource :movies do

@@ -30,6 +30,13 @@ module V1
 							(0..4).each do |i|
 								albumMid = _result['data']['list'][i]['albumMid']
 								_result['data']['list'][i].store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{albumMid}.jpg?max_age=2592000")
+								singer = []
+								_singer = {}
+								_singer.store('id', -1)
+								_singer.store('mid', _result['data']['list'][i]['singerMid'])
+								_singer.store('name', _result['data']['list'][i]['singerName'])
+								singer.push(_singer)
+								_result['data']['list'][i].store('singer', singer)
 								list.push(_result['data']['list'][i])
 							end
 
@@ -63,6 +70,14 @@ module V1
 
 					result['data']['list'].each do |item|
 						item.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['albumMid']}.jpg?max_age=2592000")
+
+						singer = []
+						_singer = {}
+						_singer.store('id', -1)
+						_singer.store('mid', item['singerMid'])
+						_singer.store('name', item['singerName'])
+						singer.push(_singer)
+						item.store('singer', singer)
 					end
 					result['data'].store("coverUrl", result['data']['list'][0]['albumUrl'])
 
@@ -118,11 +133,26 @@ module V1
 				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/songlist?id=#{params[:id]}")
 
 				if result['result'] == 100
+					songlist = []
 					result['data']['songlist'].each do |item|
-						item.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['albummid']}.jpg?max_age=2592000")
-						item.delete('pay')
-						item.delete('preview')
+						object = {}
+						object.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['albummid']}.jpg?max_age=2592000")
+						object.store("singer", item['singer'])
+						object.store("title", item['songname'])
+						object.store("songId", item['songid'])
+						object.store("songMid", item['songmid'])
+						object.store("songType", item['songtype'])
+						object.store("vid", item['vid'])
+						object.store("strMediaMid", item['strMediaMid'])
+						object.store("albumMid", item['albummid'])
+						object.store("albumDesc", item['albumdesc'])
+						object.store("albumName", item['albumname'])
+						object.store("albumId", item['albumid'])
+
+						songlist.push(object)
 					end
+					result['data'].delete('songlist')
+					result['data'].store('songlist', songlist)
 					result['data'].delete('songids')
 					return {:code => '0', :message => "SUCCESS", :data => result['data'].as_json()}
 				else

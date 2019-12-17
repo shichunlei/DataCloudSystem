@@ -64,6 +64,7 @@ module V1
 					result['data']['list'].each do |item|
 						item.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['albumMid']}.jpg?max_age=2592000")
 					end
+					result['data'].store("coverUrl", result['data']['list'][0]['albumUrl'])
 
 					return {:code => '0', :message => "SUCCESS", :data => result['data'].as_json()}
 				else

@@ -163,7 +163,7 @@ module V1
 						object.store("albumMid", item['albummid'])
 						object.store("albumDesc", item['albumdesc'])
 						object.store("albumName", item['albumname'])
-						object.store("albumId", item['albumid'])
+						object.store("albumId", "#{item['albumid']}")
 						object.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['albummid']}.jpg?max_age=2592000")
 						object.store("singer", item['singer'])
 

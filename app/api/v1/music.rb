@@ -260,7 +260,7 @@ module V1
 					if url_result['result'] == 100
 						url = url_result['data']["#{params[:id]}"]
 
-						result['data']['track_info'].store('url', url.gsub('http://124.89.197.18/amobile.music.tc.qq.com', 'http://ws.stream.qqmusic.qq.com')
+						result['data']['track_info'].store('url', url.gsub('http://124.89.197.18/amobile.music.tc.qq.com', "http://ws.stream.qqmusic.qq.com"))
 					end
 
 					lyric_result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/lyric?songmid=#{params[:id]}")

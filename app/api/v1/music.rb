@@ -28,16 +28,24 @@ module V1
 
 							list = []
 							(0..4).each do |i|
-								albumMid = _result['data']['list'][i]['albumMid']
-								_result['data']['list'][i].store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{albumMid}.jpg?max_age=2592000")
-								singer = []
-								_singer = {}
-								_singer.store('id', -1)
-								_singer.store('mid', _result['data']['list'][i]['singerMid'])
-								_singer.store('name', _result['data']['list'][i]['singerName'])
-								singer.push(_singer)
-								_result['data']['list'][i].store('singer', singer)
-								list.push(_result['data']['list'][i])
+								item = _result['data']['list'][i]
+								object = {}
+								object.store("rank", item['rank'])
+								object.store("rankType", item['rankType'])
+								object.store("rankValue", item['rankValue'])
+								object.store("recType", item['recType'])
+								object.store("title", item['title'])
+								object.store("songId", item['id'])
+								object.store("songMid", item['mid'])
+								object.store("songType", item['songType'])
+								object.store("vid", item['vid'])
+								object.store("albumMid", item['albumMid'])
+								object.store("albumDesc", item["subtitle"])
+								object.store("albumName", item['name'])
+								# object.store("album", _result['data']['list'][i]['album']['id'])
+								object.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['albumMid']}.jpg?max_age=2592000")
+								object.store("singer", item['singer'])
+								list.push(object)
 							end
 
 							sub.store("list", list)
@@ -68,17 +76,27 @@ module V1
 					result['data'].store('desc', result['data']['info']['desc'])
 					result['data'].delete('info')
 
+					list = []
 					result['data']['list'].each do |item|
-						item.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['albumMid']}.jpg?max_age=2592000")
-
-						singer = []
-						_singer = {}
-						_singer.store('id', -1)
-						_singer.store('mid', item['singerMid'])
-						_singer.store('name', item['singerName'])
-						singer.push(_singer)
-						item.store('singer', singer)
+						object = {}
+						object.store("rank", item['rank'])
+						object.store("rankType", item['rankType'])
+						object.store("rankValue", item['rankValue'])
+						object.store("recType", item['recType'])
+						object.store("title", item['title'])
+						object.store("songId", item['id'])
+						object.store("songMid", item['mid'])
+						object.store("songType", item['songType'])
+						object.store("vid", item['vid'])
+						object.store("albumMid", item['albumMid'])
+						object.store("albumDesc", item["subtitle"])
+						object.store("albumName", item['name'])
+						object.store("albumId", item['album']['id'])
+						object.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['albumMid']}.jpg?max_age=2592000")
+						object.store("singer", item['singer'])
+						list.push(object)
 					end
+					result['data'].store('list', list)
 					result['data'].store("coverUrl", result['data']['list'][0]['albumUrl'])
 
 					return {:code => '0', :message => "SUCCESS", :data => result['data'].as_json()}
@@ -127,7 +145,7 @@ module V1
 
 			desc "歌单详情"
 			params do
-				requires :id, type: Integer, desc: '歌单ID'
+				requires :id, type: String, desc: '歌单ID'
 			end
 			get :songlist_info do
 				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/songlist?id=#{params[:id]}")
@@ -136,8 +154,6 @@ module V1
 					songlist = []
 					result['data']['songlist'].each do |item|
 						object = {}
-						object.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['albummid']}.jpg?max_age=2592000")
-						object.store("singer", item['singer'])
 						object.store("title", item['songname'])
 						object.store("songId", item['songid'])
 						object.store("songMid", item['songmid'])
@@ -148,6 +164,8 @@ module V1
 						object.store("albumDesc", item['albumdesc'])
 						object.store("albumName", item['albumname'])
 						object.store("albumId", item['albumid'])
+						object.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['albummid']}.jpg?max_age=2592000")
+						object.store("singer", item['singer'])
 
 						songlist.push(object)
 					end
@@ -155,6 +173,106 @@ module V1
 					result['data'].store('songlist', songlist)
 					result['data'].delete('songids')
 					return {:code => '0', :message => "SUCCESS", :data => result['data'].as_json()}
+				else
+					return {:code => '1', :message => "失败"}
+				end
+			end
+
+			desc "为你推荐歌单"
+			params do
+			end
+			get :recommend_playlist_u do
+				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/recommend/playlist/u")
+
+				data = []
+				if result['result'] == 100
+					result['data']['list'].each do |item|
+						object = {}
+						object.store('dissid', item['content_id'])
+						object.store('dissname', item['title'])
+						object.store('createtime', "")
+						object.store('commit_time', '')
+						object.store('listennum', item['listen_num'])
+						object.store('imgurl', item['cover'])
+						creator = {}
+						creator.store("qq", item['creator'])
+						creator.store("name", item['username'])
+						object.store('creator', creator)
+						data.push(object)
+					end
+
+					return {:code => '0', :message => "SUCCESS", :data => data.as_json()}
+				else
+					return {:code => '1', :message => "失败"}
+				end
+			end
+
+			desc "按分类推荐歌单"
+			params do
+				requires :id, type: Integer, desc: '分类ID' # 分类id，默认为 3317 // 3317: 官方歌单，59：经典，71：情歌，3056：网络歌曲，64：KTV热歌
+				optional :page, type: Integer, desc: '页码', default: 1
+				optional :limit, type: Integer, desc: '每页条数', default: 20
+			end
+			get :recommend_playlist do
+				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/recommend/playlist?id=#{params[:id]}&pageNo=#{params[:page]}&pageSize=#{params[:limit]}")
+
+				data = []
+				if result['result'] == 100
+					result['data']['list'].each do |item|
+						object = {}
+						object.store('dissid', item['tid'])
+						object.store('dissname', item['title'])
+						object.store('createtime', item['create_time'])
+						object.store('commit_time', item['commit_time'])
+						object.store('score', item['score'])
+						object.store('imgurl', item['cover_url_big'])
+						creator = {}
+						creator.store("qq", item['creator_uin'])
+						creator.store("name", item['creator_info']['nick'])
+						object.store('creator', creator)
+						data.push(object)
+					end
+
+					return {:code => '0', :message => "SUCCESS", :data => data.as_json()}
+				else
+					return {:code => '1', :message => "失败"}
+				end
+			end
+
+			desc "歌曲详情"
+			params do
+				requires :id, type: String, desc: '分类ID'
+			end
+			get :song_info do
+				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/song?songmid=#{params[:id]}")
+
+				if result['result'] == 100
+					result['data']['track_info'].store('company', result['data']['info']['company']['content'][0]['value'])
+					result['data']['track_info'].store('company_id', result['data']['info']['company']['content'][0]['id'])
+
+					result['data']['track_info'].store('genre', result['data']['info']['genre']['content'][0]['value'])
+					result['data']['track_info'].store('genre_id', result['data']['info']['genre']['content'][0]['id'])
+
+					result['data']['track_info'].store('language', result['data']['info']['lan']['content'][0]['value'])
+					result['data']['track_info'].store('pub_time', result['data']['info']['pub_time']['content'][0]['value'])
+
+					url_result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/song/urls?id=#{params[:id]}")
+					if url_result['result'] == 100
+						url = url_result['data']["#{params[:id]}"]
+
+						result['data']['track_info'].store('url', url)
+					end
+
+					lyric_result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/lyric?songmid=#{params[:id]}")
+					if lyric_result['result'] == 100
+						result['data']['track_info'].store('lyric', lyric_result['data']['lyric'])
+						result['data']['track_info'].store('lyric_trans', lyric_result['data']['trans'])
+					end
+
+					result['data']['track_info'].delete('pay')
+					result['data']['track_info'].delete('action')
+
+					return {:code => '0', :message => "SUCCESS", :data => result['data']['track_info'].as_json()}
 				else
 					return {:code => '1', :message => "失败"}
 				end

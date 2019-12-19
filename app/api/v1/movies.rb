@@ -597,8 +597,8 @@ module V1
 					info.store("description", item_result['res']['payload']['description'])
 					info.store("left", item_result['res']['payload']['left'] == 'on' ? true : false)
 					info.store("title", item_result['res']['payload']['title'])
-					info.store("primary_color_light", item_result["res"]['subject']['color_scheme']['primary_color_light'])
-					info.store("primary_color_dark", item_result["res"]['subject']['color_scheme']['primary_color_dark'])
+					info.store("primary_color_light", item_result["res"]['subject']['color_scheme']['primary_color_light'].blank? ? "a54132" : item_result["res"]['subject']['color_scheme']['primary_color_light'])
+					info.store("primary_color_dark", item_result["res"]['subject']['color_scheme']['primary_color_dark'].blank? ? "7f3227" : item_result["res"]['subject']['color_scheme']['primary_color_dark'])
 
 					subject = {}
 					rating = {}
@@ -623,8 +623,8 @@ module V1
 					subject.store("id", item_result["res"]['subject']['id'])
 					subject.store("title", item_result["res"]['subject']['title'])
 					subject.store("ratings_count", item_result["res"]['subject']['rating_count'])
-					subject.store("primary_color_light", item_result["res"]['subject']['color_scheme']['primary_color_light'])
-					subject.store("primary_color_dark", item_result["res"]['subject']['color_scheme']['primary_color_dark'])
+					subject.store("primary_color_light", item_result["res"]['subject']['color_scheme']['primary_color_light'].blank? ? "a54132" : item_result["res"]['subject']['color_scheme']['primary_color_light'])
+					subject.store("primary_color_dark", item_result["res"]['subject']['color_scheme']['primary_color_dark'].blank? ? "7f3227" : item_result["res"]['subject']['color_scheme']['primary_color_dark'])
 
 					image = {}
 					image.store("small", item_result["res"]['subject']["cover"])

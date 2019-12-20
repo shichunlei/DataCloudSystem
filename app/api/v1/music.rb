@@ -241,38 +241,43 @@ module V1
 
 			desc "歌曲详情"
 			params do
-				requires :id, type: String, desc: '分类ID'
+				requires :id, type: String, desc: '歌曲mid'
 			end
 			get :song_info do
 				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/song?songmid=#{params[:id]}")
 
 				if result['result'] == 100
-					# result['data']['track_info'].store('company', result['data']['info']['company']['content'][0]['value'])
-					# result['data']['track_info'].store('company_id', result['data']['info']['company']['content'][0]['id'])
+					song = {}
 
-					# result['data']['track_info'].store('genre', result['data']['info']['genre']['content'][0]['value'])
-					# result['data']['track_info'].store('genre_id', result['data']['info']['genre']['content'][0]['id'])
-
-					# result['data']['track_info'].store('language', result['data']['info']['lan']['content'][0]['value'])
-					# result['data']['track_info'].store('pub_time', result['data']['info']['pub_time']['content'][0]['value'])
+					song.store('songMid', result['data']['track_info']['mid'])
+					song.store('songId', result['data']['track_info']['id'])
+					song.store('songType', result['data']['track_info']['type'])
+					song.store('title', result['data']['track_info']['title'])
+					song.store('subTitle', result['data']['track_info']['subtitle'])
+					song.store('singer', result['data']['track_info']['singer'])
+					song.store('time_public', result['data']['track_info']['time_public'])
+					song.store('albumMid', result['data']['track_info']['album']['mid'])
+					song.store('albumId', result['data']['track_info']['album']['id'])
+					song.store('albumName', result['data']['track_info']['album']['name'])
+					song.store('albumDesc', result['data']['track_info']['album']['subtitle'])
+					song.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{result['data']['track_info']['album']['mid']}.jpg?max_age=2592000")
+					song.store('vid', result['data']['track_info']['mv']['vid'])
+					song.store('strMediaMid', result['data']['track_info']['file']['media_mid'])
 
 					url_result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/song/urls?id=#{params[:id]}")
 					if url_result['result'] == 100
 						url = url_result['data']["#{params[:id]}"]
 
-						result['data']['track_info'].store('url', url.gsub('http://124.89.197.18/amobile.music.tc.qq.com', "http://ws.stream.qqmusic.qq.com"))
+						song.store('url', url.gsub('http://124.89.197.18/amobile.music.tc.qq.com', "http://ws.stream.qqmusic.qq.com"))
 					end
 
 					lyric_result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/lyric?songmid=#{params[:id]}")
 					if lyric_result['result'] == 100
-						result['data']['track_info'].store('lyric', lyric_result['data']['lyric'])
-						result['data']['track_info'].store('lyric_trans', lyric_result['data']['trans'])
+						song.store('lyric', lyric_result['data']['lyric'])
+						song.store('lyric_trans', lyric_result['data']['trans'])
 					end
 
-					result['data']['track_info'].delete('pay')
-					result['data']['track_info'].delete('action')
-
-					return {:code => '0', :message => "SUCCESS", :data => result['data']['track_info'].as_json()}
+					return {:code => '0', :message => "SUCCESS", :data => song.as_json()}
 				else
 					return {:code => '1', :message => "失败"}
 				end

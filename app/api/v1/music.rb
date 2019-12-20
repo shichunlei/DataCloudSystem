@@ -247,14 +247,14 @@ module V1
 				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/song?songmid=#{params[:id]}")
 
 				if result['result'] == 100
-					result['data']['track_info'].store('company', result['data']['info']['company']['content'][0]['value'])
-					result['data']['track_info'].store('company_id', result['data']['info']['company']['content'][0]['id'])
+					# result['data']['track_info'].store('company', result['data']['info']['company']['content'][0]['value'])
+					# result['data']['track_info'].store('company_id', result['data']['info']['company']['content'][0]['id'])
 
-					result['data']['track_info'].store('genre', result['data']['info']['genre']['content'][0]['value'])
-					result['data']['track_info'].store('genre_id', result['data']['info']['genre']['content'][0]['id'])
+					# result['data']['track_info'].store('genre', result['data']['info']['genre']['content'][0]['value'])
+					# result['data']['track_info'].store('genre_id', result['data']['info']['genre']['content'][0]['id'])
 
-					result['data']['track_info'].store('language', result['data']['info']['lan']['content'][0]['value'])
-					result['data']['track_info'].store('pub_time', result['data']['info']['pub_time']['content'][0]['value'])
+					# result['data']['track_info'].store('language', result['data']['info']['lan']['content'][0]['value'])
+					# result['data']['track_info'].store('pub_time', result['data']['info']['pub_time']['content'][0]['value'])
 
 					url_result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/song/urls?id=#{params[:id]}")
 					if url_result['result'] == 100

@@ -283,6 +283,164 @@ module V1
 				end
 			end
 
+			desc "歌手列表"
+			params do
+				optional :area, type: Integer, desc: '地区', default: -100
+				optional :genre, type: Integer, desc: '风格', default: -100
+				optional :index, type: Integer, desc: '首字母', default: -100
+				optional :sex, type: Integer, desc: '性别', default: -100
+				optional :page, type: Integer, desc: '页码', default: 1
+			end
+			get :singers do
+				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/singer/list?area=#{params[:area]}&index=#{params[:index]}&genre=#{params[:genre]}&sex=#{params[:sex]}&pageNo=#{params[:page]}")
+				if result['result'] == 100
+					data = []
+					result['data']['list'].each do |item|
+						object = {}
+						object.store('id', item['singer_id'])
+						object.store('mid', item['singer_mid'])
+						object.store('name', item['singer_name'])
+						object.store('pic', item['singer_pic'])
+						data.push(object)
+					end
+					return {:code => '0', :message => "SUCCESS", :data => data.as_json()}
+				else
+					return {:code => '1', :message => "失败"}
+				end
+			end
+
+			desc "相似歌手"
+			params do
+				requires :id, type: String, desc: '歌手ID'
+			end
+			get :singers_sim do
+				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/singer/sim?singermid=#{params[:id]}")
+				if result['result'] == 100
+					return {:code => '0', :message => "SUCCESS", :data => result['data']['list'].as_json()}
+				else
+					return {:code => '1', :message => "失败"}
+				end
+			end
+
+			desc "歌手热门歌曲"
+			params do
+				requires :id, type: String, desc: '歌手ID'
+			end
+			get :singer_hot_song do
+				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/singer/songs?singermid=#{params[:id]}")
+				if result['result'] == 100
+					data = []
+					result['data']['list'].each do |item|
+						object = {}
+						object.store("title", item['name'])
+						object.store("songId", item['id'])
+						object.store("songMid", item['mid'])
+						object.store("songType", item['type'])
+						object.store("vid", item['mv']['vid'])
+						object.store("albumMid", item['album']['mid'])
+						object.store("albumDesc", item['album']['subtitle'])
+						object.store("albumName", item['album']['name'])
+						object.store("albumId", "#{item['album']['id']}")
+						object.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['album']['mid']}.jpg?max_age=2592000")
+						object.store("singer", item['singer'])
+
+						data.push(object)
+					end
+					return {:code => '0', :message => "SUCCESS", :data => data.as_json()}
+				else
+					return {:code => '1', :message => "失败"}
+				end
+			end
+
+			desc "歌手mv"
+			params do
+				requires :id, type: String, desc: '歌手ID'
+				optional :page, type: Integer, desc: '页码', default: 1
+				optional :limit, type: Integer, desc: '每页条数', default: 20
+			end
+			get :singer_mv do
+				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/singer/mv?singermid=#{params[:id]}&pageNo=#{params[:page]}&pageSize=#{params[:limit]}")
+				if result['result'] == 100
+					return {:code => '0', :message => "SUCCESS", :data => result['data']['list'].as_json()}
+				else
+					return {:code => '1', :message => "失败"}
+				end
+			end
+
+			desc "歌手专辑"
+			params do
+				requires :id, type: String, desc: '歌手ID'
+				optional :page, type: Integer, desc: '页码', default: 1
+				optional :limit, type: Integer, desc: '每页条数', default: 20
+			end
+			get :singer_album do
+				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/singer/album?singermid=#{params[:id]}&pageNo=#{params[:page]}&pageSize=#{params[:limit]}")
+				if result['result'] == 100
+					result['data']['list'].each do |item|
+						item.store('company', item['company']['company_name'])
+						item.store('id', item['albumid'])
+						item.store('mid', item['album_mid'])
+						item.store('name', item['album_name'])
+						item.store('publishTime', item['pub_time'])
+						item.store('picUrl', "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['album_mid']}.jpg?max_age=2592000")
+
+						item.delete('albumid')
+						item.delete('album_mid')
+						item.delete('album_name')
+						item.delete('pub_time')
+						item.delete('singer_id')
+						item.delete('singer_name')
+						item.delete('singer_mid')
+					end
+
+					return {:code => '0', :message => "SUCCESS", :data => result['data']['list'].as_json()}
+				else
+					return {:code => '1', :message => "失败"}
+				end
+			end
+
+			desc "专辑详情"
+			params do
+				requires :id, type: String, desc: '专辑ID'
+			end
+			get :album_info do
+				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/album?albummid=#{params[:id]}")
+				if result['result'] == 100
+					album = result['data']
+					album.store("singers", result['data']['ar'])
+					album.delete("ar")
+
+					songs_result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/album/songs?albummid=#{params[:id]}")
+					if songs_result['result'] == 100
+						songs = []
+						songs_result['data']['list'].each do |item|
+							object = {}
+							object.store("title", item['name'])
+							object.store("songId", item['id'])
+							object.store("songMid", item['mid'])
+							object.store("songType", item['type'])
+							object.store("vid", item['mv']['vid'])
+							object.store("albumMid", item['album']['mid'])
+							object.store("albumDesc", item['album']['subtitle'])
+							object.store("albumName", item['album']['name'])
+							object.store("albumId", "#{item['album']['id']}")
+							object.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['album']['mid']}.jpg?max_age=2592000")
+							object.store("singer", item['singer'])
+
+							songs.push(object)
+						end
+
+						album.store("songs", songs)
+
+						return {:code => '0', :message => "SUCCESS", :data => album.as_json()}
+					else
+						return {:code => '1', :message => "失败"}
+					end
+				else
+					return {:code => '1', :message => "失败"}
+				end
+			end
+
     end
   end
 end

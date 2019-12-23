@@ -8,7 +8,7 @@ class User < ApplicationRecord
     :default_url => "",
     :storage => :ftp,
     :path => "/data_cloud_system/users/:attachment/:id/:style/:filename",
-    :url => "#{ENV['FTP_URL']}/data_cloud_system/users/:attachment/:id/:style/:filename",
+    :url => "#{ENV['FTP_URL']}data_cloud_system/users/:attachment/:id/:style/:filename",
     :ftp_connect_timeout => 10,
     :ftp_ignore_failing_connections => true,
     :ftp_servers => [{

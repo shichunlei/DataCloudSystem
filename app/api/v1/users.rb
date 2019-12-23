@@ -19,13 +19,13 @@ module V1
 					user.organization_id = 1
 					if user.save
 						user.add_role "memeber"
-						return {"code" => '0', "message" => "登录成功", :result => user.as_json(:only => [:id, :email, :name, :mobile], :methods => [:avatar_url])}
+						return {"code" => '0', "message" => "登录成功", :data => user.as_json(:only => [:id, :email, :name, :mobile], :methods => [:avatar_url])}
 					else
 						return {"code" => '1', "message" => "登录失败"}
 					end
         else
           if user.valid_password?(password)
-            return {"code" => '0', "message" => "登录成功", :result => user.as_json(:only => [:id, :email, :name, :mobile], :methods => [:avatar_url])}
+            return {"code" => '0', "message" => "登录成功", :data => user.as_json(:only => [:id, :email, :name, :mobile], :methods => [:avatar_url])}
           else
             return {"code" => '1', "message" => "密码错误"}
           end
@@ -72,7 +72,7 @@ module V1
 					if !avatar.blank?
 						user.avatar = avatar[:tempfile]
 						if user.save
-							return {"code" => '0', "message" => "登录成功", :result => user.as_json(:only => [:id, :email, :name, :mobile], :methods => [:avatar_url])}
+							return {"code" => '0', "message" => "登录成功", :data => user.as_json(:only => [:id, :email, :name, :mobile], :methods => [:avatar_url])}
 						else
 							return {"code" => '1', "message" => "修改失败！"}
 						end
@@ -87,7 +87,7 @@ module V1
 				requires :id, type: Integer, desc: '邮箱'
 			end
 			post :update_info do
-				
+
 			end
 
     end

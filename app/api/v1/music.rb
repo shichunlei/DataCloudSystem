@@ -9,68 +9,52 @@ module V1
 			params do
 			end
 			get :top_category do
-				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/top/category")
+				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/top/category?showDetail=1")
 
 				if result['result'] == 100
 					result['data'].each do |item|
 						item['list'].each do |sub|
-							_result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/top?id=#{sub['value']}&pageSize=5")
+							sub.store('id', sub['topId'])
+							sub.store('desc', sub['intro'])
+							sub.store('update', sub['updateTime'])
+							sub.delete('topId')
+							sub.delete('updateTime')
+							sub.delete('intro')
 
-							sub.store("subTitle", _result['data']['info']['subTitle'])
-							sub.store("titleDetail", _result['data']['info']['titleDetail'])
-							sub.store("desc", _result['data']['info']['desc'])
-
-							sub.store("id", _result['data']['id'])
-							sub.store("time", _result['data']['time'])
-							sub.store("update", _result['data']['update'])
-							sub.store("timeType", _result['data']['timeType'])
-							sub.store("total", _result['data']['total'])
-
-							list = []
-							(0..4).each do |i|
-								item = _result['data']['list'][i]
-								object = {}
-								object.store("rank", item['rank'])
-								object.store("rankType", item['rankType'])
-								object.store("rankValue", item['rankValue'])
-								object.store("recType", item['recType'])
-								object.store("title", item['title'])
-								object.store("songId", item['id'])
-								object.store("songMid", item['mid'])
-								object.store("songType", item['songType'])
-								object.store("vid", item['vid'])
-								object.store("albumMid", item['albumMid'])
-								object.store("albumDesc", item["subtitle"])
-								object.store("albumName", item['name'])
-								# object.store("album", _result['data']['list'][i]['album']['id'])
-								object.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['albumMid']}.jpg?max_age=2592000")
-								object.store("singer", item['singer'])
-								list.push(object)
+							sub[song].each do |song|
+								song.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['albumMid']}.jpg?max_age=2592000")
+								singer = []
+								_singer = {}
+								_singer.store('mid', song['singerMid'])
+								_singer.store('name', song['singerName'])
+								singer.push(_singer)
+								song.store("singer", singer)
+								song.delete('singerMid')
+								song.delete('singerName')
 							end
-
-							sub.store("list", list)
-							sub.store("coverUrl", list[0]['albumUrl'])
+							sub.store('list', sub[song])
+							sub.delete('song')
 						end
 					end
 
 					return {:code => '0', :message => "SUCCESS", :data => result['data'].as_json()}
 				else
-					return {:code => '1', :message => "失败"}
+					return {:code => '1', :message => result['errMsg']}
 				end
 			end
 
 			desc "榜单详情"
 			params do
 				requires :id, type: Integer, desc: '榜单ID'
+				requires :period, type: String, desc: '榜单的时间'
 				optional :page, type: Integer, desc: '页码', default: 1
 				optional :limit, type: Integer, desc: '每页条数', default: 100
 			end
 			get :top_info do
-				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/top?id=#{params[:id]}&pageSize=#{params[:limit]}&pageNo=#{params[:page]}")
+				result = Utils::Helper::get("#{ENV['QQ_MUSIC_URL']}/top?id=#{params[:id]}&pageSize=#{params[:limit]}&pageNo=#{params[:page]}&period=#{params[:period]}")
 
 				if result['result'] == 100
 					result['data'].store('label', result['data']['info']['title'])
-					result['data'].store('value', "#{result['data']['id']}")
 					result['data'].store('subTitle', result['data']['info']['subTitle'])
 					result['data'].store('titleDetail', result['data']['info']['titleDetail'])
 					result['data'].store('desc', result['data']['info']['desc'])
@@ -89,19 +73,18 @@ module V1
 						object.store("songType", item['songType'])
 						object.store("vid", item['vid'])
 						object.store("albumMid", item['albumMid'])
-						object.store("albumDesc", item["subtitle"])
-						object.store("albumName", item['name'])
+						object.store("albumDesc", item['album']["subtitle"])
+						object.store("albumName", item['album']['name'])
 						object.store("albumId", item['album']['id'])
 						object.store("albumUrl", "https://y.gtimg.cn/music/photo_new/T002R300x300M000#{item['albumMid']}.jpg?max_age=2592000")
 						object.store("singer", item['singer'])
 						list.push(object)
 					end
 					result['data'].store('list', list)
-					result['data'].store("coverUrl", result['data']['list'][0]['albumUrl'])
 
 					return {:code => '0', :message => "SUCCESS", :data => result['data'].as_json()}
 				else
-					return {:code => '1', :message => "失败"}
+					return {:code => '1', :message => result['errMsg']}
 				end
 			end
 
@@ -123,7 +106,7 @@ module V1
 
 					return {:code => '0', :message => "SUCCESS", :data => result['data'].as_json()}
 				else
-					return {:code => '1', :message => "失败"}
+					return {:code => '1', :message => result['errMsg']}
 				end
 			end
 
@@ -139,7 +122,7 @@ module V1
 				if result['result'] == 100
 					return {:code => '0', :message => "SUCCESS", :data => result['data']['list'].as_json()}
 				else
-					return {:code => '1', :message => "失败"}
+					return {:code => '1', :message => result['errMsg']}
 				end
 			end
 
@@ -174,7 +157,7 @@ module V1
 					result['data'].delete('songids')
 					return {:code => '0', :message => "SUCCESS", :data => result['data'].as_json()}
 				else
-					return {:code => '1', :message => "失败"}
+					return {:code => '1', :message => result['errMsg']}
 				end
 			end
 
@@ -203,7 +186,7 @@ module V1
 
 					return {:code => '0', :message => "SUCCESS", :data => data.as_json()}
 				else
-					return {:code => '1', :message => "失败"}
+					return {:code => '1', :message => result['errMsg']}
 				end
 			end
 
@@ -235,7 +218,7 @@ module V1
 
 					return {:code => '0', :message => "SUCCESS", :data => data.as_json()}
 				else
-					return {:code => '1', :message => "失败"}
+					return {:code => '1', :message => result['errMsg']}
 				end
 			end
 
@@ -279,7 +262,7 @@ module V1
 
 					return {:code => '0', :message => "SUCCESS", :data => song.as_json()}
 				else
-					return {:code => '1', :message => "失败"}
+					return {:code => '1', :message => result['errMsg']}
 				end
 			end
 
@@ -305,7 +288,7 @@ module V1
 					end
 					return {:code => '0', :message => "SUCCESS", :data => data.as_json()}
 				else
-					return {:code => '1', :message => "失败"}
+					return {:code => '1', :message => result['errMsg']}
 				end
 			end
 
@@ -318,7 +301,7 @@ module V1
 				if result['result'] == 100
 					return {:code => '0', :message => "SUCCESS", :data => result['data']['list'].as_json()}
 				else
-					return {:code => '1', :message => "失败"}
+					return {:code => '1', :message => result['errMsg']}
 				end
 			end
 
@@ -348,7 +331,7 @@ module V1
 					end
 					return {:code => '0', :message => "SUCCESS", :data => data.as_json()}
 				else
-					return {:code => '1', :message => "失败"}
+					return {:code => '1', :message => result['errMsg']}
 				end
 			end
 
@@ -363,7 +346,7 @@ module V1
 				if result['result'] == 100
 					return {:code => '0', :message => "SUCCESS", :data => result['data']['list'].as_json()}
 				else
-					return {:code => '1', :message => "失败"}
+					return {:code => '1', :message => result['errMsg']}
 				end
 			end
 
@@ -395,7 +378,7 @@ module V1
 
 					return {:code => '0', :message => "SUCCESS", :data => result['data']['list'].as_json()}
 				else
-					return {:code => '1', :message => "失败"}
+					return {:code => '1', :message => result['errMsg']}
 				end
 			end
 
@@ -434,10 +417,10 @@ module V1
 
 						return {:code => '0', :message => "SUCCESS", :data => album.as_json()}
 					else
-						return {:code => '1', :message => "失败"}
+						return {:code => '1', :message => songs_result['errMsg']}
 					end
 				else
-					return {:code => '1', :message => "失败"}
+					return {:code => '1', :message => result['errMsg']}
 				end
 			end
 

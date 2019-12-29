@@ -568,7 +568,7 @@ module V1
 				payload = {}
 				payload.store("background_img", result0['res']['payload']['mobile_background_img'])
 				payload.store("title_img", result0['res']['payload']['title_img'])
-				payload.store("video", result0['res']['payload']['video'])
+				payload.store("video", result0['res']['payload']['video'].blank? ? "" : result0['res']['payload']['video'])
 				payload.store("title", "豆瓣#{year}年度电影榜单")
 				payload.store("year", year.to_i)
 				data.store("cover", payload)
@@ -584,6 +584,9 @@ module V1
 				end
 				if year == 2019
 					pages = [2, 4, 6, 8, 9, 11, 13, 32]
+				end
+				if year == 2015
+					pages = [2, 1, 4, 5, 6, 8, 9, 10, 11, 13, 14, 15, 16, 32, 33, 34, 35, 36, 37, 39, 40, 41, 42, 43, 44, 46, 47 ,48, 49, 50, 52, 53, 55, 56]
 				end
 
 				ranges = []
@@ -602,6 +605,8 @@ module V1
 						info.store("description", item_result['res']['payload']['description'])
 						if !item_result['res']['payload']['subtitle'].blank?
 							info.store("title", "#{item_result['res']['payload']['subtitle']}的#{item_result['res']['payload']['title']}")
+						elsif !item_result['res']['payload']['title_label'].blank?
+							info.store("title", "#{item_result['res']['payload']['title_label']}#{item_result['res']['payload']['title']}")
 						else
 							info.store("title", item_result['res']['payload']['title'])
 						end
@@ -697,6 +702,8 @@ module V1
 							info.store("description", _item_result['payload']['description'])
 							if !_item_result['payload']['subtitle'].blank?
 								info.store("title", "#{_item_result['payload']['subtitle']}的#{_item_result['payload']['title']}")
+							elsif !_item_result['payload']['title_label'].blank?
+								info.store("title", "#{_item_result['payload']['title_label']}#{_item_result['payload']['title']}")
 							else
 								info.store("title", _item_result['payload']['title'])
 							end

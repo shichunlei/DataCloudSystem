@@ -566,7 +566,6 @@ module V1
 
 				data = {}
 				payload = {}
-				payload.store("description", result0['res']['payload']['description'])
 				payload.store("background_img", result0['res']['payload']['mobile_background_img'])
 				payload.store("title_img", result0['res']['payload']['title_img'])
 				payload.store("video", result0['res']['payload']['video'])
@@ -583,99 +582,205 @@ module V1
 				if year == 2017
 					pages = [1,2,4,5,8,9,10,12,13,14,16,17,18,20,21,22,24,25,26,27,56,57,58,60,61,62,64,65,66,68,69,70,72,73,74,75,76,85,86,87]
 				end
+				if year == 2019
+					pages = [2, 4, 6, 8, 9, 11, 13, 32]
+				end
 
 				ranges = []
 
 				pages.each do |index|
 					item_result = Utils::Helper::get("#{BASE_URL}/ithil_j/activity/movie_annual#{year}/widget/#{index}")
 
-					item = {}
-					info = {}
-					info.store("id", item_result['res']['id'])
-					info.store("background_img", item_result['res']['payload']['background_img'])
-					info.store("mobile_background_img", item_result['res']['payload']['mobile_background_img'])
-					info.store("description", item_result['res']['payload']['description'])
-					info.store("left", item_result['res']['payload']['left'] == 'on' ? true : false)
-					info.store("title", item_result['res']['payload']['title'])
-					info.store("primary_color_light", item_result["res"]['subject']['color_scheme']['primary_color_light'].blank? ? "a54132" : item_result["res"]['subject']['color_scheme']['primary_color_light'])
-					info.store("primary_color_dark", item_result["res"]['subject']['color_scheme']['primary_color_dark'].blank? ? "7f3227" : item_result["res"]['subject']['color_scheme']['primary_color_dark'])
+					if item_result['res']['payload']['widgets'].blank?
+						_subject = item_result["res"]['subject']
 
-					subject = {}
-					rating = {}
-					rating.store("average", item_result["res"]['subject']['rating'])
-					rating.store("max", 10)
-					rating.store("min", 0)
+						item = {}
+						info = {}
+						info.store("id", item_result['res']['id'])
+						info.store("background_img", item_result['res']['payload']['background_img'])
+						info.store("mobile_background_img", item_result['res']['payload']['mobile_background_img'])
+						info.store("description", item_result['res']['payload']['description'])
+						if !item_result['res']['payload']['subtitle'].blank?
+							info.store("title", "#{item_result['res']['payload']['subtitle']}的#{item_result['res']['payload']['title']}")
+						else
+							info.store("title", item_result['res']['payload']['title'])
+						end
+						info.store("primary_color_light", _subject['color_scheme']['primary_color_light'].blank? ? "a54132" : _subject['color_scheme']['primary_color_light'])
+						info.store("primary_color_dark", _subject['color_scheme']['primary_color_dark'].blank? ? "7f3227" : _subject['color_scheme']['primary_color_dark'])
 
-					details = {}
-					details.store("1", item_result["res"]['subject']['rating_stats'][0])
-					details.store("2", item_result["res"]['subject']['rating_stats'][1])
-					details.store("3", item_result["res"]['subject']['rating_stats'][2])
-					details.store("4", item_result["res"]['subject']['rating_stats'][3])
-					details.store("5", item_result["res"]['subject']['rating_stats'][4])
-					rating.store("details", details)
-
-					subject.store("rating", rating)
-
-					subject.store("original_title", item_result["res"]['subject']['orig_title'])
-					subject.store("playable", item_result["res"]['subject']['playable'])
-					subject.store("is_released", item_result["res"]['subject']['is_released'])
-					subject.store("subtype", item_result["res"]['subject']['type'])
-					subject.store("id", item_result["res"]['subject']['id'])
-					subject.store("title", item_result["res"]['subject']['title'])
-					subject.store("ratings_count", item_result["res"]['subject']['rating_count'])
-					subject.store("primary_color_light", item_result["res"]['subject']['color_scheme']['primary_color_light'].blank? ? "a54132" : item_result["res"]['subject']['color_scheme']['primary_color_light'])
-					subject.store("primary_color_dark", item_result["res"]['subject']['color_scheme']['primary_color_dark'].blank? ? "7f3227" : item_result["res"]['subject']['color_scheme']['primary_color_dark'])
-
-					image = {}
-					image.store("small", item_result["res"]['subject']["cover"])
-					image.store("large", item_result["res"]['subject']["cover"])
-					image.store("medium", item_result["res"]['subject']["cover"])
-					subject.store("images", image)
-
-					info.store("subject", subject)
-
-					item.store("info", info)
-
-					item_result["res"]['subjects'].each do |subject|
-						subject.delete("color_scheme")
-						subject.delete("url")
-						subject.delete("m_url")
-						subject.delete("interest")
-						subject.delete("directors")
-
+						subject = {}
 						rating = {}
-						rating.store("average", subject['rating'])
+						rating.store("average", _subject['rating'])
 						rating.store("max", 10)
 						rating.store("min", 0)
 
 						details = {}
-						details.store("1", subject['rating_stats'][0])
-						details.store("2", subject['rating_stats'][1])
-						details.store("3", subject['rating_stats'][2])
-						details.store("4", subject['rating_stats'][3])
-						details.store("5", subject['rating_stats'][4])
-
+						details.store("1", _subject['rating_stats'][0])
+						details.store("2", _subject['rating_stats'][1])
+						details.store("3", _subject['rating_stats'][2])
+						details.store("4", _subject['rating_stats'][3])
+						details.store("5", _subject['rating_stats'][4])
 						rating.store("details", details)
 
-						subject.delete('rating')
-						subject.delete('rating_stats')
 						subject.store("rating", rating)
-						subject.store("original_title", subject['orig_title'])
-						subject.delete('orig_title')
-						subject.store("subtype", subject['type'])
-						subject.delete('type')
-						image = {}
-						image.store("small", subject["cover"])
-						image.store("large", subject["cover"])
-						image.store("medium", subject["cover"])
-						subject.store("images", image)
-						subject.delete('cover')
-						subject.store("ratings_count", subject["rating_count"])
-						subject.delete('rating_count')
-					end
 
-					item.store("subjects", item_result["res"]['subjects'])
-					ranges.push(item)
+						subject.store("original_title", _subject['orig_title'])
+						subject.store("playable", _subject['playable'])
+						subject.store("is_released", _subject['is_released'])
+						subject.store("subtype", _subject['type'])
+						subject.store("id", _subject['id'])
+						subject.store("title", _subject['title'])
+						subject.store("ratings_count", _subject['rating_count'])
+						subject.store("primary_color_light", _subject['color_scheme']['primary_color_light'].blank? ? "a54132" : _subject['color_scheme']['primary_color_light'])
+						subject.store("primary_color_dark", _subject['color_scheme']['primary_color_dark'].blank? ? "7f3227" : _subject['color_scheme']['primary_color_dark'])
+
+						image = {}
+						image.store("small", _subject["cover"])
+						image.store("large", _subject["cover"])
+						image.store("medium", _subject["cover"])
+						subject.store("images", image)
+
+						info.store("subject", subject)
+
+						item.store("info", info)
+
+						item_result["res"]['subjects'].each do |subject|
+							subject.delete("color_scheme")
+							subject.delete("url")
+							subject.delete("m_url")
+							subject.delete("interest")
+							subject.delete("directors")
+
+							rating = {}
+							rating.store("average", subject['rating'])
+							rating.store("max", 10)
+							rating.store("min", 0)
+
+							details = {}
+							details.store("1", subject['rating_stats'][0])
+							details.store("2", subject['rating_stats'][1])
+							details.store("3", subject['rating_stats'][2])
+							details.store("4", subject['rating_stats'][3])
+							details.store("5", subject['rating_stats'][4])
+
+							rating.store("details", details)
+
+							subject.delete('rating')
+							subject.delete('rating_stats')
+							subject.store("rating", rating)
+							subject.store("original_title", subject['orig_title'])
+							subject.delete('orig_title')
+							subject.store("subtype", subject['type'])
+							subject.delete('type')
+							image = {}
+							image.store("small", subject["cover"])
+							image.store("large", subject["cover"])
+							image.store("medium", subject["cover"])
+							subject.store("images", image)
+							subject.delete('cover')
+							subject.store("ratings_count", subject["rating_count"])
+							subject.delete('rating_count')
+						end
+
+						item.store("subjects", item_result["res"]['subjects'])
+						ranges.push(item)
+					else
+						subjects = item_result['res']['payload']['widgets']
+						subjects.each do |_item_result|
+							_subject = _item_result['subject']
+
+							item = {}
+							info = {}
+							info.store("id", _item_result['id'])
+							info.store("background_img", _item_result['payload']['background_img'])
+							info.store("mobile_background_img", _item_result['payload']['mobile_background_img'])
+							info.store("description", _item_result['payload']['description'])
+							if !_item_result['payload']['subtitle'].blank?
+								info.store("title", "#{_item_result['payload']['subtitle']}的#{_item_result['payload']['title']}")
+							else
+								info.store("title", _item_result['payload']['title'])
+							end
+							info.store("primary_color_light", _subject['color_scheme']['primary_color_light'].blank? ? "a54132" : _subject['color_scheme']['primary_color_light'])
+							info.store("primary_color_dark", _subject['color_scheme']['primary_color_dark'].blank? ? "7f3227" : _subject['color_scheme']['primary_color_dark'])
+
+							subject = {}
+							rating = {}
+							rating.store("average", _subject['rating'])
+							rating.store("max", 10)
+							rating.store("min", 0)
+
+							details = {}
+							details.store("1", _subject['rating_stats'][0])
+							details.store("2", _subject['rating_stats'][1])
+							details.store("3", _subject['rating_stats'][2])
+							details.store("4", _subject['rating_stats'][3])
+							details.store("5", _subject['rating_stats'][4])
+							rating.store("details", details)
+
+							subject.store("rating", rating)
+
+							subject.store("original_title", _subject['orig_title'])
+							subject.store("playable", _subject['playable'])
+							subject.store("is_released", _subject['is_released'])
+							subject.store("subtype", _subject['type'])
+							subject.store("id", _subject['id'])
+							subject.store("title", _subject['title'])
+							subject.store("ratings_count", _subject['rating_count'])
+							subject.store("primary_color_light", _subject['color_scheme']['primary_color_light'].blank? ? "a54132" : _subject['color_scheme']['primary_color_light'])
+							subject.store("primary_color_dark", _subject['color_scheme']['primary_color_dark'].blank? ? "7f3227" : _subject['color_scheme']['primary_color_dark'])
+
+							image = {}
+							image.store("small", _subject["cover"])
+							image.store("large", _subject["cover"])
+							image.store("medium", _subject["cover"])
+							subject.store("images", image)
+
+							info.store("subject", subject)
+
+							item.store("info", info)
+
+							_item_result['subjects'].each do |subject|
+								subject.delete("color_scheme")
+								subject.delete("url")
+								subject.delete("m_url")
+								subject.delete("interest")
+								subject.delete("directors")
+
+								rating = {}
+								rating.store("average", subject['rating'])
+								rating.store("max", 10)
+								rating.store("min", 0)
+
+								details = {}
+								details.store("1", subject['rating_stats'][0])
+								details.store("2", subject['rating_stats'][1])
+								details.store("3", subject['rating_stats'][2])
+								details.store("4", subject['rating_stats'][3])
+								details.store("5", subject['rating_stats'][4])
+
+								rating.store("details", details)
+
+								subject.delete('rating')
+								subject.delete('rating_stats')
+								subject.store("rating", rating)
+								subject.store("original_title", subject['orig_title'])
+								subject.delete('orig_title')
+								subject.store("subtype", subject['type'])
+								subject.delete('type')
+								image = {}
+								image.store("small", subject["cover"])
+								image.store("large", subject["cover"])
+								image.store("medium", subject["cover"])
+								subject.store("images", image)
+								subject.delete('cover')
+								subject.store("ratings_count", subject["rating_count"])
+								subject.delete('rating_count')
+							end
+
+							item.store("subjects", _item_result['subjects'])
+							ranges.push(item)
+						end
+					end
 				end
 
 				data.store("ranges", ranges)

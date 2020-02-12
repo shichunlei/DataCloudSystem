@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :musics
   resources :book_details
   resources :food_nutritions
   resources :books

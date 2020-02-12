@@ -10,13 +10,13 @@ module Utils
 
     # DES加密
     def Helper::encrypt(context)
-      cipher = OpenSSL::Cipher::DES.new.encrypt.tap { |obj| obj.key = obj.iv = ENV['DES_KEY'].encode('utf-8') }
+      cipher = OpenSSL::Cipher::DES.new.encrypt.tap { |obj| obj.key = obj.iv = "!@#$%^&*" }
       (cipher.update(context) + cipher.final).unpack('H*')[0].upcase
     end
 
     # DES解密
     def Helper::decrypt(context)
-      cipher = OpenSSL::Cipher::DES.new.decrypt.tap { |obj| obj.key = obj.iv = ENV['DES_KEY'].encode('utf-8') }
+      cipher = OpenSSL::Cipher::DES.new.decrypt.tap { |obj| obj.key = obj.iv = "!@#$%^&*" }
       cipher.update([context].pack('H*')) + cipher.final
     end
 

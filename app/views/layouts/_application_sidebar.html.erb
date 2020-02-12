@@ -115,6 +115,12 @@
           星座
         <% end %>
       <% end%>
+      <% if can? :read, Music %>
+        <%= nav_link musics_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          音乐
+        <% end %>
+      <% end%>
     <% end %>
     <%= treeview_link '日常生活' do %>
       <!-- <% if can? :read, RecipeClassify %>

@@ -301,6 +301,7 @@ zh-CN:
       snack: "全国小吃"
       hospital: "全国医院"
       food_nutrition: "食物营养成分"
+      music: "音乐"
     attributes:
       food_nutrition:
         id: "编号"
@@ -509,6 +510,15 @@ zh-CN:
         translation: "翻译"
         appreciation: "赏析"
         interpretation: "解读"
+        created_at: "创建于"
+        updated_at: "更新于"
+      music:
+        id: "编号"
+        name: "名称"
+        artists: "歌手"
+        lyric: "歌词"
+        album_url: "封面"
+        audio_url: "音频"
         created_at: "创建于"
         updated_at: "更新于"
       year_fortune:

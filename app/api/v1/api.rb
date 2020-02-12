@@ -22,10 +22,6 @@ module V1
 		mount V1::Qdaily
 		mount V1::TubiTV
 		mount V1::Sports
-		mount V1::Music
+		mount V1::Musics
 	end
-
-	# 返回码
-	# 20001 成功
-	# 20002 错误
 end

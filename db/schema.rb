@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191030040903) do
+ActiveRecord::Schema.define(version: 20200212021515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -916,6 +916,17 @@ ActiveRecord::Schema.define(version: 20191030040903) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.index ["astro_id"], name: "index_month_fortunes_on_astro_id", using: :btree
+  end
+
+  create_table "musics", id: false, force: :cascade do |t|
+    t.string   "id"
+    t.string   "name",       default: ""
+    t.string   "audio_url",  default: ""
+    t.string   "artists",    default: ""
+    t.string   "album_url",  default: ""
+    t.text     "lyric",      default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "organizations", force: :cascade do |t|

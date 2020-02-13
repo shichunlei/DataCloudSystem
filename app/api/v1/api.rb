@@ -23,5 +23,6 @@ module V1
 		mount V1::TubiTV
 		mount V1::Sports
 		mount V1::Musics
+		mount V1::Cnov
 	end
 end

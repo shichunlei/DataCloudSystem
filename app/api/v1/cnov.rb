@@ -238,6 +238,22 @@ module V1
         return {:code => 0, :message => "SUCCESS", :data => result['result'].as_json()}
       end
 
+			desc "地区数据"
+			params do
+				requires :province, type: String, desc: '地区名称'
+			end
+			get :province do
+				_ = Time.now.to_i
+
+				body = Utils::Helper::getHttpBody("https://interface.sina.cn/news/wap/historydata.d.json?province=#{params[:province]}&#{_}&&callback=sinajp_#{_}")
+
+        result = JSON.parse(body.gsub("sinajp_#{_}(", '').gsub(");", ''))
+
+				result["data"].store("bannerImg", "https://n.sinaimg.cn/news/66ceb6d9/20200129/banner.png")
+
+				return {:code => 0, :message => "SUCCESS", :data => result['data'].as_json()}
+			end
+
     end
   end
 end

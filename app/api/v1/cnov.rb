@@ -283,6 +283,26 @@ module V1
 				return {:code => 0, :message => "SUCCESS", :data => result['data'].as_json()}
 			end
 
+			desc "地区新闻"
+			params do
+				requires :province, type: String, desc: '地区名称'
+				requires :page, type: Integer, desc: '页码'
+				optional :num, type: Integer, desc: '每页条数', default: 10
+			end
+			get :provincenews do
+				_ = Time.now.to_i
+
+				body = Utils::Helper::getHttpBody("https://interface.sina.cn/news/wap/fyzt_news.d.json?province=#{params[:province]}&page=#{params[:page]}&size=#{params[:num]}&&callback=sinajp_#{_}")
+
+        result = JSON.parse(body.gsub("sinajp_#{_}(", '').gsub(");", ''))
+
+				if result['result']['status']['code'] == 0
+					return {:code => result['result']['status']['code'], :message => result['result']['status']['msg'], :data => result['result']['data'].as_json()}
+				else
+					return {:code => result['result']['status']['code'], :message => result['result']['status']['msg']}
+				end
+			end
+
     end
   end
 end

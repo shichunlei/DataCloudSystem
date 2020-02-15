@@ -47,6 +47,57 @@ module V1
         end
       end
 
+			desc "肺炎疫情-抗击肺炎疫情全球数据"
+      params do
+      end
+      get :ncovcountry do
+				result = Utils::Helper::get("http://49.232.173.220:3001/data/getListByCountryTypeService2")
+
+				continents = []
+
+				result.each do |item|
+					continent = {}
+					continent.store("continentName", item['continents'])
+					continents.push(continent)
+				end
+
+				array = continents.uniq
+
+				array.each do |arr|
+					country = []
+					totalDeadCount = 0
+					totalCurrentConfirmedCount = 0
+					totalConfirmedCount = 0
+					totalSuspectedCount = 0
+					totalCuredCount = 0
+					result.each do |item|
+						if item["continents"] == arr['continentName']
+							totalDeadCount += item['deadCount']
+							totalCurrentConfirmedCount += item['currentConfirmedCount']
+							totalConfirmedCount += item['confirmedCount']
+							totalSuspectedCount += item['suspectedCount']
+							totalCuredCount += item['curedCount']
+							item.delete('continents')
+							item.delete('cityName')
+							item.store("countryName", item['provinceName'])
+							item.delete('provinceName')
+							item.store("countryId", item['provinceId'])
+							item.delete('provinceId')
+							item.delete('provinceShortName')
+							country.push(item)
+						end
+					end
+					arr.store("currentConfirmedCount", totalCurrentConfirmedCount)
+					arr.store("deadCount", totalDeadCount)
+					arr.store("confirmedCount", totalConfirmedCount)
+					arr.store("suspectedCount", totalSuspectedCount)
+					arr.store("curedCount", totalCuredCount)
+					arr.store("country", country)
+				end
+
+        return {:code => 0, :message => "SUCCESS", :data => array.as_json()}
+      end
+
 			desc "谣言鉴别-网络谣言鉴别接口"
       params do
         requires :page, type: Integer, desc: '页码'
@@ -125,6 +176,56 @@ module V1
       get :statistics do
         result = Utils::Helper::get("http://49.232.173.220:3001/data/getStatisticsService")
 
+				resultCity = Utils::Helper::get("http://data.chingsoft.com/api/v1/cnov/ncovcity")
+
+				result.store("provinces", resultCity['data'])
+
+				resultContinent = Utils::Helper::get("http://49.232.173.220:3001/data/getListByCountryTypeService2")
+
+				continents = []
+
+				resultContinent.each do |item|
+					continent = {}
+					continent.store("continentName", item['continents'])
+					continents.push(continent)
+				end
+
+				array = continents.uniq
+
+				array.each do |arr|
+					country = []
+					totalDeadCount = 0
+					totalCurrentConfirmedCount = 0
+					totalConfirmedCount = 0
+					totalSuspectedCount = 0
+					totalCuredCount = 0
+					resultContinent.each do |item|
+						if item["continents"] == arr['continentName']
+							totalDeadCount += item['deadCount']
+							totalCurrentConfirmedCount += item['currentConfirmedCount']
+							totalConfirmedCount += item['confirmedCount']
+							totalSuspectedCount += item['suspectedCount']
+							totalCuredCount += item['curedCount']
+							item.delete('continents')
+							item.delete('cityName')
+							item.store("countryName", item['provinceName'])
+							item.delete('provinceName')
+							item.store("countryId", item['provinceId'])
+							item.delete('provinceId')
+							item.delete('provinceShortName')
+							country.push(item)
+						end
+					end
+					arr.store("currentConfirmedCount", totalCurrentConfirmedCount)
+					arr.store("deadCount", totalDeadCount)
+					arr.store("confirmedCount", totalConfirmedCount)
+					arr.store("suspectedCount", totalSuspectedCount)
+					arr.store("curedCount", totalCuredCount)
+					arr.store("country", country)
+				end
+
+				result.store("continents", array)
+
         return {:code => 0, :message => "SUCCESS", :data => result.as_json()}
       end
 
@@ -134,7 +235,7 @@ module V1
       get :wikilist do
         result = Utils::Helper::get("http://49.232.173.220:3001/data/getWikiList?pageNum=1&pageSize=5")
 
-        return {:code => 0, :message => "SUCCESS", :data => result.as_json()}
+        return {:code => 0, :message => "SUCCESS", :data => result['result'].as_json()}
       end
 
     end

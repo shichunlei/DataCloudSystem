@@ -249,7 +249,36 @@ module V1
 
         result = JSON.parse(body.gsub("sinajp_#{_}(", '').gsub(");", ''))
 
-				result["data"].store("bannerImg", "https://n.sinaimg.cn/news/66ceb6d9/20200129/banner.png")
+				result["data"].store("banner", "https://n.sinaimg.cn/news/66ceb6d9/20200129/banner.png")
+
+				cities = []
+				result["data"]['city'].each do |item|
+					city = {}
+					city.store("cityName", item['name'])
+					city.store("currentConfirmedCount", item['conNum'].to_i - item['cureNum'].to_i - item['deathNum'].to_i)
+					city.store("confirmedCount", item['conNum'].to_i)
+					city.store("suspectedCount", item['susNum'].to_i)
+					city.store("curedCount", item['cureNum'].to_i)
+					city.store("deadCount", item['deathNum'].to_i)
+					cities.push(city)
+				end
+
+				result["data"].store("cities", cities)
+				result["data"].delete('city')
+
+				histories = []
+				result["data"]['historylist'].each do |item|
+					history = {}
+					history.store("date", item['date'])
+					history.store("currentConfirmedCount", item['conNum'].to_i - item['cureNum'].to_i - item['deathNum'].to_i)
+					history.store("confirmedCount", item['conNum'].to_i)
+					history.store("suspectedCount", item['susNum'].to_i)
+					history.store("curedCount", item['cureNum'].to_i)
+					history.store("deadCount", item['deathNum'].to_i)
+					histories.push(history)
+				end
+				result["data"].store("history", histories)
+				result["data"].delete('historylist')
 
 				return {:code => 0, :message => "SUCCESS", :data => result['data'].as_json()}
 			end

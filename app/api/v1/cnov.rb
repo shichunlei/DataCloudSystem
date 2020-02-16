@@ -101,25 +101,15 @@ module V1
 			desc "谣言鉴别-网络谣言鉴别接口"
       params do
         requires :page, type: Integer, desc: '页码'
-				optional :num, type: Integer, desc: '每页条数', default: 10
-        optional :word, type: String, desc: '关键词'
       end
       get :rumour do
-				header = {
-					"Content-Type" => "application/x-www-form-urlencoded"
-				}
+				_ = Time.now.to_i
 
-				_params = declared(params)
-				_params.store('key', '7cfb4a16bb628d90a4043a707cbfca2f')
-				_params.delete_if{|k, v| v == nil || v == ""}
+				body = Utils::Helper::getHttpBody("https://vp.fact.qq.com/loadmore?page=#{params[:page]-1}&callback=jQuery#{_}&_=#{_}")
 
-        result = Utils::Helper::post("http://api.tianapi.com/txapi/rumour/index", _params, header)
+				result = JSON.parse(body.gsub("jQuery#{_}(", '').gsub(")", ''))
 
-        if result['code'] == 200
-          return {:code => 0, :message => "SUCCESS", :data => result['newslist'].as_json()}
-        else
-          return {:code => result['code'], :message => result['msg']}
-        end
+				return {:code => result['code'], :message => "", :data => result['content'].as_json()}
       end
 
 			desc "肺炎同程查询-肺炎疫情确诊同程"

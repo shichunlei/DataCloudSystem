@@ -303,6 +303,32 @@ module V1
 				end
 			end
 
+			desc "新冠肺炎确诊病患活动轨迹"
+			params do
+				optional :province, type: String, desc: '地区名称', default: ""
+				optional :city, type: String, desc: '地区名称', default: ""
+				optional :county, type: String, desc: '地区名称', default: ""
+				requires :page, type: Integer, desc: '页码'
+				optional :num, type: Integer, desc: '每页条数', default: 10
+			end
+			get :trajectory do
+				_ = Time.now.to_i
+
+				body = Utils::Helper::getHttpBody("https://pacaio.match.qq.com/virus/trackList?page=#{params[:page]-1}&num=#{params[:num]}&province=#{params[:province]}&city=#{params[:city]}&county=#{params[:county]}&callback=__jp#{_}")
+
+				result = JSON.parse(body.gsub("__jp#{_}(", '').gsub(")", ''))
+
+				return {:code => result['code'], :message => result['msg'], :data => result['data'].as_json()}
+			end
+
+			desc "疫情分析"
+			params do
+			end
+			get :analyze do
+				result = Utils::Helper::get("https://eyesight.news.qq.com/ncov/alldata")
+
+        return {:code => result['code'], :message => result['msg'], :data => result['data'].as_json()}
+			end
     end
   end
 end

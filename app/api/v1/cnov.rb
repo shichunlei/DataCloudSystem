@@ -277,7 +277,7 @@ module V1
 					history.store("deadCount", item['deathNum'].to_i)
 					histories.push(history)
 				end
-				result["data"].store("history", histories)
+				result["data"].store("history", histories.reverse)
 				result["data"].delete('historylist')
 
 				return {:code => 0, :message => "SUCCESS", :data => result['data'].as_json()}

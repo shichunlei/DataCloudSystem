@@ -1,9 +1,9 @@
 module V1
 
 	module ErrorFormatter
-      def self.call message, backtrace, options, env
-        {:code => "-1", :message => message}.to_json
-      end
+    def self.call message, backtrace, options, env, original_exception
+      {:code => '-1', :message => message, :from => backtrace}.to_json
+    end
 	end
 
 	class API < Grape::API

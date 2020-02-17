@@ -308,7 +308,7 @@ module V1
 
 				result = JSON.parse(body.gsub("__jp#{_}(", '').gsub(")", ''))
 
-				return {:code => result['code'], :message => result['msg'], :data => result['data'].as_json()}
+				return {:code => result['code'], :message => result['msg'], :data => result['data']['list'].as_json()}
 			end
 
 			desc "疫情分析"

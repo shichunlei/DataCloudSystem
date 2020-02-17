@@ -317,7 +317,11 @@ module V1
 			get :analyze do
 				result = Utils::Helper::get("https://eyesight.news.qq.com/ncov/alldata")
 
-        return {:code => result['code'], :message => result['msg'], :data => result['data'].as_json()}
+				result['data'].each do |item|
+					item.store("pubtime", Utils::Helper::format_datetime(item["pubtime"], format = "%Y-%m-%d %H:%M:%S"))
+				end
+
+        return {:code => result['code'], :message => result['msg'], :data => result['data'].reverse.as_json()}
 			end
     end
   end

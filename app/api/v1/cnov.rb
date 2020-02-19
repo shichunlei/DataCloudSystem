@@ -216,6 +216,15 @@ module V1
 
 				result.store("continents", array)
 
+				rumour_result = Utils::Helper::get("http://49.232.173.220:3001/data/getIndexRumorList")
+				result.store("rumour", rumour_result.as_json())
+
+				wiki_result = Utils::Helper::get("http://49.232.173.220:3001/data/getWikiList")
+				result.store("wiki_list", wiki_result['result'].as_json())
+
+				recommend_result = Utils::Helper::get("http://49.232.173.220:3001/data/getIndexRecommendList")
+				result.store("recommend", recommend_result.as_json())
+
         return {:code => 0, :message => "SUCCESS", :data => result.as_json()}
       end
 
@@ -223,7 +232,7 @@ module V1
       params do
       end
       get :wikilist do
-        result = Utils::Helper::get("http://49.232.173.220:3001/data/getWikiList?pageNum=1&pageSize=5")
+        result = Utils::Helper::get("http://49.232.173.220:3001/data/getWikiList")
 
         return {:code => 0, :message => "SUCCESS", :data => result['result'].as_json()}
       end

@@ -332,6 +332,30 @@ module V1
 
         return {:code => result['code'], :message => result['msg'], :data => result['data'].reverse.as_json()}
 			end
+
+			desc "预防手册"
+			params do
+			end
+			get :prevent_manual do
+				_ = Time.now
+
+				# 预防手册-预防指南
+				body1 = Utils::Helper::getHttpBody("https://h5.baike.qq.com/api/jsonp/GetDocsByTag?callback=success_jsonpCallback&appid=2000000000000050&adtag=txxw.op.fybox&name=94699&offset=0&count=5&callback=success_jsonpCallback&_=#{_}")
+
+				result1 = JSON.parse(body1.gsub("success_jsonpCallback(", '').gsub(")", ''))
+
+				# 预防手册-检查诊断
+				body2 = Utils::Helper::getHttpBody("https://h5.baike.qq.com/api/jsonp/GetDocsByTag?callback=success_jsonpCallback&appid=2000000000000050&adtag=txxw.op.fybox&name=94700&offset=0&count=5&callback=success_jsonpCallback&_=#{_}")
+
+				result2 = JSON.parse(body2.gsub("success_jsonpCallback(", '').gsub(")", ''))
+
+				result = {}
+				result.store("result1", result1['docs'])
+				result.store("result2", result2['docs'])
+
+				return {:code => "0", :message => "SUCCESS", :data => result}
+			end
+
     end
   end
 end

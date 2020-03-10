@@ -311,6 +311,15 @@ module V1
 				return {:code => 0, :message => "SUCCESS", :data => json}
 			end
 
+			desc "抖音热点视频"
+			params do
+			end
+			get :dyvideohot do
+				result = Utils::Helper::get("http://api.tianapi.com/txapi/dyvideohot/index?key=5a34f94c61ecb00817ee7248b096681d")
+
+				return {:code => 0, :message => result["msg"], :data => result["newslist"].as_json()}
+			end
+
     end
   end
 end

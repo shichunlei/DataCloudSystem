@@ -163,12 +163,22 @@ module V1
 			desc "获取整体统计信息"
       params do
       end
-      get :statistics do
+			get :statistics do
         result = Utils::Helper::get("http://49.232.173.220:3001/data/getStatisticsService")
+
+				globalOtherTrendChartDataResult = Utils::Helper::get("#{result['globalOtherTrendChartData']}")
+
+				result.store('globalOtherTrendChartData', globalOtherTrendChartDataResult['data'])
 
 				resultCity = Utils::Helper::get("http://data.chingsoft.com/api/v1/cnov/ncovcity")
 
 				result.store("provinces", resultCity['data'])
+				result.delete('importantForeignTrendChartGlobal')
+				result.delete('importantForeignTrendChart')
+				result.delete('foreignTrendChart')
+				result.delete('foreignTrendChartGlobal')
+				result.delete('dailyPics')
+				result.delete('dailyPic')
 
 				resultContinent = Utils::Helper::get("http://49.232.173.220:3001/data/getListByCountryTypeService2")
 
@@ -279,6 +289,15 @@ module V1
 				result["data"].store("history", histories.reverse)
 				result["data"].delete('historylist')
 
+				return {:code => 0, :message => "SUCCESS", :data => result['data'].as_json()}
+			end
+
+			desc "获取外国历史数据"
+			params do
+				requires :url, type: String, desc: 'URL'
+			end
+			get :country_history do
+				result = Utils::Helper::get("#{params[:url]}")
 				return {:code => 0, :message => "SUCCESS", :data => result['data'].as_json()}
 			end
 

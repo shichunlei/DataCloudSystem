@@ -1,8 +1,8 @@
 module BAIDU
 
 	module ErrorFormatter
-    def self.call message, backtrace, options, env
-      {:code => '20000', :message => message}.to_json
+    def self.call message, backtrace, options, env, original_exception
+      {:code => '20000', :message => message, :from => backtrace}.to_json
     end
 	end
 
@@ -12,8 +12,6 @@ module BAIDU
 		error_formatter :json, ErrorFormatter
 
 		mount BAIDU::Ocr
-		mount BAIDU::Image
-		mount BAIDU::Rpc
 		mount BAIDU::Util
 	end
 

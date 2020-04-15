@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200212021515) do
+ActiveRecord::Schema.define(version: 20200415030225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -478,6 +478,15 @@ ActiveRecord::Schema.define(version: 20200212021515) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string   "name",        default: ""
+    t.string   "no",          default: ""
+    t.integer  "province_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["province_id"], name: "index_cities_on_province_id", using: :btree
+  end
+
   create_table "ciyuans", force: :cascade do |t|
     t.string   "name",           default: ""
     t.string   "author",         default: ""
@@ -489,6 +498,15 @@ ActiveRecord::Schema.define(version: 20200212021515) do
     t.text     "interpretation", default: ""
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "counties", force: :cascade do |t|
+    t.string   "name",       default: ""
+    t.string   "no",         default: ""
+    t.integer  "city_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["city_id"], name: "index_counties_on_city_id", using: :btree
   end
 
   create_table "countries", force: :cascade do |t|
@@ -918,8 +936,7 @@ ActiveRecord::Schema.define(version: 20200212021515) do
     t.index ["astro_id"], name: "index_month_fortunes_on_astro_id", using: :btree
   end
 
-  create_table "musics", id: false, force: :cascade do |t|
-    t.string   "id"
+  create_table "musics", id: :string, force: :cascade do |t|
     t.string   "name",       default: ""
     t.string   "audio_url",  default: ""
     t.string   "artists",    default: ""
@@ -958,6 +975,15 @@ ActiveRecord::Schema.define(version: 20200212021515) do
     t.index ["permission_id"], name: "index_permissions_roles_on_permission_id", using: :btree
     t.index ["role_id", "permission_id"], name: "index_permissions_roles_on_role_id_and_permission_id", using: :btree
     t.index ["role_id"], name: "index_permissions_roles_on_role_id", using: :btree
+  end
+
+  create_table "provinces", force: :cascade do |t|
+    t.string   "name",       default: ""
+    t.string   "no",         default: ""
+    t.integer  "country_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["country_id"], name: "index_provinces_on_country_id", using: :btree
   end
 
   create_table "qianziwens", force: :cascade do |t|
@@ -1256,6 +1282,15 @@ ActiveRecord::Schema.define(version: 20200212021515) do
     t.index ["astro_id"], name: "index_tomorrow_fortunes_on_astro_id", using: :btree
   end
 
+  create_table "towns", force: :cascade do |t|
+    t.string   "name",       default: ""
+    t.string   "no",         default: ""
+    t.integer  "county_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["county_id"], name: "index_towns_on_county_id", using: :btree
+  end
+
   create_table "universities", force: :cascade do |t|
     t.string   "universityid", default: ""
     t.string   "name",         default: ""
@@ -1306,6 +1341,16 @@ ActiveRecord::Schema.define(version: 20200212021515) do
     t.integer "user_id"
     t.integer "role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+  end
+
+  create_table "villages", force: :cascade do |t|
+    t.string   "name",       default: ""
+    t.string   "no",         default: ""
+    t.string   "code_no",    default: ""
+    t.integer  "town_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["town_id"], name: "index_villages_on_town_id", using: :btree
   end
 
   create_table "week_fortunes", force: :cascade do |t|
@@ -1575,18 +1620,23 @@ ActiveRecord::Schema.define(version: 20200212021515) do
   add_foreign_key "car_seats", "car_models"
   add_foreign_key "car_types", "car_brands"
   add_foreign_key "car_wheels", "car_models"
+  add_foreign_key "cities", "provinces"
+  add_foreign_key "counties", "cities"
   add_foreign_key "miyus", "miyu_classifies"
   add_foreign_key "month_fortunes", "astros"
   add_foreign_key "organizations", "organizations"
   add_foreign_key "permissions_roles", "permissions"
   add_foreign_key "permissions_roles", "roles"
+  add_foreign_key "provinces", "countries"
   add_foreign_key "recipe_classifies", "recipe_classifies"
   add_foreign_key "recipe_materials", "recipes"
   add_foreign_key "recipe_processes", "recipes"
   add_foreign_key "recipes", "recipe_classifies"
   add_foreign_key "today_fortunes", "astros"
   add_foreign_key "tomorrow_fortunes", "astros"
+  add_foreign_key "towns", "counties"
   add_foreign_key "users", "organizations"
+  add_foreign_key "villages", "towns"
   add_foreign_key "week_fortunes", "astros"
   add_foreign_key "year_fortunes", "astros"
 end

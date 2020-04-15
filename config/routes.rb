@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :villages
+  resources :towns
+  resources :counties
+  resources :cities
+  resources :provinces
   resources :musics
   resources :book_details
   resources :food_nutritions

@@ -1,0 +1,15 @@
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1>
+      <%=t('views.edit')%> <small><%= link_to t('views.show'),town_path %></small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home') %></a></li>
+        <li><%= link_to t('activerecord.models.town'), towns_path %></li>
+        <li class="active"><%=t('views.edit')%></li>
+      </ol>
+  </section>
+<% end %>
+
+<%= render 'form' %>

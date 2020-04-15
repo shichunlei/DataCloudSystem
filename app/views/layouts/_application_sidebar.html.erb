@@ -159,12 +159,6 @@
           世界之最
         <% end %>
       <% end%>
-      <% if can? :read, Country %>
-        <%= nav_link countries_path do %>
-        <i class="fa fa-angle-double-right"></i>
-          全球各个国家信息
-        <% end %>
-      <% end%>
       <% if can? :read, Airport %>
         <%= nav_link airports_path do %>
         <i class="fa fa-angle-double-right"></i>
@@ -187,6 +181,44 @@
         <%= nav_link laws_path do %>
         <i class="fa fa-angle-double-right"></i>
           法律法规
+        <% end %>
+      <% end%>
+    <% end %>
+    <%= treeview_link '区划代码和城乡划分代码' do %>
+      <% if can? :read, Country %>
+        <%= nav_link countries_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          全球各个国家信息
+        <% end %>
+      <% end%>
+      <% if can? :read, Province %>
+        <%= nav_link provinces_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          省/直辖市
+        <% end %>
+      <% end%>
+      <% if can? :read, City %>
+        <%= nav_link cities_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          城市/区
+        <% end %>
+      <% end%>
+      <% if can? :read, County %>
+        <%= nav_link counties_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          区/县
+        <% end %>
+      <% end%>
+      <% if can? :read, Town %>
+        <%= nav_link towns_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          城镇/街道
+        <% end %>
+      <% end%>
+      <% if can? :read, Village %>
+        <%= nav_link villages_path do %>
+        <i class="fa fa-angle-double-right"></i>
+          村落/居委会
         <% end %>
       <% end%>
     <% end %>

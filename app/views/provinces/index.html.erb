@@ -1,0 +1,75 @@
+<style media="screen">
+  td{
+    vertical-align:middle!important;
+  }
+</style>
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.list')%> <small><%= t('activerecord.models.province') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li class="active"><%= t('activerecord.models.province') %></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :create, Province %>
+              <%= link_to new_province_path(@province), :class => 'btn btn-success' do %>
+                <span class="glyphicon glyphicon-plus"></span>
+                <%=t('views.create')%><%=t('activerecord.models.province')%>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th><%=t('activerecord.attributes.province.id') -%></th>
+                <th><%=t('activerecord.attributes.province.name') -%></th>
+                <th><%=t('activerecord.attributes.province.no') -%></th>
+                <th><%=t('activerecord.attributes.province.country') -%></th>
+                <% if can? :read, Province %><th></th><% end %>
+                <% if can? :edit, Province %><th></th><% end %>
+                <% if can? :destroy, Province %><th></th><% end %>
+              </tr>
+            </thead>
+            <tbody>
+              <% current_page = @page.nil? ? 1 : @page -%>
+              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 30 -%>
+              <%= content_tag_for(:tr, @provinces) do |province| %>
+                <td><%= @page = @page + 1 -%></td>
+                <td><%= province.name -%></td>
+                <td><%= province.no -%></td>
+                <td><%= province.country.name -%></td>
+                <% if can? :read, Province %>
+                  <td class="list-opertion">
+                    <%= link_to t('views.show'), "#{province_path(province)}" %>
+                  </td>
+                <% end %>
+                <% if can? :edit, Province %>
+                  <td class="list-opertion">
+                    <%= link_to t('views.edit'), edit_province_path(province) %>
+                  </td>
+                <% end %>
+                <% if can? :destroy, Province %>
+                  <td class="list-opertion">
+                    <%= link_to t('views.destroy'), province, method: :delete, data: { confirm: t('views.confirm') } %>
+                  </td>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= paginate @provinces %>
+</section>

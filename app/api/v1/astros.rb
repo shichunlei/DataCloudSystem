@@ -320,6 +320,26 @@ module V1
 				return {:code => 0, :message => result["msg"], :data => result["newslist"].as_json()}
 			end
 
+			desc "地区"
+			params do
+				requires :level, type: Integer, desc: '层级'
+			end
+			get :area do
+				result = Province.all
+
+				if params[:level] == 1
+					return {:code => 0, :message => '', :data => result.as_json(:only => [:id, :name, :no])}
+				elsif params[:level] == 2
+					return {:code => 0, :message => '', :data => result.as_json(:only => [:id, :name, :no], :include => [:cities => {:only => [:id, :name, :no]}])}
+				elsif params[:level] == 3
+					return {:code => 0, :message => '', :data => result.as_json(:only => [:id, :name, :no], :include => [:cities => {:only => [:id, :name, :no], :include => [:counties => {:only => [:id, :name, :no]}]}])}
+				elsif params[:level] == 4
+					return {:code => 0, :message => '', :data => result.as_json(:only => [:id, :name, :no], :include => [:cities => {:only => [:id, :name, :no], :include => [:counties => {:only => [:id, :name, :no], :include => [:towns => {:only => [:id, :name, :no]}]}]}])}
+				elsif params[:level] == 5
+					return {:code => 0, :message => '', :data => result.as_json(:only => [:id, :name, :no], :include => [:cities => {:only => [:id, :name, :no], :include => [:counties => {:only => [:id, :name, :no], :include => [:towns => {:only => [:id, :name, :no], :include => [:villages => {:only => [:id, :name, :no]}]}]}]}])}
+				end
+			end
+
     end
   end
 end

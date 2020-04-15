@@ -1,0 +1,75 @@
+<style media="screen">
+  td{
+    vertical-align:middle!important;
+  }
+</style>
+<% content_for :content_header  do %>
+  <section class="content-header">
+    <h1><%=t('views.list')%> <small><%= t('activerecord.models.town') %></small></h1>
+
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> <%=t('views.home')%></a></li>
+      <li class="active"><%= t('activerecord.models.town') %></li>
+    </ol>
+  </section>
+<% end %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if can? :create, Town %>
+              <%= link_to new_town_path(@town), :class => 'btn btn-success' do %>
+                <span class="glyphicon glyphicon-plus"></span>
+                <%=t('views.create')%><%=t('activerecord.models.town')%>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="box-body table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th><%=t('activerecord.attributes.town.id') -%></th>
+                <th><%=t('activerecord.attributes.town.name') -%></th>
+                <th><%=t('activerecord.attributes.town.no') -%></th>
+                <th><%=t('activerecord.attributes.town.county') -%></th>
+                <% if can? :read, Town %><th></th><% end %>
+                <% if can? :edit, Town %><th></th><% end %>
+                <% if can? :destroy, Town %><th></th><% end %>
+              </tr>
+            </thead>
+            <tbody>
+              <% current_page = @page.nil? ? 1 : @page -%>
+              <% @page = @page.nil? ? 0 : (@page.to_i - 1) * 30 -%>
+              <%= content_tag_for(:tr, @towns) do |town| %>
+                <td><%= @page = @page + 1 -%></td>
+                <td><%= town.name -%></td>
+                <td><%= town.no -%></td>
+                <td><%= town.county.name -%></td>
+                <% if can? :read, Town %>
+                  <td class="list-opertion">
+                    <%= link_to t('views.show'), "#{town_path(town)}" %>
+                  </td>
+                <% end %>
+                <% if can? :edit, Town %>
+                  <td class="list-opertion">
+                    <%= link_to t('views.edit'), edit_town_path(town) %>
+                  </td>
+                <% end %>
+                <% if can? :destroy, Town %>
+                  <td class="list-opertion">
+                    <%= link_to t('views.destroy'), town, method: :delete, data: { confirm: t('views.confirm') } %>
+                  </td>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= paginate @towns %>
+</section>

@@ -71,6 +71,9 @@ Rails.application.routes.draw do
   # 百度接口
   mount BAIDU::API => '/api/baidu/'
 
+  # 聊天有关接口
+  mount WECHAT::API => '/api/wechat/'
+
   # 搜索品牌
   get '/search_brands' => "car_brands#search_brands"
   # 查询品牌

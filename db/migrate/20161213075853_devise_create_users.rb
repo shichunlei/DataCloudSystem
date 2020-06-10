@@ -6,6 +6,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :name, null: false, default:""
       t.string :mobile, null: false, default:""
       t.attachment :avatar
+      t.boolean :is_wechat_account, default:false
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable

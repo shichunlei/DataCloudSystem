@@ -172,26 +172,22 @@ module WECHAT
 				return {"code" => '0', "message" => "成功", :data => users.as_json(:only => [:id, :name, :mobile], :methods => [:avatar_url, :identifier])}
 			end
 
-			desc "添加消息"
+			desc "添加并修改好友关系相关消息"
 			params do
-				requires :identifier, type: String, desc: '消息接收者手机号码'
-				requires :from_user, type: String, desc: '发送消息者手机号码'
-				requires :reason, type: String, desc: '原因'
-				requires :notify_type, type: String, desc: '类型'
+				requires :identifier, type: String, desc: '消息接收者identifier'
+				requires :from_user, type: String, desc: '发送消息者identifier'
+				optional :reason, type: String, desc: '原因'
 				requires :status, type: String, desc: '状态'
 			end
-			post :add_notify do
-				identifier = params[:identifier]
+			post :add_friend_notify do
 				from_user = params[:from_user]
 				reason = params[:reason]
-				notify_type = params[:notify_type]
-				status = params[:status]
 
-				user = User.find_by(mobile:identifier,is_wechat_account:true)
+				user = User.find_by(mobile:params[:identifier],is_wechat_account:true)
 				if user.nil?
 					return {"code" => '1003', "message" => "用户不存在"}
 				else
-					notification = Notification.find_by(user_id:user.id, notify_type:notify_type, from_user:from_user)
+					notification = Notification.find_by(user_id:user.id, notify_type:"friend", from_user:from_user)
 
 					if notification.nil?
 						notification = Notification.new
@@ -199,9 +195,11 @@ module WECHAT
 
 					notification.user_id = user.id
 					notification.from_user = from_user
-					notification.notify_type = notify_type
-					notification.reason = reason
-					notification.status = status
+					notification.notify_type = "friend"
+					if !reason.nil?
+						notification.reason = reason
+					end
+					notification.status = params[:status]
 
 					if notification.save
 						return {"code" => '0', "message" => "添加成功"}
@@ -211,16 +209,16 @@ module WECHAT
 
 			desc "消息列表"
 			params do
-				requires :identifier, type: String, desc: '手机号码'
+				requires :identifier, type: String, desc: 'identifier'
 			end
-			get :notifications do
+			get :friend_notifications do
 				identifier = params[:identifier]
 
 				user = User.find_by(mobile:identifier,is_wechat_account:true)
 				if user.nil?
 					return {"code" => '1003', "message" => "用户不存在"}
 				else
-					notifications = Notification.where("user_id = ? OR from_user = ?", user.id, identifier)
+					notifications = Notification.where("(user_id = ? OR from_user = ? ) AND notify_type = ?", user.id, identifier, "friend")
 
 					return {"code" => '0', "message" => "成功", :data => notifications.as_json(:include => [:user => {:only => [:id, :mobile, :name], :methods => [:avatar_url, :identifier]}], :only => [:id, :notify_type, :reason, :status], :methods => [:created_time, :from])}
 				end

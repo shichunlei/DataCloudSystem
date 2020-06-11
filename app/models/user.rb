@@ -31,4 +31,8 @@ class User < ApplicationRecord
   def avatar_url
     avatar.url(:medium)
   end
+
+  def identifier
+    self.mobile
+  end
 end

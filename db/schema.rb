@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200415030225) do
+ActiveRecord::Schema.define(version: 20200610101343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -946,6 +946,18 @@ ActiveRecord::Schema.define(version: 20200415030225) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string   "notify_type",    default: ""
+    t.integer  "user_id"
+    t.string   "from_user",      default: ""
+    t.string   "from_user_name", default: ""
+    t.string   "status",         default: ""
+    t.string   "reason",         default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -1625,6 +1637,7 @@ ActiveRecord::Schema.define(version: 20200415030225) do
   add_foreign_key "counties", "cities"
   add_foreign_key "miyus", "miyu_classifies"
   add_foreign_key "month_fortunes", "astros"
+  add_foreign_key "notifications", "users"
   add_foreign_key "organizations", "organizations"
   add_foreign_key "permissions_roles", "permissions"
   add_foreign_key "permissions_roles", "roles"

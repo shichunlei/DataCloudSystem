@@ -220,7 +220,7 @@ module WECHAT
 				if user.nil?
 					return {"code" => '1003', "message" => "用户不存在"}
 				else
-					notifications = Notification.where(user_id:user.id)
+					notifications = Notification.where("user_id = ? OR from_user = ?", user.id, identifier)
 
 					return {"code" => '0', "message" => "成功", :data => notifications.as_json(:include => [:user => {:only => [:id, :mobile, :name], :methods => [:avatar_url, :identifier]}], :only => [:id, :notify_type, :reason, :status], :methods => [:created_time, :from])}
 				end

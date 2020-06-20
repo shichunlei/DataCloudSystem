@@ -49,7 +49,7 @@ gem 'acts_as_tenant' #for sub-domain
 #方便远程部署的Gem包
 gem 'mina'
 #高效率的Rails服务器
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 4.3'
 #高效便捷的模板引擎
 gem 'slim'
 #分页插件

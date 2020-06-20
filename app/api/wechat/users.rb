@@ -56,13 +56,13 @@ module WECHAT
 				optional :name, type: String, desc: '昵称'
 				optional :avatar, type: File, desc: '头像'
 			end
-			post :register do
+			post :sign_up do
 				mobile = params[:mobile]
 				password = params[:password]
 				avatar = params[:avatar]
 				name = params[:name]
 
-				user = User.find_by(mobile:mobile)
+				user = User.find_by(mobile:mobile, is_wechat_account:true)
 				if user.nil?
 					user = User.new
 					email = "#{mobile}@14cells.com"

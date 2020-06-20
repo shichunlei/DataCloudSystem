@@ -123,12 +123,12 @@ module V1
 
 					if user.save
 						user.add_role "memeber"
-						return {"code" => '0', "message" => "注册成功", :data => user.as_json(:only => [:id, :name, :mobile], :methods => [:avatar_url, :identifier])}
+						return {"code" => "0", "message" => "注册成功", :data => user.as_json(:only => [:id, :name, :mobile], :methods => [:avatar_url, :identifier])}
 					else
-						return {"code" => '1', "message" => "注册失败"}
+						return {"code" => "1", "message" => "注册失败"}
 					end
 				else
-					return {"code" => '1001', "message" => "账号已经注册过了"}
+					return {:code => "1001", :message => "账号已经注册过了"}
 				end
 			end
 

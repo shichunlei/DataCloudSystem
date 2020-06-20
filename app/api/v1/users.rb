@@ -88,6 +88,48 @@ module V1
 			end
 			post :update_info do
 
+
+			desc "注册"
+			params do
+				requires :password, type: String, desc: '密码'
+				requires :mobile, type: String, desc: '手机号码'
+				optional :name, type: String, desc: '昵称', default: ""
+				optional :avatar, type: File, desc: '头像', default: nil
+			end
+			post :register do
+				mobile = params[:mobile]
+				password = params[:password]
+				avatar = params[:avatar]
+				name = params[:name]
+
+				user = User.find_by(mobile:mobile, is_wechat_account:true)
+				if user.nil?
+					user = User.new
+					email = "#{mobile}@14cells.com"
+
+					user.email = email
+					user.mobile = mobile
+					user.password = password
+					user.organization_id = 1
+					user.is_wechat_account = true
+					if !avatar.blank?
+						user.avatar = avatar[:tempfile]
+					end
+					if name.blank?
+						user.name = mobile
+					else
+						user.name = name
+					end
+
+					if user.save
+						user.add_role "memeber"
+						return {"code" => '0', "message" => "注册成功", :data => user.as_json(:only => [:id, :name, :mobile], :methods => [:avatar_url, :identifier])}
+					else
+						return {"code" => '1', "message" => "注册失败"}
+					end
+				else
+					return {"code" => '1001', "message" => "账号已经注册过了"}
+				end
 			end
 
     end

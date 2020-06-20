@@ -13,7 +13,7 @@ module WECHAT
 				old_password = params[:old_password]
 				password = params[:password]
 
-				user = User.find_by(mobile:identifier)
+				user = User.find_by(mobile:identifier, is_wechat_account:true)
 				if user.valid_password?(old_password)
 					user.password = password
 					if user.save
@@ -35,7 +35,7 @@ module WECHAT
 				identifier = params[:identifier]
 				name = params[:name]
 
-				user = User.find_by(mobile:identifier)
+				user = User.find_by(mobile:identifier, is_wechat_account:true)
 				if user.nil?
 					return {"code" => '1003', "message" => "用户不存在"}
 				else
@@ -53,8 +53,8 @@ module WECHAT
 			params do
 				requires :password, type: String, desc: '密码'
 				requires :mobile, type: String, desc: '手机号码'
-				optional :name, type: String, desc: '昵称'
-				optional :avatar, type: File, desc: '头像'
+				optional :name, type: String, desc: '昵称', default: ""
+				optional :avatar, type: File, desc: '头像', default: nil
 			end
 			post :sign_up do
 				mobile = params[:mobile]
@@ -75,7 +75,9 @@ module WECHAT
 					if !avatar.blank?
 						user.avatar = avatar[:tempfile]
 					end
-					if !name.blank?
+					if name.blank?
+						user.name = mobile
+					else
 						user.name = name
 					end
 
@@ -99,7 +101,7 @@ module WECHAT
 				mobile = params[:mobile]
 				password = params[:password]
 
-				user = User.find_by(mobile:mobile)
+				user = User.find_by(mobile:mobile, is_wechat_account:true)
 				if user.nil?
 					return {"code" => '1003', "message" => "用户不存在"}
 				else
@@ -119,7 +121,7 @@ module WECHAT
 			post :login_quickly do
 				mobile = params[:mobile]
 
-				user = User.find_by(mobile:mobile)
+				user = User.find_by(mobile:mobile, is_wechat_account:true)
 				if user.nil?
 					return {"code" => '1003', "message" => "用户不存在"}
 				else
@@ -136,7 +138,7 @@ module WECHAT
 				avatar = params[:avatar]
 				identifier = params[:identifier]
 
-				user = User.find_by(mobile:identifier)
+				user = User.find_by(mobile:identifier, is_wechat_account:true)
 				if user.nil?
 					return {"code" => '1', "message" => "用户不存在"}
 				else
@@ -160,7 +162,7 @@ module WECHAT
 			get :search_contacts do
 				mobile = params[:mobile]
 
-				users = User.where(mobile:mobile,is_wechat_account:true)
+				users = User.where(mobile:mobile, is_wechat_account:true)
 				return {"code" => '0', "message" => "成功", :data => users.as_json(:only => [:id, :name, :mobile], :methods => [:avatar_url, :identifier])}
 			end
 
@@ -176,14 +178,14 @@ module WECHAT
 			params do
 				requires :identifier, type: String, desc: '消息接收者identifier'
 				requires :from_user, type: String, desc: '发送消息者identifier'
-				optional :reason, type: String, desc: '原因'
+				optional :reason, type: String, desc: '原因', default: ""
 				requires :status, type: String, desc: '状态'
 			end
 			post :add_friend_notify do
 				from_user = params[:from_user]
 				reason = params[:reason]
 
-				user = User.find_by(mobile:params[:identifier],is_wechat_account:true)
+				user = User.find_by(mobile:params[:identifier], is_wechat_account:true)
 				if user.nil?
 					return {"code" => '1003', "message" => "用户不存在"}
 				else
@@ -214,7 +216,7 @@ module WECHAT
 			get :friend_notifications do
 				identifier = params[:identifier]
 
-				user = User.find_by(mobile:identifier,is_wechat_account:true)
+				user = User.find_by(mobile:identifier, is_wechat_account:true)
 				if user.nil?
 					return {"code" => '1003', "message" => "用户不存在"}
 				else

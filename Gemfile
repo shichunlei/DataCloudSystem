@@ -49,11 +49,11 @@ gem 'acts_as_tenant' #for sub-domain
 #方便远程部署的Gem包
 gem 'mina'
 #高效率的Rails服务器
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 4.0'
 #高效便捷的模板引擎
 gem 'slim'
 #分页插件
-gem 'kaminari'
+gem 'kaminari', '~> 1.2'
 #字体图标库
 gem 'font-awesome-sass',  '~> 4.3'
 #后台启动，重启，停止管理

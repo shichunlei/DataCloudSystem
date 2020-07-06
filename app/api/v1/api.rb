@@ -25,3 +25,7 @@ module V1
 		mount V1::Cnov
 	end
 end
+
+# 极速数据    唐诗   KEY a8d949a2591c8d0f
+# 极速数据    国家信息/笑话/天气/万年历/星座/周公解梦   KEY   1793aab537f9d9e9
+# 极速数据    成语/汉语词典  KEY 21780e871d77bedf
